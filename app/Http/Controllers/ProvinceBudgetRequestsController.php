@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PengajuanAanggaranExport;
 use App\Imports\DepartementImport;
 use App\Imports\ProvinceImport;
 use App\Imports\RegencyImport;
@@ -45,7 +46,7 @@ class ProvinceBudgetRequestsController extends Controller
             ->addColumn('action', function ($row) {
                 return '
                 <div class="blok">
-                <a href="'. route('province-budget-requests.edit', $row->id) . '" class="btn btn-secondary btn-sm mt-3"><i
+                <a href="'. route('province-budget-requests.exort', $row->id) . '" class="btn btn-secondary btn-sm mt-3"><i
                                 class="bi bi-eye me-1"></i> View</a>
                         <a href="'. route('province-imports.index', $row->id) . '" class="btn btn-info btn-sm mt-3"><i
                                         class="bi bi-pencil me-1"></i>Edit</a>
@@ -235,5 +236,19 @@ class ProvinceBudgetRequestsController extends Controller
         $funding_source = FundingSource::all();
         $data = ProvinceBudgetRequest::where('id', $id)->first();
         return view('pengajuan_anggaran.edit', compact('id', 'data', 'funding_source'));
+    }
+
+    public function export_data($id){   
+        if (Auth::user()->role === "regency") {
+            $type = "regency";
+        }
+        if (Auth::user()->role === "province") {
+            $type = "province";
+        }
+        if (Auth::user()->role === "departement") {
+            $type = "departement";
+        }
+        $import = new PengajuanAanggaranExport($id, $type);  
+        return Excel::download($import, 'pengajuan_anggaran.xlsx');
     }
 }

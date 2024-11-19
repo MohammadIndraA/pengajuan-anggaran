@@ -110,11 +110,11 @@
                             if (data == "pending") {
                                 return `<span class="badge rounded-pill bg-secondary">pending</span>`
                             }
-                            if (data == "process") {
-                                return `<span class="badge rounded-pill bg-yellow">process</span>`
+                            if (data == "proses") {
+                                return `<span class="badge rounded-pill bg-warning">proces</span>`
                             }
-                            if (data == "Approved") {
-                                return `<span class="badge rounded-pill bg-success">Approved</span>`
+                            if (data == "approved") {
+                                return `<span class="badge rounded-pill bg-success">approved</span>`
                             }
                             if (data == "rejected") {
                                 return `<span class="badge rounded-pill bg-danger">rejected</span>`

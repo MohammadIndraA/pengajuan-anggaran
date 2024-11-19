@@ -81,14 +81,20 @@
                                 <select id="role" class="form-select @error('role') is-invalid @enderror"
                                     name="role">
                                     @if (Auth::user()->role === 'province')
-                                        <option value="regency">Regency</option>
+                                        <option value="regency" {{ old('role') == 'regency' ? 'selected' : '' }}>Regency
+                                        </option>
                                     @else
                                         <option disabled selected>Pilih Item...</option>
-                                        <option value="admin">Admin</option>
-                                        <option value="pusat">Pusat</option>
-                                        <option value="province">Province</option>
-                                        <option value="regency">Regency</option>
-                                        <option value="depertement">Depertement</option>
+                                        <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin
+                                        </option>
+                                        <option value="pusat" {{ old('role') == 'pusat' ? 'selected' : '' }}>Pusat
+                                        </option>
+                                        <option value="province" {{ old('role') == 'province' ? 'selected' : '' }}>Province
+                                        </option>
+                                        <option value="regency" {{ old('role') == 'regency' ? 'selected' : '' }}>Regency
+                                        </option>
+                                        <option value="depertement" {{ old('role') == 'depertement' ? 'selected' : '' }}>
+                                            Depertement</option>
                                     @endif
                                 </select>
                                 @error('role')
@@ -96,40 +102,38 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                                </select>
                             </div>
+
                             <div class="col-md-4">
                                 <label for="province_id" class="form-label">Provinsi</label>
                                 <select id="province_id" class="form-select @error('province_id') is-invalid @enderror"
                                     name="province_id">
-                                    <option>Pilih Item...</option>
+                                    <option value="" disabled selected>Pilih Item...</option>
                                     @foreach ($provinces as $item)
-                                        @if (old('province_id') == $item->id)
-                                            <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
-                                        @else
-                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                        @endif
+                                        <option value="{{ $item->id }}"
+                                            {{ old('province_id') == $item->id ? 'selected' : '' }}>
+                                            {{ $item->name }}
+                                        </option>
                                     @endforeach
-                                    @error('province_id')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
                                 </select>
-                                </select>
+                                @error('province_id')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
+
                             <div class="col-md-4">
                                 <label for="regency_city_id" class="form-label">Kota Kabupaten</label>
                                 <select id="regency_city_id"
                                     class="form-select @error('regency_city_id') is-invalid @enderror"
                                     name="regency_city_id">
-                                    <option>Pilih Item...</option>
+                                    <option value="" disabled selected>Pilih Item...</option>
                                     @foreach ($regency_cities as $item)
-                                        @if (old('regency_city_id') == $item->id)
-                                            <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
-                                        @else
-                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                        @endif
+                                        <option value="{{ $item->id }}"
+                                            {{ old('regency_city_id') == $item->id ? 'selected' : '' }}>
+                                            {{ $item->name }}
+                                        </option>
                                     @endforeach
                                 </select>
                                 @error('regency_city_id')
@@ -137,21 +141,18 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                                </select>
                             </div>
+
                             <div class="col-md-4">
                                 <label for="departement_id" class="form-label">Departement</label>
                                 <select id="departement_id"
-                                    class="form-select @error('departement_id') is-invalid @enderror" required
-                                    name="departement_id">
-                                    <option>Pilih Item...</option>
+                                    class="form-select @error('departement_id') is-invalid @enderror" name="departement_id">
+                                    <option value="" disabled selected>Pilih Item...</option>
                                     @foreach ($departement as $item)
-                                        @if (old('departement_id') == $item->id)
-                                            <option value="{{ $item->id }}" selected>{{ $item->departement_name }}
-                                            </option>
-                                        @else
-                                            <option value="{{ $item->id }}">{{ $item->departement_name }}</option>
-                                        @endif
+                                        <option value="{{ $item->id }}"
+                                            {{ old('departement_id') == $item->id ? 'selected' : '' }}>
+                                            {{ $item->departement_name }}
+                                        </option>
                                     @endforeach
                                 </select>
                                 @error('departement_id')
@@ -159,8 +160,8 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                                </select>
                             </div>
+
                             <div class="text-between">
                                 <button type="submit" class="btn btn-info w-20">Submit</button>
                                 <button type="reset" class="btn btn-secondary">Reset</button>

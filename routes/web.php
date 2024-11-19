@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
           Route::post('/province-budget-requests/store',[ProvinceBudgetRequestsController::class, 'store'])->name('province-budget-requests.store');
           Route::get('/province-budget-requests/edit/{id}',[ProvinceBudgetRequestsController::class, 'edit'])->name('province-budget-requests.edit');
           Route::get('/province-budget-requests/destroy/{id}',[ProvinceBudgetRequestsController::class, 'destroy'])->name('province-budget-requests.destroy');
+          Route::get('/province-budget-requests/exort/{id}',[ProvinceBudgetRequestsController::class, 'export_data'])->name('province-budget-requests.exort');
 
           //databse import
           Route::get('province-imports/{id}', [ProvinceImportController::class, 'index'])->name('province-imports.index');
