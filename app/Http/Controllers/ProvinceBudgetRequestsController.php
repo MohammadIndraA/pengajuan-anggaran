@@ -180,6 +180,7 @@ class ProvinceBudgetRequestsController extends Controller
     {
         $request->validate([
             'status' => 'required',
+            'deskription' => 'required',
         ]);
         if ($request->type == "province") {
             $data =  ProvinceBudgetRequest::where('id', $id)->first();
@@ -195,7 +196,18 @@ class ProvinceBudgetRequestsController extends Controller
     {
         try {
             // Coba hapus data
-            ProvinceBudgetRequest::where('id', $id)->delete();
+            if (Auth::user()->role === "province") {
+                $data = ProvinceBudgetRequest::where('id', $id)->first();
+                $data->delete();
+            }
+            if (Auth::user()->role === "regency") {
+                $data = RegencyBudgetRequest::where('id', $id)->first();
+                $data->delete();
+            }
+            if (Auth::user()->role === "departement") {
+                $data = DepartementBudgetRequest::where('id', $id)->first();
+                $data->delete();
+            }
             return redirect()->route('province-budget-requests.index')->with('success', 'Data berhasil dihapus.');
         } catch (\Illuminate\Database\QueryException $e) {
             // Tangkap exception dan tampilkan pesan alert

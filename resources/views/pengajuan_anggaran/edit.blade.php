@@ -97,7 +97,20 @@
                                     </div>
                                 @enderror
                             </div>
-
+                            @if (Auth::user()->role == 'admin' || Auth::user()->role == 'department' || Auth::user()->role == 'pusat')
+                                <div class="col-md-12">
+                                    <label for="description" class="col-sm-2 col-form-label">Textarea</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control @error('description') is-invalid @enderror" name="description"
+                                            value="{{ old('description') }}" id="description" style="height: 100px"></textarea>
+                                    </div>
+                                    @error('description')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            @endif
                             <div class="col-12 mb-3">
                                 <label for="evidence_file" class="form-label">Unggah Berkas Anggaran</label>
                                 <input type="file" class="form-control @error('evidence_file') is-invalid @enderror"

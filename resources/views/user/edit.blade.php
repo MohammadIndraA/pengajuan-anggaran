@@ -98,7 +98,6 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                                </select>
                             </div>
                             <div class="col-md-4">
                                 <label for="province_id" class="form-label">Provinsi</label>
