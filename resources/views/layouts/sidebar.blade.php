@@ -14,12 +14,6 @@
             </li>
             <li class="nav-heading">Pages</li>
 
-            <li class="nav-item">
-                <a class="nav-link {{ Request::is('profile') ? 'active' : 'collapsed' }}" href="/profile">
-                    <i class="bi bi-person-check"></i>
-                    <span>Profile</span>
-                </a>
-            </li>
             <br>
             <li class="nav-item">
                 <form action="/logout" method="POST">

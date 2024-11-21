@@ -84,8 +84,9 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="col-12 mb-3">
-                                <label for="evidence_file" class="form-label">Unggah Berkas Anggaran</label>
+                            <div class="col-12 mb-3 mt-2">
+                                <label for="evidence_file" class="form-label">Unggah Berkas Anggaran <p class="text-danger">
+                                        (file maximal 2 (excel & pdf) boleh hanya excel saja)</p></label>
                                 <input type="file" class="form-control @error('evidence_file') is-invalid @enderror"
                                     id="evidence_file" value="{{ old('evidence_file') }}" name="evidence_file[]" multiple
                                     placeholder="">

@@ -31,10 +31,17 @@
                                     <li class="dropdown-header text-start">
                                         <h6>Filter</h6>
                                     </li>
-
-                                    <li><a class="dropdown-item" href="#">Today</a></li>
-                                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                                    <form method="GET">
+                                        <li><button type="submit" class="dropdown-item" name="type">Today</button></li>
+                                        <li><button type="submit" class="dropdown-item" value="province_monthly"
+                                                name="type">This
+                                                Month</button>
+                                        </li>
+                                        <li><button type="submit" class="dropdown-item" value="province_yearly"
+                                                name="type">This
+                                                Year</button>
+                                        </li>
+                                    </form>
                                 </ul>
                             </div>
 
@@ -46,7 +53,7 @@
                                         Rp.
                                     </div>
                                     <div class="ps-3">
-                                        <h6>{{ number_format($provincial_expenditure) }}</h6>
+                                        <h6>{{ number_format($expenditureProvince) }}</h6>
 
                                     </div>
                                 </div>
@@ -66,10 +73,18 @@
                                     <li class="dropdown-header text-start">
                                         <h6>Filter</h6>
                                     </li>
+                                    <form method="GET">
+                                        <li><button type="submit" class="dropdown-item" name="type">Today</button></li>
+                                        <li><button type="submit" class="dropdown-item" value="regency_monthly"
+                                                name="type">This
+                                                Month</button>
+                                        </li>
+                                        <li><button type="submit" class="dropdown-item" value="regency_yearly"
+                                                name="type">This
+                                                Year</button>
+                                        </li>
+                                    </form>
 
-                                    <li><a class="dropdown-item" href="#">Today</a></li>
-                                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                                    <li><a class="dropdown-item" href="#">This Year</a></li>
                                 </ul>
                             </div>
 
@@ -81,7 +96,7 @@
                                         Rp.
                                     </div>
                                     <div class="ps-3">
-                                        <h6>{{ number_format($regency_expenditure) }}</h6>
+                                        <h6>{{ number_format($expenditureRegency) }}</h6>
 
                                     </div>
                                 </div>
@@ -100,24 +115,32 @@
                                         class="bi bi-three-dots"></i></a>
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                     <li class="dropdown-header text-start">
-                                        <h6>Filter</h6>
+                                        <h6>Province</h6>
                                     </li>
 
-                                    <li><a class="dropdown-item" href="#">Today</a></li>
-                                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                                    <form method="GET">
+                                        <li><button type="submit" class="dropdown-item" name="type">Today</button></li>
+                                        <li><button type="submit" class="dropdown-item" value="departement_monthly"
+                                                name="type">This
+                                                Month</button>
+                                        </li>
+                                        <li><button type="submit" class="dropdown-item" value="departement_yearly"
+                                                name="type">This
+                                                Year</button>
+                                        </li>
+                                    </form>
                                 </ul>
                             </div>
 
                             <div class="card-body">
-                                <h5 class="card-title">Customers <span>| This Year</span></h5>
+                                <h5 class="card-title">Regency <span>| Today</span></h5>
 
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                         Rp.
                                     </div>
                                     <div class="ps-3">
-                                        <h6>{{ number_format($departement_expenditure) }}</h6>
+                                        <h6>{{ number_format($expenditureDep) }}</h6>
 
                                     </div>
                                 </div>
@@ -126,6 +149,53 @@
                         </div>
 
                     </div><!-- End Customers Card -->
+                    @if (Auth::user()->role === 'departement')
+                        <div class="col-xxl-4 col-xl-12">
+
+                            <div class="card info-card customers-card">
+
+                                <div class="filter">
+                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i
+                                            class="bi bi-three-dots"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                        <li class="dropdown-header text-start">
+                                            <h6>Province</h6>
+                                        </li>
+
+                                        <form method="GET">
+                                            <li><button type="submit" class="dropdown-item" name="type">Today</button>
+                                            </li>
+                                            <li><button type="submit" class="dropdown-item" value="departement_monthly"
+                                                    name="type">This
+                                                    Month</button>
+                                            </li>
+                                            <li><button type="submit" class="dropdown-item" value="departement_yearly"
+                                                    name="type">This
+                                                    Year</button>
+                                            </li>
+                                        </form>
+                                    </ul>
+                                </div>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Regency <span>| Today</span></h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div
+                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            Rp.
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>{{ number_format($expenditureDep) }}</h6>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div><!-- End Customers Card -->
+                    @endif
 
                     <!-- Reports -->
                     <div class="col-12">
@@ -146,7 +216,7 @@
                             </div>
 
                             <div class="card-body">
-                                <h5 class="card-title">Reports <span>/Today</span></h5>
+                                <h5 class="card-title">Departement <span>/Today</span></h5>
 
                                 <!-- Line Chart -->
                                 <div id="reportsChart"></div>
