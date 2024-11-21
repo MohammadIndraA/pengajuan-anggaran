@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('status')->default('pending');
             $table->integer('is_imported');
             $table->foreignId('province_id')->constrained('provinces');
+            $table->foreignId('proposal_file_id')->constrained('proposal_files');
             $table->timestamps();
         });
     }

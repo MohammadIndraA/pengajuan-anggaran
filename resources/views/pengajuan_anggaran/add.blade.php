@@ -37,7 +37,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12 mt-2">
                                 <label for="submission_date" class="form-label">Tanggal Pengajuan</label>
                                 <input type="date" class="form-control @error('submission_date') is-invalid @enderror"
                                     id="submission_date" name="submission_date" value="{{ old('submission_date') }}">
@@ -47,10 +47,10 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="col-12">
+                            <div class="col-12 mt-2">
                                 <label for="funding_source_id" class="form-label">Sumber Dana</label>
                                 <select id="funding_source_id"
-                                    class="form-select .select2 @error('funding_source_id') is-invalid @enderror"
+                                    class="form-select @error('funding_source_id') is-invalid @enderror"
                                     name="funding_source_id">
                                     <option value="" disabled selected>Pilih Item...</option>
                                     @foreach ($funding_sources as $item)
@@ -65,10 +65,9 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="col-12">
+                            <div class="col-12 mt-2">
                                 <label for="program_id" class="form-label">Program</label>
-                                <select id="program_id"
-                                    class="form-select .select2 @error('program_id') is-invalid @enderror"
+                                <select id="program_id" class="form-select @error('program_id') is-invalid @enderror"
                                     name="program_id">
                                     <option value="" disabled selected>Pilih Item...</option>
                                     @foreach ($programs as $item)
@@ -84,11 +83,10 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="col-12 mb-3 mt-2">
-                                <label for="evidence_file" class="form-label">Unggah Berkas Anggaran <p class="text-danger">
-                                        (file maximal 2 (excel & pdf) boleh hanya excel saja)</p></label>
+                            <div class="col-12 mb-2 mt-2">
+                                <label for="evidence_file" class="form-label">Unggah Berkas Anggaran (Excel)</label>
                                 <input type="file" class="form-control @error('evidence_file') is-invalid @enderror"
-                                    id="evidence_file" value="{{ old('evidence_file') }}" name="evidence_file[]" multiple
+                                    id="evidence_file" value="{{ old('evidence_file') }}" name="evidence_file" multiple
                                     placeholder="">
                                 @error('evidence_file')
                                     <div class="invalid-feedback">
@@ -96,8 +94,19 @@
                                     </div>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn btn-info">Submit</button>
-                            <button type="reset" class="btn btn-secondary">Reset</button>
+                            <div class="col-12 mb-2 mt-2">
+                                <label for="proposal_file_id" class="form-label">Unggah Berkas (Proposal)</label>
+                                <input type="file" class="form-control @error('proposal_file_id') is-invalid @enderror"
+                                    id="proposal_file_id" value="{{ old('proposal_file_id') }}" name="proposal_file_id"
+                                    multiple placeholder="">
+                                @error('proposal_file_id')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <button type="submit" class="btn btn-info w-100 mb-1">Submit</button>
+                            <button type="reset" class="btn btn-secondary w-100">Reset</button>
                         </form><!-- End Multi Columns Form -->
 
                     </div>
