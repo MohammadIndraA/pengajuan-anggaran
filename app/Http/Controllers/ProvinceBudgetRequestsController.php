@@ -60,7 +60,7 @@ class ProvinceBudgetRequestsController extends Controller
                 }
             
                 // Tambahkan tombol Doc Proposal
-                $actions .= '<a href="' . route('province-budget-requests.exort', $row->id) . '" 
+                $actions .= '<a href="' . route('province-budget-requests.exort', ['id' => $row->id , 'type' => Auth::user()->role]) . '" 
                                 class="btn btn-warning btn-sm mt-3" >
                                 <i class="bi bi-file-earmark-pdf me-1"></i> Doc Excel
                              </a>';
@@ -325,7 +325,7 @@ class ProvinceBudgetRequestsController extends Controller
                 }
                 
                 $actions .= '<div class="p-1">
-                                <a href="' . route('province-budget-requests.exort', $row->id) . '" 
+                                <a href="' . route('province-budget-requests.exort', ['id' => $row->id , 'type' => $type]) . '" 
                                    class="btn btn-warning btn-sm w-100">
                                    <i class="bi bi-file-earmark-pdf me-1"></i> Doc Excel
                                 </a>
@@ -372,16 +372,7 @@ class ProvinceBudgetRequestsController extends Controller
         return view('pengajuan_anggaran.edit', compact('id', 'data', 'funding_source'));
     }
 
-    public function export_data($id){   
-        if (Auth::user()->role === "regency") {
-            $type = "regency";
-        }
-        if (Auth::user()->role === "province") {
-            $type = "province";
-        }
-        if (Auth::user()->role === "departement") {
-            $type = "departement";
-        }
+    public function export_data($id, $type){
         $import = new PengajuanAanggaranExport($id, $type);  
         return Excel::download($import, 'pengajuan_anggaran.xlsx');
     }

@@ -27,7 +27,7 @@ Route::middleware('auth')->group(function () {
 
       // Kelola Pengajuan Anggaran
       Route::get('/province-budget-requests/destroy/{id}/{type}',[ProvinceBudgetRequestsController::class, 'destroy'])->name('province-budget-requests.destroy');
-      Route::get('/province-budget-requests/exort/{id}',[ProvinceBudgetRequestsController::class, 'export_data'])->name('province-budget-requests.exort');
+      Route::get('/province-budget-requests/exort/{id}/{type}',[ProvinceBudgetRequestsController::class, 'export_data'])->name('province-budget-requests.exort');
   //  role province, departement, regency
   Route::middleware('pengajuan_anggaran')->group(function () {
     // Pengajuan Anggaran
