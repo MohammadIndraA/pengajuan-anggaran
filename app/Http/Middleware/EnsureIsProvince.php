@@ -16,7 +16,7 @@ class EnsureIsProvince
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()->role !== "province") {
+        if (Auth::user()->role === "province") {
             abort(403);
         }
         return $next($request);

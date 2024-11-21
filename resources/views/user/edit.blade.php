@@ -86,11 +86,18 @@
                                         <option value="regency">Regency</option>
                                     @else
                                         <option disabled selected>Pilih Item...</option>
-                                        <option value="admin">Admin</option>
-                                        <option value="pusat">Pusat</option>
-                                        <option value="province">Province</option>
-                                        <option value="regency">Regency</option>
-                                        <option value="depertement">Depertement</option>
+                                        <option value="admin" {{ old('role', $data->role) == 'admin' ? 'selected' : '' }}>
+                                            Admin</option>
+                                        <option value="pusat" {{ old('role', $data->role) == 'pusat' ? 'selected' : '' }}>
+                                            Pusat</option>
+                                        <option value="province"
+                                            {{ old('role', $data->role) == 'province' ? 'selected' : '' }}>Province
+                                        </option>
+                                        <option value="regency"
+                                            {{ old('role', $data->role) == 'regency' ? 'selected' : '' }}>Regency</option>
+                                        <option value="departement"
+                                            {{ old('role', $data->role) == 'departement' ? 'selected' : '' }}>Depertement
+                                        </option>
                                     @endif
                                 </select>
                                 @error('role')
@@ -99,6 +106,7 @@
                                     </div>
                                 @enderror
                             </div>
+
                             <div class="col-md-4">
                                 <label for="province_id" class="form-label">Provinsi</label>
                                 <select id="province_id" class="form-select @error('province_id') is-invalid @enderror"

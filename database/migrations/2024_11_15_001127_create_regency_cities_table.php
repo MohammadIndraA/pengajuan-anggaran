@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('regency_cities', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('province_id')->constrained('provinces');
+            $table->foreignId('province_id')->nullable()->constrained('provinces');
             $table->timestamps();
         });
     }

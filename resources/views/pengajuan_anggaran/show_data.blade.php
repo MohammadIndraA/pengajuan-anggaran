@@ -21,7 +21,7 @@
                         <div class="card-body">
                             {{-- alert --}}
                             @if (session('success'))
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     <i class="bi bi-exclamation-octagon me-1"></i>
                                     {{ session('success') }}
                                     <button type="button" class="btn-close" data-bs-dismiss="alert"
@@ -44,6 +44,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">No</th>
+                                        <th scope="col">Wilayah</th>
                                         <th scope="col">Nama Pengajuan</th>
                                         <th scope="col">Sumber Dana</th>
                                         <th scope="col">Jumlah Anggaran Keseluruhan</th>
@@ -71,6 +72,8 @@
             url = 'pengajuan-anggaran-departement/province';
         } else if (window.location.pathname === '/pengajuan-anggaran-departement/regency') {
             url = 'pengajuan-anggaran-departement/regency';
+        } else if (window.location.pathname === '/pengajuan-anggaran-departement/departement') {
+            url = 'pengajuan-anggaran-departement/departement';
         }
         $(document).ready(function() {
             var table = $('#data-table').DataTable({
@@ -85,13 +88,21 @@
                         }
                     },
                     {
+                        data: null,
+                        name: 'province_or_regency',
+                        searchable: true,
+                        render: function(data, type, row) {
+                            return row.province ? row.province.name : row.regency_city.name;
+                        }
+                    },
+                    {
                         data: 'submission_name',
                         name: 'submission_name',
                         searchable: true
                     },
                     {
-                        data: 'funding_source',
-                        name: 'funding_source'
+                        data: 'funding_source.funding_source_name',
+                        name: 'funding_source.funding_source_name'
                     },
                     {
                         data: 'budget',

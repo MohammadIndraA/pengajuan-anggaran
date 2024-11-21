@@ -53,20 +53,32 @@ Route::middleware('auth')->group(function () {
         Route::post('/user-update/{id}', [UserController::class, 'update']);
         Route::post('/user-delete', [UserController::class, 'delete']);
       
-        Route::middleware('departement')->group(function () {
-                // Kelola akun di departemen
-                Route::get('/manage-account-province', [UserController::class, 'data_show']);
-                Route::get('/manage-account-regency', [UserController::class, 'data_show']);
+        // Kelola akun di province
+        Route::get('/manage-account-regency', [UserController::class, 'data_show'])->name('manage-account');
 
-                 // Pengajuan Anggaran
-                Route::get('/pengajuan-anggaran-departement/province',[ProvinceBudgetRequestsController::class, 'data_show'])->name('pengajuan-anggaran-departement');
-                Route::get('/pengajuan-anggaran-departement/regency',[ProvinceBudgetRequestsController::class, 'data_show'])->name('pengajuan-anggaran-departement');
-                Route::get('/pengajuan-anggaran-province/edit/{id}',[ProvinceBudgetRequestsController::class, 'data_edit'])->name('pengajuan-anggaran.edit');
-                Route::get('/pengajuan-anggaran-regency/edit/{id}',[ProvinceBudgetRequestsController::class, 'data_edit'])->name('pengajuan-anggaran.edit');
-                Route::post('/pengajuan-anggaran/update/{id}',[ProvinceBudgetRequestsController::class, 'update'])->name('pengajuan-anggaran.update');
+         // Pengajuan Anggaran
+         Route::get('/pengajuan-anggaran-departement/regency',[ProvinceBudgetRequestsController::class, 'data_show'])->name('pengajuan-anggaran-departement');
+         Route::get('/pengajuan-anggaran-regency/edit/{id}',[ProvinceBudgetRequestsController::class, 'data_edit'])->name('pengajuan-anggaran.edit');
+         Route::post('/pengajuan-anggaran/update/{id}',[ProvinceBudgetRequestsController::class, 'update'])->name('pengajuan-anggaran.update');
+
+        // Kelola akun di admin , pusat
+        Route::middleware('role:admin,pusat')->group(function () {
+               // akun
+              Route::get('/manage-account-departement', [UserController::class, 'data_show'])->name('manage-account');
+              // Pengajuan Anggaran
+              Route::get('/pengajuan-anggaran-departement/departement',[ProvinceBudgetRequestsController::class, 'data_show'])->name('pengajuan-anggaran-departement'); 
+              Route::get('/pengajuan-anggaran-departement/edit/{id}',[ProvinceBudgetRequestsController::class, 'data_edit'])->name('pengajuan-anggaran.edit');
         });
+        
 
         Route::middleware('role:admin,pusat,departement')->group(function () {
+            // pengajuan anggaran
+            Route::get('/pengajuan-anggaran-departement/province',[ProvinceBudgetRequestsController::class, 'data_show'])->name('pengajuan-anggaran-departement');
+            Route::get('/pengajuan-anggaran-province/edit/{id}',[ProvinceBudgetRequestsController::class, 'data_edit'])->name('pengajuan-anggaran.edit');
+
+             // kelola akun
+              Route::get('/manage-account-province', [UserController::class, 'data_show'])->name('manage-account');
+
                // Unit
               Route::get('unit', [UnitController::class, 'index']);
               Route::post('unit-store', [UnitController::class, 'store']);

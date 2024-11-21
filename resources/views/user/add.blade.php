@@ -93,7 +93,7 @@
                                         </option>
                                         <option value="regency" {{ old('role') == 'regency' ? 'selected' : '' }}>Regency
                                         </option>
-                                        <option value="depertement" {{ old('role') == 'depertement' ? 'selected' : '' }}>
+                                        <option value="departement" {{ old('role') == 'depertement' ? 'selected' : '' }}>
                                             Depertement</option>
                                     @endif
                                 </select>

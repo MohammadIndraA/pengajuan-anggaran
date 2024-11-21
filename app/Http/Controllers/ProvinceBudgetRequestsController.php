@@ -12,11 +12,14 @@ use App\Models\DepartementBudgetRequest;
 use App\Models\FundingSource;
 use App\Models\Kro;
 use App\Models\Program;
+use App\Models\Province;
 use App\Models\ProvinceBudgetRequest;
 use App\Models\ProvinceImport as ModelsProvinceImport;
 use App\Models\RegencyBudgetRequest;
+use App\Models\RegencyCity;
 use App\Models\Ro;
 use App\Models\Unit;
+use App\Services\FileUploadService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
@@ -29,16 +32,16 @@ class ProvinceBudgetRequestsController extends Controller
         if ($request->ajax()) {
              if (Auth::user()->role === "province") {
                 
-                 $data = ProvinceBudgetRequest::all();
+                 $data = ProvinceBudgetRequest::with('funding_source')->get();
              }
 
              if (Auth::user()->role === "departement") {
-                $data = DepartementBudgetRequest::all();
+                $data = DepartementBudgetRequest::with('funding_source')->get();
             }
             
             
              if (Auth::user()->role === "regency") {
-                 $data = RegencyBudgetRequest::all();
+                 $data = RegencyBudgetRequest::with('funding_source')->get();
              }
             
             return DataTables::of($data)
@@ -63,23 +66,21 @@ class ProvinceBudgetRequestsController extends Controller
 
     public function create()
     {
-        $funding_source = FundingSource::all();
-        return view('pengajuan_anggaran.add', compact('funding_source'));
+        $funding_sources = FundingSource::all();
+        $programs = Program::all();
+        return view('pengajuan_anggaran.add', compact('funding_sources','programs'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, FileUploadService $fileUploadService)
     {
         $request->validate([
             'submission_name' => 'required',
             'submission_date' => 'required',
-            'funding_source' => 'required',
-            'evidence_file' => 'required|mimes:xlsx,xls,csv',
+            'funding_source_id' => 'required',
+            'program_id' => 'required',
+            'evidence_file' => 'required|array|max:2',
+            'evidence_file.*' => 'mimes:xlsx,xls,csv,pdf|max:5048',
         ]);
-        // dd($request->all());
-        $file= $request->file('evidence_file');
-        $filename= date('YmdHi').$file->getClientOriginalName();
-
-        $path = $file->storeAs('pengajuan', $filename);
 
      if (Auth::user()->role === "province") {
         
@@ -89,20 +90,26 @@ class ProvinceBudgetRequestsController extends Controller
          $data->deskription = '-';
          $data->submission_name = $request->submission_name;
          $data->submission_date = $request->submission_date;
-         $data->funding_source = $request->funding_source;
-         $data->evidence_file = $filename;
+         $data->funding_source_id = $request->funding_source_id;
+         $data->program_id = $request->program_id;
+         $data->evidence_file = "";
          $data->is_imported = 1;
          $data->status = 'pending';
          $data->save();
 
          $id = $data->id;  
 
-         $import = new ProvinceImport($id);  
-         Excel::import($import, $request->file('evidence_file'));  
- 
-         $totalBudget = $import->getTotal(); // Ambil total dari ProvinceImport  
-         $data->update(['budget' => $totalBudget]); // Update nilai budget 
-     }
+          // Panggil fungsi upload
+
+          $formattedFileName = $fileUploadService->uploadMulti(
+            $request->file('evidence_file'), 
+            'pengajuan', 
+            \App\Imports\ProvinceImport::class, 
+            $data
+        );
+        // Update nama file di model
+        $data->update(['evidence_file' => $formattedFileName]);
+        }
      if (Auth::user()->role === "regency") {
 
          $data = new RegencyBudgetRequest();
@@ -111,19 +118,25 @@ class ProvinceBudgetRequestsController extends Controller
          $data->deskription = '-';
          $data->submission_name = $request->submission_name;
          $data->submission_date = $request->submission_date;
-         $data->funding_source = $request->funding_source;
-         $data->evidence_file = $filename;
+         $data->funding_source_id = $request->funding_source_id;
+         $data->program_id = $request->program_id;
+         $data->evidence_file = "";
          $data->is_imported = 1;
          $data->status = 'pending';
          $data->save();
 
          $id = $data->id;  
 
-         $import = new RegencyImport($id);  
-         Excel::import($import, $request->file('evidence_file'));  
- 
-         $totalBudget = $import->getTotal(); // Ambil total dari ProvinceImport  
-         $data->update(['budget' => $totalBudget]); // Update nilai budget 
+          // Panggil fungsi upload
+
+          $formattedFileName = $fileUploadService->uploadMulti(
+            $request->file('evidence_file'), 
+            'pengajuan', 
+            \App\Imports\RegencyImport::class, 
+            $data
+        );
+        // Update nama file di model
+        $data->update(['evidence_file' => $formattedFileName]);
      }  
 
      if (Auth::user()->role === "departement") {
@@ -134,19 +147,25 @@ class ProvinceBudgetRequestsController extends Controller
          $data->deskription = '-';
          $data->submission_name = $request->submission_name;
          $data->submission_date = $request->submission_date;
-         $data->funding_source = $request->funding_source;
-         $data->evidence_file = $filename;
+         $data->funding_source_id = $request->funding_source_id;
+         $data->program_id = $request->program_id;
+         $data->evidence_file = "";
          $data->is_imported = 1;
          $data->status = 'pending';
          $data->save();
 
          $id = $data->id;  
 
-         $import = new DepartementImport($id);  
-         Excel::import($import, $request->file('evidence_file'));  
- 
-         $totalBudget = $import->getTotal(); // Ambil total dari ProvinceImport  
-         $data->update(['budget' => $totalBudget]); // Update nilai budget 
+         // Panggil fungsi upload
+
+         $formattedFileName = $fileUploadService->uploadMulti(
+            $request->file('evidence_file'), 
+            'pengajuan', 
+            \App\Imports\DepartementImport::class, 
+            $data
+        );
+        // Update nama file di model
+        $data->update(['evidence_file' => $formattedFileName]);
      }  
         
 
@@ -180,7 +199,7 @@ class ProvinceBudgetRequestsController extends Controller
     {
         $request->validate([
             'status' => 'required',
-            'deskription' => 'required',
+            'description' => 'required',
         ]);
         if ($request->type == "province") {
             $data =  ProvinceBudgetRequest::where('id', $id)->first();
@@ -188,8 +207,14 @@ class ProvinceBudgetRequestsController extends Controller
         if ($request->type == "regency") {
             $data = RegencyBudgetRequest::where('id', $id)->first();
         }
-        $data->update($request->all());
-        return redirect()->route('pengajuan-anggaran-departement');
+        if ($request->type == "departement") {
+            $data = DepartementBudgetRequest::where('id', $id)->first();
+        }
+        $data->update([
+            'status' => $request->status,
+            'deskription' => $request->description
+        ]);
+        return redirect('pengajuan-anggaran-departement/'. $request->type)->with('success', 'Data berhasil diubah');
     }   
 
     public function destroy($id)
@@ -219,19 +244,25 @@ class ProvinceBudgetRequestsController extends Controller
     {   
         if ($request->ajax()) {
             if ($request->is('pengajuan-anggaran-departement/province')) {
-                $data = ProvinceBudgetRequest::all();
+                $data = ProvinceBudgetRequest::with(['funding_source', 'province'])->get();
+                $url = 'pengajuan-anggaran-province/edit';
             }
             if ($request->is('pengajuan-anggaran-departement/regency')) {
-                $data = RegencyBudgetRequest::all();
+                $data = RegencyBudgetRequest::with(['funding_source', 'regency_city'])->get();
+                $url = 'pengajuan-anggaran-regency/edit';
+            }
+            if ($request->is('pengajuan-anggaran-departement/departement')) {
+                $data = DepartementBudgetRequest::with(['funding_source', 'regency_city'])->get();
+                $url = 'pengajuan-anggaran-departement/edit';
             }
             return DataTables::of($data)
             ->addIndexColumn()
-            ->addColumn('action', function ($row) {
+            ->addColumn('action', function ($row) use ($url) {
                 return '
                 <div class="blok">
                 <a href="'. route('province-budget-requests.edit', $row->id) . '" class="btn btn-secondary btn-sm mt-3"><i
                                 class="bi bi-eye me-1"></i> View</a>
-                        <a href="'. route('pengajuan-anggaran.edit', $row->id) . '" class="btn btn-info btn-sm mt-3"><i
+                        <a href="'. url($url, $row->id) . '" class="btn btn-info btn-sm mt-3"><i
                                         class="bi bi-pencil me-1"></i>Edit</a>
                         <a href="'. route('province-budget-requests.destroy', $row->id) . '" class="btn btn-sm btn-danger mt-3"><i
                                         class="bi bi-plus me-1">Hapus</i> 
@@ -244,9 +275,17 @@ class ProvinceBudgetRequestsController extends Controller
         return view('pengajuan_anggaran.show_data');
     }
 
-    public function data_edit($id) {
+    public function data_edit(Request $request, $id) {
         $funding_source = FundingSource::all();
-        $data = ProvinceBudgetRequest::where('id', $id)->first();
+        $regency_city = RegencyCity::all();
+        $province = Province::all();
+        if ($request->is('pengajuan-anggaran-province/edit/*')) {
+            $data = ProvinceBudgetRequest::with(['province'])->where('id', $id)->first();
+        }elseif($request->is('pengajuan-anggaran-departement/edit/*')){
+            $data = DepartementBudgetRequest::with(['regency_city'])->where('id', $id)->first();
+        }else{
+            $data = RegencyBudgetRequest::with(['regency_city'])->where('id', $id)->first();
+        }
         return view('pengajuan_anggaran.edit', compact('id', 'data', 'funding_source'));
     }
 

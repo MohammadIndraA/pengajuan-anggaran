@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('submission_name');
             $table->date('submission_date');
             $table->foreignId('funding_source_id')->constrained('funding_source');
+            $table->foreignId('program_id')->constrained('programs');
             $table->text('evidence_file');
             $table->string('status')->default('pending');
             $table->integer('is_imported');

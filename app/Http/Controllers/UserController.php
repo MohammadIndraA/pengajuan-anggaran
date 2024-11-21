@@ -19,15 +19,22 @@ class UserController extends Controller
             if (Auth::user()->role === "province") {
                 $data = User::with(['province', 'regency_city'])->where('role', "regency")->get();
             }
-            if (Auth::user()->role === "departement" || Auth::user()->role === "pusat") {
+            if (Auth::user()->role === "departement") {
                 if($request->is('manage-account-province')) {
                     $data = User::with(['province', 'regency_city'])->where('role', "province")->get();
                 }elseif ($request->is('manage-account-regency')) {
                     $data = User::with(['province', 'regency_city'])->where('role', "regency")->get();
-                }else{
-                    $data = User::with(['province', 'regency_city']);
                 }
             }
+            if (Auth::user()->role === "admin" || Auth::user()->role === "pusat") {
+                if($request->is('manage-account-province')) {
+                    $data = User::with(['province', 'regency_city'])->where('role', "province")->get();
+                }elseif ($request->is('manage-account-regency')) {
+                    $data = User::with(['province', 'regency_city'])->where('role', "regency")->get();
+                }elseif ($request->is('manage-account-departement')) {
+                    $data = User::with(['province', 'regency_city'])->where('role', "departement")->get();
+            }
+        }
 	        return datatables()->of($data)
             ->addIndexColumn()
 			->addColumn('action', function($row) { 
@@ -62,7 +69,7 @@ class UserController extends Controller
         ]);
         $data['password'] = Hash::make($request->password);
         User::create($data);
-        return redirect('/user')->with('success', 'Data berhasil di tambahkan');
+        return redirect('manage-account-'.$request->role)->with('success', 'Data berhasil di tambahkan');
     }
 
     public function edit($id){
@@ -91,7 +98,7 @@ class UserController extends Controller
             $data['password']= $user->password;
         }
         $user->update($data);
-        return redirect('/user')->with('success', 'Data berhasil di tambahkan');
+        return redirect('manage-account-'.$request->role)->with('success', 'Data berhasil di tambahkan');
 
     }
     public function delete(Request $request){
@@ -108,6 +115,9 @@ class UserController extends Controller
             } 
             if($request->is('manage-account-regency')) {
                 $data = User::with(['province', 'regency_city'])->where('role', "regency")->get();
+            }
+            if($request->is('manage-account-departement')) {
+                $data = User::with(['province', 'regency_city'])->where('role', "departement")->get();
             }
 	        return datatables()->of($data)
             ->addIndexColumn()

@@ -16,4 +16,13 @@ class ProvinceBudgetRequest extends Model
     {
         return $this->hasMany(ModelsProvinceImport::class);
     }
+
+    public function funding_source()
+    {
+        return $this->belongsTo(FundingSource::class);
+    }
+    public function province()
+    {
+        return $this->belongsTo(Province::class);
+    }
 }

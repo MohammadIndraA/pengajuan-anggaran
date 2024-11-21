@@ -48,27 +48,46 @@
                                 @enderror
                             </div>
                             <div class="col-12">
-                                <label for="funding_source" class="form-label">Sumber Dana</label>
-                                <select id="funding_source"
-                                    class="form-select @error('funding_source') is-invalid @enderror" name="funding_source">
-                                    <option>Pilih Item...</option>
-                                    @foreach ($funding_source as $item)
-                                        <option class="form-control" value="{{ $item->id }}">
+                                <label for="funding_source_id" class="form-label">Sumber Dana</label>
+                                <select id="funding_source_id"
+                                    class="form-select .select2 @error('funding_source_id') is-invalid @enderror"
+                                    name="funding_source_id">
+                                    <option value="" disabled selected>Pilih Item...</option>
+                                    @foreach ($funding_sources as $item)
+                                        <option value="{{ $item->id }}">
                                             {{ $item->funding_source_name }}
                                         </option>
                                     @endforeach
                                 </select>
-                                @error('funding_source')
+                                @error('funding_source_id')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
+                            </div>
+                            <div class="col-12">
+                                <label for="program_id" class="form-label">Program</label>
+                                <select id="program_id"
+                                    class="form-select .select2 @error('program_id') is-invalid @enderror"
+                                    name="program_id">
+                                    <option value="" disabled selected>Pilih Item...</option>
+                                    @foreach ($programs as $item)
+                                        <option value="{{ $item->id }}"
+                                            {{ old('program_id') == $item->id ? 'selected' : '' }}>
+                                            {{ $item->program_name }}
+                                        </option>
+                                    @endforeach
                                 </select>
+                                @error('program_id')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="col-12 mb-3">
                                 <label for="evidence_file" class="form-label">Unggah Berkas Anggaran</label>
                                 <input type="file" class="form-control @error('evidence_file') is-invalid @enderror"
-                                    id="evidence_file" value="{{ old('evidence_file') }}" name="evidence_file"
+                                    id="evidence_file" value="{{ old('evidence_file') }}" name="evidence_file[]" multiple
                                     placeholder="">
                                 @error('evidence_file')
                                     <div class="invalid-feedback">

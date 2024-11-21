@@ -8,6 +8,7 @@
     <title>Pengajuan Anggaran</title>
     <meta content="" name="description">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
     <meta content="" name="keywords">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicons -->
@@ -25,6 +26,11 @@
     <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
 
+    {{-- Select 2 --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
     <!-- Vendor CSS Files -->
     <link href="{{ asset('design/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('design/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
@@ -92,6 +98,9 @@
     <script src="{{ asset('design/assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
     <script src="{{ asset('design/assets/vendor/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ asset('design/assets/vendor/php-email-form/validate.js') }}"></script>
+    {{-- Select 2 --}}
+    <!-- Scripts -->
+
     <script>
         function number_format(number) {
             return Intl.NumberFormat("id-ID", {

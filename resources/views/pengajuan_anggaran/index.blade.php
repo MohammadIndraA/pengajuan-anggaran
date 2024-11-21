@@ -89,8 +89,8 @@
                         searchable: true
                     },
                     {
-                        data: 'funding_source',
-                        name: 'funding_source'
+                        data: 'funding_source.funding_source_name',
+                        name: 'funding_source.funding_source_name'
                     },
                     {
                         data: 'budget',
