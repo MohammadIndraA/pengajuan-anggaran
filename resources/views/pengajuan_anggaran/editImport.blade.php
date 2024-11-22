@@ -33,7 +33,10 @@
                                     name="program">
                                     <option value="">Pilih Item...</option>
                                     @foreach ($program as $item)
-                                        <option value="{{ $item->program_name }}">{{ $item->program_name }}</option>
+                                        <option value="{{ $item->program_name }}"
+                                            {{ old('program') == $item->program_name ? 'selected' : '' }}>
+                                            {{ $item->program_name }}
+                                        </option>
                                     @endforeach
                                 </select>
                                 @error('program')
@@ -49,7 +52,10 @@
                                     name="component">
                                     <option value="">Pilih Item...</option>
                                     @foreach ($component as $item)
-                                        <option value="{{ $item->component_name }}">{{ $item->component_name }}</option>
+                                        <option value="{{ $item->component_name }}"
+                                            {{ old('component') == $item->component_name ? 'selected' : '' }}>
+                                            {{ $item->component_name }}
+                                        </option>
                                     @endforeach
                                 </select>
                                 @error('component')
@@ -65,7 +71,9 @@
                                     name="kro">
                                     <option value="">Pilih Item...</option>
                                     @foreach ($kro as $item)
-                                        <option value="{{ $item->kro_name }}">{{ $item->kro_name }}</option>
+                                        <option value="{{ $item->kro_name }}"
+                                            {{ old('kro') == $item->kro_name ? 'selected' : '' }}>{{ $item->kro_name }}
+                                        </option>
                                     @endforeach
                                 </select>
                                 @error('kro')
@@ -79,7 +87,9 @@
                                 <select id="ro" class="form-select @error('ro') is-invalid @enderror" name="ro">
                                     <option value="">Pilih Item...</option>
                                     @foreach ($ro as $item)
-                                        <option value="{{ $item->ro_name }}">{{ $item->ro_name }}</option>
+                                        <option value="{{ $item->ro_name }}"
+                                            {{ old('kro') == $item->kro_name ? 'selected' : '' }}>{{ $item->ro_name }}
+                                        </option>
                                     @endforeach
                                 </select>
                                 @error('ro')
@@ -95,7 +105,9 @@
                                     name="activity">
                                     <option value="">Pilih Item...</option>
                                     @foreach ($activity as $item)
-                                        <option value="{{ $item->activity_name }}">{{ $item->activity_name }}</option>
+                                        <option value="{{ $item->activity_name }}"
+                                            {{ old('activity') == $item->activity_name ? 'selected' : '' }}>
+                                            {{ $item->activity_name }}</option>
                                     @endforeach
                                 </select>
                                 @error('activity')
@@ -111,7 +123,9 @@
                                     name="unit">
                                     <option value="">Pilih Item...</option>
                                     @foreach ($unit as $item)
-                                        <option value="{{ $item->unit_name }}">{{ $item->unit_name }}</option>
+                                        <option value="{{ $item->unit_name }}"
+                                            {{ old('unit') == $item->unit_name ? 'selected' : '' }}>
+                                            {{ $item->unit_name }}</option>
                                     @endforeach
                                 </select>
                                 @error('unit')
@@ -123,8 +137,8 @@
 
                             <div class="col-md-6">
                                 <label for="qty" class="form-label">Qty</label>
-                                <input type="text" class="form-control @error('qty') is-invalid @enderror"
-                                    name="qty">
+                                <input type="text" value="{{ old('qty') }}"
+                                    class="form-control @error('qty') is-invalid @enderror" name="qty">
                                 @error('qty')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -134,8 +148,8 @@
 
                             <div class="col-md-6">
                                 <label for="subtotal" class="form-label">Subtotal</label>
-                                <input type="text" class="form-control @error('subtotal') is-invalid @enderror"
-                                    name="subtotal">
+                                <input type="text" value="{{ old('subtotal') }}"
+                                    class="form-control @error('subtotal') is-invalid @enderror" name="subtotal">
                                 @error('subtotal')
                                     <div class="invalid-feedback">
                                         {{ $message }}
