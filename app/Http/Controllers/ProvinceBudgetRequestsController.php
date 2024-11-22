@@ -53,7 +53,8 @@ class ProvinceBudgetRequestsController extends Controller
             
                 // Jika file proposal tersedia, tambahkan tombol Doc Excel
                 if ($row->proposal_file_id && $row->proposal_file) {
-                    $url = url('/proposal/'.$row->proposal_file->proposal_title);
+                    $url = url('/view-pdf/' . $row->proposal_file->proposal_title);
+                    // $url = Storage::url($row->proposal_file->file_path);
                     $actions .= '<a href="' . $url . '" class="btn btn-secondary btn-sm mt-3" target="_blank">
                                     <i class="bi bi-file-earmark-excel me-1"></i> Doc Proposal
                                  </a>';
@@ -316,7 +317,7 @@ class ProvinceBudgetRequestsController extends Controller
 
                 // Baris pertama: Doc Proposal dan Doc Excel
                 if ($row->proposal_file_id && $row->proposal_file) {
-                    $pdf = Storage::url($row->proposal_file->file_path);
+                    $pdf = url('/view-pdf/' . $row->proposal_file->proposal_title);
                     $actions .= '<div class="p-1">
                                     <a href="' . $pdf . '" class="btn btn-secondary btn-sm w-100" target="_blank">
                                         <i class="bi bi-file-earmark-excel me-1"></i> Doc Proposal
@@ -377,18 +378,17 @@ class ProvinceBudgetRequestsController extends Controller
         return Excel::download($import, 'pengajuan_anggaran.xlsx');
     }
 
-    public function show_proposal($filename) { 
-        $path = "pengajuan/proposal/" . $filename;
-    
-        if (!Storage::exists($path)) {
-            abort(404, 'File not found');
+    public function show_proposal($filename){
+        $path = storage_path('app/public/pengajuan/proposal/' . $filename);
+  
+        if (!file_exists($path)) {
+            abort(404, 'File not found.');
         }
     
-        // Mengambil file dari storage
-        $file = Storage::get($path);
-        $mimeType = Storage::mimeType($path);
+        return response()->file($path, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="' . $filename . '"',
+        ]);
+    }
     
-        return response($file, 200)
-            ->header('Content-Type', $mimeType);
-     }
 }

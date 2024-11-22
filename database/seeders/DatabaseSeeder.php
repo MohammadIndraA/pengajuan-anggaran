@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Activity;
 use App\Models\Component;
 use App\Models\Departement;
+use App\Models\FundingSource;
 use App\Models\Kro;
 use App\Models\Program;
 use App\Models\Province;
@@ -693,20 +694,21 @@ class DatabaseSeeder extends Seeder
         }
 
         // Unit
-         Unit::create([
-            'unit_code' => 'UT'. random_int(5,6),
-            'unit_name' => 'RM',
+         FundingSource::create([
+            'funding_source_code' => 'FS'. random_int(5,6),
+            'funding_source_name' => 'RM',
         ]);
-        Unit::create([
-            'unit_code' =>'UT'. random_int(5,6),
-            'unit_name' => 'PNBP',
+        FundingSource::create([
+            'funding_source_code' =>'FS'. random_int(5,6),
+            'funding_source_name' => 'PNBP',
         ]);
 
-        // 
-        Unit::create([
-            'unit_code' =>'UT'. random_int(5,6),
-            'unit_name' => 'PNBP',
+        // Unit
+         Unit::create([
+            'unit_code' => 'UT'. random_int(5,6),
+            'unit_name' => 'Lembaga',
         ]);
+
         // komponent
     //   $componentsData = [ 
     //     [

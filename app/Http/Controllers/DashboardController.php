@@ -17,7 +17,7 @@ class DashboardController extends Controller
     private function calculateExpenditure($model, $period)
     {
         $query = $model::where('status', 'approved');
-
+        
         switch ($period) {
             case 'daily':
                 $query->whereDate('created_at', Carbon::today());
@@ -107,7 +107,6 @@ class DashboardController extends Controller
                 )
                 ->get();
     $amount = $approved->sum('budget');
-
    // Return hasil ke view
    return view('dashboard.index', compact('expenditureProvince', 'expenditureRegency', 'expenditureDep','amount'));
     }

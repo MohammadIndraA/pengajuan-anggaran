@@ -7,7 +7,7 @@
 
     <title>Pengajuan Anggaran</title>
     <meta content="" name="description">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    {{-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> --}}
 
     <meta content="" name="keywords">
     <meta name="csrf-token" content="{{ csrf_token() }}">
