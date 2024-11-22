@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="utf-8">
@@ -64,8 +64,8 @@
                                 <div class="card-body">
 
                                     <div class="pt-4 pb-2">
-                                        <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
-                                        <p class="text-center small">Enter your username & password to login</p>
+                                        <h5 class="card-title text-center pb-0 fs-4">Masuk ke Akun Anda</h5>
+                                        <p class="text-center small">Masukkan Email & password untuk login</p>
                                     </div>
 
                                     <form class="row g-3 needs-validation" novalidate method="POST"
@@ -80,27 +80,27 @@
                                                     class="form-control @error('email') is-invalid @enderror"
                                                     id="email" required>
                                                 @error('email')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
                                                 @enderror
                                             </div>
                                         </div>
 
                                         <div class="col-12">
-                                            <label for="password" class="form-label">Password</label>
+                                            <label for="password" class="form-label">Kata Sandi</label>
                                             <input type="password" name="password" value="{{ old('password') }}"
                                                 class="form-control @error('password') is-invalid @enderror"
                                                 id="password" required>
                                             @error('password')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
                                             @enderror
                                         </div>
 
                                         <div class="col-12">
-                                            <button class="btn btn-info w-100" type="submit">Login</button>
+                                            <button class="btn btn-info w-100" type="submit">Masuk</button>
                                         </div>
                                         <div class="col-12">
                                         </div>
