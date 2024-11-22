@@ -10,6 +10,7 @@ use App\Models\Program;
 use App\Models\Province;
 use App\Models\RegencyCity;
 use App\Models\Ro;
+use App\Models\Unit;
 use App\Models\User;
 use GuzzleHttp\Promise\Create;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -691,442 +692,456 @@ class DatabaseSeeder extends Seeder
             Ro::create($ro);
         }
 
+        // Unit
+         Unit::create([
+            'unit_code' => 'UT'. random_int(5,6),
+            'unit_name' => 'RM',
+        ]);
+        Unit::create([
+            'unit_code' =>'UT'. random_int(5,6),
+            'unit_name' => 'PNBP',
+        ]);
 
+        // 
+        Unit::create([
+            'unit_code' =>'UT'. random_int(5,6),
+            'unit_name' => 'PNBP',
+        ]);
         // komponent
-      $componentsData = [ 
-        [
-            'component_code' => '2126QDB001051',
-            'component_name' => 'Pengelolaan Perizinan Penyelenggara Perjalanan Ibadah Umrah',
-            ],
-         [
-             'component_code' => '2126QDB001052',
-            'component_name' => 'Akreditasi Penyelenggara Perjalanan Ibadah Umrah',
-            ],
-         [
-             'component_code' => '2126QDB001053',
-            'component_name' => 'Pembinaan Penyelenggara Perjalanan Ibadah Umrah',
-            ],
-         [
-             'component_code' => '2126QDB001054',
-            'component_name' => 'Pemantauan dan Pengawasan Penyelenggara Perjalanan Ibadah Umrah',
-            ],
-         [
-             'component_code' => '2126QDB001055',
-            'component_name' => 'Identifikasi dan Pemetaan Masalah Penyelenggara Perjalanan Ibadah Umrah',
-            ],
-         [
-             'component_code' => '2126QDB001056',
-            'component_name' => 'Penanganan Masalah Penyelenggara Perjalanan Ibadah Umrah',
-            ],
-         [
-             'component_code' => '2126QDB002051',
-            'component_name' => 'Pengelolaan Perizinan Penyelenggara Ibadah Haji Khusus',
-            ],
-         [
-             'component_code' => '2126QDB002052',
-            'component_name' => 'Akreditasi Penyelenggara Ibadah Haji Khusus',
-            ],
-         [
-             'component_code' => '2126QDB002053',
-            'component_name' => 'Pendaftaran dan Pembatalan Haji Khusus',
-            ],
-         [
-             'component_code' => '2126QDB002054',
-            'component_name' => 'Dokumen dan Perlengkapan Ibadah Haji Khusus',
-            ],
-         [
-             'component_code' => '2126QDB002055',
-            'component_name' => 'Pembinaan dan Peningkatan Kualitas Penyelenggara Ibadah Haji Khusus',
-            ],
-         [
-             'component_code' => '2126QDB002056',
-            'component_name' => 'Pemantauan dan Pengawasan Penyelenggara Ibadah Haji Khusus',
-            ],
-         [
-             'component_code' => '2126QDB002057',
-            'component_name' => 'Identifikasi dan Pemetaan Masalah Penyelenggara Ibadah Haji Khusus',
-            ],
-         [
-             'component_code' => '2126QDB002058',
-            'component_name' => 'Penanganan Masalah Penyelenggara Ibadah Haji Khusus',
-            ],
-         [
-             'component_code' => '2147QAA001051',
-            'component_name' => 'Penyempurnaan Kebijakan Pendaftaran dan Pembatalan Haji Reguler',
-            ],
-         [
-             'component_code' => '2147QAA001052',
-            'component_name' => 'Sosialisasi Kebijakan Pendaftaran dan Pembatalan Haji reguler',
-            ],
-         [
-             'component_code' => '2147QAA001053',
-            'component_name' => 'Pengelolaan Pelayanan Pendaftaran dan Pembatalan Haji Reguler',
-            ],
-         [
-             'component_code' => '2147QAA001054',
-            'component_name' => 'Konsolidasi dan Verifikasi Data Jemaah Haji Reguler',
-            ],
-         [
-             'component_code' => '2147QAA001055',
-            'component_name' => 'Sosialisasi/Orientasi Penyelesaian Dokumen dan Perlengkapan Haji',
-            ],
-         [
-             'component_code' => '2147QAA001056',
-            'component_name' => 'Pengelolaan Pelayanan Pemvisaan Haji',
-            ],
-         [
-             'component_code' => '2147QAA001057',
-            'component_name' => 'Penyelesaian Dokumen/Perlengkapan Jemaah Haji di Tingkat Kab/Kota',
-            ],
-         [
-             'component_code' => '2147QAA001058',
-            'component_name' => 'Penyelesaian Dokumen/Perlengkapan Jemaah Haji di Tingkat Provinsi',
-            ],
-         [
-             'component_code' => '2147QAA001059',
-            'component_name' => 'Penyelesaian Dokumen/Perlengkapan Jemaah Haji di Tingkat Pusat',
-            ],
-         [
-             'component_code' => '2147QAA001060',
-            'component_name' => 'Penyiapan Transportasi Udara Jemaah Haji',
-            ],
-         [
-             'component_code' => '2147QAA001061',
-            'component_name' => 'Penyusunan dan Pembahasan Asuransi Haji',
-            ],
-         [
-             'component_code' => '2147QAA001062',
-            'component_name' => 'Konsolidasi dan Verifikasi Data Angkutan Udara Jemaah Haji',
-            ],
-         [
-             'component_code' => '2147QAA001063',
-            'component_name' => 'Pelayanan Pemberangkatan/Pemulangan Jemaah',
-            ],
-         [
-             'component_code' => '2147QAH001051',
-            'component_name' => 'Penyiapan Asrama Haji',
-            ],
-         [
-             'component_code' => '2147QAH001052',
-            'component_name' => 'Pelayanan Asrama Haji',
-            ],
-         [
-             'component_code' => '2147QAH001053',
-            'component_name' => 'Revitalisasi dan Pengembangan Asrama Haji',
-            ],
-         [
-             'component_code' => '2147QAH001054',
-            'component_name' => 'Monitoring dan Evaluasi Asrama Haji',
-            ],
-         [
-             'component_code' => '2147QAH002051',
-            'component_name' => 'Revitalisasi dan Pembangunan Pusat Layanan Haji dan Umrah Terpadu',
-            ],
-         [
-             'component_code' => '2147QAH002052',
-            'component_name' => 'Pengelolaaan Pusat Layanan Haji dan Umrah Terpadu',
-            ],
-         [
-             'component_code' => '2148QAH001051',
-            'component_name' => 'Identifikasi dan Pemetaan Masalah Haji',
-            ],
-         [
-             'component_code' => '2148QAH001052',
-            'component_name' => 'Penanganan Masalah Haji',
-            ],
-         [
-             'component_code' => '2148QDC001051',
-            'component_name' => 'Rekrutmen/Seleksi PPIH Kloter',
-            ],
-         [
-             'component_code' => '2148QDC001052',
-            'component_name' => 'Rekrutmen/Seleksi PPIH Non Kloter',
-            ],
-         [
-             'component_code' => '2148QDC001053',
-            'component_name' => 'Rekrutmen/Seleksi PPIH Tenaga Musiman',
-            ],
-         [
-             'component_code' => '2148QDC001054',
-            'component_name' => 'Rekrutmen/Seleksi Petugas TPHD',
-            ],
-         [
-             'component_code' => '2148QDC001055',
-            'component_name' => 'Dokumen dan Perlengkapan PPIH Kloter',
-            ],
-         [
-             'component_code' => '2148QDC001056',
-            'component_name' => 'Dokumen dan Perlengkapan PPIH Non Kloter',
-            ],
-         [
-             'component_code' => '2148QDC001057',
-            'component_name' => 'Dokumen dan Perlengkapan PPIH Tenaga Musiman',
-            ],
-         [
-             'component_code' => '2148QDC001058',
-            'component_name' => 'Dokumen dan Perlengkapan PPIH Embarkasi',
-            ],
-         [
-             'component_code' => '2148QDC001059',
-            'component_name' => 'Dokumen dan Perlengkapan PPIH Embarkasi Antara',
-            ],
-         [
-             'component_code' => '2148QDC001060',
-            'component_name' => 'Dokumen dan Perlengkapan PPIH Embarkasi Transit',
-            ],
-         [
-             'component_code' => '2148QDC001061',
-            'component_name' => 'Pelatihan dan pembekalan PPIH Kloter',
-            ],
-         [
-             'component_code' => '2148QDC001062',
-            'component_name' => 'Pelatihan dan pembekalan PPIH Non Kloter',
-            ],
-         [
-             'component_code' => '2148QDC001063',
-            'component_name' => 'Pelatihan dan pembekalan PPIH Tenaga Musiman',
-            ],
-         [
-             'component_code' => '2148QDC001064',
-            'component_name' => 'Operasional PPIH Kloter',
-            ],
-         [
-             'component_code' => '2148QDC001065',
-            'component_name' => 'Operasional PPIH Non Kloter',
-            ],
-         [
-             'component_code' => '2148QDC001066',
-            'component_name' => 'Operasional PPIH Tenaga Musiman',
-            ],
-         [
-             'component_code' => '2148QDC001067',
-            'component_name' => 'Operasional PPIH Embarkasi',
-            ],
-         [
-             'component_code' => '2148QDC001068',
-            'component_name' => 'Operasional PPIH Embarkasi Antara',
-            ],
-         [
-            'component_name' => 'Operasional ,PPIH Embarkasi Transit'
-        ],
-        [
-            'component_code' => '2148QDC001070',
-            'component_name' => 'Akomodasi PPIH Kloter',
-            ],
-         [
-             'component_code' => '2148QDC001071',
-            'component_name' => 'Akomodasi PPIH Non Kloter',
-            ],
-         [
-             'component_code' => '2148QDC001072',
-            'component_name' => 'Akomodasi PPIH Tenaga Musiman',
-            ],
-         [
-             'component_code' => '2148QDC001073',
-            'component_name' => 'Konsumsi PPIH Kloter',
-            ],
-         [
-             'component_code' => '2148QDC001074',
-            'component_name' => 'Konsumsi PPIH Non Kloter',
-            ],
-         [
-             'component_code' => '2148QDC001075',
-            'component_name' => 'Konsumsi PPIH Tenaga Musiman',
-            ],
-         [
-             'component_code' => '2148QDC001076',
-            'component_name' => 'Transportasi PPIH Kloter',
-            ],
-         [
-             'component_code' => '2148QDC001077',
-            'component_name' => 'Transportasi PPIH Non Kloter',
-            ],
-         [
-             'component_code' => '2148QDC001078',
-            'component_name' => 'Transportasi PPIH Tenaga Musiman',
-            ],
-         [
-             'component_code' => '2148QDC001079',
-            'component_name' => 'Evaluasi Teknis Petugas Panitia Penyelenggara Ibadah Haji Arab Saudi',
-            ],
-         [
-             'component_code' => '2148QDC001080',
-            'component_name' => 'Koordinasi Penyelenggaraan Ibadah Haji Luar Negeri',
-            ],
-         [
-             'component_code' => '2148QDC002051',
-            'component_name' => 'Bimbingan Jemaah Haji Reguler',
-            ],
-         [
-             'component_code' => '2148QDC002052',
-            'component_name' => 'Sertifikasi penyuluh dan pembimbing manasik haji',
-            ],
-         [
-             'component_code' => '2148QDC002053',
-            'component_name' => 'Pembinaan kelompok bimbingan',
-            ],
-         [
-             'component_code' => '2149QMA001051',
-            'component_name' => 'Pengelolaan Infrastruktur',
-            ],
-         [
-             'component_code' => '2149QMA001052',
-            'component_name' => 'Pengembangan Database Haji',
-            ],
-         [
-             'component_code' => '2149QMA001053',
-            'component_name' => 'Pengembangan Sistem Informasi Haji',
-            ],
-         [
-             'component_code' => '2149UAH001051',
-            'component_name' => 'Perencanaan Anggaran Operasional Haji',
-            ],
-         [
-             'component_code' => '2149UAH001052',
-            'component_name' => 'Pengelolaan Aset Haji',
-            ],
-         [
-             'component_code' => '2149UAH001053',
-            'component_name' => 'Monitoring dan Evaluasi Anggaran Operasional Haji',
-            ],
-         [
-             'component_code' => '2149UAH001054',
-            'component_name' => 'Pelaksanaan Anggaran dan Perbendaharaan Haji',
-            ],
-         [
-             'component_code' => '2149UAH001056',
-            'component_name' => 'Pelaporan Keuangan Operasional Haji',
-            ],
-         [
-             'component_code' => '5310QDC001051',
-            'component_name' => 'Seleksi Perusahaan Penyedia Akomodasi Jemaah Haji Indonesia di Arab Saudi',
-            ],
-         [
-             'component_code' => '5310QDC001052',
-            'component_name' => 'Seleksi Perusahaan Penyedia Konsumsi Jemaah Haji Indonesia di Arab Saudi',
-            ],
-         [
-             'component_code' => '5310QDC001053',
-            'component_name' => 'Seleksi Perusahaan Penyedia Transportasi Jemaah Haji Indonesia di Arab Saudi',
-            ],
-         [
-             'component_code' => '2150EBA956051',
-            'component_name' => 'Pengelolaan BMN dan Perlengkapan',
-            ],
-         [
-             'component_code' => '2150EBA957051',
-            'component_name' => 'Layanan Hukum dan Peraturan Perundang-Undangan',
-            ],
-         [
-             'component_code' => '2150EBA957052',
-            'component_name' => 'Penyelesaian Tindak Lanjut Hasil Temuan Pemeriksaan',
-            ],
-         [
-             'component_code' => '2150EBA958051',
-            'component_name' => 'Pameran/event penyelenggaraan haji/umrah',
-            ],
-         [
-             'component_code' => '2150EBA958052',
-            'component_name' => 'Pengelolaan Media Publikasi Informasi Haji dan Umrah',
-            ],
-         [
-             'component_code' => '2150EBA958053',
-            'component_name' => 'Penyebaran Informasi Haji dan Umrah',
-            ],
-         [
-             'component_code' => '2150EBA959051',
-            'component_name' => 'Pelayanan Protokoler',
-            ],
-         [
-             'component_code' => '2150EBA960051',
-            'component_name' => 'Pelayanan Organisasi, Tata Laksana, dan Reformasi Birokrasi',
-            ],
-         [
-             'component_code' => '2150EBA962051',
-            'component_name' => 'Rapat Kerja Nasional Penyelenggaraan Haji',
-            ],
-         [
-             'component_code' => '2150EBA962052',
-            'component_name' => 'Koordinasi penyelenggaraan ibadah haji',
-            ],
-         [
-             'component_code' => '2150EBA962053',
-            'component_name' => 'Pelayanan Umum dan Rumah Tangga',
-            ],
-         [
-             'component_code' => '2150EBA962054',
-            'component_name' => 'Pengelolaan Ketatausahaan',
-            ],
-         [
-             'component_code' => '2150EBA962055',
-            'component_name' => 'Layanan Dukungan Manajemen Eselon II',
-            ],
-         [
-             'component_code' => '2150EBA994001',
-            'component_name' => 'Gaji dan Tunjangan',
-            ],
-         [
-             'component_code' => '2150EBA994002',
-            'component_name' => 'Operasional dan Pemeliharaan Kantor',
-            ],
-         [
-             'component_code' => '2150EBB951051',
-            'component_name' => 'Pengadaan Perangkat Pengolah Data dan Komunikasi',
-            ],
-         [
-             'component_code' => '2150EBB951052',
-            'component_name' => 'Pengadaan Peralatan dan Fasilitas Perkantoran',
-            ],
-         [
-             'component_code' => '2150EBB951053',
-            'component_name' => 'Pengadaan Kendaraan Bermotor',
-            ],
-         [
-             'component_code' => '2150EBB951054',
-            'component_name' => 'Pembangunan/Renovasi gedung dan bangunan',
-            ],
-         [
-             'component_code' => '2150EBC954051',
-            'component_name' => 'Pengelolaan Kepegawaian',
-            ],
-         [
-             'component_code' => '2150EBD952051',
-            'component_name' => 'Penyusunan Perencanaan Program dan Anggaran',
-            ],
-         [
-             'component_code' => '2150EBD952052',
-            'component_name' => 'Pengelolaan Rencana Program dan Anggaran',
-            ],
-         [
-             'component_code' => '2150EBD953051',
-            'component_name' => 'Evaluasi dan Pelaporan Program',
-            ],
-         [
-             'component_code' => '2150EBD955051',
-            'component_name' => 'Pelaksananaan Anggaran dan Perbendaharaan',
-            ],
-         [
-             'component_code' => '2150EBD955052',
-            'component_name' => 'Verifikasi Anggaran dan Perbendaharaan',
-            ],
-         [
-             'component_code' => '2150EBD955053',
-            'component_name' => 'Layanan Administrasi PNBP',
-            ],
-         [
-             'component_code' => '2150EBD955054',
-            'component_name' => 'Pengelolaan PNBP',
-            ],
-         [
-             'component_code' =>'2150EBD955055',
-            'component_name' => 'Pengelolaan Laporan Keuangan',
-        ]
-        ];
+    //   $componentsData = [ 
+    //     [
+    //         'component_code' => '2126QDB001051',
+    //         'component_name' => 'Pengelolaan Perizinan Penyelenggara Perjalanan Ibadah Umrah',
+    //         ],
+    //      [
+    //          'component_code' => '2126QDB001052',
+    //         'component_name' => 'Akreditasi Penyelenggara Perjalanan Ibadah Umrah',
+    //         ],
+    //      [
+    //          'component_code' => '2126QDB001053',
+    //         'component_name' => 'Pembinaan Penyelenggara Perjalanan Ibadah Umrah',
+    //         ],
+    //      [
+    //          'component_code' => '2126QDB001054',
+    //         'component_name' => 'Pemantauan dan Pengawasan Penyelenggara Perjalanan Ibadah Umrah',
+    //         ],
+    //      [
+    //          'component_code' => '2126QDB001055',
+    //         'component_name' => 'Identifikasi dan Pemetaan Masalah Penyelenggara Perjalanan Ibadah Umrah',
+    //         ],
+    //      [
+    //          'component_code' => '2126QDB001056',
+    //         'component_name' => 'Penanganan Masalah Penyelenggara Perjalanan Ibadah Umrah',
+    //         ],
+    //      [
+    //          'component_code' => '2126QDB002051',
+    //         'component_name' => 'Pengelolaan Perizinan Penyelenggara Ibadah Haji Khusus',
+    //         ],
+    //      [
+    //          'component_code' => '2126QDB002052',
+    //         'component_name' => 'Akreditasi Penyelenggara Ibadah Haji Khusus',
+    //         ],
+    //      [
+    //          'component_code' => '2126QDB002053',
+    //         'component_name' => 'Pendaftaran dan Pembatalan Haji Khusus',
+    //         ],
+    //      [
+    //          'component_code' => '2126QDB002054',
+    //         'component_name' => 'Dokumen dan Perlengkapan Ibadah Haji Khusus',
+    //         ],
+    //      [
+    //          'component_code' => '2126QDB002055',
+    //         'component_name' => 'Pembinaan dan Peningkatan Kualitas Penyelenggara Ibadah Haji Khusus',
+    //         ],
+    //      [
+    //          'component_code' => '2126QDB002056',
+    //         'component_name' => 'Pemantauan dan Pengawasan Penyelenggara Ibadah Haji Khusus',
+    //         ],
+    //      [
+    //          'component_code' => '2126QDB002057',
+    //         'component_name' => 'Identifikasi dan Pemetaan Masalah Penyelenggara Ibadah Haji Khusus',
+    //         ],
+    //      [
+    //          'component_code' => '2126QDB002058',
+    //         'component_name' => 'Penanganan Masalah Penyelenggara Ibadah Haji Khusus',
+    //         ],
+    //      [
+    //          'component_code' => '2147QAA001051',
+    //         'component_name' => 'Penyempurnaan Kebijakan Pendaftaran dan Pembatalan Haji Reguler',
+    //         ],
+    //      [
+    //          'component_code' => '2147QAA001052',
+    //         'component_name' => 'Sosialisasi Kebijakan Pendaftaran dan Pembatalan Haji reguler',
+    //         ],
+    //      [
+    //          'component_code' => '2147QAA001053',
+    //         'component_name' => 'Pengelolaan Pelayanan Pendaftaran dan Pembatalan Haji Reguler',
+    //         ],
+    //      [
+    //          'component_code' => '2147QAA001054',
+    //         'component_name' => 'Konsolidasi dan Verifikasi Data Jemaah Haji Reguler',
+    //         ],
+    //      [
+    //          'component_code' => '2147QAA001055',
+    //         'component_name' => 'Sosialisasi/Orientasi Penyelesaian Dokumen dan Perlengkapan Haji',
+    //         ],
+    //      [
+    //          'component_code' => '2147QAA001056',
+    //         'component_name' => 'Pengelolaan Pelayanan Pemvisaan Haji',
+    //         ],
+    //      [
+    //          'component_code' => '2147QAA001057',
+    //         'component_name' => 'Penyelesaian Dokumen/Perlengkapan Jemaah Haji di Tingkat Kab/Kota',
+    //         ],
+    //      [
+    //          'component_code' => '2147QAA001058',
+    //         'component_name' => 'Penyelesaian Dokumen/Perlengkapan Jemaah Haji di Tingkat Provinsi',
+    //         ],
+    //      [
+    //          'component_code' => '2147QAA001059',
+    //         'component_name' => 'Penyelesaian Dokumen/Perlengkapan Jemaah Haji di Tingkat Pusat',
+    //         ],
+    //      [
+    //          'component_code' => '2147QAA001060',
+    //         'component_name' => 'Penyiapan Transportasi Udara Jemaah Haji',
+    //         ],
+    //      [
+    //          'component_code' => '2147QAA001061',
+    //         'component_name' => 'Penyusunan dan Pembahasan Asuransi Haji',
+    //         ],
+    //      [
+    //          'component_code' => '2147QAA001062',
+    //         'component_name' => 'Konsolidasi dan Verifikasi Data Angkutan Udara Jemaah Haji',
+    //         ],
+    //      [
+    //          'component_code' => '2147QAA001063',
+    //         'component_name' => 'Pelayanan Pemberangkatan/Pemulangan Jemaah',
+    //         ],
+    //      [
+    //          'component_code' => '2147QAH001051',
+    //         'component_name' => 'Penyiapan Asrama Haji',
+    //         ],
+    //      [
+    //          'component_code' => '2147QAH001052',
+    //         'component_name' => 'Pelayanan Asrama Haji',
+    //         ],
+    //      [
+    //          'component_code' => '2147QAH001053',
+    //         'component_name' => 'Revitalisasi dan Pengembangan Asrama Haji',
+    //         ],
+    //      [
+    //          'component_code' => '2147QAH001054',
+    //         'component_name' => 'Monitoring dan Evaluasi Asrama Haji',
+    //         ],
+    //      [
+    //          'component_code' => '2147QAH002051',
+    //         'component_name' => 'Revitalisasi dan Pembangunan Pusat Layanan Haji dan Umrah Terpadu',
+    //         ],
+    //      [
+    //          'component_code' => '2147QAH002052',
+    //         'component_name' => 'Pengelolaaan Pusat Layanan Haji dan Umrah Terpadu',
+    //         ],
+    //      [
+    //          'component_code' => '2148QAH001051',
+    //         'component_name' => 'Identifikasi dan Pemetaan Masalah Haji',
+    //         ],
+    //      [
+    //          'component_code' => '2148QAH001052',
+    //         'component_name' => 'Penanganan Masalah Haji',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001051',
+    //         'component_name' => 'Rekrutmen/Seleksi PPIH Kloter',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001052',
+    //         'component_name' => 'Rekrutmen/Seleksi PPIH Non Kloter',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001053',
+    //         'component_name' => 'Rekrutmen/Seleksi PPIH Tenaga Musiman',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001054',
+    //         'component_name' => 'Rekrutmen/Seleksi Petugas TPHD',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001055',
+    //         'component_name' => 'Dokumen dan Perlengkapan PPIH Kloter',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001056',
+    //         'component_name' => 'Dokumen dan Perlengkapan PPIH Non Kloter',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001057',
+    //         'component_name' => 'Dokumen dan Perlengkapan PPIH Tenaga Musiman',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001058',
+    //         'component_name' => 'Dokumen dan Perlengkapan PPIH Embarkasi',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001059',
+    //         'component_name' => 'Dokumen dan Perlengkapan PPIH Embarkasi Antara',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001060',
+    //         'component_name' => 'Dokumen dan Perlengkapan PPIH Embarkasi Transit',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001061',
+    //         'component_name' => 'Pelatihan dan pembekalan PPIH Kloter',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001062',
+    //         'component_name' => 'Pelatihan dan pembekalan PPIH Non Kloter',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001063',
+    //         'component_name' => 'Pelatihan dan pembekalan PPIH Tenaga Musiman',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001064',
+    //         'component_name' => 'Operasional PPIH Kloter',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001065',
+    //         'component_name' => 'Operasional PPIH Non Kloter',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001066',
+    //         'component_name' => 'Operasional PPIH Tenaga Musiman',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001067',
+    //         'component_name' => 'Operasional PPIH Embarkasi',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001068',
+    //         'component_name' => 'Operasional PPIH Embarkasi Antara',
+    //         ],
+    //      [
+    //         'component_name' => 'Operasional ,PPIH Embarkasi Transit'
+    //     ],
+    //     [
+    //         'component_code' => '2148QDC001070',
+    //         'component_name' => 'Akomodasi PPIH Kloter',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001071',
+    //         'component_name' => 'Akomodasi PPIH Non Kloter',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001072',
+    //         'component_name' => 'Akomodasi PPIH Tenaga Musiman',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001073',
+    //         'component_name' => 'Konsumsi PPIH Kloter',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001074',
+    //         'component_name' => 'Konsumsi PPIH Non Kloter',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001075',
+    //         'component_name' => 'Konsumsi PPIH Tenaga Musiman',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001076',
+    //         'component_name' => 'Transportasi PPIH Kloter',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001077',
+    //         'component_name' => 'Transportasi PPIH Non Kloter',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001078',
+    //         'component_name' => 'Transportasi PPIH Tenaga Musiman',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001079',
+    //         'component_name' => 'Evaluasi Teknis Petugas Panitia Penyelenggara Ibadah Haji Arab Saudi',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC001080',
+    //         'component_name' => 'Koordinasi Penyelenggaraan Ibadah Haji Luar Negeri',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC002051',
+    //         'component_name' => 'Bimbingan Jemaah Haji Reguler',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC002052',
+    //         'component_name' => 'Sertifikasi penyuluh dan pembimbing manasik haji',
+    //         ],
+    //      [
+    //          'component_code' => '2148QDC002053',
+    //         'component_name' => 'Pembinaan kelompok bimbingan',
+    //         ],
+    //      [
+    //          'component_code' => '2149QMA001051',
+    //         'component_name' => 'Pengelolaan Infrastruktur',
+    //         ],
+    //      [
+    //          'component_code' => '2149QMA001052',
+    //         'component_name' => 'Pengembangan Database Haji',
+    //         ],
+    //      [
+    //          'component_code' => '2149QMA001053',
+    //         'component_name' => 'Pengembangan Sistem Informasi Haji',
+    //         ],
+    //      [
+    //          'component_code' => '2149UAH001051',
+    //         'component_name' => 'Perencanaan Anggaran Operasional Haji',
+    //         ],
+    //      [
+    //          'component_code' => '2149UAH001052',
+    //         'component_name' => 'Pengelolaan Aset Haji',
+    //         ],
+    //      [
+    //          'component_code' => '2149UAH001053',
+    //         'component_name' => 'Monitoring dan Evaluasi Anggaran Operasional Haji',
+    //         ],
+    //      [
+    //          'component_code' => '2149UAH001054',
+    //         'component_name' => 'Pelaksanaan Anggaran dan Perbendaharaan Haji',
+    //         ],
+    //      [
+    //          'component_code' => '2149UAH001056',
+    //         'component_name' => 'Pelaporan Keuangan Operasional Haji',
+    //         ],
+    //      [
+    //          'component_code' => '5310QDC001051',
+    //         'component_name' => 'Seleksi Perusahaan Penyedia Akomodasi Jemaah Haji Indonesia di Arab Saudi',
+    //         ],
+    //      [
+    //          'component_code' => '5310QDC001052',
+    //         'component_name' => 'Seleksi Perusahaan Penyedia Konsumsi Jemaah Haji Indonesia di Arab Saudi',
+    //         ],
+    //      [
+    //          'component_code' => '5310QDC001053',
+    //         'component_name' => 'Seleksi Perusahaan Penyedia Transportasi Jemaah Haji Indonesia di Arab Saudi',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBA956051',
+    //         'component_name' => 'Pengelolaan BMN dan Perlengkapan',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBA957051',
+    //         'component_name' => 'Layanan Hukum dan Peraturan Perundang-Undangan',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBA957052',
+    //         'component_name' => 'Penyelesaian Tindak Lanjut Hasil Temuan Pemeriksaan',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBA958051',
+    //         'component_name' => 'Pameran/event penyelenggaraan haji/umrah',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBA958052',
+    //         'component_name' => 'Pengelolaan Media Publikasi Informasi Haji dan Umrah',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBA958053',
+    //         'component_name' => 'Penyebaran Informasi Haji dan Umrah',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBA959051',
+    //         'component_name' => 'Pelayanan Protokoler',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBA960051',
+    //         'component_name' => 'Pelayanan Organisasi, Tata Laksana, dan Reformasi Birokrasi',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBA962051',
+    //         'component_name' => 'Rapat Kerja Nasional Penyelenggaraan Haji',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBA962052',
+    //         'component_name' => 'Koordinasi penyelenggaraan ibadah haji',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBA962053',
+    //         'component_name' => 'Pelayanan Umum dan Rumah Tangga',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBA962054',
+    //         'component_name' => 'Pengelolaan Ketatausahaan',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBA962055',
+    //         'component_name' => 'Layanan Dukungan Manajemen Eselon II',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBA994001',
+    //         'component_name' => 'Gaji dan Tunjangan',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBA994002',
+    //         'component_name' => 'Operasional dan Pemeliharaan Kantor',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBB951051',
+    //         'component_name' => 'Pengadaan Perangkat Pengolah Data dan Komunikasi',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBB951052',
+    //         'component_name' => 'Pengadaan Peralatan dan Fasilitas Perkantoran',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBB951053',
+    //         'component_name' => 'Pengadaan Kendaraan Bermotor',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBB951054',
+    //         'component_name' => 'Pembangunan/Renovasi gedung dan bangunan',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBC954051',
+    //         'component_name' => 'Pengelolaan Kepegawaian',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBD952051',
+    //         'component_name' => 'Penyusunan Perencanaan Program dan Anggaran',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBD952052',
+    //         'component_name' => 'Pengelolaan Rencana Program dan Anggaran',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBD953051',
+    //         'component_name' => 'Evaluasi dan Pelaporan Program',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBD955051',
+    //         'component_name' => 'Pelaksananaan Anggaran dan Perbendaharaan',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBD955052',
+    //         'component_name' => 'Verifikasi Anggaran dan Perbendaharaan',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBD955053',
+    //         'component_name' => 'Layanan Administrasi PNBP',
+    //         ],
+    //      [
+    //          'component_code' => '2150EBD955054',
+    //         'component_name' => 'Pengelolaan PNBP',
+    //         ],
+    //      [
+    //          'component_code' =>'2150EBD955055',
+    //         'component_name' => 'Pengelolaan Laporan Keuangan',
+    //     ]
+    //     ];
 
-        // Iterasi untuk membuat data 
-        foreach ($componentsData as $cp) { 
-            Component::create($cp);
-         }
+    //     // Iterasi untuk membuat data 
+    //     foreach ($componentsData as $cp) { 
+    //         Component::create($cp);
+    //      }
 
         // User::factory()->create([
         //     'name' => 'Test User',
