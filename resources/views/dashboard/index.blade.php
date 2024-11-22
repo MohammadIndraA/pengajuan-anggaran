@@ -46,7 +46,7 @@
                             </div>
 
                             <div class="card-body">
-                                <h5 class="card-title">Sales <span>| Today</span></h5>
+                                <h5 class="card-title">Provinsi <span>| Today</span></h5>
 
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -89,7 +89,7 @@
                             </div>
 
                             <div class="card-body">
-                                <h5 class="card-title">Revenue <span>| This Today</span></h5>
+                                <h5 class="card-title">Koba/Kabupaten <span>| Today</span></h5>
 
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -115,7 +115,7 @@
                                         class="bi bi-three-dots"></i></a>
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                     <li class="dropdown-header text-start">
-                                        <h6>Province</h6>
+                                        <h6>Filter</h6>
                                     </li>
 
                                     <form method="GET">
@@ -133,7 +133,7 @@
                             </div>
 
                             <div class="card-body">
-                                <h5 class="card-title">Regency <span>| Today</span></h5>
+                                <h5 class="card-title">Departemen <span>| Today</span></h5>
 
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -153,32 +153,8 @@
                         <div class="col-xxl-4 col-xl-12">
 
                             <div class="card info-card customers-card">
-
-                                <div class="filter">
-                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                                            class="bi bi-three-dots"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li class="dropdown-header text-start">
-                                            <h6>Province</h6>
-                                        </li>
-
-                                        <form method="GET">
-                                            <li><button type="submit" class="dropdown-item" name="type">Today</button>
-                                            </li>
-                                            <li><button type="submit" class="dropdown-item" value="departement_monthly"
-                                                    name="type">This
-                                                    Month</button>
-                                            </li>
-                                            <li><button type="submit" class="dropdown-item" value="departement_yearly"
-                                                    name="type">This
-                                                    Year</button>
-                                            </li>
-                                        </form>
-                                    </ul>
-                                </div>
-
                                 <div class="card-body">
-                                    <h5 class="card-title">Regency <span>| Today</span></h5>
+                                    <h5 class="card-title">Approved <span>| Today</span></h5>
 
                                     <div class="d-flex align-items-center">
                                         <div
@@ -186,7 +162,7 @@
                                             Rp.
                                         </div>
                                         <div class="ps-3">
-                                            <h6>{{ number_format($expenditureDep) }}</h6>
+                                            <h6>{{ number_format($amount) }}</h6>
 
                                         </div>
                                     </div>

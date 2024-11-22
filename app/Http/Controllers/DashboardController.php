@@ -9,6 +9,7 @@ use App\Services\CalculateServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -75,8 +76,39 @@ class DashboardController extends Controller
                break;
        }
    }
+    //    approved all table
+   $approved = DB::table('province_budget_requests')
+                ->select(
+                    'budget',
+                    'status',
+                    'province_id',
+                    DB::raw('NULL as regency_city_id')
+                )
+                ->where('status', 'approved') // Kondisi WHERE di sini
+                ->unionAll(
+                    DB::table('regency_budget_requests')
+                        ->select(
+                            'budget',
+                            'status',
+                            DB::raw('NULL as province_id'),
+                            'regency_city_id'
+                        )
+                        ->where('status', 'approved') // Kondisi WHERE di sini
+                )
+                ->unionAll(
+                    DB::table('departement_budget_requests')
+                        ->select(
+                            'budget',
+                            'status',
+                            DB::raw('NULL as province_id'),
+                            'regency_city_id'
+                        )
+                        ->where('status', 'approved') // Kondisi WHERE di sini
+                )
+                ->get();
+    $amount = $approved->sum('budget');
 
    // Return hasil ke view
-   return view('dashboard.index', compact('expenditureProvince', 'expenditureRegency', 'expenditureDep'));
+   return view('dashboard.index', compact('expenditureProvince', 'expenditureRegency', 'expenditureDep','amount'));
     }
 }

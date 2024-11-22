@@ -25,9 +25,6 @@ Route::get('/',[AuthController::class, 'login'])->name('login');
 Route::post('/login',[AuthController::class, 'postLogin'])->name('login.post');
 Route::middleware('auth')->group(function () {
 
-      // Kelola Pengajuan Anggaran
-      Route::get('/province-budget-requests/destroy/{id}/{type}',[ProvinceBudgetRequestsController::class, 'destroy'])->name('province-budget-requests.destroy');
-      Route::get('/province-budget-requests/exort/{id}/{type}',[ProvinceBudgetRequestsController::class, 'export_data'])->name('province-budget-requests.exort');
   //  role province, departement, regency
   Route::middleware('pengajuan_anggaran')->group(function () {
     // Pengajuan Anggaran
@@ -35,13 +32,17 @@ Route::middleware('auth')->group(function () {
           Route::get('/province-budget-requests/create',[ProvinceBudgetRequestsController::class, 'create'])->name('province-budget-requests.create');
           Route::post('/province-budget-requests/store',[ProvinceBudgetRequestsController::class, 'store'])->name('province-budget-requests.store');
           Route::get('/province-budget-requests/edit/{id}',[ProvinceBudgetRequestsController::class, 'edit'])->name('province-budget-requests.edit');
-          Route::get('/province-budget-requests/proposal/{id}',[ProvinceBudgetRequestsController::class, 'showProposal'])->name('province-budget-requests.proposal');
 
           //databse import
           Route::get('province-imports/{id}', [ProvinceImportController::class, 'index'])->name('province-imports.index');
           Route::get('province-imports/create', [ProvinceImportController::class, 'create'])->name('province-imports.create');
           Route::post('province-imports', [ProvinceImportController::class, 'store'])->name('province-imports.store');
  });
+
+            // Kelola Pengajuan Anggaran
+            Route::get('/province-budget-requests/destroy/{id}/{type}',[ProvinceBudgetRequestsController::class, 'destroy'])->name('province-budget-requests.destroy');
+            Route::get('/province-budget-requests/exort/{id}/{type}',[ProvinceBudgetRequestsController::class, 'export_data'])->name('province-budget-requests.exort');
+            Route::get('/proposal/{filename}', [ProvinceBudgetRequestsController::class, 'show_proposal'])->name('proposal');
 
   Route::middleware(['role:admin,province,pusat,departement'])->group(function () {
          // dashboard

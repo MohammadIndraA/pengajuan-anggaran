@@ -53,7 +53,7 @@ class ProvinceBudgetRequestsController extends Controller
             
                 // Jika file proposal tersedia, tambahkan tombol Doc Excel
                 if ($row->proposal_file_id && $row->proposal_file) {
-                    $url = Storage::url(''.$row->proposal_file->file_path);
+                    $url = url('/proposal/'.$row->proposal_file->proposal_title);
                     $actions .= '<a href="' . $url . '" class="btn btn-secondary btn-sm mt-3" target="_blank">
                                     <i class="bi bi-file-earmark-excel me-1"></i> Doc Proposal
                                  </a>';
@@ -109,15 +109,15 @@ class ProvinceBudgetRequestsController extends Controller
         // Upload File Excel
         if ($request->file('evidence_file')) {
             $file= $request->file('evidence_file');
-            $filenameExcel= date('Y').$file->getClientOriginalName();
-            $path = $file->storeAs('pengajuan/excel', $filenameExcel);
+            $filenameExcel= date('his').$file->getClientOriginalName();
+            $path = $file->storeAs('pengajuan/excel', $filenameExcel,'public');
         }
 
         // Upload File Pdf
         if ($request->file('proposal_file_id')) {
             $filePdf= $request->file('proposal_file_id');
-            $filenamePdf = date('Y').$filePdf->getClientOriginalName();
-            $pathPdf = $filePdf->storeAs('pengajuan/proposal', $filenamePdf);
+            $filenamePdf = date('his').$filePdf->getClientOriginalName();
+            $pathPdf = $filePdf->storeAs('pengajuan/proposal', $filenamePdf, 'public');
 
             //  Create Tabel Proposal
             $proposal = new ProposalFiles();
@@ -377,9 +377,18 @@ class ProvinceBudgetRequestsController extends Controller
         return Excel::download($import, 'pengajuan_anggaran.xlsx');
     }
 
-    public function showProposal($id) { 
-        $proposal = ProvinceBudgetRequest::with('proposal_file')->findOrFail($id); 
-        $filePath = Storage::url($proposal->proposal_file->file_path);
-        return response()->file($filePath);
+    public function show_proposal($filename) { 
+        $path = "pengajuan/proposal/" . $filename;
+    
+        if (!Storage::exists($path)) {
+            abort(404, 'File not found');
+        }
+    
+        // Mengambil file dari storage
+        $file = Storage::get($path);
+        $mimeType = Storage::mimeType($path);
+    
+        return response($file, 200)
+            ->header('Content-Type', $mimeType);
      }
 }
