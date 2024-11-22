@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\FundingSourceController;
 use App\Http\Controllers\KroController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\ProvinceBudgetRequestsController;
 use App\Http\Controllers\ProvinceImportController;
@@ -24,124 +25,127 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/',[AuthController::class, 'login'])->name('login');
-Route::post('/login',[AuthController::class, 'postLogin'])->name('login.post');
+Route::get('/', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'postLogin'])->name('login.post');
 Route::middleware('auth')->group(function () {
-      
+
+      //Profile
+      Route::prefix('profile')->group(function () {
+            Route::get('/{id}', [ProfileController::class, 'show'])->name('profile'); // Show profile
+            Route::put('/{id}/update', [ProfileController::class, 'update'])->name('profile.update'); // Update profile
+            Route::post('/change-password', [ProfileController::class, 'changePassword'])->name('profile.changePassword'); // Change password
+      });
       // show proposal
       Route::get('/view-pdf/{filename}', [ProvinceBudgetRequestsController::class, 'show_proposal']);
       //  role province, departement, regency
       Route::middleware('pengajuan_anggaran')->group(function () {
             // Pengajuan Anggaran
-            Route::get('/province-budget-requests',[ProvinceBudgetRequestsController::class, 'index'])->name('province-budget-requests.index');
-            Route::get('/province-budget-requests/create',[ProvinceBudgetRequestsController::class, 'create'])->name('province-budget-requests.create');
-            Route::post('/province-budget-requests/store',[ProvinceBudgetRequestsController::class, 'store'])->name('province-budget-requests.store');
-            Route::get('/province-budget-requests/edit/{id}',[ProvinceBudgetRequestsController::class, 'edit'])->name('province-budget-requests.edit');
-            
+            Route::get('/province-budget-requests', [ProvinceBudgetRequestsController::class, 'index'])->name('province-budget-requests.index');
+            Route::get('/province-budget-requests/create', [ProvinceBudgetRequestsController::class, 'create'])->name('province-budget-requests.create');
+            Route::post('/province-budget-requests/store', [ProvinceBudgetRequestsController::class, 'store'])->name('province-budget-requests.store');
+            Route::get('/province-budget-requests/edit/{id}', [ProvinceBudgetRequestsController::class, 'edit'])->name('province-budget-requests.edit');
+
             //databse import
             Route::get('province-imports/{id}', [ProvinceImportController::class, 'index'])->name('province-imports.index');
             Route::get('province-imports/create', [ProvinceImportController::class, 'create'])->name('province-imports.create');
             Route::post('province-imports', [ProvinceImportController::class, 'store'])->name('province-imports.store');
       });
 
-            // Kelola Pengajuan Anggaran
-            Route::get('/province-budget-requests/destroy/{id}/{type}',[ProvinceBudgetRequestsController::class, 'destroy'])->name('province-budget-requests.destroy');
-            Route::get('/province-budget-requests/exort/{id}/{type}',[ProvinceBudgetRequestsController::class, 'export_data'])->name('province-budget-requests.exort');
-            Route::get('/proposal/{filename}', [ProvinceBudgetRequestsController::class, 'show_proposal'])->name('proposal');
+      // Kelola Pengajuan Anggaran
+      Route::get('/province-budget-requests/destroy/{id}/{type}', [ProvinceBudgetRequestsController::class, 'destroy'])->name('province-budget-requests.destroy');
+      Route::get('/province-budget-requests/exort/{id}/{type}', [ProvinceBudgetRequestsController::class, 'export_data'])->name('province-budget-requests.exort');
+      Route::get('/proposal/{filename}', [ProvinceBudgetRequestsController::class, 'show_proposal'])->name('proposal');
 
-  Route::middleware(['role:admin,province,pusat,departement'])->group(function () {
-         // dashboard
-         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+      Route::middleware(['role:admin,province,pusat,departement'])->group(function () {
+            // dashboard
+            Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-        // User
-        Route::get('/user', [UserController::class, 'index']);
-        Route::get('/user-create', [UserController::class, 'create']);
-        Route::get('/user-edit/{id}', [UserController::class, 'edit']);
-        Route::post('/user-store', [UserController::class, 'store']);
-        Route::post('/user-update/{id}', [UserController::class, 'update']);
-        Route::post('/user-delete', [UserController::class, 'delete']);
-      
-        // Kelola akun di province
-        Route::get('/manage-account-regency', [UserController::class, 'data_show'])->name('manage-account');
+            // User
+            Route::get('/user', [UserController::class, 'index']);
+            Route::get('/user-create', [UserController::class, 'create']);
+            Route::get('/user-edit/{id}', [UserController::class, 'edit']);
+            Route::post('/user-store', [UserController::class, 'store']);
+            Route::post('/user-update/{id}', [UserController::class, 'update']);
+            Route::post('/user-delete', [UserController::class, 'delete']);
 
-         // Pengajuan Anggaran
-         Route::get('/pengajuan-anggaran-departement/regency',[ProvinceBudgetRequestsController::class, 'data_show'])->name('pengajuan-anggaran-departement');
-         Route::get('/pengajuan-anggaran-regency/edit/{id}',[ProvinceBudgetRequestsController::class, 'data_edit'])->name('pengajuan-anggaran.edit');
-         Route::post('/pengajuan-anggaran/update/{id}',[ProvinceBudgetRequestsController::class, 'update'])->name('pengajuan-anggaran.update');
+            // Kelola akun di province
+            Route::get('/manage-account-regency', [UserController::class, 'data_show'])->name('manage-account');
 
-        // Kelola akun di admin , pusat
-        Route::middleware('role:admin,pusat')->group(function () {
-               // akun
-              Route::get('/manage-account-departement', [UserController::class, 'data_show'])->name('manage-account');
-              // Pengajuan Anggaran
-              Route::get('/pengajuan-anggaran-departement/departement',[ProvinceBudgetRequestsController::class, 'data_show'])->name('pengajuan-anggaran-departement'); 
-              Route::get('/pengajuan-anggaran-departement/edit/{id}',[ProvinceBudgetRequestsController::class, 'data_edit'])->name('pengajuan-anggaran.edit');
-        });
-        
+            // Pengajuan Anggaran
+            Route::get('/pengajuan-anggaran-departement/regency', [ProvinceBudgetRequestsController::class, 'data_show'])->name('pengajuan-anggaran-departement');
+            Route::get('/pengajuan-anggaran-regency/edit/{id}', [ProvinceBudgetRequestsController::class, 'data_edit'])->name('pengajuan-anggaran.edit');
+            Route::post('/pengajuan-anggaran/update/{id}', [ProvinceBudgetRequestsController::class, 'update'])->name('pengajuan-anggaran.update');
 
-        Route::middleware('role:admin,pusat,departement')->group(function () {
-            // pengajuan anggaran
-            Route::get('/pengajuan-anggaran-departement/province',[ProvinceBudgetRequestsController::class, 'data_show'])->name('pengajuan-anggaran-departement');
-            Route::get('/pengajuan-anggaran-province/edit/{id}',[ProvinceBudgetRequestsController::class, 'data_edit'])->name('pengajuan-anggaran.edit');
-
-             // kelola akun
-              Route::get('/manage-account-province', [UserController::class, 'data_show'])->name('manage-account');
-
-               // Unit
-              Route::get('unit', [UnitController::class, 'index']);
-              Route::post('unit-store', [UnitController::class, 'store']);
-              Route::post('unit-edit', [UnitController::class, 'edit']);
-              Route::post('unit-delete', [UnitController::class, 'destroy']);
-
-              // Departement
-              Route::get('departement', [DepartementController::class, 'index']);
-              Route::post('departement-store', [DepartementController::class, 'store']);
-              Route::post('departement-edit', [DepartementController::class, 'edit']);
-              Route::post('departement-delete', [DepartementController::class, 'destroy']);
-
-              // funding-source
-              Route::get('funding-source', [FundingSourceController::class, 'index']);
-              Route::post('funding-source-store', [FundingSourceController::class, 'store']);
-              Route::post('funding-source-edit', [FundingSourceController::class, 'edit']);
-              Route::post('funding-source-delete', [FundingSourceController::class, 'destroy']);
-
-              // Program
-              Route::get('/program', [ProgramController::class, 'index']);
-              Route::post('/program-store', [ProgramController::class, 'store']);
-              Route::post('/program-edit', [ProgramController::class, 'edit']);
-              Route::post('/program-delete', [ProgramController::class, 'destroy']);
-
-              // KRO
-              Route::get('/kro', [KroController::class, 'index']);
-              Route::post('/kro-store', [KroController::class, 'store']);
-              Route::post('/kro-edit', [KroController::class, 'edit']);
-              Route::post('/kro-delete', [KroController::class, 'destroy']);
-
-              // RO
-              Route::get('/ro', [RoController::class, 'index']);
-              Route::post('/ro-store', [RoController::class, 'store']);
-              Route::post('/ro-edit', [RoController::class, 'edit']);
-              Route::post('/ro-delete', [RoController::class, 'destroy']);
-
-              // Component
-              Route::get('/component', [ComponentController::class, 'index']);
-              Route::post('/component-store', [ComponentController::class, 'store']);
-              Route::post('/component-edit', [ComponentController::class, 'edit']);
-              Route::post('/component-delete', [ComponentController::class, 'destroy']);
-
-              // Activity
-              Route::get('/activity', [ActivityController::class, 'index']);
-              Route::post('/activity-store', [ActivityController::class, 'store']);
-              Route::post('/activity-edit', [ActivityController::class, 'edit']);
-              Route::post('/activity-delete', [ActivityController::class, 'destroy']);
-
-        });
+            // Kelola akun di admin , pusat
+            Route::middleware('role:admin,pusat')->group(function () {
+                  // akun
+                  Route::get('/manage-account-departement', [UserController::class, 'data_show'])->name('manage-account');
+                  // Pengajuan Anggaran
+                  Route::get('/pengajuan-anggaran-departement/departement', [ProvinceBudgetRequestsController::class, 'data_show'])->name('pengajuan-anggaran-departement');
+                  Route::get('/pengajuan-anggaran-departement/edit/{id}', [ProvinceBudgetRequestsController::class, 'data_edit'])->name('pengajuan-anggaran.edit');
+            });
 
 
-  });
+            Route::middleware('role:admin,pusat,departement')->group(function () {
+                  // pengajuan anggaran
+                  Route::get('/pengajuan-anggaran-departement/province', [ProvinceBudgetRequestsController::class, 'data_show'])->name('pengajuan-anggaran-departement');
+                  Route::get('/pengajuan-anggaran-province/edit/{id}', [ProvinceBudgetRequestsController::class, 'data_edit'])->name('pengajuan-anggaran.edit');
 
-    
+                  // kelola akun
+                  Route::get('/manage-account-province', [UserController::class, 'data_show'])->name('manage-account');
 
-     // Auth Logout
-     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+                  // Unit
+                  Route::get('unit', [UnitController::class, 'index']);
+                  Route::post('unit-store', [UnitController::class, 'store']);
+                  Route::post('unit-edit', [UnitController::class, 'edit']);
+                  Route::post('unit-delete', [UnitController::class, 'destroy']);
+
+                  // Departement
+                  Route::get('departement', [DepartementController::class, 'index']);
+                  Route::post('departement-store', [DepartementController::class, 'store']);
+                  Route::post('departement-edit', [DepartementController::class, 'edit']);
+                  Route::post('departement-delete', [DepartementController::class, 'destroy']);
+
+                  // funding-source
+                  Route::get('funding-source', [FundingSourceController::class, 'index']);
+                  Route::post('funding-source-store', [FundingSourceController::class, 'store']);
+                  Route::post('funding-source-edit', [FundingSourceController::class, 'edit']);
+                  Route::post('funding-source-delete', [FundingSourceController::class, 'destroy']);
+
+                  // Program
+                  Route::get('/program', [ProgramController::class, 'index']);
+                  Route::post('/program-store', [ProgramController::class, 'store']);
+                  Route::post('/program-edit', [ProgramController::class, 'edit']);
+                  Route::post('/program-delete', [ProgramController::class, 'destroy']);
+
+                  // KRO
+                  Route::get('/kro', [KroController::class, 'index']);
+                  Route::post('/kro-store', [KroController::class, 'store']);
+                  Route::post('/kro-edit', [KroController::class, 'edit']);
+                  Route::post('/kro-delete', [KroController::class, 'destroy']);
+
+                  // RO
+                  Route::get('/ro', [RoController::class, 'index']);
+                  Route::post('/ro-store', [RoController::class, 'store']);
+                  Route::post('/ro-edit', [RoController::class, 'edit']);
+                  Route::post('/ro-delete', [RoController::class, 'destroy']);
+
+                  // Component
+                  Route::get('/component', [ComponentController::class, 'index']);
+                  Route::post('/component-store', [ComponentController::class, 'store']);
+                  Route::post('/component-edit', [ComponentController::class, 'edit']);
+                  Route::post('/component-delete', [ComponentController::class, 'destroy']);
+
+                  // Activity
+                  Route::get('/activity', [ActivityController::class, 'index']);
+                  Route::post('/activity-store', [ActivityController::class, 'store']);
+                  Route::post('/activity-edit', [ActivityController::class, 'edit']);
+                  Route::post('/activity-delete', [ActivityController::class, 'destroy']);
+            });
+      });
+
+
+
+      // Auth Logout
+      Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
