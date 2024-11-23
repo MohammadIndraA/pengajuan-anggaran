@@ -23,7 +23,7 @@ class AuthController extends Controller
     
         if (Auth::attempt($credentials)) {  
             if (Auth::user()->role === "regency") {
-                return redirect()->intended('/province-budget-requests');  
+                return redirect()->intended('/pengajuan-anggaran');  
             }else {
                 return redirect()->intended('/dashboard');  
             }

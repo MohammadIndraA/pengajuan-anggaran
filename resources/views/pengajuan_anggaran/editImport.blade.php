@@ -22,7 +22,7 @@
                         <h5 class="card-title">Tambah Data Baru</h5>
 
                         <!-- Multi Columns Form -->
-                        <form class="row g-2" action="{{ route('province-imports.store') }}" method="POST">
+                        <form class="row g-2" action="{{ route('pengajuan-anggaran-import.store') }}" method="POST">
                             @csrf
                             @method('POST')
                             <div class="col-md-6">

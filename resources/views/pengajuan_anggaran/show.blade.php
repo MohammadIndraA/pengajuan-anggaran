@@ -20,7 +20,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="justify-content-beetwen">
-                                <a href="{{ route('province-budget-requests.edit', $id) }}" class="btn btn-info mt-3"><i
+                                <a href="{{ url('pengajuan-anggaran/edit/' . $id) }}" class="btn btn-info mt-3"><i
                                         class="bi bi-plus me-1"></i> Tambah Pengajuan</a>
                                 <h5 class="card-title">Pengajuan Anggaran
                                     {{ auth()->user()->role == 'admin' ? null : auth()->user()->role }}</h5>
@@ -60,7 +60,7 @@
             var table = $('#data-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: `{{ route('province-imports.index', $id) }}`,
+                ajax: `{{ route('pengajuan-anggaran-import.index', $id) }}`,
                 columns: [{
                         data: 'no',
                         name: 'no',

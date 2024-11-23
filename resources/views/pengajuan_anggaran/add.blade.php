@@ -22,8 +22,7 @@
                         <h5 class="card-title">Form Tambah Anggraran</h5>
 
                         <!-- Multi Columns Form -->
-                        <form action="{{ route('province-budget-requests.store') }}" method="POST"
-                            enctype="multipart/form-data">
+                        <form action="{{ route('pengajuan-anggaran.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('POST')
                             <div class="col-md-12">

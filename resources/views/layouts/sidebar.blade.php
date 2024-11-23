@@ -6,8 +6,8 @@
         {{-- role regency --}}
         @if (Auth::user()->role === 'regency')
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('province-budget-requests') ? 'active' : 'collapsed' }}"
-                    href="/province-budget-requests">
+                <a class="nav-link {{ Request::is('pengajuan-anggaran') ? 'active' : 'collapsed' }}"
+                    href="/pengajuan-anggaran">
                     <i class="bi bi-file-earmark-text"></i>
                     <span>Pengajuan Anggaran</span>
                 </a>
@@ -46,8 +46,8 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('province-budget-requests') ? 'active' : 'collapsed' }}"
-                    href="/province-budget-requests">
+                <a class="nav-link {{ Request::is('pengajuan-anggaran') ? 'active' : 'collapsed' }}"
+                    href="/pengajuan-anggaran">
                     <i class="bi bi-file-earmark-text"></i>
                     <span>Pengajuan Anggaran</span>
                 </a>
@@ -83,7 +83,7 @@
                 </a>
             </li><!-- End Dashboard Nav -->
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('/pengajuan-anggaran/*') ? 'active' : 'collapsed' }}"
+                <a class="nav-link {{ Request::is('pengajuan-anggaran/*') ? 'active' : 'collapsed' }}"
                     data-bs-target="#tables-nav-1" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-diagram-2"></i><span>Pengajuan Anggaran</span><i
                         class="bi bi-chevron-down ms-auto"></i>
@@ -109,7 +109,7 @@
                 </ul>
             </li><!-- End Tables Nav -->
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('/manage-account-*') ? 'active' : 'collapsed' }}"
+                <a class="nav-link {{ Request::is('manage-account-*') ? 'active' : 'collapsed' }}"
                     data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-diagram-2"></i><span>Kelola Akun</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
@@ -135,66 +135,66 @@
             </li><!-- End Tables Nav -->
             @if (Auth::user()->role === 'departement')
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('province-budget-requests') ? 'active' : 'collapsed' }}"
-                        href="/province-budget-requests">
+                    <a class="nav-link {{ Request::is('pengajuan-anggaran') ? 'active' : 'collapsed' }}"
+                        href="/pengajuan-anggaran">
                         <i class="bi bi-file-earmark-text"></i>
                         <span>Ajukan Anggaran</span>
                     </a>
                 </li>
             @endif
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('/departement') ? 'active' : 'collapsed' }}" href="/departement">
+                <a class="nav-link {{ Request::is('departement') ? 'active' : 'collapsed' }}" href="/departement">
                     <i class="bi bi-bank"></i>
                     <span>Departement</span>
                 </a>
             </li><!-- End Profile Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('/unit') ? 'active' : 'collapsed' }}" href="/unit">
+                <a class="nav-link {{ Request::is('unit') ? 'active' : 'collapsed' }}" href="/unit">
                     <i class="bi bi-layout-text-window-reverse"></i>
                     <span>Satuan</span>
                 </a>
             </li><!-- End Profile Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('/funding') ? 'active' : 'collapsed' }}" href="/funding-source">
+                <a class="nav-link {{ Request::is('funding') ? 'active' : 'collapsed' }}" href="/funding-source">
                     <i class="bx bx-money"></i>
                     <span>Sumber Dana</span>
                 </a>
             </li><!-- End Profile Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('/program') ? 'active' : 'collapsed' }}" href="/program">
+                <a class="nav-link {{ Request::is('program') ? 'active' : 'collapsed' }}" href="/program">
                     <i class="bi bi-bookmark-plus"></i>
                     <span>Program</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('/activity') ? 'active' : 'collapsed' }}" href="/activity">
+                <a class="nav-link {{ Request::is('activity') ? 'active' : 'collapsed' }}" href="/activity">
                     <i class="bi ri-stack-overflow-line"></i>
                     <span>Kegiatan</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('/kro') ? 'active' : 'collapsed' }}" href="/kro">
+                <a class="nav-link {{ Request::is('kro') ? 'active' : 'collapsed' }}" href="/kro">
                     <i class="bi bi-door-open"></i>
                     <span>KRO</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('/ro') ? 'active' : 'collapsed' }}" href="/ro">
+                <a class="nav-link {{ Request::is('ro') ? 'active' : 'collapsed' }}" href="/ro">
                     <i class="bi bi-grid-1x2"></i>
                     <span>RO</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('/component') ? 'active' : 'collapsed' }}" href="/component">
+                <a class="nav-link {{ Request::is('component') ? 'active' : 'collapsed' }}" href="/component">
                     <i class="bi bi-menu-button-wide"></i>
                     <span>Komponent</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('/pengajuan-anggaran-laporan') ? 'active' : 'collapsed' }}"
+                <a class="nav-link {{ Request::is('pengajuan-anggaran-laporan') ? 'active' : 'collapsed' }}"
                     href="/pengajuan-anggaran-laporan">
                     <i class="bi bi-journal-bookmark"></i>
                     <span>Laporan</span>

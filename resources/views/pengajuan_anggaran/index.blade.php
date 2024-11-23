@@ -38,7 +38,7 @@
                                 </div>
                             @endif
                             {{-- end alert --}}
-                            <a href="{{ route('province-budget-requests.create') }}" class="btn btn-info mt-3"><i
+                            <a href="{{ route('pengajuan-anggaran.create') }}" class="btn btn-info mt-3"><i
                                     class="bi bi-plus me-1"></i> Tambah Pengajuan</a>
                             <h5 class="card-title">Pengajuan Anggaran
                                 {{ auth()->user()->role == 'admin' ? null : auth()->user()->role }}</h5>
@@ -75,7 +75,7 @@
             var table = $('#data-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: `{{ route('province-budget-requests.index') }}`,
+                ajax: `{{ route('pengajuan-anggaran.index') }}`,
                 columns: [{
                         targets: 0, // Kolom pertama (index 0)  
                         data: null,

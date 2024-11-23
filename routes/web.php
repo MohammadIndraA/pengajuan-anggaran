@@ -42,20 +42,20 @@ Route::middleware('auth')->group(function () {
       //  role province, departement, regency
       Route::middleware('pengajuan_anggaran')->group(function () {
             // Pengajuan Anggaran
-            Route::get('/province-budget-requests', [ProvinceBudgetRequestsController::class, 'index'])->name('province-budget-requests.index');
-            Route::get('/province-budget-requests/create', [ProvinceBudgetRequestsController::class, 'create'])->name('province-budget-requests.create');
-            Route::post('/province-budget-requests/store', [ProvinceBudgetRequestsController::class, 'store'])->name('province-budget-requests.store');
-            Route::get('/province-budget-requests/edit/{id}', [ProvinceBudgetRequestsController::class, 'edit'])->name('province-budget-requests.edit');
+            Route::get('/pengajuan-anggaran', [ProvinceBudgetRequestsController::class, 'index'])->name('pengajuan-anggaran.index');
+            Route::get('/pengajuan-anggaran/create', [ProvinceBudgetRequestsController::class, 'create'])->name('pengajuan-anggaran.create');
+            Route::post('/pengajuan-anggaran/store', [ProvinceBudgetRequestsController::class, 'store'])->name('pengajuan-anggaran.store');
+            Route::get('/pengajuan-anggaran/edit/{id}', [ProvinceBudgetRequestsController::class, 'edit']);
 
             //databse import
-            Route::get('province-imports/{id}', [ProvinceImportController::class, 'index'])->name('province-imports.index');
-            Route::get('province-imports/create', [ProvinceImportController::class, 'create'])->name('province-imports.create');
-            Route::post('province-imports', [ProvinceImportController::class, 'store'])->name('province-imports.store');
+            Route::get('pengajuan-anggaran-import/{id}', [ProvinceImportController::class, 'index'])->name('pengajuan-anggaran-import.index');
+            Route::get('pengajuan-anggaran-import/create', [ProvinceImportController::class, 'create'])->name('pengajuan-anggaran-import.create');
+            Route::post('pengajuan-anggaran-import', [ProvinceImportController::class, 'store'])->name('pengajuan-anggaran-import.store');
       });
 
       // Kelola Pengajuan Anggaran
-      Route::get('/province-budget-requests/destroy/{id}/{type}', [ProvinceBudgetRequestsController::class, 'destroy'])->name('province-budget-requests.destroy');
-      Route::get('/province-budget-requests/exort/{id}/{type}', [ProvinceBudgetRequestsController::class, 'export_data'])->name('province-budget-requests.exort');
+      Route::get('/pengajuan-anggaran/destroy/{id}/{type}', [ProvinceBudgetRequestsController::class, 'destroy'])->name('pengajuan-anggaran.destroy');
+      Route::get('/pengajuan-anggaran/exort/{id}/{type}', [ProvinceBudgetRequestsController::class, 'export_data'])->name('pengajuan-anggaran.exort');
       Route::get('/proposal/{filename}', [ProvinceBudgetRequestsController::class, 'show_proposal'])->name('proposal');
 
       Route::middleware(['role:admin,province,pusat,departement'])->group(function () {

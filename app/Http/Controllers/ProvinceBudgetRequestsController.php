@@ -68,18 +68,18 @@ class ProvinceBudgetRequestsController extends Controller
                 }
             
                 // Tambahkan tombol Doc Proposal
-                $actions .= '<a href="' . route('province-budget-requests.exort', ['id' => $row->id , 'type' => Auth::user()->role]) . '" 
+                $actions .= '<a href="' . route('pengajuan-anggaran.exort', ['id' => $row->id , 'type' => Auth::user()->role]) . '" 
                                 class="btn btn-warning btn-sm mt-3" >
                                 <i class="bi bi-file-earmark-pdf me-1"></i> Doc Excel
                              </a>';
             
                 // Tombol Edit dan Hapus
                 $actions .= '<div class="d-inline-block">
-                                <a href="' . route('province-imports.index', $row->id) . '" 
+                                <a href="' . route('pengajuan-anggaran-import.index', $row->id) . '" 
                                    class="btn btn-info btn-sm mt-3">
                                    <i class="bi bi-pencil-square me-1"></i> Edit
                                 </a>
-                                <a href="' . route('province-budget-requests.destroy', ['id' => $row->id , 'type' => Auth::user()->role]) . '" 
+                                <a href="' . route('pengajuan-anggaran.destroy', ['id' => $row->id , 'type' => Auth::user()->role]) . '" 
                                    class="btn btn-sm btn-danger mt-3" 
                                    onclick="return confirm(\'Are you sure you want to delete this item?\')">
                                    <i class="bi bi-trash me-1"></i> Hapus
@@ -111,7 +111,7 @@ class ProvinceBudgetRequestsController extends Controller
             'funding_source_id' => 'required',
             'program_id' => 'required',
             'evidence_file' => 'required|mimes:xlsx,xls,csv|max:2048',
-            'proposal_file_id' => 'required|mimes:pdf|max:3048',
+            'proposal_file_id' => 'required|mimes:pdf|max:7048',
         ]);
 
         // Upload File Excel
@@ -215,7 +215,7 @@ class ProvinceBudgetRequestsController extends Controller
         
 
         // ... kode lain ...  
-        return redirect()->route('province-budget-requests.index');
+        return redirect()->route('pengajuan-anggaran.index');
     }
 
     public function show($id)
@@ -289,12 +289,12 @@ class ProvinceBudgetRequestsController extends Controller
                 $data->delete();
             }
             return redirect(Auth::user()->role === $type 
-            ? route('province-budget-requests.index') 
+            ? route('pengajuan-anggaran.index') 
             : url('pengajuan-anggaran-departement/' . $type))->with('success', 'Data berhasil dihapus.');
         } catch (\Illuminate\Database\QueryException $e) {
             // Tangkap exception dan tampilkan pesan alert
             return redirect(Auth::user()->role === $type 
-            ? route('province-budget-requests.index') 
+            ? route('pengajuan-anggaran.index') 
             : url('pengajuan-anggaran-departement/' . $type))->with('error', 'Data tidak dapat dihapus karena memiliki relasi.');
         }
     }
@@ -339,7 +339,7 @@ class ProvinceBudgetRequestsController extends Controller
                 }
                 
                 $actions .= '<div class="p-1">
-                                <a href="' . route('province-budget-requests.exort', ['id' => $row->id , 'type' => $type]) . '" 
+                                <a href="' . route('pengajuan-anggaran.exort', ['id' => $row->id , 'type' => $type]) . '" 
                                    class="btn btn-warning btn-sm w-100">
                                    <i class="bi bi-file-earmark-pdf me-1"></i> Doc Excel
                                 </a>
@@ -354,7 +354,7 @@ class ProvinceBudgetRequestsController extends Controller
                              </div>';
                 
                 $actions .= '<div class="p-1">
-                                <a href="' . route('province-budget-requests.destroy', ['id' => $row->id , 'type' => $type]) . '" 
+                                <a href="' . route('pengajuan-anggaran.destroy', ['id' => $row->id , 'type' => $type]) . '" 
                                    class="btn btn-sm btn-danger w-100" 
                                    onclick="return confirm(\'Are you sure you want to delete this item?\')">
                                    <i class="bi bi-trash me-1"></i> Hapus
