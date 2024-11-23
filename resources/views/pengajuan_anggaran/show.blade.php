@@ -19,6 +19,25 @@
                 <section class="section">
                     <div class="card">
                         <div class="card-body">
+                            {{-- alert --}}
+                            @if (session('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <i class="bi bi-exclamation-octagon me-1"></i>
+                                    {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
+
+                            @if (session('error'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <i class="bi bi-exclamation-octagon me-1"></i>
+                                    {{ session('error') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
+                            {{-- end alert --}}
                             <div class="justify-content-beetwen">
                                 <a href="{{ url('pengajuan-anggaran/edit/' . $id) }}" class="btn btn-info mt-3"><i
                                         class="bi bi-plus me-1"></i> Tambah Pengajuan</a>
@@ -40,6 +59,7 @@
                                         <th scope="col">Qty</th>
                                         <th scope="col">Subtotal</th>
                                         <th scope="col">Total</th>
+                                        <th scope="col"><i class="ri-settings-3-line"></i></th>
                                     </tr>
                                 </thead>
                             </table>
@@ -105,7 +125,11 @@
                             return number_format(parseFloat(row.qty) * parseFloat(row
                                 .subtotal));
                         }
-                    }
+                    },
+                    {
+                        data: 'action',
+                        name: 'action'
+                    },
                 ]
             });
 

@@ -50,7 +50,9 @@ Route::middleware('auth')->group(function () {
             //databse import
             Route::get('pengajuan-anggaran-import/{id}', [ProvinceImportController::class, 'index'])->name('pengajuan-anggaran-import.index');
             Route::get('pengajuan-anggaran-import/create', [ProvinceImportController::class, 'create'])->name('pengajuan-anggaran-import.create');
+            Route::get('pengajuan-anggaran-import/edit/{id}/{ids}', [ProvinceImportController::class, 'edit'])->name('pengajuan-anggaran-import.edit');
             Route::post('pengajuan-anggaran-import', [ProvinceImportController::class, 'store'])->name('pengajuan-anggaran-import.store');
+            Route::post('pengajuan-anggaran-import/update/{id}', [ProvinceImportController::class, 'update'])->name('pengajuan-anggaran-import.update');
       });
 
       // Kelola Pengajuan Anggaran

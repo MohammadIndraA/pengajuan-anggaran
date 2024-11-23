@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
 use App\Models\Component;
 use App\Models\DepartementBudgetRequest;
 use App\Models\DepartementImport;
@@ -15,6 +16,7 @@ use App\Models\Ro;
 use App\Models\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Exception;
 
 class ProvinceImportController extends Controller
 {
@@ -31,6 +33,21 @@ class ProvinceImportController extends Controller
             }
 	        return datatables()->of($data)
 	        ->addIndexColumn()
+            ->addColumn('action', function ($row) use ($id) {
+                $actions = '<div class="d-flex flex-column">';
+                // Tombol Edit dan Hapus
+                $actions .= '<div class="d-inline-block">
+                                <a href="' . route('pengajuan-anggaran-import.edit', ['id' => $row->id , 'ids' => $id]) . '" 
+                                   class="btn btn-info btn-sm mt-3">
+                                   <i class="bi bi-pencil-square me-1"></i>
+                                </a>
+                             </div>';
+            
+                $actions .= '</div>';
+            
+                return $actions;
+            })            
+                ->rawColumns(['action'])
 	        ->make(true);
 	    }
         return view('pengajuan_anggaran.show', compact('id'));
@@ -56,6 +73,7 @@ class ProvinceImportController extends Controller
             'qty' => 'required',
             'subtotal' => 'required',
         ]);
+        try{
             $id = $request->id;
         if (Auth::user()->role == "province") {
             $nomor = ProvinceImport::where('province_budget_request_id', $request->id)->count();
@@ -93,8 +111,81 @@ class ProvinceImportController extends Controller
             $data->budget = $regency->total + $data->budget;
             $data->save();
         }
-        
+        return redirect()->route('pengajuan-anggaran-import.index', $id)->with('success', 'Data berhasil tambah');
+        ;
+ } catch (Exception $e) {
+     // Tangani error dan redirect dengan pesan error
+     return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+ }
+    }
 
-        return view('pengajuan_anggaran.show', compact('id'));
+    public function edit($id, $ids) {
+        $program = Program::all();
+        $kro = Kro::all();
+        $ro = Ro::all();
+        $unit = Unit::all();
+        $component = Component::all();
+        $activity = Activity::all();
+        if (Auth::user()->role == "province") {
+            $data = ProvinceImport::where('id', $id)->first();
+        }
+        if (Auth::user()->role == "regency") {
+            $data = RegencyImport::where('id', $id)->first();
+        }
+        if (Auth::user()->role == "departement") {
+            $data = DepartementImport::where('id', $id)->first();
+        }
+        return view('pengajuan_anggaran.editImport', compact('program', 'kro', 'ro', 'unit', 'component', 'activity', 'id', 'data', 'ids'));
+    }
+
+    public function update(Request $request, $id) {
+        // Validasi data
+        $validated = $request->validate([
+            'program' => 'required',
+            'activity' => 'required',
+            'kro' => 'required',
+            'ro' => 'required',
+            'unit' => 'required',
+            'component' => 'required',
+            'qty' => 'required|numeric',
+            'subtotal' => 'required|numeric',
+        ]);
+        try {
+            $validated['total'] = $validated['qty'] * $validated['subtotal'];
+            // Cek role user dan update data berdasarkan role
+            if (Auth::user()->role == "province") {
+                $data = ProvinceImport::findOrFail($id);
+                $data->update($validated);
+                $totalBudget = ProvinceImport::where('province_budget_request_id', $request->ids)->sum('total');
+                $prov = ProvinceBudgetRequest::where('id', $request->ids)->first();
+                $prov->budget = $totalBudget;
+                $prov->save();
+            } elseif (Auth::user()->role == "regency") {
+                $data = RegencyImport::findOrFail($id);
+                $data->update($validated);
+                $totalBudget = RegencyImport::where('regency_budget_request_id', $request->ids)->sum('total');
+                $reg = RegencyBudgetRequest::where('id', $request->ids)->first();
+                $reg->budget = $totalBudget;
+                $reg->save();
+            } elseif (Auth::user()->role == "departement") {
+                $data = DepartementImport::findOrFail($id);
+                $data->update($validated);
+                $totalBudget = DepartementImport::where('departement_budget_request_id', $request->ids)->sum('total');
+                $dep = DepartementBudgetRequest::where('id', $request->ids)->first();
+                $dep->budget = $totalBudget;
+                $dep->save();
+            } else {
+                // Jika role tidak cocok, lemparkan exception
+                throw new Exception('Role tidak valid');
+            }
+
+    
+            // Redirect dengan pesan sukses jika berhasil
+            return redirect()->route('pengajuan-anggaran-import.index', $request->ids)
+                ->with('success', 'Data berhasil diubah');
+        } catch (Exception $e) {
+            // Tangani error dan redirect dengan pesan error
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
     }
 }

@@ -19,14 +19,35 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Tambah Data Baru</h5>
+                        {{-- alert --}}
+                        @if (session('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <i class="bi bi-exclamation-octagon me-1"></i>
+                                {{ session('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
+
+                        @if (session('error'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <i class="bi bi-exclamation-octagon me-1"></i>
+                                {{ session('error') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
+                        {{-- end alert --}}
+
+                        <h5 class="card-title">Edit Data</h5>
 
                         <!-- Multi Columns Form -->
-                        <form class="row g-2" action="{{ route('pengajuan-anggaran-import.store') }}" method="POST">
+                        <form class="row g-2" action="{{ route('pengajuan-anggaran-import.update', $id) }}" method="POST">
                             @csrf
                             @method('POST')
                             <div class="col-md-6">
                                 <input type="hidden" name="id" id="id" value="{{ $id }}">
+                                <input type="hidden" name="ids" id="ids" value="{{ $ids }}">
 
                                 <label for="program" class="form-label">Program</label>
                                 <select id="program" class="form-select @error('program') is-invalid @enderror"
@@ -34,7 +55,7 @@
                                     <option value="">Pilih Item...</option>
                                     @foreach ($program as $item)
                                         <option value="{{ $item->program_name }}"
-                                            {{ old('program') == $item->program_name ? 'selected' : '' }}>
+                                            {{ old('program', $data->program_name) == $item->program_name ? 'selected' : '' }}>
                                             {{ $item->program_name }}
                                         </option>
                                     @endforeach
@@ -53,7 +74,7 @@
                                     <option value="">Pilih Item...</option>
                                     @foreach ($component as $item)
                                         <option value="{{ $item->component_name }}"
-                                            {{ old('component') == $item->component_name ? 'selected' : '' }}>
+                                            {{ old('component', $data->component_name) == $item->component_name ? 'selected' : '' }}>
                                             {{ $item->component_name }}
                                         </option>
                                     @endforeach
@@ -72,7 +93,8 @@
                                     <option value="">Pilih Item...</option>
                                     @foreach ($kro as $item)
                                         <option value="{{ $item->kro_name }}"
-                                            {{ old('kro') == $item->kro_name ? 'selected' : '' }}>{{ $item->kro_name }}
+                                            {{ old('kro', $data->kro_name) == $item->kro_name ? 'selected' : '' }}>
+                                            {{ $item->kro_name }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -88,7 +110,8 @@
                                     <option value="">Pilih Item...</option>
                                     @foreach ($ro as $item)
                                         <option value="{{ $item->ro_name }}"
-                                            {{ old('kro') == $item->kro_name ? 'selected' : '' }}>{{ $item->ro_name }}
+                                            {{ old('kro', $data->ro_name) == $item->kro_name ? 'selected' : '' }}>
+                                            {{ $item->ro_name }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -106,7 +129,7 @@
                                     <option value="">Pilih Item...</option>
                                     @foreach ($activity as $item)
                                         <option value="{{ $item->activity_name }}"
-                                            {{ old('activity') == $item->activity_name ? 'selected' : '' }}>
+                                            {{ old('activity', $data->activity_name) == $item->activity_name ? 'selected' : '' }}>
                                             {{ $item->activity_name }}</option>
                                     @endforeach
                                 </select>
@@ -124,7 +147,7 @@
                                     <option value="">Pilih Item...</option>
                                     @foreach ($unit as $item)
                                         <option value="{{ $item->unit_name }}"
-                                            {{ old('unit') == $item->unit_name ? 'selected' : '' }}>
+                                            {{ old('unit', $data->unit_name) == $item->unit_name ? 'selected' : '' }}>
                                             {{ $item->unit_name }}</option>
                                     @endforeach
                                 </select>
@@ -137,7 +160,7 @@
 
                             <div class="col-md-6">
                                 <label for="qty" class="form-label">Qty</label>
-                                <input type="text" value="{{ old('qty') }}"
+                                <input type="number" placeholder="1" value="{{ old('qty', $data->qty) }}"
                                     class="form-control @error('qty') is-invalid @enderror" name="qty">
                                 @error('qty')
                                     <div class="invalid-feedback">
@@ -148,7 +171,7 @@
 
                             <div class="col-md-6">
                                 <label for="subtotal" class="form-label">Subtotal</label>
-                                <input type="text" value="{{ old('subtotal') }}"
+                                <input type="number" placeholder="1000" value="{{ old('subtotal', $data->subtotal) }}"
                                     class="form-control @error('subtotal') is-invalid @enderror" name="subtotal">
                                 @error('subtotal')
                                     <div class="invalid-feedback">

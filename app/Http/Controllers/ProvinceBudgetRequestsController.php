@@ -21,6 +21,7 @@ use App\Models\RegencyCity;
 use App\Models\Ro;
 use App\Models\Unit;
 use App\Services\FileUploadService;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -113,7 +114,7 @@ class ProvinceBudgetRequestsController extends Controller
             'evidence_file' => 'required|mimes:xlsx,xls,csv|max:2048',
             'proposal_file_id' => 'required|mimes:pdf|max:7048',
         ]);
-
+    try{
         // Upload File Excel
         if ($request->file('evidence_file')) {
             $file= $request->file('evidence_file');
@@ -157,8 +158,6 @@ class ProvinceBudgetRequestsController extends Controller
          $totalBudget = $import->getTotal(); // Ambil total dari ProvinceImport  
          $data->update(['budget' => $totalBudget]); // Update nilai budget 
 
-
-
         }
      if (Auth::user()->role === "regency") {
 
@@ -183,7 +182,6 @@ class ProvinceBudgetRequestsController extends Controller
           Excel::import($import, $request->file('evidence_file'));  
           $totalBudget = $import->getTotal(); // Ambil total dari RegencyImport  
           $data->update(['budget' => $totalBudget]); // Update nilai budget 
- 
         
      }  
 
@@ -213,9 +211,11 @@ class ProvinceBudgetRequestsController extends Controller
 
      }  
         
-
-        // ... kode lain ...  
-        return redirect()->route('pengajuan-anggaran.index');
+            return redirect()->route('pengajuan-anggaran.index')->with('success', 'Data berhasil diubah');
+        } catch (Exception $e) {
+            // Tangani error dan redirect dengan pesan error
+            return redirect()->route('pengajuan-anggaran.index')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
     }
 
     public function show($id)
@@ -237,7 +237,7 @@ class ProvinceBudgetRequestsController extends Controller
         $unit = Unit::all();
         $component = Component::all();
         $activity = Activity::all();
-        return view('pengajuan_anggaran.editImport', compact('program', 'kro', 'ro', 'unit', 'component', 'activity', 'id'));
+        return view('pengajuan_anggaran.addImport', compact('program', 'kro', 'ro', 'unit', 'component', 'activity', 'id'));
     }   
 
     public function update(Request $request, $id)
@@ -246,6 +246,7 @@ class ProvinceBudgetRequestsController extends Controller
             'status' => 'required',
             'description' => 'required',
         ]);
+    try{
         if ($request->type == "province") {
             $data =  ProvinceBudgetRequest::where('id', $id)->first();
         }
@@ -259,7 +260,12 @@ class ProvinceBudgetRequestsController extends Controller
             'status' => $request->status,
             'deskription' => $request->description
         ]);
-        return redirect('pengajuan-anggaran-departement/'. $request->type)->with('success', 'Data berhasil diubah');
+         // Redirect dengan pesan sukses jika berhasil
+         return redirect('pengajuan-anggaran-departement/'. $request->type)->with('success', 'Data berhasil diubah');
+    } catch (Exception $e) {
+        // Tangani error dan redirect dengan pesan error
+        return redirect('pengajuan-anggaran-departement/'. $request->type)->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+    }
     }   
 
     public function destroy($id , $type)
