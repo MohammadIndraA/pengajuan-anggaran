@@ -35,16 +35,22 @@ class ProvinceBudgetRequestsController extends Controller
         if ($request->ajax()) {
              if (Auth::user()->role === "province") {
                 
-                 $data = ProvinceBudgetRequest::with(['funding_source','proposal_file'])->get();
+                 $data = ProvinceBudgetRequest::with(['funding_source','proposal_file'])
+                 ->where('province_id', Auth::user()->province_id)
+                 ->get();
              }
 
              if (Auth::user()->role === "departement") {
-                $data = DepartementBudgetRequest::with(['funding_source','proposal_file'])->get();
+                $data = DepartementBudgetRequest::with(['funding_source','proposal_file'])
+                ->where('regency_city_id', Auth::user()->regency_city_id)
+                ->get();
             }
             
             
              if (Auth::user()->role === "regency") {
-                 $data = RegencyBudgetRequest::with(['funding_source','proposal_file'])->get();
+                 $data = RegencyBudgetRequest::with(['funding_source','proposal_file'])
+                ->where('regency_city_id', Auth::user()->regency_city_id)
+                 ->get();
              }
             
             return DataTables::of($data)
@@ -297,17 +303,23 @@ class ProvinceBudgetRequestsController extends Controller
     {   
         if ($request->ajax()) {
             if ($request->is('pengajuan-anggaran-departement/province')) {
-                $data = ProvinceBudgetRequest::with(['funding_source', 'province'])->get();
+                $data = ProvinceBudgetRequest::with(['funding_source', 'province'])
+                ->where('province_id', Auth::user()->province_id)      
+                ->get();
                 $url = 'pengajuan-anggaran-province/edit';
                 $type = 'province';
             }
             if ($request->is('pengajuan-anggaran-departement/regency')) {
-                $data = RegencyBudgetRequest::with(['funding_source', 'regency_city'])->get();
+                $data = RegencyBudgetRequest::with(['funding_source', 'regency_city'])
+                ->where('regency_city_id', Auth::user()->regency_city_id)
+                ->get();
                 $url = 'pengajuan-anggaran-regency/edit';
                 $type = 'regency';
             }
             if ($request->is('pengajuan-anggaran-departement/departement')) {
-                $data = DepartementBudgetRequest::with(['funding_source', 'regency_city'])->get();
+                $data = DepartementBudgetRequest::with(['funding_source', 'regency_city'])
+                ->where('regency_city_id', Auth::user()->regency_city_id)
+                ->get();
                 $url = 'pengajuan-anggaran-departement/edit';
                 $type = 'departement';
             }

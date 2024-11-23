@@ -20,49 +20,122 @@
             <div class="col-lg-12">
                 <div class="row">
 
-                    <!-- Sales Card -->
-                    <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card sales-card">
+                    @if (Auth::user()->role === 'pusat' || Auth::user()->role === 'admin' || Auth::user()->role === 'departement')
+                        <!-- Provinsi Card -->
+                        <div class="col-xxl-4 col-md-6">
+                            <div class="card info-card sales-card">
 
-                            <div class="filter">
-                                <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                                        class="bi bi-three-dots"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                    <li class="dropdown-header text-start">
-                                        <h6>Filter</h6>
-                                    </li>
-                                    <form method="GET">
-                                        <li><button type="submit" class="dropdown-item" name="type">Today</button></li>
-                                        <li><button type="submit" class="dropdown-item" value="province_monthly"
-                                                name="type">This
-                                                Month</button>
+                                <div class="filter">
+                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i
+                                            class="bi bi-three-dots"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                        <li class="dropdown-header text-start">
+                                            <h6>Filter</h6>
                                         </li>
-                                        <li><button type="submit" class="dropdown-item" value="province_yearly"
-                                                name="type">This
-                                                Year</button>
-                                        </li>
-                                    </form>
-                                </ul>
+                                        <form method="GET">
+                                            <li><button type="submit" class="dropdown-item" name="type">Today</button>
+                                            </li>
+                                            <li><button type="submit" class="dropdown-item" value="province_monthly"
+                                                    name="type">This
+                                                    Month</button>
+                                            </li>
+                                            <li><button type="submit" class="dropdown-item" value="province_yearly"
+                                                    name="type">This
+                                                    Year</button>
+                                            </li>
+                                        </form>
+                                    </ul>
+                                </div>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Provinsi <span>| Today</span></h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div
+                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            Rp.
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>{{ number_format($expenditureProvince) }}</h6>
+
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
+                        </div><!-- End Provinsi Card -->
 
-                            <div class="card-body">
-                                <h5 class="card-title">Provinsi <span>| Today</span></h5>
+                        <!-- Departement Card -->
+                        <div class="col-xxl-4 col-xl-12">
 
-                                <div class="d-flex align-items-center">
-                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        Rp.
+                            <div class="card info-card customers-card">
+
+                                <div class="filter">
+                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i
+                                            class="bi bi-three-dots"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                        <li class="dropdown-header text-start">
+                                            <h6>Filter</h6>
+                                        </li>
+
+                                        <form method="GET">
+                                            <li><button type="submit" class="dropdown-item" name="type">Today</button>
+                                            </li>
+                                            <li><button type="submit" class="dropdown-item" value="departement_monthly"
+                                                    name="type">This
+                                                    Month</button>
+                                            </li>
+                                            <li><button type="submit" class="dropdown-item" value="departement_yearly"
+                                                    name="type">This
+                                                    Year</button>
+                                            </li>
+                                        </form>
+                                    </ul>
+                                </div>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Departemen <span>| Today</span></h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div
+                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            Rp.
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>{{ number_format($expenditureDep) }}</h6>
+
+                                        </div>
                                     </div>
-                                    <div class="ps-3">
-                                        <h6>{{ number_format($expenditureProvince) }}</h6>
 
-                                    </div>
                                 </div>
                             </div>
 
-                        </div>
-                    </div><!-- End Sales Card -->
+                        </div><!-- End Departement Card -->
 
-                    <!-- Revenue Card -->
+                        <div class="col-xxl-4 col-xl-12">
+
+                            <div class="card info-card customers-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Approved <span>| Semua</span></h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div
+                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            Rp.
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>{{ number_format($amount) }}</h6>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div><!-- End Customers Card -->
+                    @endif
+
+                    <!-- Kota Kabupaten -->
                     <div class="col-xxl-4 col-md-6">
                         <div class="card info-card revenue-card">
 
@@ -74,7 +147,8 @@
                                         <h6>Filter</h6>
                                     </li>
                                     <form method="GET">
-                                        <li><button type="submit" class="dropdown-item" name="type">Today</button></li>
+                                        <li><button type="submit" class="dropdown-item" name="type">Today</button>
+                                        </li>
                                         <li><button type="submit" class="dropdown-item" value="regency_monthly"
                                                 name="type">This
                                                 Month</button>
@@ -103,186 +177,218 @@
                             </div>
 
                         </div>
-                    </div><!-- End Revenue Card -->
+                    </div><!-- End Kota Kabupaten -->
 
-                    <!-- Customers Card -->
-                    <div class="col-xxl-4 col-xl-12">
-
-                        <div class="card info-card customers-card">
-
-                            <div class="filter">
-                                <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                                        class="bi bi-three-dots"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                    <li class="dropdown-header text-start">
-                                        <h6>Filter</h6>
-                                    </li>
-
-                                    <form method="GET">
-                                        <li><button type="submit" class="dropdown-item" name="type">Today</button></li>
-                                        <li><button type="submit" class="dropdown-item" value="departement_monthly"
-                                                name="type">This
-                                                Month</button>
-                                        </li>
-                                        <li><button type="submit" class="dropdown-item" value="departement_yearly"
-                                                name="type">This
-                                                Year</button>
-                                        </li>
-                                    </form>
-                                </ul>
-                            </div>
-
-                            <div class="card-body">
-                                <h5 class="card-title">Departemen <span>| Today</span></h5>
-
-                                <div class="d-flex align-items-center">
-                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        Rp.
-                                    </div>
-                                    <div class="ps-3">
-                                        <h6>{{ number_format($expenditureDep) }}</h6>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div><!-- End Customers Card -->
-                    @if (Auth::user()->role === 'departement')
-                        <div class="col-xxl-4 col-xl-12">
-
-                            <div class="card info-card customers-card">
+                    @if (Auth::user()->role === 'pusat' || Auth::user()->role === 'admin')
+                        <!-- Chart Information Semua -->
+                        <div class="col-12">
+                            <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Approved <span>| Today</span></h5>
+                                    <h5 class="card-title">Budget <span>| This Year</span></h5>
 
-                                    <div class="d-flex align-items-center">
-                                        <div
-                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            Rp.
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>{{ number_format($amount) }}</h6>
+                                    <!-- Line Chart -->
+                                    <div id="reportsChart"></div>
+                                    @php
+                                        $regency_budget_chart_str = implode(', ', $regency_budget_chart);
+                                        $province_budget_chart_str = implode(', ', $province_budget_chart);
+                                        $departement_budget_chart_str = implode(', ', $departement_budget_chart);
+                                    @endphp
 
-                                        </div>
-                                    </div>
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", () => {
+                                            new ApexCharts(document.querySelector("#reportsChart"), {
+                                                series: [{
+                                                    name: 'Kabupaten/Kota',
+                                                    data: [{{ $regency_budget_chart_str }}]
+                                                }, {
+                                                    name: 'Provinsi',
+                                                    data: [{{ $province_budget_chart_str }}]
+
+                                                }, {
+                                                    name: 'Departemen',
+                                                    data: [{{ $departement_budget_chart_str }}]
+
+                                                }],
+                                                chart: {
+                                                    height: 350,
+                                                    type: 'area',
+                                                    toolbar: {
+                                                        show: false
+                                                    },
+                                                },
+                                                markers: {
+                                                    size: 4
+                                                },
+                                                colors: ['#4154f1', '#2eca6a', '#ff771d'],
+                                                fill: {
+                                                    type: "gradient",
+                                                    gradient: {
+                                                        shadeIntensity: 1,
+                                                        opacityFrom: 0.3,
+                                                        opacityTo: 0.4,
+                                                        stops: [0, 90, 100]
+                                                    }
+                                                },
+                                                dataLabels: {
+                                                    enabled: false
+                                                },
+                                                stroke: {
+                                                    curve: 'smooth',
+                                                    width: 2
+                                                },
+                                                xaxis: {
+                                                    type: 'month',
+                                                    categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct",
+                                                        "Nov", "Dec"
+                                                    ],
+
+                                                },
+                                                tooltip: {
+                                                    x: {
+                                                        format: 'dd/MM/yy HH:mm'
+                                                    },
+                                                }
+                                            }).render();
+                                        });
+                                    </script>
+                                    <!-- End Line Chart -->
 
                                 </div>
-                            </div>
 
-                        </div><!-- End Customers Card -->
+                            </div>
+                        </div><!-- End Chart Information Semua -->
+                        <!-- Table Information -->
+                        <div class="col-12">
+                            <div class="card recent-sales overflow-auto">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Pengajuan Laporan<span></span></h5>
+
+                                    <table class="table table-borderless" id="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Wilayah</th>
+                                                <th scope="col">Nama Pengajuan</th>
+                                                <th scope="col">Total</th>
+                                                <th scope="col">Status</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+
+                                </div>
+
+                            </div>
+                        </div><!-- End Table Information -->
                     @endif
 
-                    <!-- Reports -->
-                    <div class="col-12">
-                        <div class="card">
+                    @if (Auth::user()->role === 'departement')
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Pengeluaran Provinsi</h5>
 
-                            <div class="filter">
-                                <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                                        class="bi bi-three-dots"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                    <li class="dropdown-header text-start">
-                                        <h6>Filter</h6>
-                                    </li>
+                                    <!-- Line Chart -->
+                                    <div id="lineChart"></div>
+                                    @php
+                                        $province_budget_departemen_str = implode(
+                                            ', ',
+                                            $province_budget_departemen_chart,
+                                        );
+                                    @endphp
 
-                                    <li><a class="dropdown-item" href="#">Today</a></li>
-                                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                                </ul>
-                            </div>
-
-                            <div class="card-body">
-                                <h5 class="card-title">Departement <span>/Today</span></h5>
-
-                                <!-- Line Chart -->
-                                <div id="reportsChart"></div>
-
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", () => {
-                                        new ApexCharts(document.querySelector("#reportsChart"), {
-                                            series: [{
-                                                name: 'Sales',
-                                                data: [31, 40, 28, 51, 42, 82, 56],
-                                            }, {
-                                                name: 'Revenue',
-                                                data: [11, 32, 45, 32, 34, 52, 41]
-                                            }, {
-                                                name: 'Customers',
-                                                data: [15, 11, 32, 18, 9, 24, 11]
-                                            }],
-                                            chart: {
-                                                height: 350,
-                                                type: 'area',
-                                                toolbar: {
-                                                    show: false
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", () => {
+                                            new ApexCharts(document.querySelector("#lineChart"), {
+                                                series: [{
+                                                    name: "Desktops",
+                                                    data: [{{ $province_budget_departemen_str }}]
+                                                }],
+                                                chart: {
+                                                    height: 350,
+                                                    type: 'line',
+                                                    zoom: {
+                                                        enabled: false
+                                                    }
                                                 },
-                                            },
-                                            markers: {
-                                                size: 4
-                                            },
-                                            colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                                            fill: {
-                                                type: "gradient",
-                                                gradient: {
-                                                    shadeIntensity: 1,
-                                                    opacityFrom: 0.3,
-                                                    opacityTo: 0.4,
-                                                    stops: [0, 90, 100]
+                                                dataLabels: {
+                                                    enabled: false
+                                                },
+                                                stroke: {
+                                                    curve: 'straight'
+                                                },
+                                                grid: {
+                                                    row: {
+                                                        colors: ['#f3f3f3',
+                                                            'transparent'
+                                                        ], // takes an array which will be repeated on columns
+                                                        opacity: 0.5
+                                                    },
+                                                },
+                                                xaxis: {
+                                                    categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct",
+                                                        "Nov", "Dec"
+                                                    ],
                                                 }
-                                            },
-                                            dataLabels: {
-                                                enabled: false
-                                            },
-                                            stroke: {
-                                                curve: 'smooth',
-                                                width: 2
-                                            },
-                                            xaxis: {
-                                                type: 'datetime',
-                                                categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z",
-                                                    "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z",
-                                                    "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z",
-                                                    "2018-09-19T06:30:00.000Z"
-                                                ]
-                                            },
-                                            tooltip: {
-                                                x: {
-                                                    format: 'dd/MM/yy HH:mm'
+                                            }).render();
+                                        });
+                                    </script>
+                                    <!-- End Line Chart -->
+
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
+
+                    @if (Auth::user()->role === 'province')
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Pengeluaran Bulanan Kota Kabupaten </h5>
+
+                                    <!-- Vertical Bar Chart -->
+                                    <div id="verticalBarChart" style="min-height: 400px;" class="echart"></div>
+
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", () => {
+                                            echarts.init(document.querySelector("#verticalBarChart")).setOption({
+                                                tooltip: {
+                                                    trigger: 'axis',
+                                                    axisPointer: {
+                                                        type: 'shadow'
+                                                    }
                                                 },
-                                            }
-                                        }).render();
-                                    });
-                                </script>
-                                <!-- End Line Chart -->
+                                                legend: {},
+                                                grid: {
+                                                    left: '3%',
+                                                    right: '4%',
+                                                    bottom: '3%',
+                                                    containLabel: true
+                                                },
+                                                xAxis: {
+                                                    type: 'value',
+                                                    boundaryGap: [0, 0.01]
+                                                },
+                                                yAxis: {
+                                                    type: 'category',
+                                                    data: [{!! $name_regency_str !!}]
+                                                },
+                                                series: [{
+                                                    name: '{{ now() }}',
+                                                    type: 'bar',
+                                                    data: [{{ $budget_per_regency_str }}]
+                                                }, ]
+                                            });
+                                        });
+                                    </script>
+                                    <!-- End Vertical Bar Chart -->
 
+                                </div>
                             </div>
-
                         </div>
-                    </div><!-- End Reports -->
+                    @endif
 
-                    <!-- Recent Sales -->
-                    <div class="col-12">
-                        <div class="card recent-sales overflow-auto">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Pengajuan Laporan<span></span></h5>
-
-                                <table class="table table-borderless" id="data-table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Wilayah</th>
-                                            <th scope="col">Nama Pengajuan</th>
-                                            <th scope="col">Total</th>
-                                            <th scope="col">Status</th>
-                                        </tr>
-                                    </thead>
-                                </table>
-
-                            </div>
-
-                        </div>
-                    </div><!-- End Recent Sales -->
 
 
                 </div>

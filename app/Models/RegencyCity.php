@@ -12,4 +12,9 @@ class RegencyCity extends Model
         'name',
         'province_id',
     ];
+
+    public function province()
+    {
+        return $this->belongsTo(Province::class);
+    }
 }
