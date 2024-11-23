@@ -17,6 +17,7 @@ class RegencyBudgetRequest extends Model
     {
         return $this->belongsTo(RegencyCity::class);
     }
+    
     public function proposal_file()
     {
         return $this->belongsTo(ProposalFiles::class);

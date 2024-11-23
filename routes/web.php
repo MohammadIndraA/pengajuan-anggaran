@@ -7,6 +7,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\FundingSourceController;
 use App\Http\Controllers\KroController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\ProvinceBudgetRequestsController;
 use App\Http\Controllers\ProvinceImportController;
@@ -68,6 +70,10 @@ Route::middleware('auth')->group(function () {
          Route::get('/pengajuan-anggaran-departement/regency',[ProvinceBudgetRequestsController::class, 'data_show'])->name('pengajuan-anggaran-departement');
          Route::get('/pengajuan-anggaran-regency/edit/{id}',[ProvinceBudgetRequestsController::class, 'data_edit'])->name('pengajuan-anggaran.edit');
          Route::post('/pengajuan-anggaran/update/{id}',[ProvinceBudgetRequestsController::class, 'update'])->name('pengajuan-anggaran.update');
+
+        //  Laporan
+        Route::get('/pengajuan-anggaran-laporan',[LaporanController::class, 'index'])->name('pengajuan-anggaran-laporan');
+        Route::post('/generate-pdf', [LaporanController::class, 'generatePDF']);
 
         // Kelola akun di admin , pusat
         Route::middleware('role:admin,pusat')->group(function () {

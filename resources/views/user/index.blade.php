@@ -19,6 +19,26 @@
                 <section class="section">
                     <div class="card">
                         <div class="card-body">
+
+                            {{-- alert --}}
+                            @if (session('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <i class="bi bi-exclamation-octagon me-1"></i>
+                                    {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
+
+                            @if (session('error'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <i class="bi bi-exclamation-octagon me-1"></i>
+                                    {{ session('error') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
+                            {{-- end alert --}}
                             <a href="{{ url('user-create') }}" class="btn btn-info btn-sm mt-3 ml-0"><i
                                     class="bi bi-plus me-1"></i>
                                 Tambah

@@ -21,12 +21,15 @@ class ProvinceBudgetRequest extends Model
     {
         return $this->belongsTo(FundingSource::class);
     }
+
     public function province()
     {
         return $this->belongsTo(Province::class);
     }
+
     public function proposal_file()
     {
         return $this->belongsTo(ProposalFiles::class);
     }
+
 }

@@ -193,6 +193,13 @@
                     <span>Komponent</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('/pengajuan-anggaran-laporan') ? 'active' : 'collapsed' }}"
+                    href="/pengajuan-anggaran-laporan">
+                    <i class="bi bi-journal-bookmark"></i>
+                    <span>Laporan</span>
+                </a>
+            </li>
             <br>
             <li class="nav-item">
                 <form action="/logout" method="POST">

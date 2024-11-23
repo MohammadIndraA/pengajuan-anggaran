@@ -98,7 +98,7 @@ class UserController extends Controller
             $data['password']= $user->password;
         }
         $user->update($data);
-        return redirect('manage-account-'.$request->role)->with('success', 'Data berhasil di tambahkan');
+        return redirect('manage-account-'.$request->role)->with('success', 'Data berhasil di update');
 
     }
     public function delete(Request $request){
