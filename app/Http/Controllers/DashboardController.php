@@ -169,13 +169,13 @@ class DashboardController extends Controller
         $quoted_regency = array_map(function($item) {
             return "\"$item\"";
         }, $name_regency);
-        $name_regency_str = implode(', ', $quoted_regency);
         $budget_per_regency[] = RegencyBudgetRequest::where('regency_city_id', $province_regency[$i]->id)
-                            ->whereYear('created_at', Carbon::now()->year)
-                            ->whereMonth('created_at', Carbon::now()->month)
-                            ->sum('budget');
+        ->whereYear('created_at', Carbon::now()->year)
+        ->whereMonth('created_at', Carbon::now()->month)
+        ->sum('budget');
         $budget_per_regency_str = implode(', ', $budget_per_regency);
     }
+    $name_regency_str = implode(', ', $quoted_regency);
     // dd($name_regency);
 
     // Province Role Departemen
