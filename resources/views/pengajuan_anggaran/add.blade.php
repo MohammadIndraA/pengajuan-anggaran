@@ -22,7 +22,8 @@
                         <h5 class="card-title">Form Tambah Anggraran</h5>
 
                         <!-- Multi Columns Form -->
-                        <form action="{{ route('pengajuan-anggaran.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('pengajuan-anggaran.store') }}" method="POST" enctype="multipart/form-data"
+                            id="fileUploadForm">
                             @csrf
                             @method('POST')
                             <div class="col-md-12">
@@ -104,6 +105,13 @@
                                     </div>
                                 @enderror
                             </div>
+                            {{-- <div class="form-group my-2">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                                        role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                        style="width: 0%"></div>
+                                </div>
+                            </div> --}}
                             <button type="submit" class="btn btn-info w-100 mb-1">Submit</button>
                             <button type="reset" class="btn btn-secondary w-100">Reset</button>
                         </form><!-- End Multi Columns Form -->
@@ -116,3 +124,55 @@
         </div>
     </section>
 @endsection
+
+{{-- @section('script')
+    <script>
+        $(function() {
+            $(document).ready(function() {
+                $('#fileUploadForm').on('submit', function(e) {
+                    e.preventDefault(); // Mencegah form submit secara default
+
+                    const form = this;
+                    const formData = new FormData(form); // Ambil semua data dari form
+
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('POST', form.action, true);
+
+                    // CSRF Token (jika menggunakan Laravel)
+                    xhr.setRequestHeader('X-CSRF-TOKEN', $('meta[name="csrf-token"]').attr(
+                        'content'));
+
+                    // Progress Event
+                    xhr.upload.addEventListener('progress', function(e) {
+                        if (e.lengthComputable) {
+                            const percentage = Math.round((e.loaded * 100) / e.total);
+                            $('.progress .progress-bar')
+                                .css('width', percentage + '%')
+                                .attr('aria-valuenow', percentage);
+                        }
+                    });
+
+                    // Event saat selesai
+                    xhr.onload = function() {
+                        if (xhr.status === 200) {
+                            alert('File has uploaded successfully!');
+                            $('.progress .progress-bar').css('width', '0%').attr(
+                                'aria-valuenow', 0); // Reset progres
+                            form.reset(); // Reset form setelah sukses
+                        } else {
+                            alert('Failed to upload file. Please try again.');
+                        }
+                    };
+
+                    // Event jika terjadi error
+                    xhr.onerror = function() {
+                        alert('An error occurred while uploading the file.');
+                    };
+
+                    // Kirim form data
+                    xhr.send(formData);
+                });
+            });
+        });
+    </script>
+@endsection --}}

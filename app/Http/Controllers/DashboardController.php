@@ -43,17 +43,14 @@ class DashboardController extends Controller
        // Ambil data Province dan RegencyCity
        $provinces_budget = ProvinceBudgetRequest::select('submission_name', 'budget', 'province_id', 'status', 'created_at','updated_at')
        ->with('province') // Jika ada relasi yang perlu dimuat
-       ->where('status', 'approved')
        ->get(); // Jangan konversi menjadi array dulu
 
        $regency_budget = RegencyBudgetRequest::select('submission_name', 'budget', 'regency_city_id', 'status', 'created_at','updated_at')
        ->with('regency_city') // Jika ada relasi yang perlu dimuat
-       ->where('status', 'approved')
        ->get(); // Jangan konversi menjadi array dulu
 
        $departement_request = DepartementBudgetRequest::select('submission_name', 'budget', 'regency_city_id', 'status', 'created_at','updated_at')
        ->with('regency_city') // Jika ada relasi yang perlu dimuat
-       ->where('status', 'approved')
        ->get(); // Jangan konversi menjadi array dulu
 
        // Gabungkan hasil

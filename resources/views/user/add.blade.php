@@ -34,7 +34,6 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                                </select>
                             </div>
                             <div class="col-md-6">
                                 <label for="email" class="form-label">Email</label>
@@ -78,7 +77,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="role" class="form-label">Role</label>
-                                <select id="role" class="form-select @error('role') is-invalid @enderror"
+                                <select id="role" class="form-select form-control @error('role') is-invalid @enderror"
                                     name="role">
                                     @if (Auth::user()->role === 'province')
                                         <option value="regency" {{ old('role') == 'regency' ? 'selected' : '' }}>Regency
@@ -106,7 +105,8 @@
 
                             <div class="col-md-4">
                                 <label for="province_id" class="form-label">Provinsi</label>
-                                <select id="province_id" class="form-select @error('province_id') is-invalid @enderror"
+                                <select id="province_id"
+                                    class="form-select form-control @error('province_id') is-invalid @enderror"
                                     name="province_id">
                                     <option value="" disabled selected>Pilih Item...</option>
                                     @foreach ($provinces as $item)
@@ -126,7 +126,7 @@
                             <div class="col-md-4">
                                 <label for="regency_city_id" class="form-label">Kota Kabupaten</label>
                                 <select id="regency_city_id"
-                                    class="form-select @error('regency_city_id') is-invalid @enderror"
+                                    class="form-select form-control @error('regency_city_id') is-invalid @enderror"
                                     name="regency_city_id">
                                     <option value="" disabled selected>Pilih Item...</option>
                                     @foreach ($regency_cities as $item)
@@ -146,7 +146,8 @@
                             <div class="col-md-4">
                                 <label for="departement_id" class="form-label">Departement</label>
                                 <select id="departement_id"
-                                    class="form-select @error('departement_id') is-invalid @enderror" name="departement_id">
+                                    class="form-select form-control @error('departement_id') is-invalid @enderror"
+                                    name="departement_id">
                                     <option value="" disabled selected>Pilih Item...</option>
                                     @foreach ($departement as $item)
                                         <option value="{{ $item->id }}"
@@ -163,8 +164,8 @@
                             </div>
 
                             <div class="text-between">
-                                <button type="submit" class="btn btn-info w-20">Submit</button>
-                                <button type="reset" class="btn btn-secondary">Reset</button>
+                                <button type="submit" class="btn btn-info" style="padding: 5px 50px">Simpan</button>
+                                <button type="reset" class="btn btn-secondary" style="padding: 5px 50px">Reset</button>
                             </div>
                         </form><!-- End Multi Columns Form -->
 
@@ -175,4 +176,12 @@
         </div>
 
     </section>
+@endsection
+@section('script')
+    <script>
+        var settings = {};
+        new TomSelect('#province_id', settings);
+        new TomSelect('#departement_id', settings);
+        new TomSelect('#regency_city_id', settings);
+    </script>
 @endsection

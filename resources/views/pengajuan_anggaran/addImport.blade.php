@@ -181,8 +181,8 @@
                             </div>
 
                             <div class="text-between">
-                                <button type="submit" class="btn btn-info w-20">Submit</button>
-                                <button type="reset" class="btn btn-secondary">Reset</button>
+                                <button type="submit" class="btn btn-info" style="padding: 5px 50px">Submit</button>
+                                <button type="reset" class="btn btn-secondary" style="padding: 5px 50px">Reset</button>
                             </div>
                         </form><!-- End Multi Columns Form -->
 
@@ -193,4 +193,15 @@
 
         </div>
     </section>
+@endsection
+@section('script')
+    <script>
+        var settings = {};
+        new TomSelect('#program', settings);
+        new TomSelect('#component', settings);
+        new TomSelect('#kro', settings);
+        new TomSelect('#ro', settings);
+        new TomSelect('#unit', settings);
+        new TomSelect('#activity', settings);
+    </script>
 @endsection

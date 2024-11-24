@@ -38,12 +38,14 @@ class ProvinceBudgetRequestsController extends Controller
                 
                  $data = ProvinceBudgetRequest::with(['funding_source','proposal_file'])
                  ->where('province_id', Auth::user()->province_id)
+                ->latest()
                  ->get();
              }
 
              if (Auth::user()->role === "departement") {
                 $data = DepartementBudgetRequest::with(['funding_source','proposal_file'])
                 ->where('regency_city_id', Auth::user()->regency_city_id)
+                ->latest()
                 ->get();
             }
             
@@ -51,6 +53,7 @@ class ProvinceBudgetRequestsController extends Controller
              if (Auth::user()->role === "regency") {
                  $data = RegencyBudgetRequest::with(['funding_source','proposal_file'])
                 ->where('regency_city_id', Auth::user()->regency_city_id)
+                ->latest()
                  ->get();
              }
             
@@ -211,7 +214,7 @@ class ProvinceBudgetRequestsController extends Controller
 
      }  
         
-            return redirect()->route('pengajuan-anggaran.index')->with('success', 'Data berhasil diubah');
+            return redirect()->route('pengajuan-anggaran.index')->with('success', 'Data berhasil ditambahkan');
         } catch (Exception $e) {
             // Tangani error dan redirect dengan pesan error
             return redirect()->route('pengajuan-anggaran.index')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
@@ -310,7 +313,8 @@ class ProvinceBudgetRequestsController extends Controller
         if ($request->ajax()) {
             if ($request->is('pengajuan-anggaran-departement/province')) {
                 $data = ProvinceBudgetRequest::with(['funding_source', 'province'])
-                ->where('province_id', Auth::user()->province_id)      
+                ->where('province_id', Auth::user()->province_id)     
+                ->latest()
                 ->get();
                 $url = 'pengajuan-anggaran-province/edit';
                 $type = 'province';
@@ -318,6 +322,7 @@ class ProvinceBudgetRequestsController extends Controller
             if ($request->is('pengajuan-anggaran-departement/regency')) {
                 $data = RegencyBudgetRequest::with(['funding_source', 'regency_city'])
                 ->where('regency_city_id', Auth::user()->regency_city_id)
+                ->latest()
                 ->get();
                 $url = 'pengajuan-anggaran-regency/edit';
                 $type = 'regency';
@@ -325,6 +330,7 @@ class ProvinceBudgetRequestsController extends Controller
             if ($request->is('pengajuan-anggaran-departement/departement')) {
                 $data = DepartementBudgetRequest::with(['funding_source', 'regency_city'])
                 ->where('regency_city_id', Auth::user()->regency_city_id)
+                ->latest()
                 ->get();
                 $url = 'pengajuan-anggaran-departement/edit';
                 $type = 'departement';

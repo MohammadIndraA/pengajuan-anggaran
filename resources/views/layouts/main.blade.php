@@ -31,11 +31,10 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
-    {{-- Select 2 --}}
-    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" /> --}}
+    {{-- Select tOM --}}
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.4.1/dist/css/tom-select.css" rel="stylesheet">
+
+
     <!-- Vendor CSS Files -->
     <link href="{{ asset('design/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('design/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
@@ -103,7 +102,10 @@
     <script src="{{ asset('design/assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
     <script src="{{ asset('design/assets/vendor/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ asset('design/assets/vendor/php-email-form/validate.js') }}"></script>
-    {{-- Select 2 --}}
+    <script src="{{ asset('design/assets/js/main.js') }}"></script>
+    <!-- js untuk select TOM  -->
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.4.1/dist/js/tom-select.complete.min.js"></script>
+
     <!-- Scripts -->
 
     <script>
@@ -115,7 +117,6 @@
         }
     </script>
     <!-- Template Main JS File -->
-    <script src="{{ asset('design/assets/js/main.js') }}"></script>
     @yield('script')
 </body>
 
