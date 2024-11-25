@@ -27,7 +27,11 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', [AuthController::class, 'login'])->name('login');
+Route::get('/', function () {
+      return view('home.index');
+});
+
+Route::get('/login-page', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'postLogin'])->name('login.post');
 Route::middleware('auth')->group(function () {
 
@@ -75,10 +79,10 @@ Route::middleware('auth')->group(function () {
             // Kelola akun di province
             Route::get('/manage-account-regency', [UserController::class, 'data_show'])->name('manage-account');
 
-        //  Laporan
-        Route::get('/pengajuan-anggaran-laporan',[LaporanController::class, 'index'])->name('pengajuan-anggaran-laporan');
-        Route::post('/generate-pdf', [LaporanController::class, 'generatePDF']);
-        
+            //  Laporan
+            Route::get('/pengajuan-anggaran-laporan',[LaporanController::class, 'index'])->name('pengajuan-anggaran-laporan');
+            Route::post('/generate-pdf', [LaporanController::class, 'generatePDF']);
+            
             // Pengajuan Anggaran
             Route::get('/pengajuan-anggaran-departement/regency', [ProvinceBudgetRequestsController::class, 'data_show'])->name('pengajuan-anggaran-departement');
             Route::get('/pengajuan-anggaran-regency/edit/{id}', [ProvinceBudgetRequestsController::class, 'data_edit'])->name('pengajuan-anggaran.edit');
