@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->foreignId('province_id')->constrained('provinces', 'id')->after('region')->nullable();
             $table->foreignId('regency_city_id')->constrained('regency_cities', 'id')->after('province_id')->nullable();
-            $table->foreignId('departement_id')->constrained('departements', 'id')->after('regency_city_id')->nullable();
+            $table->foreignId('departement_id')->nullable()->constrained('departements', 'id')->after('regency_city_id');
         });
     }
 

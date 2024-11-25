@@ -22,7 +22,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');  
     
         if (Auth::attempt($credentials)) {  
-            if (Auth::user()->role === "regency") {
+            if (Auth::user()->role === "regency" || Auth::user()->role === "division") {
                 return redirect()->intended('/pengajuan-anggaran');  
             }else {
                 return redirect()->intended('/dashboard');  

@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <section class="section">
-                    <div class="card">
+                    <div class="card overflow-auto">
                         <div class="card-body">
                             <div class="card-header">
                                 <div class="row">
@@ -73,6 +73,9 @@
 @endsection
 @section('script')
     <script>
+        $("#status").select2({
+            theme: "bootstrap-5",
+        });
         $(document).ready(function() {
 
 

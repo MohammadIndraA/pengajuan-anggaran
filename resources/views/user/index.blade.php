@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <section class="section">
-                    <div class="card">
+                    <div class="card overflow-auto">
                         <div class="card-body">
 
                             {{-- alert --}}
@@ -55,8 +55,8 @@
                                         <th scope="col">Email</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Role</th>
+                                        <th scope="col">Nama Kab/Kota</th>
                                         <th scope="col">Nama Provinsi</th>
-                                        <th scope="col">Wilayah</th>
                                         <th scope="col">Aksi</th>
                                     </tr>
                                 </thead>

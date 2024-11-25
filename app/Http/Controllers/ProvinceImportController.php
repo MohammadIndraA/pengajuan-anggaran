@@ -6,6 +6,8 @@ use App\Models\Activity;
 use App\Models\Component;
 use App\Models\DepartementBudgetRequest;
 use App\Models\DepartementImport;
+use App\Models\DivisionBudgetRequest;
+use App\Models\DivisionImport;
 use App\Models\Kro;
 use App\Models\Program;
 use App\Models\ProvinceBudgetRequest;
@@ -30,6 +32,9 @@ class ProvinceImportController extends Controller
             }
             if (Auth::user()->role === "regency") {
                 $data = RegencyImport::where('regency_budget_request_id', $id)->get();
+            }
+            if (Auth::user()->role === "division") {
+                $data = DivisionImport::where('division_budget_request_id', $id)->get();
             }
 	        return datatables()->of($data)
 	        ->addIndexColumn()
@@ -111,6 +116,18 @@ class ProvinceImportController extends Controller
             $data->budget = $regency->total + $data->budget;
             $data->save();
         }
+        if (Auth::user()->role == "division") {
+            $nomor = DivisionImport::where('division_budget_request_id', $request->id)->count();
+            $vallidate['no'] = $nomor+1;
+            $vallidate['division_budget_request_id'] = $id;
+            $vallidate['total'] = $vallidate['qty'] * $vallidate['subtotal'];
+           $regency = DivisionImport::create($vallidate);
+
+            // update data Reg
+            $data = DivisionBudgetRequest::where('id', $id)->first();
+            $data->budget = $regency->total + $data->budget;
+            $data->save();
+        }
         return redirect()->route('pengajuan-anggaran-import.index', $id)->with('success', 'Data berhasil tambah');
         ;
  } catch (Exception $e) {
@@ -134,6 +151,9 @@ class ProvinceImportController extends Controller
         }
         if (Auth::user()->role == "departement") {
             $data = DepartementImport::where('id', $id)->first();
+        }
+        if (Auth::user()->role == "division") {
+            $data = DivisionImport::where('id', $id)->first();
         }
         return view('pengajuan_anggaran.editImport', compact('program', 'kro', 'ro', 'unit', 'component', 'activity', 'id', 'data', 'ids'));
     }
@@ -172,6 +192,13 @@ class ProvinceImportController extends Controller
                 $data->update($validated);
                 $totalBudget = DepartementImport::where('departement_budget_request_id', $request->ids)->sum('total');
                 $dep = DepartementBudgetRequest::where('id', $request->ids)->first();
+                $dep->budget = $totalBudget;
+                $dep->save();
+            }elseif (Auth::user()->role == "division") {
+                $data = DivisionImport::findOrFail($id);
+                $data->update($validated);
+                $totalBudget = DivisionImport::where('division_budget_request_id', $request->ids)->sum('total');
+                $dep = DivisionBudgetRequest::where('id', $request->ids)->first();
                 $dep->budget = $totalBudget;
                 $dep->save();
             } else {

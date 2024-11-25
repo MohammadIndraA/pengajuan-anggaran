@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DepartementBudgetRequest;
+use App\Models\DivisionBudgetRequest;
 use App\Models\Province;
 use App\Models\ProvinceBudgetRequest;
 use App\Models\RegencyBudgetRequest;
@@ -46,9 +47,14 @@ class LaporanController extends Controller
             ->where('status', 'approved')
             ->get(); // Jangan konversi menjadi array dulu
 
+            $division_request = DivisionBudgetRequest::select('submission_name', 'budget', 'regency_city_id', 'status', 'created_at','updated_at')
+            ->with('regency_city') // Jika ada relasi yang perlu dimuat
+            ->where('status', 'approved')
+            ->get(); // Jangan konversi menjadi array dulu
+
             // Gabungkan hasil
             // Gabungkan hasil menggunakan concat
-            $data = $provinces_budget->concat($regency_budget)->concat($departement_request);
+            $data = $provinces_budget->concat($regency_budget)->concat($departement_request)->concat($division_request);
             if($request->filled('status')&& $request->status != "")
             {
                 $status = explode(',', $request->status);

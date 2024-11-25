@@ -85,6 +85,11 @@
                             </div>
                             <div class="col-12 mb-2 mt-2">
                                 <label for="evidence_file" class="form-label">Unggah Berkas Anggaran (Excel)</label>
+                                <p class=" mb-0" style="float: right; font-size: 12px" download target="_blank"><a
+                                        href="{{ asset('storage/pengajuan/excel/template.xlsx') }}">download
+                                        template
+                                        excel</a>
+                                </p>
                                 <input type="file" class="form-control @error('evidence_file') is-invalid @enderror"
                                     id="evidence_file" value="{{ old('evidence_file') }}" name="evidence_file" multiple
                                     placeholder="">
@@ -123,6 +128,17 @@
 
         </div>
     </section>
+@endsection
+
+@section('script')
+    <script>
+        $("#funding_source_id").select2({
+            theme: "bootstrap-5",
+        });
+        $("#program_id").select2({
+            theme: "bootstrap-5",
+        });
+    </script>
 @endsection
 
 {{-- @section('script')

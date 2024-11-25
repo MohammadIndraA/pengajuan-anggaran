@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Models\DepartementImport;
+use App\Models\DivisionImport;
 use App\Models\ProvinceImport;
 use App\Models\RegencyImport;
 use Maatwebsite\Excel\Concerns\FromCollection;
@@ -47,6 +48,8 @@ class PengajuanAanggaranExport implements FromArray, WithHeadings
             $data = RegencyImport::where('regency_budget_request_id', $this->id)->get();
         } elseif ($this->type == "departement") {
             $data = DepartementImport::where('departement_budget_request_id', $this->id)->get();
+        }elseif($this->type == "division"){
+            $data = DivisionImport::where('division_budget_request_id', $this->id)->get();
         }
 
         // Pilih field yang akan diekspor

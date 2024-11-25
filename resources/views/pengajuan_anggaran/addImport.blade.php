@@ -196,12 +196,23 @@
 @endsection
 @section('script')
     <script>
-        var settings = {};
-        new TomSelect('#program', settings);
-        new TomSelect('#component', settings);
-        new TomSelect('#kro', settings);
-        new TomSelect('#ro', settings);
-        new TomSelect('#unit', settings);
-        new TomSelect('#activity', settings);
+        $("#program").select2({
+            theme: "bootstrap-5",
+        });
+        $("#component").select2({
+            theme: "bootstrap-5",
+        });
+        $("#kro").select2({
+            theme: "bootstrap-5",
+        });
+        $("#ro").select2({
+            theme: "bootstrap-5",
+        });
+        $("#unit").select2({
+            theme: "bootstrap-5",
+        });
+        $("#activity").select2({
+            theme: "bootstrap-5",
+        });
     </script>
 @endsection

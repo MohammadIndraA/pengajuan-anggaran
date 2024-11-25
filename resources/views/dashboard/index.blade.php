@@ -20,7 +20,7 @@
             <div class="col-lg-12">
                 <div class="row">
 
-                    @if (Auth::user()->role === 'pusat' || Auth::user()->role === 'admin' || Auth::user()->role === 'departement')
+                    @if (Auth::user()->role === 'pusat')
                         <!-- Provinsi Card -->
                         <div class="col-xxl-4 col-md-6">
                             <div class="card info-card sales-card">
@@ -66,7 +66,7 @@
                         </div><!-- End Provinsi Card -->
 
                         <!-- Departement Card -->
-                        <div class="col-xxl-4 col-xl-12">
+                        <div class="col-xxl-4 col-md-6">
 
                             <div class="card info-card customers-card">
 
@@ -112,7 +112,54 @@
 
                         </div><!-- End Departement Card -->
 
-                        <div class="col-xxl-4 col-xl-12">
+                        <!-- Division Card -->
+                        <div class="col-xxl-4 col-md-6">
+
+                            <div class="card info-card customers-card">
+
+                                <div class="filter">
+                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i
+                                            class="bi bi-three-dots"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                        <li class="dropdown-header text-start">
+                                            <h6>Filter</h6>
+                                        </li>
+
+                                        <form method="GET">
+                                            <li><button type="submit" class="dropdown-item" name="type">Today</button>
+                                            </li>
+                                            <li><button type="submit" class="dropdown-item" value="division_monthly"
+                                                    name="type">This
+                                                    Month</button>
+                                            </li>
+                                            <li><button type="submit" class="dropdown-item" value="division_yearly"
+                                                    name="type">This
+                                                    Year</button>
+                                            </li>
+                                        </form>
+                                    </ul>
+                                </div>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Divisi <span>| Today</span></h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div
+                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            Rp.
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>{{ number_format($expenditureDivision) }}</h6>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div><!-- End Departement Card -->
+
+                        <div class="col-xxl-4 col-md-6">
 
                             <div class="card info-card customers-card">
                                 <div class="card-body">
@@ -134,6 +181,8 @@
 
                         </div><!-- End Customers Card -->
                     @endif
+
+
 
                     <!-- Kota Kabupaten -->
                     <div class="col-xxl-4 col-md-6">
@@ -179,7 +228,7 @@
                         </div>
                     </div><!-- End Kota Kabupaten -->
 
-                    @if (Auth::user()->role === 'pusat' || Auth::user()->role === 'admin')
+                    @if (Auth::user()->role === 'pusat')
                         <!-- Chart Information Semua -->
                         <div class="col-12">
                             <div class="card">
@@ -192,6 +241,7 @@
                                         $regency_budget_chart_str = implode(', ', $regency_budget_chart);
                                         $province_budget_chart_str = implode(', ', $province_budget_chart);
                                         $departement_budget_chart_str = implode(', ', $departement_budget_chart);
+                                        $division_budget_chart_str = implode(', ', $division_budget_chart);
                                     @endphp
 
                                     <script>
@@ -208,6 +258,10 @@
                                                     name: 'Departemen',
                                                     data: [{{ $departement_budget_chart_str }}]
 
+                                                }, {
+                                                    name: 'Divisi',
+                                                    data: [{{ $division_budget_chart_str }}]
+
                                                 }],
                                                 chart: {
                                                     height: 350,
@@ -219,7 +273,7 @@
                                                 markers: {
                                                     size: 4
                                                 },
-                                                colors: ['#4154f1', '#2eca6a', '#ff771d'],
+                                                colors: ['#4154f1', '#2eca6a', '#ff771d', '#ffbb44'],
                                                 fill: {
                                                     type: "gradient",
                                                     gradient: {
@@ -283,6 +337,51 @@
                     @endif
 
                     @if (Auth::user()->role === 'departement')
+                        <!-- Provinsi Card -->
+                        <div class="col-xxl-4 col-md-6">
+                            <div class="card info-card sales-card">
+
+                                <div class="filter">
+                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i
+                                            class="bi bi-three-dots"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                        <li class="dropdown-header text-start">
+                                            <h6>Filter</h6>
+                                        </li>
+                                        <form method="GET">
+                                            <li><button type="submit" class="dropdown-item"
+                                                    name="type">Today</button>
+                                            </li>
+                                            <li><button type="submit" class="dropdown-item" value="province_monthly"
+                                                    name="type">This
+                                                    Month</button>
+                                            </li>
+                                            <li><button type="submit" class="dropdown-item" value="province_yearly"
+                                                    name="type">This
+                                                    Year</button>
+                                            </li>
+                                        </form>
+                                    </ul>
+                                </div>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Provinsi <span>| Today</span></h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div
+                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            Rp.
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>{{ number_format($expenditureProvince) }}</h6>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- End Provinsi Card -->
+
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-body">

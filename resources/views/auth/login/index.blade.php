@@ -52,11 +52,12 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
-                            <div class="d-flex justify-content-center py-4">
+                            <div class="justify-content-center py-4">
                                 <a href="index.html" class="logo d-flex align-items-center w-auto">
-                                    <img src="{{ asset('design/assets/img/kemenag.png') }}" alt="">
-                                    <span class="d-none d-lg-block">Pengajuan Anggaran</span>
+                                    <img src="{{ asset('design/assets/img/kemenag.png') }}" alt="Logo Kemenag"
+                                        style="width: 100%; height: 100%; object-fit: contain;">
                                 </a>
+                                <span class="d-none d-lg-block">Pengajuan Anggaran</span>
                             </div><!-- End Logo -->
 
                             <div class="card mb-3">
@@ -80,9 +81,9 @@
                                                     class="form-control @error('email') is-invalid @enderror"
                                                     id="email" required>
                                                 @error('email')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
                                                 @enderror
                                             </div>
                                         </div>
@@ -93,9 +94,9 @@
                                                 class="form-control @error('password') is-invalid @enderror"
                                                 id="password" required>
                                             @error('password')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
                                             @enderror
                                         </div>
 

@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
     {
 
                 // Province
-       $provinceData = [
+    $provinceData = [
         ['name' => 'Aceh'],
        ['name' => 'Sumatera Utara'],
        ['name' => 'Sumatera Barat'],
@@ -61,6 +61,10 @@ class DatabaseSeeder extends Seeder
        ['name' => 'Maluku'],
        ['name' => 'Maluku Utara'],
        ['name' => 'Papua Barat'],
+       ['name' => 'Papua Barat Daya'],
+       ['name' => 'Papua Selatan'],
+       ['name' => 'Papua Tengah'],
+       ['name' => 'Papua Pegunungan'],
        ['name' => 'Papua'] 
    ];
        // Iterasi untuk membuat data
@@ -598,10 +602,9 @@ class DatabaseSeeder extends Seeder
 
 
         // Tabel User
-        $roles = ['admin', 'pusat', 'province', 'regency', 'departement'];  
-        $prov = Province::inRandomOrder()->first()->id;
-        $regen = RegencyCity::inRandomOrder()->first()->id;
-        $dev = Departement::inRandomOrder()->first()->id;
+        
+        $roles = ['division', 'pusat', 'province', 'regency', 'departement'];  
+
         foreach ($roles as $role) {  
             User::factory()->create([  
                 'name' => $role,  
@@ -610,12 +613,25 @@ class DatabaseSeeder extends Seeder
                 'email' => $role . '@mail.com',  
                 'password' => Hash::make($role),  
                 'role' => $role,
-                'province_id' => $prov,
-                'regency_city_id' => $regen,
-                'departement_id' => $dev,  
+                'province_id' => 12,
+                'regency_city_id' => 164,
             ]);  
         }  
 
+        $regens = RegencyCity::where('id', 12)->get();
+
+        foreach ($regens as $regen) {
+            User::create([
+                'name' => $regen->name,
+                'username' => $regen->name,
+                'region' => fake()->address(),
+                'email' => str_replace(' ', '', $regen->name) . '@mail.com',
+                'password' => Hash::make('password'),
+                'role' => 'regency',
+                'province_id' => 12,
+                'regency_city_id' => $regen->id,
+            ]);
+        }
 
         // Tabel Program
         Program::create([

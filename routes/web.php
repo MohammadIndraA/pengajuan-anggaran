@@ -60,7 +60,7 @@ Route::middleware('auth')->group(function () {
       Route::get('/pengajuan-anggaran/exort/{id}/{type}', [ProvinceBudgetRequestsController::class, 'export_data'])->name('pengajuan-anggaran.exort');
       Route::get('/proposal/{filename}', [ProvinceBudgetRequestsController::class, 'show_proposal'])->name('proposal');
 
-      Route::middleware(['role:admin,province,pusat,departement'])->group(function () {
+      Route::middleware(['role:province,pusat,departement'])->group(function () {
             // dashboard
             Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -78,38 +78,35 @@ Route::middleware('auth')->group(function () {
         //  Laporan
         Route::get('/pengajuan-anggaran-laporan',[LaporanController::class, 'index'])->name('pengajuan-anggaran-laporan');
         Route::post('/generate-pdf', [LaporanController::class, 'generatePDF']);
-
-        // Kelola akun di admin , pusat
-        Route::middleware('role:admin,pusat')->group(function () {
-               // akun
-              Route::get('/manage-account-departement', [UserController::class, 'data_show'])->name('manage-account');
-              // Pengajuan Anggaran
-              Route::get('/pengajuan-anggaran-departement/departement',[ProvinceBudgetRequestsController::class, 'data_show'])->name('pengajuan-anggaran-departement'); 
-              Route::get('/pengajuan-anggaran-departement/edit/{id}',[ProvinceBudgetRequestsController::class, 'data_edit'])->name('pengajuan-anggaran.edit');
-        });
         
             // Pengajuan Anggaran
             Route::get('/pengajuan-anggaran-departement/regency', [ProvinceBudgetRequestsController::class, 'data_show'])->name('pengajuan-anggaran-departement');
             Route::get('/pengajuan-anggaran-regency/edit/{id}', [ProvinceBudgetRequestsController::class, 'data_edit'])->name('pengajuan-anggaran.edit');
             Route::post('/pengajuan-anggaran/update/{id}', [ProvinceBudgetRequestsController::class, 'update'])->name('pengajuan-anggaran.update');
 
-            // Kelola akun di admin , pusat
-            Route::middleware('role:admin,pusat')->group(function () {
-                  // akun
+            // Kelola akun di pusat
+            Route::middleware('role:pusat,departement')->group(function () {
+                  // akun departement
                   Route::get('/manage-account-departement', [UserController::class, 'data_show'])->name('manage-account');
-                  // Pengajuan Anggaran
-                  Route::get('/pengajuan-anggaran-departement/departement', [ProvinceBudgetRequestsController::class, 'data_show'])->name('pengajuan-anggaran-departement');
-                  Route::get('/pengajuan-anggaran-departement/edit/{id}', [ProvinceBudgetRequestsController::class, 'data_edit'])->name('pengajuan-anggaran.edit');
+                  // kelola akun province
+                     Route::get('/manage-account-province', [UserController::class, 'data_show'])->name('manage-account');
+                  // Pengajuan Anggaran departement
+                  Route::get('/pengajuan-anggaran-departement/departement',[ProvinceBudgetRequestsController::class, 'data_show'])->name('pengajuan-anggaran-departement');
+                  Route::get('/pengajuan-anggaran-departement/edit/{id}',[ProvinceBudgetRequestsController::class, 'data_edit'])->name('pengajuan-anggaran.edit');
+                 
+                    // pengajuan anggaran province
+                    Route::get('/pengajuan-anggaran-departement/province', [ProvinceBudgetRequestsController::class, 'data_show'])->name('pengajuan-anggaran-departement');
+                    Route::get('/pengajuan-anggaran-province/edit/{id}', [ProvinceBudgetRequestsController::class, 'data_edit'])->name('pengajuan-anggaran.edit');
+                 
             });
 
 
-            Route::middleware('role:admin,pusat,departement')->group(function () {
-                  // pengajuan anggaran
-                  Route::get('/pengajuan-anggaran-departement/province', [ProvinceBudgetRequestsController::class, 'data_show'])->name('pengajuan-anggaran-departement');
-                  Route::get('/pengajuan-anggaran-province/edit/{id}', [ProvinceBudgetRequestsController::class, 'data_edit'])->name('pengajuan-anggaran.edit');
-
-                  // kelola akun
-                  Route::get('/manage-account-province', [UserController::class, 'data_show'])->name('manage-account');
+            Route::middleware('role:pusat')->group(function () {
+                
+                   // Pengajuan Anggaran division
+                   Route::get('/pengajuan-anggaran-departement/division',[ProvinceBudgetRequestsController::class, 'data_show'])->name('pengajuan-anggaran-departement');
+                   Route::get('/pengajuan-anggaran-division/edit/{id}',[ProvinceBudgetRequestsController::class, 'data_edit'])->name('pengajuan-anggaran.edit');
+               
 
                   // Unit
                   Route::get('unit', [UnitController::class, 'index']);

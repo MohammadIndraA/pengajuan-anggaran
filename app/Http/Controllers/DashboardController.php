@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DepartementBudgetRequest;
+use App\Models\DivisionBudgetRequest;
 use App\Models\ProvinceBudgetRequest;
 use App\Models\RegencyBudgetRequest;
 use App\Models\RegencyCity;
@@ -52,10 +53,13 @@ class DashboardController extends Controller
        $departement_request = DepartementBudgetRequest::select('submission_name', 'budget', 'regency_city_id', 'status', 'created_at','updated_at')
        ->with('regency_city') // Jika ada relasi yang perlu dimuat
        ->get(); // Jangan konversi menjadi array dulu
+       $division_request = DivisionBudgetRequest::select('submission_name', 'budget', 'regency_city_id', 'status', 'created_at','updated_at')
+       ->with(['regency_city', 'province']) // Jika ada relasi yang perlu dimuat
+       ->get(); // Jangan konversi menjadi array dulu
 
        // Gabungkan hasil
        // Gabungkan hasil menggunakan concat
-       $pengajuan_anggaran = $provinces_budget->concat($regency_budget)->concat($departement_request);
+       $pengajuan_anggaran = $provinces_budget->concat($regency_budget)->concat($departement_request)->concat($division_request);
        $pengajuan_anggaran = $pengajuan_anggaran->sortByDesc('updated_at'); 
         if ($request->ajax()) {
             return DataTables::of($pengajuan_anggaran)
@@ -89,6 +93,10 @@ class DashboardController extends Controller
         ->whereDate('created_at', Carbon::today())
         ->sum('budget');
 
+    $expenditureDivision = DivisionBudgetRequest::where('status', 'approved')
+        ->whereDate('created_at', Carbon::today())
+        ->sum('budget');
+
    // Cek apakah ada permintaan tipe khusus (monthly/yearly)
    if ($request->has('type')) {
        switch ($request->type) {
@@ -112,6 +120,13 @@ class DashboardController extends Controller
            case 'departement_yearly':
                $expenditureDep = $this->calculateExpenditure(DepartementBudgetRequest::class, 'yearly');
                break;
+               
+           case 'division_monthly':
+               $expenditureDivision = $this->calculateExpenditure(DivisionBudgetRequest::class, 'monthly');
+               break;
+           case 'division_yearly':
+               $expenditureDivision = $this->calculateExpenditure(DivisionBudgetRequest::class, 'yearly');
+               break;
        }
    }
 
@@ -131,7 +146,8 @@ class DashboardController extends Controller
     // chart
     $province_budget_chart = [];
     for ($i = 1; $i <= 12; $i++) {
-        $province_budget = ProvinceBudgetRequest::whereMonth('updated_at', $i)
+        $province_budget = ProvinceBudgetRequest::where('status', 'approved')
+             ->whereMonth('updated_at', $i)
             ->whereYear('created_at', Carbon::now()->year)
             ->sum('budget');
         $province_budget_chart[] = $province_budget;
@@ -139,7 +155,8 @@ class DashboardController extends Controller
 
     $regency_budget_chart = [];
     for ($i = 1; $i <= 12; $i++) {
-        $regency_budget = RegencyBudgetRequest::whereMonth('created_at', $i)
+        $regency_budget = RegencyBudgetRequest::where('status', 'approved')
+            ->whereMonth('created_at', $i)
             ->whereYear('created_at', Carbon::now()->year)
             ->sum('budget');
         $regency_budget_chart[] = $regency_budget;
@@ -147,12 +164,21 @@ class DashboardController extends Controller
 
     $departement_budget_chart = [];
     for ($i = 1; $i <= 12; $i++) {
-        $departement_budget = DepartementBudgetRequest::whereMonth('created_at', $i)
+        $departement_budget = DepartementBudgetRequest::where('status', 'approved')
+            ->whereMonth('created_at', $i)
             ->whereYear('created_at', Carbon::now()->year)
             ->sum('budget');
         $departement_budget_chart[] = $departement_budget;
     }
-    $regency_budget_chart_str = implode(', ', $regency_budget_chart);
+
+    $division_budget_chart = [];
+    for ($i = 1; $i <= 12; $i++) {
+        $division_budget = DivisionBudgetRequest::where('status', 'approved')
+            ->whereMonth('created_at', $i)
+            ->whereYear('created_at', Carbon::now()->year)
+            ->sum('budget');
+        $division_budget_chart[] = $division_budget;
+    }
 
 
 
@@ -180,6 +206,7 @@ class DashboardController extends Controller
     for ($i = 1; $i <= 12; $i++) {
         $province_budget_departemen = ProvinceBudgetRequest::whereMonth('created_at', $i)
             ->where('province_id', Auth::user()->province_id)
+            ->where('status', 'approved')
             ->whereYear('created_at', Carbon::now()->year)
             ->sum('budget');
         $province_budget_departemen_chart[] = $province_budget_departemen;
@@ -187,6 +214,6 @@ class DashboardController extends Controller
 
     // dd($budget_per_regency_str);
    // Return hasil ke view
-   return view('dashboard.index', compact('expenditureProvince', 'expenditureRegency', 'expenditureDep','amount', 'pengajuan_anggaran','province_budget_chart','regency_budget_chart','departement_budget_chart','name_regency_str','budget_per_regency_str','province_budget_departemen_chart'));
+   return view('dashboard.index', compact('expenditureProvince', 'expenditureRegency', 'expenditureDep','expenditureDivision','amount', 'pengajuan_anggaran','province_budget_chart','regency_budget_chart','departement_budget_chart','division_budget_chart','name_regency_str','budget_per_regency_str','province_budget_departemen_chart'));
     }
 }

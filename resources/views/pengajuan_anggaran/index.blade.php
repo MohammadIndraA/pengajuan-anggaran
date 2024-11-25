@@ -38,11 +38,28 @@
                                 </div>
                             @endif
                             {{-- end alert --}}
-                            <a href="{{ route('pengajuan-anggaran.create') }}" class="btn btn-info mt-3"><i
-                                    class="bi bi-plus me-1"></i> Tambah Pengajuan</a>
+                            <a href="{{ route('pengajuan-anggaran.create') }}" class="btn btn-info mt-3"
+                                style="border-radius: 0px"><i class="bi bi-plus me-1"></i> Tambah Pengajuan</a>
                             <h5 class="card-title">Pengajuan Anggaran
                                 {{ auth()->user()->role == 'admin' ? null : auth()->user()->role }}</h5>
-
+                            {{-- select wilayah --}}
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="form-group col col-2 mt-1 mb-3">
+                                    <select class="form-select @error('status') is-invalid @enderror" name="status"
+                                        id="status">
+                                        <option value="" disabled selected>Pilih Status</option>
+                                        <option value="">Semua</option>
+                                        <option value="rejected">Rejected
+                                        </option>
+                                        <option value="pending">Pending
+                                        </option>
+                                        <option value="proses">Proses
+                                        </option>
+                                        <option value="approved">Approved
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
                             <!-- Default Table -->
                             <table class="table table-responsive table-borderless" id="data-table">
                                 <thead>
@@ -70,12 +87,22 @@
 @endsection
 @section('script')
     <script>
+        $("#state").select2({
+            theme: "bootstrap-5",
+        });
+
+
         $(document).ready(function() {
 
             var table = $('#data-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: `{{ route('pengajuan-anggaran.index') }}`,
+                ajax: {
+                    url: `{{ route('pengajuan-anggaran.index') }}`,
+                    data: function(data) {
+                        data.status = $('#status').val();
+                    }
+                },
                 columns: [{
                         targets: 0, // Kolom pertama (index 0)  
                         data: null,
@@ -133,6 +160,10 @@
                 ]
             });
 
+            // cari status
+            $('#status').on('change', function() {
+                table.ajax.reload();
+            })
         });
     </script>
 @endsection

@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <section class="section">
-                    <div class="card">
+                    <div class="card overflow-auto">
                         <div class="card-body">
 
                             {{-- alert --}}

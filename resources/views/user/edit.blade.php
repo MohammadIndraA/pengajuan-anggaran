@@ -86,9 +86,10 @@
                                         <option value="regency">Regency</option>
                                     @else
                                         <option disabled selected>Pilih Item...</option>
-                                        <option value="admin" {{ old('role', $data->role) == 'admin' ? 'selected' : '' }}>
-                                            Admin</option>
                                         <option value="pusat" {{ old('role', $data->role) == 'pusat' ? 'selected' : '' }}>
+                                            Pusat</option>
+                                        <option value="division"
+                                            {{ old('role', $data->role) == 'division' ? 'selected' : '' }}>
                                             Pusat</option>
                                         <option value="province"
                                             {{ old('role', $data->role) == 'province' ? 'selected' : '' }}>Province
@@ -107,7 +108,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label for="province_id" class="form-label">Provinsi</label>
                                 <select id="province_id" class="form-select @error('province_id') is-invalid @enderror"
                                     name="province_id">
@@ -127,7 +128,7 @@
                                 </select>
                                 </select>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label for="regency_city_id" class="form-label">Kota Kabupaten</label>
                                 <select id="regency_city_id"
                                     class="form-select @error('regency_city_id') is-invalid @enderror"
@@ -148,7 +149,7 @@
                                 @enderror
                                 </select>
                             </div>
-                            <div class="col-md-4">
+                            {{-- <div class="col-md-4">
                                 <label for="departement_id" class="form-label">Departement</label>
                                 <select id="departement_id"
                                     class="form-select @error('departement_id') is-invalid @enderror" required
@@ -169,7 +170,7 @@
                                     </div>
                                 @enderror
                                 </select>
-                            </div>
+                            </div> --}}
                             <div class="text-between">
                                 <button type="submit" class="btn btn-info" style="padding: 5px 50px">Submit</button>
                                 <button type="reset" class="btn btn-secondary" style="padding: 5px 50px">Reset</button>
@@ -186,9 +187,14 @@
 @endsection
 @section('script')
     <script>
-        var settings = {};
-        new TomSelect('#province_id', settings);
-        new TomSelect('#departement_id', settings);
-        new TomSelect('#regency_city_id', settings);
+        $("#province_id").select2({
+            theme: "bootstrap-5",
+        });
+        $("#departement_id").select2({
+            theme: "bootstrap-5",
+        });
+        $("#regency_city_id").select2({
+            theme: "bootstrap-5",
+        });
     </script>
 @endsection

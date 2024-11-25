@@ -17,7 +17,9 @@ class UserController extends Controller
 
         if(request()->ajax()) {
             if (Auth::user()->role === "province") {
-                $data = User::with(['province', 'regency_city'])->where('role', "regency")->get();
+                $data = User::with(['province', 'regency_city'])->where('role', "regency")
+                            ->where('province_id', Auth::user()->province_id)                
+                            ->get();
             }
             if (Auth::user()->role === "departement") {
                 if($request->is('manage-account-province')) {
@@ -65,7 +67,6 @@ class UserController extends Controller
             'region' => 'required|min:5',
             'province_id' => 'required',
             'regency_city_id' => 'required',
-            'departement_id' => 'required',
         ]);
         $data['password'] = Hash::make($request->password);
         User::create($data);
@@ -89,7 +90,6 @@ class UserController extends Controller
             'region' => 'required|min:5',
             'province_id' => 'required',
             'regency_city_id' => 'required',
-            'departement_id' => 'required',
         ]);
         $user = User::find($id);
         if ($request->password != null) {

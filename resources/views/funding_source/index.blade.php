@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <section class="section">
-                    <div class="card">
+                    <div class="card overflow-auto">
                         <div class="card-body">
                             <a href="" onClick="add()" href="javascript:void(0)" class="btn btn-info mt-3 ml-0"
                                 data-bs-toggle="modal" data-bs-target="#funding_source-modal"><i

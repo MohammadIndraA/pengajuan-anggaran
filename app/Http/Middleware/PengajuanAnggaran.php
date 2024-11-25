@@ -17,7 +17,7 @@ class PengajuanAnggaran
     public function handle(Request $request, Closure $next): Response
     {
         $userRole = $request->user()->role;
-        if (in_array($userRole, ['regency', 'departement', 'province'])) 
+        if (in_array($userRole, ['regency', 'departement', 'province','division'])) 
         { 
             return $next($request); 
         }
