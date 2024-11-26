@@ -2,7 +2,7 @@
 
 @section('breadcrumb')
     <div class="pagetitle">
-        <h1>Tambah User Page</h1>
+        <h1>Edit User Page</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">User Form</a></li>
@@ -19,7 +19,7 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Tambah Data Baru</h5>
+                        <h5 class="card-title">Edit Data Baru</h5>
 
                         <!-- Multi Columns Form -->
                         <form class="row g-2" action="{{ url('/user-update', $data->id) }}" method="POST">
@@ -67,7 +67,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="col-md-6">
+                            <div class="@if ($data->role != 'province') col-md-6 @else col-md-4 @endif">
                                 <label for="region" class="form-label">Wilayah</label>
                                 <input type="text" class="form-control @error('region') is-invalid @enderror"
                                     placeholder="Masukan region ..." value="{{ old('region', $data->region) }}"
@@ -78,7 +78,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="col-md-6">
+                            <div class="@if ($data->role !== 'province') col-md-6 @else col-md-4 @endif">
                                 <label for="role" class="form-label">Role</label>
                                 <select id="role" class="form-select @error('role') is-invalid @enderror"
                                     name="role">
@@ -108,7 +108,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="@if ($data->role !== 'province') col-md-6 @else col-md-4 @endif">
                                 <label for="province_id" class="form-label">Provinsi</label>
                                 <select id="province_id" class="form-select @error('province_id') is-invalid @enderror"
                                     name="province_id">
@@ -128,27 +128,29 @@
                                 </select>
                                 </select>
                             </div>
-                            <div class="col-md-6">
-                                <label for="regency_city_id" class="form-label">Kota Kabupaten</label>
-                                <select id="regency_city_id"
-                                    class="form-select @error('regency_city_id') is-invalid @enderror"
-                                    name="regency_city_id">
-                                    <option>Pilih Item...</option>
-                                    @foreach ($regency_cities as $item)
-                                        @if (old('regency_city_id', $data->regency_city_id) == $item->id)
-                                            <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
-                                        @else
-                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                                @error('regency_city_id')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                                </select>
-                            </div>
+                            @if ($data->role !== 'province')
+                                <div class="col-md-6">
+                                    <label for="regency_city_id" class="form-label">Kota Kabupaten</label>
+                                    <select id="regency_city_id"
+                                        class="form-select @error('regency_city_id') is-invalid @enderror"
+                                        name="regency_city_id">
+                                        <option>Pilih Item...</option>
+                                        @foreach ($regency_cities as $item)
+                                            @if (old('regency_city_id', $data->regency_city_id) == $item->id)
+                                                <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
+                                            @else
+                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                    @error('regency_city_id')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                    </select>
+                                </div>
+                            @endif
                             {{-- <div class="col-md-4">
                                 <label for="departement_id" class="form-label">Departement</label>
                                 <select id="departement_id"

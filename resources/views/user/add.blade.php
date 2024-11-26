@@ -65,7 +65,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="col-md-6">
+                            <div class="@if ($type !== 'province') col-md-6 @else col-md-4 @endif">
                                 <label for="region" class="form-label">Wilayah</label>
                                 <input type="text" class="form-control @error('region') is-invalid @enderror"
                                     placeholder="Masukan region ..." value="{{ old('region') }}" name="region">
@@ -75,7 +75,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="col-md-6">
+                            <div class="@if ($type !== 'province') col-md-6 @else col-md-4 @endif">
                                 <label for="role" class="form-label">Role</label>
                                 <select id="role" class="form-select form-control @error('role') is-invalid @enderror"
                                     name="role">
@@ -103,7 +103,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="@if ($type !== 'province') col-md-6 @else col-md-4 @endif">
                                 <label for="province_id" class="form-label">Provinsi</label>
                                 <select id="province_id"
                                     class="form-select form-control @error('province_id') is-invalid @enderror"
@@ -123,25 +123,27 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-6">
-                                <label for="regency_city_id" class="form-label">Kota Kabupaten</label>
-                                <select id="regency_city_id"
-                                    class="form-select form-control @error('regency_city_id') is-invalid @enderror"
-                                    name="regency_city_id">
-                                    <option value="" disabled selected>Pilih Item...</option>
-                                    @foreach ($regency_cities as $item)
-                                        <option value="{{ $item->id }}"
-                                            {{ old('regency_city_id') == $item->id ? 'selected' : '' }}>
-                                            {{ $item->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @error('regency_city_id')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
+                            @if ($type != 'province')
+                                <div class="col-md-6">
+                                    <label for="regency_city_id" class="form-label">Kota Kabupaten</label>
+                                    <select id="regency_city_id"
+                                        class="form-select form-control @error('regency_city_id') is-invalid @enderror"
+                                        name="regency_city_id">
+                                        <option value="" disabled selected>Pilih Item...</option>
+                                        @foreach ($regency_cities as $item)
+                                            <option value="{{ $item->id }}"
+                                                {{ old('regency_city_id') == $item->id ? 'selected' : '' }}>
+                                                {{ $item->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('regency_city_id')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            @endif
 
                             {{-- <div class="col-md-4">
                                 <label for="departement_id" class="form-label">Departement</label>

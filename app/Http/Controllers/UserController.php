@@ -49,11 +49,12 @@ class UserController extends Controller
         return view('user.index');
     }
 
-    public function create(){
+    public function create(Request $request){
+       $type = $request->type;
         $provinces = Province::all();
         $regency_cities = RegencyCity::all();
         $departement = Departement::all();
-        return view('user.add', compact('provinces','regency_cities', 'departement'));
+        return view('user.add', compact('provinces','regency_cities', 'departement', 'type'));
     }
 
 
@@ -66,8 +67,16 @@ class UserController extends Controller
             'role' => 'required|min:5',
             'region' => 'required|min:5',
             'province_id' => 'required',
-            'regency_city_id' => 'required',
         ]);
+        // Tambahkan validasi tambahan jika role bukan "province"
+        if ($request->role !== "province") {
+            $additionalData = $request->validate([
+                'regency_city_id' => 'required',
+            ]);
+
+            // Gabungkan data tambahan dengan data sebelumnya
+            $data = array_merge($data, $additionalData);
+        }
         $data['password'] = Hash::make($request->password);
         User::create($data);
         return redirect('manage-account-'.$request->role)->with('success', 'Data berhasil di tambahkan');
@@ -89,8 +98,12 @@ class UserController extends Controller
             'role' => 'required|min:5',
             'region' => 'required|min:5',
             'province_id' => 'required',
+        ]);
+        if ($request->role !== "province") {
+            $request->validate([
             'regency_city_id' => 'required',
         ]);
+        }
         $user = User::find($id);
         if ($request->password != null) {
             $data['password'] = Hash::make($request->password);

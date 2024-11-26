@@ -39,8 +39,12 @@
                                 </div>
                             @endif
                             {{-- end alert --}}
-
-                            <a href="{{ url('user-create') }}" class="btn btn-info btn-sm mt-3 ml-0"><i
+                            @php
+                                $url = Request::is('manage-account-province')
+                                    ? url('user-create?type=province')
+                                    : url('user-create');
+                            @endphp
+                            <a href="{{ $url }}" class="btn btn-info btn-sm mt-3 ml-0"><i
                                     class="bi bi-plus me-1"></i>
                                 Tambah
                                 user</a>
@@ -56,7 +60,11 @@
                                         <th scope="col">Email</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Role</th>
-                                        <th scope="col">Wilayah</th>
+                                        @if (Request::is('manage-account-province'))
+                                            <!-- Tidak menampilkan kolom Wilayah -->
+                                        @else
+                                            <th scope="col">Wilayah</th>
+                                        @endif
                                         <th scope="col">Nama Provinsi</th>
                                         <th scope="col">Aksi</th>
                                     </tr>
@@ -92,57 +100,78 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            $('#data-table').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: `{{ '${url}' }}`,
-                columnDefs: [{
-                    targets: 0, // Kolom pertama (index 0) 
-                    data: null,
-                    render: function(data, type, row, meta) {
-                        return meta.row + 1; // Nomor urut 
-                    }
-                }],
-                columns: [{
-                        data: 'null',
-                        name: 'id'
-                    },
-                    {
-                        data: 'username',
-                        name: 'username',
 
-                    },
-                    {
-                        data: 'email',
-                        name: 'email'
-                    },
-                    {
-                        data: 'name',
-                        name: 'name'
-                    },
-                    {
-                        data: 'role',
-                        name: 'role'
-                    },
-                    {
-                        data: 'regency_city.name',
-                        name: 'regency_city.name'
-                    },
-                    {
-                        data: 'province.name',
-                        name: 'province.name'
-                    },
-                    {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false,
-                    },
-                ],
-                order: [
-                    [0, 'asc']
-                ]
+            $.ajax({
+                url: `{{ '${url}' }}`,
+                method: 'GET',
+                success: function(response) {
+                    let columns = [{
+                            data: null,
+                            name: 'id',
+                            render: function(data, type, row, meta) {
+                                return meta.row + 1;
+                            }
+                        },
+                        {
+                            data: 'username',
+                            name: 'username'
+                        },
+                        {
+                            data: 'email',
+                            name: 'email'
+                        },
+                        {
+                            data: 'name',
+                            name: 'name'
+                        },
+                        {
+                            data: 'role',
+                            name: 'role'
+                        },
+                        {
+                            data: 'regency_city',
+                            name: 'regency_city',
+                            render: function(data, type, row) {
+                                return row.regency_city ? row.regency_city.name : null;
+                            }
+                        },
+                        {
+                            data: 'province.name',
+                            name: 'province.name'
+                        },
+                        {
+                            data: 'action',
+                            name: 'action',
+                            orderable: false,
+                            searchable: false
+                        },
+                    ];
+
+                    // Periksa apakah data regency_city semuanya null
+                    const isRegencyCityNull = !response.data.some(row => row.regency_city && row
+                        .regency_city.name);
+
+                    // Hapus kolom regency_city jika semua datanya null
+                    if (isRegencyCityNull) {
+                        columns = columns.filter(column => column.name !== 'regency_city');
+                    }
+
+                    // Inisialisasi DataTable dengan kolom yang sudah disesuaikan
+                    $('#data-table').DataTable({
+                        processing: true,
+                        serverSide: true,
+                        data: response.data,
+                        columns: columns,
+                        order: [
+                            [0, 'asc']
+                        ]
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error:', error);
+                }
             });
+
 
 
         });
