@@ -56,8 +56,8 @@
                                         <th scope="col">Email</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Role</th>
-                                        <th scope="col">Nama Provinsi</th>
                                         <th scope="col">Wilayah</th>
+                                        <th scope="col">Nama Provinsi</th>
                                         <th scope="col">Aksi</th>
                                     </tr>
                                 </thead>
@@ -79,6 +79,10 @@
             url = 'manage-account-province';
         } else if (window.location.pathname === '/manage-account-regency') {
             url = 'manage-account-regency';
+        } else if (window.location.pathname === '/manage-account-departement') {
+            url = 'manage-account-departement';
+        } else if (window.location.pathname === '/manage-account-division') {
+            url = 'manage-account-division';
         }
 
         $(document).ready(function() {

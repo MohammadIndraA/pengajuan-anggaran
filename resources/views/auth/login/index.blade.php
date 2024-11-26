@@ -52,12 +52,12 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
-                            <div class="justify-content-center py-4">
-                                <a href="index.html" class="logo d-flex align-items-center w-auto">
-                                    <img src="{{ asset('design/assets/img/kemenag.png') }}" alt="Logo Kemenag"
-                                        style="width: 100%; height: 100%; object-fit: contain;">
+                            <img src="{{ asset('design/assets/img/kemenag.png') }}" alt="Logo Kemenag"
+                                style="width: 20%; height: 20%; object-fit: contain;">
+                            <div class="justify-content-center py-3">
+                                <a href="index.html" class="logo d-flex align-items-center w-auto h-auto">
+                                    <span class="d-none d-lg-block" style="font-size: 20px;">Pengajuan Anggaran</span>
                                 </a>
-                                <span class="d-none d-lg-block">Pengajuan Anggaran</span>
                             </div><!-- End Logo -->
 
                             <div class="card mb-3">

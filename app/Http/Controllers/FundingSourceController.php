@@ -10,7 +10,7 @@ class FundingSourceController extends Controller
     public function index()
 	{
 	    if(request()->ajax()) {
-            $data = FundingSource::query();
+            $data = FundingSource::orderBy('id', 'desc');
 	        return datatables()->of($data)
             ->addIndexColumn()
 			->addColumn('action', function($row) { 

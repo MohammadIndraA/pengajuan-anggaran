@@ -10,7 +10,7 @@ class ActivityController extends Controller
     public function index()
 	{
 	    if(request()->ajax()) {
-            $data = Activity::query();
+            $data = Activity::orderBy('id', 'desc');
 	        return datatables()->of($data)
             ->addIndexColumn()
 			->addColumn('action', function($row) { 

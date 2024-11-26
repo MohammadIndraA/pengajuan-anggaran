@@ -10,7 +10,7 @@ class RoController extends Controller
     public function index()
 	{
 	    if(request()->ajax()) {
-            $data = Ro::query();
+            $data = Ro::orderBy('id', 'desc');
 	        return datatables()->of($data)
             ->addIndexColumn()
 			->addColumn('action', function($row) { 

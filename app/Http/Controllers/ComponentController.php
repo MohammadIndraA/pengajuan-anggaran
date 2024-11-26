@@ -10,7 +10,7 @@ class ComponentController extends Controller
     public function index()
 	{
 	    if(request()->ajax()) {
-            $data = Component::query();
+            $data = Component::orderBy('id', 'desc');
 	        return datatables()->of($data)
             ->addIndexColumn()
 			->addColumn('action', function($row) { 

@@ -10,7 +10,7 @@ class UnitController extends Controller
     public function index()
 	{
 	    if(request()->ajax()) {
-            $data = Unit::query();
+            $data = Unit::orderBy('id', 'desc');
 	        return datatables()->of($data)
             ->addIndexColumn()
 			->addColumn('action', function($row) { 

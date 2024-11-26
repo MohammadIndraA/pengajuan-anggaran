@@ -92,6 +92,8 @@ Route::middleware('auth')->group(function () {
             Route::middleware('role:pusat,departement')->group(function () {
                   // akun departement
                   Route::get('/manage-account-departement', [UserController::class, 'data_show'])->name('manage-account');
+                  // akun divisi
+                  Route::get('/manage-account-division', [UserController::class, 'data_show'])->name('manage-account');
                   // kelola akun province
                      Route::get('/manage-account-province', [UserController::class, 'data_show'])->name('manage-account');
                   // Pengajuan Anggaran departement

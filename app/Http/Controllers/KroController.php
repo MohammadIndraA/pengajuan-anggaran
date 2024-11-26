@@ -10,7 +10,7 @@ class KroController extends Controller
     public function index()
 	{
 	    if(request()->ajax()) {
-            $data = Kro::query();
+            $data = Kro::orderBy('id', 'desc');
 	        return datatables()->of($data)
             ->addIndexColumn()
 			->addColumn('action', function($row) { 

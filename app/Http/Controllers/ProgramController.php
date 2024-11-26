@@ -10,7 +10,7 @@ class ProgramController extends Controller
     public function index()
 	{
 	    if(request()->ajax()) {
-            $data = Program::query();
+            $data = Program::orderBy('id', 'desc');
 	        return datatables()->of($data)
             ->addIndexColumn()
 			->addColumn('action', function($row) { 

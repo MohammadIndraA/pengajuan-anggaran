@@ -13,7 +13,8 @@ use App\Models\RegencyCity;
 use App\Models\Ro;
 use App\Models\Unit;
 use App\Models\User;
-use GuzzleHttp\Promise\Create;
+use Illuminate\Support\Str;
+
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -618,7 +619,7 @@ class DatabaseSeeder extends Seeder
             ]);  
         }  
 
-        $regens = RegencyCity::where('id', 12)->get();
+        $regens = RegencyCity::where('province_id', 12)->get();
 
         foreach ($regens as $regen) {
             User::create([
@@ -627,9 +628,11 @@ class DatabaseSeeder extends Seeder
                 'region' => fake()->address(),
                 'email' => str_replace(' ', '', $regen->name) . '@mail.com',
                 'password' => Hash::make('password'),
+                'email_verified_at' => now(),
                 'role' => 'regency',
                 'province_id' => 12,
                 'regency_city_id' => $regen->id,
+                'remember_token' => Str::random(10),
             ]);
         }
 

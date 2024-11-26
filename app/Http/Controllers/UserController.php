@@ -19,22 +19,22 @@ class UserController extends Controller
             if (Auth::user()->role === "province") {
                 $data = User::with(['province', 'regency_city'])->where('role', "regency")
                             ->where('province_id', Auth::user()->province_id)                
-                            ->get();
+                            ->orderBy('id', 'desc');
             }
             if (Auth::user()->role === "departement") {
                 if($request->is('manage-account-province')) {
-                    $data = User::with(['province', 'regency_city'])->where('role', "province")->get();
+                    $data = User::with(['province', 'regency_city'])->where('role', "province")->orderBy('id', 'desc');
                 }elseif ($request->is('manage-account-regency')) {
-                    $data = User::with(['province', 'regency_city'])->where('role', "regency")->get();
+                    $data = User::with(['province', 'regency_city'])->where('role', "regency")->orderBy('id', 'desc');
                 }
             }
-            if (Auth::user()->role === "admin" || Auth::user()->role === "pusat") {
+            if ( Auth::user()->role === "pusat") {
                 if($request->is('manage-account-province')) {
-                    $data = User::with(['province', 'regency_city'])->where('role', "province")->get();
+                    $data = User::with(['province', 'regency_city'])->where('role', "province")->orderBy('id', 'desc');
                 }elseif ($request->is('manage-account-regency')) {
-                    $data = User::with(['province', 'regency_city'])->where('role', "regency")->get();
+                    $data = User::with(['province', 'regency_city'])->where('role', "regency")->orderBy('id', 'desc');
                 }elseif ($request->is('manage-account-departement')) {
-                    $data = User::with(['province', 'regency_city'])->where('role', "departement")->get();
+                    $data = User::with(['province', 'regency_city'])->where('role', "departement")->orderBy('id', 'desc');
             }
         }
 	        return datatables()->of($data)
@@ -111,13 +111,26 @@ class UserController extends Controller
     public function data_show(Request $request){  
         if(request()->ajax()) {
             if($request->is('manage-account-province')) {
-                $data = User::with(['province', 'regency_city'])->where('role', "province")->get();
+                $data = User::with(['province', 'regency_city'])->where('role', "province")->orderBy('id', 'desc');
+                if (Auth::user()->role === "departement") {
+                    $data = $data->where('province_id', Auth::user()->province_id);
+                }
             } 
             if($request->is('manage-account-regency')) {
-                $data = User::with(['province', 'regency_city'])->where('role', "regency")->get();
+                $data = User::with(['province', 'regency_city'])  
+                ->where('role', 'regency')  
+                ->when(Auth::user()->role !== "pusat", function ($query) {  
+                    $query->whereHas('regency_city', function ($query) {  
+                        $query->where('province_id', Auth::user()->province_id);  
+                    });  
+                }) 
+                ->orderBy('id', 'desc');
             }
             if($request->is('manage-account-departement')) {
-                $data = User::with(['province', 'regency_city'])->where('role', "departement")->get();
+                $data = User::with(['province', 'regency_city'])->where('role', "departement")->orderBy('id', 'desc');
+            }
+            if($request->is('manage-account-division')) {
+                $data = User::with(['province', 'regency_city'])->where('role', "division")->orderBy('id', 'desc');
             }
 	        return datatables()->of($data)
             ->addIndexColumn()

@@ -55,7 +55,8 @@
             <li class="nav-heading">Pages</li>
 
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('user') ? 'active' : 'collapsed' }}" href="/user">
+                <a class="nav-link {{ Request::is('manage-account-regency') ? 'active' : 'collapsed' }}"
+                    href="/manage-account-regency">
                     <i class="bi bi-person-check"></i>
                     <span>Akun Kota/Kab</span>
                 </a>

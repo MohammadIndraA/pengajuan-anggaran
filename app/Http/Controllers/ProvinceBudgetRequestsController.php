@@ -413,11 +413,12 @@ class ProvinceBudgetRequestsController extends Controller
                 $type = 'province';
             }
             if ($request->is('pengajuan-anggaran-departement/regency')) {
-                $query = RegencyBudgetRequest::with(['funding_source', 'regency_city']);
-                // Kondisi untuk pengguna berdasarkan role
-                if (Auth::user()->role !== "pusat") {
-                    $query->where('regency_city_id', Auth::user()->regency_city_id);
-                }
+                $query = RegencyBudgetRequest::with(['funding_source', 'regency_city'])  
+                ->when(Auth::user()->role !== "pusat", function ($query) {  
+                    $query->whereHas('regency_city', function ($query) {  
+                        $query->where('province_id', Auth::user()->province_id);  
+                    });  
+                });
                 // Tambahkan filter berdasarkan parameter request
                 $data = $query->when($request->has('status') && $request->status != "", function ($query) use ($request) {
                         $query->where('status', $request->status);

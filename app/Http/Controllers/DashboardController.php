@@ -193,6 +193,7 @@ class DashboardController extends Controller
             return "\"$item\"";
         }, $name_regency);
         $budget_per_regency[] = RegencyBudgetRequest::where('regency_city_id', $province_regency[$i]->id)
+        ->where('status', 'approved')
         ->whereYear('created_at', Carbon::now()->year)
         ->whereMonth('created_at', Carbon::now()->month)
         ->sum('budget');
@@ -211,8 +212,6 @@ class DashboardController extends Controller
             ->sum('budget');
         $province_budget_departemen_chart[] = $province_budget_departemen;
     }
-
-    // dd($budget_per_regency_str);
    // Return hasil ke view
    return view('dashboard.index', compact('expenditureProvince', 'expenditureRegency', 'expenditureDep','expenditureDivision','amount', 'pengajuan_anggaran','province_budget_chart','regency_budget_chart','departement_budget_chart','division_budget_chart','name_regency_str','budget_per_regency_str','province_budget_departemen_chart'));
     }
