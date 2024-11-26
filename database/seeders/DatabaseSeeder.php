@@ -88,7 +88,7 @@ class DatabaseSeeder extends Seeder
                 'password' => Hash::make($role),  
                 'role' => $role,
                 'province_id' => 9,
-                'regency_city_id' => 291,
+               'regency_city_id' => $role === 'province' ? null : 291,
             ]);  
         }  
 
