@@ -27,559 +27,29 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-                // Province
-    $provinceData = [
-        ['name' => 'Aceh'],
-       ['name' => 'Sumatera Utara'],
-       ['name' => 'Sumatera Barat'],
-       ['name' => 'Riau'],
-       ['name' => 'Jambi'],
-       ['name' => 'Sumatera Selatan'],
-       ['name' => 'Bengkulu'],
-       ['name' => 'Lampung'],
-       ['name' => 'Kepulauan Bangka Belitung'],
-       ['name' => 'Kepulauan Riau'],
-       ['name' => 'Dki Jakarta'],
-       ['name' => 'Jawa Barat'],
-       ['name' => 'Jawa Tengah'],
-       ['name' => 'Di Yogyakarta'],
-       ['name' => 'Jawa Timur'],
-       ['name' => 'Banten'],
-       ['name' => 'Bali'],
-       ['name' => 'Nusa Tenggara Barat'],
-       ['name' => 'Nusa Tenggara Timur'],
-       ['name' => 'Kalimantan Barat'],
-       ['name' => 'Kalimantan Tengah'],
-       ['name' => 'Kalimantan Selatan'],
-       ['name' => 'Kalimantan Timur'],
-       ['name' => 'Kalimantan Utara'],
-       ['name' => 'Sulawesi Utara'],
-       ['name' => 'Sulawesi Tengah'],
-       ['name' => 'Sulawesi Selatan'],
-       ['name' => 'Sulawesi Tenggara'],
-       ['name' => 'Gorontalo'],
-       ['name' => 'Sulawesi Barat'],
-       ['name' => 'Maluku'],
-       ['name' => 'Maluku Utara'],
-       ['name' => 'Papua Barat'],
-       ['name' => 'Papua Barat Daya'],
-       ['name' => 'Papua Selatan'],
-       ['name' => 'Papua Tengah'],
-       ['name' => 'Papua Pegunungan'],
-       ['name' => 'Papua'] 
-   ];
-       // Iterasi untuk membuat data
-       foreach ($provinceData as $pc) {
-           Province::create($pc);
-       }
-
-        // Regency
-        $regencyData = [
-            ['name' =>"Kab. Simeulue", 'province_id' => 1],
-            ['name' =>"Kab. Aceh Singkil", 'province_id' => 1],
-            ['name' =>"Kab. Aceh Selatan", 'province_id' => 1],
-            ['name' =>"Kab. Aceh Tenggara", 'province_id' => 1],
-            ['name' =>"Kab. Aceh Timur", 'province_id' => 1],
-            ['name' =>"Kab. Aceh Tengah", 'province_id' => 1],
-            ['name' =>"Kab. Aceh Barat", 'province_id' => 1],
-            ['name' =>"Kab. Aceh Besar", 'province_id' => 1],
-            ['name' =>"Kab. Pidie", 'province_id' => 1],
-            ['name' =>"Kab. Bireuen", 'province_id' => 1],
-            ['name' =>"Kab. Aceh Utara", 'province_id' => 1],
-            ['name' =>"Kab. Aceh Barat Daya", 'province_id' => 1],
-            ['name' =>"Kab. Gayo Lues", 'province_id' => 1],
-            ['name' =>"Kab. Aceh Tamiang", 'province_id' => 1],
-            ['name' =>"Kab. Nagan Raya", 'province_id' => 1],
-            ['name' =>"Kab. Aceh Jaya", 'province_id' => 1],
-            ['name' =>"Kab. Bener Meriah", 'province_id' => 1],
-            ['name' =>"Kab. Pidie Jaya", 'province_id' => 1],
-            ['name' =>"Kota Banda Aceh", 'province_id' => 1],
-            ['name' =>"Kota Sabang", 'province_id' => 1],
-            ['name' =>"Kota Langsa", 'province_id' => 1],
-            ['name' =>"Kota Lhokseumawe", 'province_id' => 1],
-            ['name' =>"Kota Subulussalam", 'province_id' => 1],
-            ['name' =>"Kab. Nias", 'province_id' => 2],
-            ['name' =>"Kab. Mandailing Natal", 'province_id' => 2],
-            ['name' =>"Kab. Tapanuli Selatan", 'province_id' => 2],
-            ['name' =>"Kab. Tapanuli Tengah", 'province_id' => 2],
-            ['name' =>"Kab. Tapanuli Utara", 'province_id' => 2],
-            ['name' =>"Kab. Toba Samosir", 'province_id' => 2],
-            ['name' =>"Kab. Labuhan Batu", 'province_id' => 2],
-            ['name' =>"Kab. Asahan", 'province_id' => 2],
-            ['name' =>"Kab. Simalungun", 'province_id' => 2],
-            ['name' =>"Kab. Dairi", 'province_id' => 2],
-            ['name' =>"Kab. Karo", 'province_id' => 2],
-            ['name' =>"Kab. Deli Serdang", 'province_id' => 2],
-            ['name' =>"Kab. Langkat", 'province_id' => 2],
-            ['name' =>"Kab. Nias Selatan", 'province_id' => 2],
-            ['name' =>"Kab. Humbang Hasundutan", 'province_id' => 2],
-            ['name' =>"Kab. Pakpak Bharat", 'province_id' => 2],
-            ['name' =>"Kab. Samosir", 'province_id' => 2],
-            ['name' =>"Kab. Serdang Bedagai", 'province_id' => 2],
-            ['name' =>"Kab. Batu Bara", 'province_id' => 2],
-            ['name' =>"Kab. Padang Lawas Utara", 'province_id' => 2],
-            ['name' =>"Kab. Padang Lawas", 'province_id' => 2],
-            ['name' =>"Kab. Labuhan Batu Selatan", 'province_id' => 2],
-            ['name' =>"Kab. Labuhan Batu Utara", 'province_id' => 2],
-            ['name' =>"Kab. Nias Utara", 'province_id' => 2],
-            ['name' =>"Kab. Nias Barat", 'province_id' => 2],
-            ['name' =>"Kota Sibolga", 'province_id' => 2],
-            ['name' =>"Kota Tanjung Balai", 'province_id' => 2],
-            ['name' =>"Kota Pematang Siantar", 'province_id' => 2],
-            ['name' =>"Kota Tebing Tinggi", 'province_id' => 2],
-            ['name' =>"Kota Medan", 'province_id' => 2],
-            ['name' =>"Kota Binjai", 'province_id' => 2],
-            ['name' =>"Kota Padangsidimpuan", 'province_id' => 2],
-            ['name' =>"Kota Gunungsitoli", 'province_id' => 2],
-            ['name' =>"Kab. Kepulauan Mentawai", 'province_id' => 3],
-            ['name' =>"Kab. Pesisir Selatan", 'province_id' => 3],
-            ['name' =>"Kab. Solok", 'province_id' => 3],
-            ['name' =>"Kab. Sijunjung", 'province_id' => 3],
-            ['name' =>"Kab. Tanah Datar", 'province_id' => 3],
-            ['name' =>"Kab. Padang Pariaman", 'province_id' => 3],
-            ['name' =>"Kab. Agam", 'province_id' => 3],
-            ['name' =>"Kab. Lima Puluh Kota", 'province_id' => 3],
-            ['name' =>"Kab. Pasaman", 'province_id' => 3],
-            ['name' =>"Kab. Solok Selatan", 'province_id' => 3],
-            ['name' =>"Kab. Dharmasraya", 'province_id' => 3],
-            ['name' =>"Kab. Pasaman Barat", 'province_id' => 3],
-            ['name' =>"Kota Padang", 'province_id' => 3],
-            ['name' =>"Kota Solok", 'province_id' => 3],
-            ['name' =>"Kota Sawah Lunto", 'province_id' => 3],
-            ['name' =>"Kota Padang Panjang", 'province_id' => 3],
-            ['name' =>"Kota Bukittinggi", 'province_id' => 3],
-            ['name' =>"Kota Payakumbuh", 'province_id' => 3],
-            ['name' =>"Kota Pariaman", 'province_id' => 3],
-            ['name' =>"Kab. Kuantan Singingi", 'province_id' => 4],
-            ['name' =>"Kab. Indragiri Hulu", 'province_id' => 4],
-            ['name' =>"Kab. Indragiri Hilir", 'province_id' => 4],
-            ['name' =>"Kab. Pelalawan", 'province_id' => 4],
-            ['name' =>"Kab. S I A K", 'province_id' => 4],
-            ['name' =>"Kab. Kampar", 'province_id' => 4],
-            ['name' =>"Kab. Rokan Hulu", 'province_id' => 4],
-            ['name' =>"Kab. Bengkalis", 'province_id' => 4],
-            ['name' =>"Kab. Rokan Hilir", 'province_id' => 4],
-            ['name' =>"Kab. Kepulauan Meranti", 'province_id' => 4],
-            ['name' =>"Kota Pekanbaru", 'province_id' => 4],
-            ['name' =>"Kota D U M A I", 'province_id' => 4],
-            ['name' =>"Kab. Kerinci", 'province_id' => 5],
-            ['name' =>"Kab. Merangin", 'province_id' => 5],
-            ['name' =>"Kab. Sarolangun", 'province_id' => 5],
-            ['name' =>"Kab. Batang Hari", 'province_id' => 5],
-            ['name' =>"Kab. Muaro Jambi", 'province_id' => 5],
-            ['name' =>"Kab. Tanjung Jabung Timur", 'province_id' => 5],
-            ['name' =>"Kab. Tanjung Jabung Barat", 'province_id' => 5],
-            ['name' =>"Kab. Tebo", 'province_id' => 5],
-            ['name' =>"Kab. Bungo", 'province_id' => 5],
-            ['name' =>"Kota Jambi", 'province_id' => 5],
-            ['name' =>"Kota Sungai Penuh", 'province_id' => 5],
-            ['name' =>"Kab. Ogan Komering Ulu", 'province_id' => 6],
-            ['name' =>"Kab. Ogan Komering Ilir", 'province_id' => 6],
-            ['name' =>"Kab. Muara Enim", 'province_id' => 6],
-            ['name' =>"Kab. Lahat", 'province_id' => 6],
-            ['name' =>"Kab. Musi Rawas", 'province_id' => 6],
-            ['name' =>"Kab. Musi Banyuasin", 'province_id' => 6],
-            ['name' =>"Kab. Banyu Asin", 'province_id' => 6],
-            ['name' =>"Kab. Ogan Komering Ulu Selatan", 'province_id' => 6],
-            ['name' =>"Kab. Ogan Komering Ulu Timur", 'province_id' => 6],
-            ['name' =>"Kab. Ogan Ilir", 'province_id' => 6],
-            ['name' =>"Kab. Empat Lawang", 'province_id' => 6],
-            ['name' =>"Kota Palembang", 'province_id' => 6],
-            ['name' =>"Kota Prabumulih", 'province_id' => 6],
-            ['name' =>"Kota Pagar Alam", 'province_id' => 6],
-            ['name' =>"Kota Lubuklinggau", 'province_id' => 6],
-            ['name' =>"Kab. Bengkulu Selatan", 'province_id' => 7],
-            ['name' =>"Kab. Rejang Lebong", 'province_id' => 7],
-            ['name' =>"Kab. Bengkulu Utara", 'province_id' => 7],
-            ['name' =>"Kab. Kaur", 'province_id' => 7],
-            ['name' =>"Kab. Seluma", 'province_id' => 7],
-            ['name' =>"Kab. Mukomuko", 'province_id' => 7],
-            ['name' =>"Kab. Lebong", 'province_id' => 7],
-            ['name' =>"Kab. Kepahiang", 'province_id' => 7],
-            ['name' =>"Kab. Bengkulu Tengah", 'province_id' => 7],
-            ['name' =>"Kota Bengkulu", 'province_id' => 7],
-            ['name' =>"Kab. Lampung Barat", 'province_id' => 8],
-            ['name' =>"Kab. Tanggamus", 'province_id' => 8],
-            ['name' =>"Kab. Lampung Selatan", 'province_id' => 8],
-            ['name' =>"Kab. Lampung Timur", 'province_id' => 8],
-            ['name' =>"Kab. Lampung Tengah", 'province_id' => 8],
-            ['name' =>"Kab. Lampung Utara", 'province_id' => 8],
-            ['name' =>"Kab. Way Kanan", 'province_id' => 8],
-            ['name' =>"Kab. Tulangbawang", 'province_id' => 8],
-            ['name' =>"Kab. Pesawaran", 'province_id' => 8],
-            ['name' =>"Kab. Pringsewu", 'province_id' => 8],
-            ['name' =>"Kab. Mesuji", 'province_id' => 8],
-            ['name' =>"Kab. Tulang Bawang Barat", 'province_id' => 8],
-            ['name' =>"Kab. Pesisir Barat", 'province_id' => 8],
-            ['name' =>"Kota Bandar Lampung", 'province_id' => 8],
-            ['name' =>"Kota Metro", 'province_id' => 8],
-            ['name' =>"Kab. Bangka", 'province_id' => 9],
-            ['name' =>"Kab. Belitung", 'province_id' => 9],
-            ['name' =>"Kab. Bangka Barat", 'province_id' => 9],
-            ['name' =>"Kab. Bangka Tengah", 'province_id' => 9],
-            ['name' =>"Kab. Bangka Selatan", 'province_id' => 9],
-            ['name' =>"Kab. Belitung Timur", 'province_id' => 9],
-            ['name' =>"Kota Pangkal Pinang", 'province_id' => 9],
-            ['name' =>"Kab. Karimun", 'province_id' => 10],
-            ['name' =>"Kab. Bintan", 'province_id' => 10],
-            ['name' =>"Kab. Natuna", 'province_id' => 10],
-            ['name' =>"Kab. Lingga", 'province_id' => 10],
-            ['name' =>"Kab. Kepulauan Anambas", 'province_id' => 10],
-            ['name' =>"Kota B A T A M", 'province_id' => 10],
-            ['name' =>"Kota Tanjung Pinang", 'province_id' => 10],
-            ['name' =>"Kab. Kepulauan Seribu", 'province_id' => 11],
-            ['name' =>"Kota Jakarta Selatan", 'province_id' => 11],
-            ['name' =>"Kota Jakarta Timur", 'province_id' => 11],
-            ['name' =>"Kota Jakarta Pusat", 'province_id' => 11],
-            ['name' =>"Kota Jakarta Barat", 'province_id' => 11],
-            ['name' =>"Kota Jakarta Utara", 'province_id' => 11],
-            ['name' =>"Kab. Bogor", 'province_id' => 12],
-            ['name' =>"Kab. Sukabumi", 'province_id' => 12],
-            ['name' =>"Kab. Cianjur", 'province_id' => 12],
-            ['name' =>"Kab. Bandung", 'province_id' => 12],
-            ['name' =>"Kab. Garut", 'province_id' => 12],
-            ['name' =>"Kab. Tasikmalaya", 'province_id' => 12],
-            ['name' =>"Kab. Ciamis", 'province_id' => 12],
-            ['name' =>"Kab. Kuningan", 'province_id' => 12],
-            ['name' =>"Kab. Cirebon", 'province_id' => 12],
-            ['name' =>"Kab. Majalengka", 'province_id' => 12],
-            ['name' =>"Kab. Sumedang", 'province_id' => 12],
-            ['name' =>"Kab. Indramayu", 'province_id' => 12],
-            ['name' =>"Kab. Subang", 'province_id' => 12],
-            ['name' =>"Kab. Purwakarta", 'province_id' => 12],
-            ['name' =>"Kab. Karawang", 'province_id' => 12],
-            ['name' =>"Kab. Bekasi", 'province_id' => 12],
-            ['name' =>"Kab. Bandung Barat", 'province_id' => 12],
-            ['name' =>"Kab. Pangandaran", 'province_id' => 12],
-            ['name' =>"Kota Bogor", 'province_id' => 12],
-            ['name' =>"Kota Sukabumi", 'province_id' => 12],
-            ['name' =>"Kota Bandung", 'province_id' => 12],
-            ['name' =>"Kota Cirebon", 'province_id' => 12],
-            ['name' =>"Kota Bekasi", 'province_id' => 12],
-            ['name' =>"Kota Depok", 'province_id' => 12],
-            ['name' =>"Kota Cimahi", 'province_id' => 12],
-            ['name' =>"Kota Tasikmalaya", 'province_id' => 12],
-            ['name' =>"Kota Banjar", 'province_id' => 12],
-            ['name' =>"Kab. Cilacap", 'province_id' => 13],
-            ['name' =>"Kab. Banyumas", 'province_id' => 13],
-            ['name' =>"Kab. Purbalingga", 'province_id' => 13],
-            ['name' =>"Kab. Banjarnegara", 'province_id' => 13],
-            ['name' =>"Kab. Kebumen", 'province_id' => 13],
-            ['name' =>"Kab. Purworejo", 'province_id' => 13],
-            ['name' =>"Kab. Wonosobo", 'province_id' => 13],
-            ['name' =>"Kab. Magelang", 'province_id' => 13],
-            ['name' =>"Kab. Boyolali", 'province_id' => 13],
-            ['name' =>"Kab. Klaten", 'province_id' => 13],
-            ['name' =>"Kab. Sukoharjo", 'province_id' => 13],
-            ['name' =>"Kab. Wonogiri", 'province_id' => 13],
-            ['name' =>"Kab. Karanganyar", 'province_id' => 13],
-            ['name' =>"Kab. Sragen", 'province_id' => 13],
-            ['name' =>"Kab. Grobogan", 'province_id' => 13],
-            ['name' =>"Kab. Blora", 'province_id' => 13],
-            ['name' =>"Kab. Rembang", 'province_id' => 13],
-            ['name' =>"Kab. Pati", 'province_id' => 13],
-            ['name' =>"Kab. Kudus", 'province_id' => 13],
-            ['name' =>"Kab. Jepara", 'province_id' => 13],
-            ['name' =>"Kab. Demak", 'province_id' => 13],
-            ['name' =>"Kab. Semarang", 'province_id' => 13],
-            ['name' =>"Kab. Temanggung", 'province_id' => 13],
-            ['name' =>"Kab. Kendal", 'province_id' => 13],
-            ['name' =>"Kab. Batang", 'province_id' => 13],
-            ['name' =>"Kab. Pekalongan", 'province_id' => 13],
-            ['name' =>"Kab. Pemalang", 'province_id' => 13],
-            ['name' =>"Kab. Tegal", 'province_id' => 13],
-            ['name' =>"Kab. Brebes", 'province_id' => 13],
-            ['name' =>"Kota Magelang", 'province_id' => 13],
-            ['name' =>"Kota Surakarta", 'province_id' => 13],
-            ['name' =>"Kota Salatiga", 'province_id' => 13],
-            ['name' =>"Kota Semarang", 'province_id' => 13],
-            ['name' =>"Kota Pekalongan", 'province_id' => 13],
-            ['name' =>"Kota Tegal", 'province_id' => 13],
-            ['name' =>"Kab. Kulon Progo", 'province_id' => 14],
-            ['name' =>"Kab. Bantul", 'province_id' => 14],
-            ['name' =>"Kab. Gunung Kidul", 'province_id' => 14],
-            ['name' =>"Kab. Sleman", 'province_id' => 14],
-            ['name' =>"Kota Yogyakarta", 'province_id' => 14],
-            ['name' =>"Kab. Pacitan", 'province_id' => 15],
-            ['name' =>"Kab. Ponorogo", 'province_id' => 15],
-            ['name' =>"Kab. Trenggalek", 'province_id' => 15],
-            ['name' =>"Kab. Tulungagung", 'province_id' => 15],
-            ['name' =>"Kab. Blitar", 'province_id' => 15],
-            ['name' =>"Kab. Kediri", 'province_id' => 15],
-            ['name' =>"Kab. Malang", 'province_id' => 15],
-            ['name' =>"Kab. Lumajang", 'province_id' => 15],
-            ['name' =>"Kab. Jember", 'province_id' => 15],
-            ['name' =>"Kab. Banyuwangi", 'province_id' => 15],
-            ['name' =>"Kab. Bondowoso", 'province_id' => 15],
-            ['name' =>"Kab. Situbondo", 'province_id' => 15],
-            ['name' =>"Kab. Probolinggo", 'province_id' => 15],
-            ['name' =>"Kab. Pasuruan", 'province_id' => 15],
-            ['name' =>"Kab. Sidoarjo", 'province_id' => 15],
-            ['name' =>"Kab. Mojokerto", 'province_id' => 15],
-            ['name' =>"Kab. Jombang", 'province_id' => 15],
-            ['name' =>"Kab. Nganjuk", 'province_id' => 15],
-            ['name' =>"Kab. Madiun", 'province_id' => 15],
-            ['name' =>"Kab. Magetan", 'province_id' => 15],
-            ['name' =>"Kab. Ngawi", 'province_id' => 15],
-            ['name' =>"Kab. Bojonegoro", 'province_id' => 15],
-            ['name' =>"Kab. Tuban", 'province_id' => 15],
-            ['name' =>"Kab. Lamongan", 'province_id' => 15],
-            ['name' =>"Kab. Gresik", 'province_id' => 15],
-            ['name' =>"Kab. Bangkalan", 'province_id' => 15],
-            ['name' =>"Kab. Sampang", 'province_id' => 15],
-            ['name' =>"Kab. Pamekasan", 'province_id' => 15],
-            ['name' =>"Kab. Sumenep", 'province_id' => 15],
-            ['name' =>"Kota Kediri", 'province_id' => 15],
-            ['name' =>"Kota Blitar", 'province_id' => 15],
-            ['name' =>"Kota Malang", 'province_id' => 15],
-            ['name' =>"Kota Probolinggo", 'province_id' => 15],
-            ['name' =>"Kota Pasuruan", 'province_id' => 15],
-            ['name' =>"Kota Mojokerto", 'province_id' => 15],
-            ['name' =>"Kota Madiun", 'province_id' => 15],
-            ['name' =>"Kota Surabaya", 'province_id' => 15],
-            ['name' =>"Kota Batu", 'province_id' => 15],
-            ['name' =>"Kab. Pandeglang", 'province_id' => 16],
-            ['name' =>"Kab. Lebak", 'province_id' => 16],
-            ['name' =>"Kab. Tangerang", 'province_id' => 16],
-            ['name' =>"Kab. Serang", 'province_id' => 16],
-            ['name' =>"Kota Tangerang", 'province_id' => 16],
-            ['name' =>"Kota Cilegon", 'province_id' => 16],
-            ['name' =>"Kota Serang", 'province_id' => 16],
-            ['name' =>"Kota Tangerang Selatan", 'province_id' => 16],
-            ['name' =>"Kab. Jembrana", 'province_id' => 17],
-            ['name' =>"Kab. Tabanan", 'province_id' => 17],
-            ['name' =>"Kab. Badung", 'province_id' => 17],
-            ['name' =>"Kab. Gianyar", 'province_id' => 17],
-            ['name' =>"Kab. Klungkung", 'province_id' => 17],
-            ['name' =>"Kab. Bangli", 'province_id' => 17],
-            ['name' =>"Kab. Karang Asem", 'province_id' => 17],
-            ['name' =>"Kab. Buleleng", 'province_id' => 17],
-            ['name' =>"Kota Denpasar", 'province_id' => 17],
-            ['name' =>"Kab. Lombok Barat", 'province_id' => 18],
-            ['name' =>"Kab. Lombok Tengah", 'province_id' => 18],
-            ['name' =>"Kab. Lombok Timur", 'province_id' => 18],
-            ['name' =>"Kab. Sumbawa", 'province_id' => 18],
-            ['name' =>"Kab. Dompu", 'province_id' => 18],
-            ['name' =>"Kab. Bima", 'province_id' => 18],
-            ['name' =>"Kab. Sumbawa Barat", 'province_id' => 18],
-            ['name' =>"Kab. Lombok Utara", 'province_id' => 18],
-            ['name' =>"Kota Mataram", 'province_id' => 18],
-            ['name' =>"Kota Bima", 'province_id' => 18],
-            ['name' =>"Kab. Sumba Barat", 'province_id' => 19],
-            ['name' =>"Kab. Sumba Timur", 'province_id' => 19],
-            ['name' =>"Kab. Kupang", 'province_id' => 19],
-            ['name' =>"Kab. Timor Tengah Selatan", 'province_id' => 19],
-            ['name' =>"Kab. Timor Tengah Utara", 'province_id' => 19],
-            ['name' =>"Kab. Belu", 'province_id' => 19],
-            ['name' =>"Kab. Alor", 'province_id' => 19],
-            ['name' =>"Kab. Lembata", 'province_id' => 19],
-            ['name' =>"Kab. Flores Timur", 'province_id' => 19],
-            ['name' =>"Kab. Sikka", 'province_id' => 19],
-            ['name' =>"Kab. Ende", 'province_id' => 19],
-            ['name' =>"Kab. Ngada", 'province_id' => 19],
-            ['name' =>"Kab. Manggarai", 'province_id' => 19],
-            ['name' =>"Kab. Rote Ndao", 'province_id' => 19],
-            ['name' =>"Kab. Manggarai Barat", 'province_id' => 19],
-            ['name' =>"Kab. Sumba Tengah", 'province_id' => 19],
-            ['name' =>"Kab. Sumba Barat Daya", 'province_id' => 19],
-            ['name' =>"Kab. Nagekeo", 'province_id' => 19],
-            ['name' =>"Kab. Manggarai Timur", 'province_id' => 19],
-            ['name' =>"Kab. Sabu Raijua", 'province_id' => 19],
-            ['name' =>"Kota Kupang", 'province_id' => 19],
-            ['name' =>"Kab. Sambas", 'province_id' => 20],
-            ['name' =>"Kab. Bengkayang", 'province_id' => 20],
-            ['name' =>"Kab. Landak", 'province_id' => 20],
-            ['name' =>"Kab. Pontianak", 'province_id' => 20],
-            ['name' =>"Kab. Sanggau", 'province_id' => 20],
-            ['name' =>"Kab. Ketapang", 'province_id' => 20],
-            ['name' =>"Kab. Sintang", 'province_id' => 20],
-            ['name' =>"Kab. Kapuas Hulu", 'province_id' => 20],
-            ['name' =>"Kab. Sekadau", 'province_id' => 20],
-            ['name' =>"Kab. Melawi", 'province_id' => 20],
-            ['name' =>"Kab. Kayong Utara", 'province_id' => 20],
-            ['name' =>"Kab. Kubu Raya", 'province_id' => 20],
-            ['name' =>"Kota Pontianak", 'province_id' => 20],
-            ['name' =>"Kota Singkawang", 'province_id' => 20],
-            ['name' =>"Kab. Kotawaringin Barat", 'province_id' => 21],
-            ['name' =>"Kab. Kotawaringin Timur", 'province_id' => 21],
-            ['name' =>"Kab. Kapuas", 'province_id' => 21],
-            ['name' =>"Kab. Barito Selatan", 'province_id' => 21],
-            ['name' =>"Kab. Barito Utara", 'province_id' => 21],
-            ['name' =>"Kab. Sukamara", 'province_id' => 21],
-            ['name' =>"Kab. Lamandau", 'province_id' => 21],
-            ['name' =>"Kab. Seruyan", 'province_id' => 21],
-            ['name' =>"Kab. Katingan", 'province_id' => 21],
-            ['name' =>"Kab. Pulang Pisau", 'province_id' => 21],
-            ['name' =>"Kab. Gunung Mas", 'province_id' => 21],
-            ['name' =>"Kab. Barito Timur", 'province_id' => 21],
-            ['name' =>"Kab. Murung Raya", 'province_id' => 21],
-            ['name' =>"Kota Palangka Raya", 'province_id' => 21],
-            ['name' =>"Kab. Tanah Laut", 'province_id' => 22],
-            ['name' =>"Kab. Kota Baru", 'province_id' => 22],
-            ['name' =>"Kab. Banjar", 'province_id' => 22],
-            ['name' =>"Kab. Barito Kuala", 'province_id' => 22],
-            ['name' =>"Kab. Tapin", 'province_id' => 22],
-            ['name' =>"Kab. Hulu Sungai Selatan", 'province_id' => 22],
-            ['name' =>"Kab. Hulu Sungai Tengah", 'province_id' => 22],
-            ['name' =>"Kab. Hulu Sungai Utara", 'province_id' => 22],
-            ['name' =>"Kab. Tabalong", 'province_id' => 22],
-            ['name' =>"Kab. Tanah Bumbu", 'province_id' => 22],
-            ['name' =>"Kab. Balangan", 'province_id' => 22],
-            ['name' =>"Kota Banjarmasin", 'province_id' => 22],
-            ['name' =>"Kota Banjar Baru", 'province_id' => 22],
-            ['name' =>"Kab. Paser", 'province_id' => 23],
-            ['name' =>"Kab. Kutai Barat", 'province_id' => 23],
-            ['name' =>"Kab. Kutai Kartanegara", 'province_id' => 23],
-            ['name' =>"Kab. Kutai Timur", 'province_id' => 23],
-            ['name' =>"Kab. Berau", 'province_id' => 23],
-            ['name' =>"Kab. Penajam Paser Utara", 'province_id' => 23],
-            ['name' =>"Kota Balikpapan", 'province_id' => 23],
-            ['name' =>"Kota Samarinda", 'province_id' => 23],
-            ['name' =>"Kota Bontang", 'province_id' => 23],
-            ['name' =>"Kab. Malinau", 'province_id' => 24],
-            ['name' =>"Kab. Bulungan", 'province_id' => 24],
-            ['name' =>"Kab. Tana Tidung", 'province_id' => 24],
-            ['name' =>"Kab. Nunukan", 'province_id' => 24],
-            ['name' =>"Kota Tarakan", 'province_id' => 24],
-            ['name' =>"Kab. Bolaang Mongondow", 'province_id' => 25],
-            ['name' =>"Kab. Minahasa", 'province_id' => 25],
-            ['name' =>"Kab. Kepulauan Sangihe", 'province_id' => 25],
-            ['name' =>"Kab. Kepulauan Talaud", 'province_id' => 25],
-            ['name' =>"Kab. Minahasa Selatan", 'province_id' => 25],
-            ['name' =>"Kab. Minahasa Utara", 'province_id' => 25],
-            ['name' =>"Kab. Bolaang Mongondow Utara", 'province_id' => 25],
-            ['name' =>"Kab. Siau Tagulandang Biaro", 'province_id' => 25],
-            ['name' =>"Kab. Minahasa Tenggara", 'province_id' => 25],
-            ['name' =>"Kab. Bolaang Mongondow Selatan", 'province_id' => 25],
-            ['name' =>"Kab. Bolaang Mongondow Timur", 'province_id' => 25],
-            ['name' =>"Kota Manado", 'province_id' => 25],
-            ['name' =>"Kota Bitung", 'province_id' => 25],
-            ['name' =>"Kota Tomohon", 'province_id' => 25],
-            ['name' =>"Kota Kotamobagu", 'province_id' => 25],
-            ['name' =>"Kab. Banggai Kepulauan", 'province_id' => 26],
-            ['name' =>"Kab. Banggai", 'province_id' => 26],
-            ['name' =>"Kab. Morowali", 'province_id' => 26],
-            ['name' =>"Kab. Poso", 'province_id' => 26],
-            ['name' =>"Kab. Donggala", 'province_id' => 26],
-            ['name' =>"Kab. Toli-toli", 'province_id' => 26],
-            ['name' =>"Kab. Buol", 'province_id' => 26],
-            ['name' =>"Kab. Parigi Moutong", 'province_id' => 26],
-            ['name' =>"Kab. Tojo Una-una", 'province_id' => 26],
-            ['name' =>"Kab. Sigi", 'province_id' => 26],
-            ['name' =>"Kota Palu", 'province_id' => 26],
-            ['name' =>"Kab. Kepulauan Selayar", 'province_id' => 27],
-            ['name' =>"Kab. Bulukumba", 'province_id' => 27],
-            ['name' =>"Kab. Bantaeng", 'province_id' => 27],
-            ['name' =>"Kab. Jeneponto", 'province_id' => 27],
-            ['name' =>"Kab. Takalar", 'province_id' => 27],
-            ['name' =>"Kab. Gowa", 'province_id' => 27],
-            ['name' =>"Kab. Sinjai", 'province_id' => 27],
-            ['name' =>"Kab. Maros", 'province_id' => 27],
-            ['name' =>"Kab. Pangkajene Dan Kepulauan", 'province_id' => 27],
-            ['name' =>"Kab. Barru", 'province_id' => 27],
-            ['name' =>"Kab. Bone", 'province_id' => 27],
-            ['name' =>"Kab. Soppeng", 'province_id' => 27],
-            ['name' =>"Kab. Wajo", 'province_id' => 27],
-            ['name' =>"Kab. Sidenreng Rappang", 'province_id' => 27],
-            ['name' =>"Kab. Pinrang", 'province_id' => 27],
-            ['name' =>"Kab. Enrekang", 'province_id' => 27],
-            ['name' =>"Kab. Luwu", 'province_id' => 27],
-            ['name' =>"Kab. Tana Toraja", 'province_id' => 27],
-            ['name' =>"Kab. Luwu Utara", 'province_id' => 27],
-            ['name' =>"Kab. Luwu Timur", 'province_id' => 27],
-            ['name' =>"Kab. Toraja Utara", 'province_id' => 27],
-            ['name' =>"Kota Makassar", 'province_id' => 27],
-            ['name' =>"Kota Parepare", 'province_id' => 27],
-            ['name' =>"Kota Palopo", 'province_id' => 27],
-            ['name' =>"Kab. Buton", 'province_id' => 28],
-            ['name' =>"Kab. Muna", 'province_id' => 28],
-            ['name' =>"Kab. Konawe", 'province_id' => 28],
-            ['name' =>"Kab. Kolaka", 'province_id' => 28],
-            ['name' =>"Kab. Konawe Selatan", 'province_id' => 28],
-            ['name' =>"Kab. Bombana", 'province_id' => 28],
-            ['name' =>"Kab. Wakatobi", 'province_id' => 28],
-            ['name' =>"Kab. Kolaka Utara", 'province_id' => 28],
-            ['name' =>"Kab. Buton Utara", 'province_id' => 28],
-            ['name' =>"Kab. Konawe Utara", 'province_id' => 28],
-            ['name' =>"Kota Kendari", 'province_id' => 28],
-            ['name' =>"Kota Baubau", 'province_id' => 28],
-            ['name' =>"Kab. Boalemo", 'province_id' => 29],
-            ['name' =>"Kab. Gorontalo", 'province_id' => 29],
-            ['name' =>"Kab. Pohuwato", 'province_id' => 29],
-            ['name' =>"Kab. Bone Bolango", 'province_id' => 29],
-            ['name' =>"Kab. Gorontalo Utara", 'province_id' => 29],
-            ['name' =>"Kota Gorontalo", 'province_id' => 29],
-            ['name' =>"Kab. Majene", 'province_id' => 30],
-            ['name' =>"Kab. Polewali Mandar", 'province_id' => 30],
-            ['name' =>"Kab. Mamasa", 'province_id' => 30],
-            ['name' =>"Kab. Mamuju", 'province_id' => 30],
-            ['name' =>"Kab. Mamuju Utara", 'province_id' => 30],
-            ['name' =>"Kab. Maluku Tenggara Barat", 'province_id' => 31],
-            ['name' =>"Kab. Maluku Tenggara", 'province_id' => 31],
-            ['name' =>"Kab. Maluku Tengah", 'province_id' => 31],
-            ['name' =>"Kab. Buru", 'province_id' => 31],
-            ['name' =>"Kab. Kepulauan Aru", 'province_id' => 31],
-            ['name' =>"Kab. Seram Bagian Barat", 'province_id' => 31],
-            ['name' =>"Kab. Seram Bagian Timur", 'province_id' => 31],
-            ['name' =>"Kab. Maluku Barat Daya",'province_id' => 31],
-            ['name' =>"Kab. Buru Selatan",'province_id' => 31],
-            ['name' =>"Kota Ambon",'province_id' => 31],
-            ['name' =>"Kota Tual",'province_id' => 31],
-            ['name' =>"Kab. Halmahera Barat",'province_id' => 32],
-            ['name' =>"Kab. Halmahera Tengah",'province_id' => 32],
-            ['name' =>"Kab. Kepulauan Sula",'province_id' => 32],
-            ['name' =>"Kab. Halmahera Selatan",'province_id' => 32],
-            ['name' =>"Kab. Halmahera Utara",'province_id' => 32],
-            ['name' =>"Kab. Halmahera Timur",'province_id' => 32],
-            ['name' =>"Kab. Pulau Morotai",'province_id' => 32],
-            ['name' =>"Kota Ternate",'province_id' => 32],
-            ['name' =>"Kota Tidore Kepulauan",'province_id' => 32],
-            ['name' =>"Kab. Fakfak",'province_id' => 33],
-            ['name' =>"Kab. Kaimana",'province_id' => 33],
-            ['name' =>"Kab. Teluk Wondama",'province_id' => 33],
-            ['name' =>"Kab. Teluk Bintuni",'province_id' => 33],
-            ['name' =>"Kab. Manokwari",'province_id' => 33],
-            ['name' =>"Kab. Sorong Selatan",'province_id' => 33],
-            ['name' =>"Kab. Sorong",'province_id' => 33],
-            ['name' =>"Kab. Raja Ampat",'province_id' => 33],
-            ['name' =>"Kab. Tambrauw",'province_id' => 33],
-            ['name' =>"Kab. Maybrat",'province_id' => 33],
-            ['name' =>"Kota Sorong",'province_id' => 33],
-            ['name' =>"Kab. Merauke",'province_id' => 34],
-            ['name' =>"Kab. Jayawijaya",'province_id' => 34],
-            ['name' =>"Kab. Jayapura",'province_id' => 34],
-            ['name' =>"Kab. Nabire",'province_id' => 34],
-            ['name' =>"Kab. Kepulauan Yapen",'province_id' => 34],
-            ['name' =>"Kab. Biak Numfor",'province_id' => 34],
-            ['name' =>"Kab. Paniai",'province_id' => 34],
-            ['name' =>"Kab. Puncak Jaya",'province_id' => 34],
-            ['name' =>"Kab. Mimika",'province_id' => 34],
-            ['name' =>"Kab. Boven Digoel",'province_id' => 34],
-            ['name' =>"Kab. Mappi",'province_id' => 34],
-            ['name' =>"Kab. Asmat",'province_id' => 34],
-            ['name' =>"Kab. Yahukimo",'province_id' => 34],
-            ['name' =>"Kab. Pegunungan Bintang",'province_id' => 34],
-            ['name' =>"Kab. Tolikara",'province_id' => 34],
-            ['name' =>"Kab. Sarmi",'province_id' => 34],
-            ['name' =>"Kab. Keerom",'province_id' => 34],
-            ['name' =>"Kab. Waropen",'province_id' => 34],
-            ['name' =>"Kab. Supiori",'province_id' => 34],
-            ['name' =>"Kab. Mamberamo Raya",'province_id' => 34],
-            ['name' =>"Kab. Nduga",'province_id' => 34],
-            ['name' =>"Kab. Lanny Jaya",'province_id' => 34],
-            ['name' =>"Kab. Mamberamo Tengah",'province_id' => 34],
-            ['name' =>"Kab. Yalimo",'province_id' => 34],
-            ['name' =>"Kab. Puncak",'province_id' => 34],
-            ['name' =>"Kab. Dogiyai",'province_id' => 34],
-            ['name' =>"Kab. Intan Jaya",'province_id' => 34],
-            ['name' =>"Kab. Deiyai",'province_id' => 34],
-            ['name' =>"Kota Jayapura",'province_id' => 34],
-       ];
-          // Iterasi untuk membuat data
-          foreach ($regencyData as $rd) {
-            RegencyCity::create($rd);
-        }
-
+        $jsonDataProvinsi = json_decode(file_get_contents(public_path('json/provinsi.json')), true);  
+        $jsonDataKabupatenKota = json_decode(file_get_contents(public_path('json/kabupaten_kota.json')), true);  
+        
+        echo "Memulai proses seeder data Provinsi...\n";  
+        foreach ($jsonDataProvinsi as $value) {  
+            Province::create([  
+                'id' => $value['id'],  
+                'name' => $value['name'],  
+            ]);  
+        }  
+        echo "Selesai seeder data Provinsi...\n";  
+        echo "\n";  
+        
+        echo "Memulai proses seeder data Kabupaten/Kota...\n";  
+        foreach ($jsonDataKabupatenKota as $value) {  
+            RegencyCity::create([  
+                'id' => $value['id'],  
+                'name' => ucfirst($value['type']) .' '. ucfirst($value['name']),  
+                'province_id' => $value['provinsi_id']  
+            ]);  
+        }  
+        echo "Selesai seeder data Kabupaten/Kota...\n";  
+        echo "\n";
 
         // departement
 
@@ -596,9 +66,11 @@ class DatabaseSeeder extends Seeder
          ];
 
           // Iterasi untuk membuat data
+        echo "Memulai proses seeder data Departemen...\n";
         foreach ($departemen as $dp) {
             Departement::create($dp);
         }
+        echo "Done seeder data Departemen...\n";
 
 
 
@@ -606,6 +78,7 @@ class DatabaseSeeder extends Seeder
         
         $roles = ['division', 'pusat', 'province', 'regency', 'departement'];  
 
+        echo "Memulai proses seeder data User...\n";
         foreach ($roles as $role) {  
             User::factory()->create([  
                 'name' => $role,  
@@ -614,12 +87,12 @@ class DatabaseSeeder extends Seeder
                 'email' => $role . '@mail.com',  
                 'password' => Hash::make($role),  
                 'role' => $role,
-                'province_id' => 12,
-                'regency_city_id' => 164,
+                'province_id' => 9,
+                'regency_city_id' => 291,
             ]);  
         }  
 
-        $regens = RegencyCity::where('province_id', 12)->get();
+        $regens = RegencyCity::where('province_id', 9)->get();
 
         foreach ($regens as $regen) {
             User::create([
@@ -630,13 +103,17 @@ class DatabaseSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'email_verified_at' => now(),
                 'role' => 'regency',
-                'province_id' => 12,
+                'province_id' => 9,
                 'regency_city_id' => $regen->id,
                 'remember_token' => Str::random(10),
             ]);
         }
 
+        echo "Done seeder data User...\n";
+
+
         // Tabel Program
+        echo "Memulai proses seeder data Program...\n";
         Program::create([
             'program_code' => '02509DC',
             'program_name' => 'Program Kerukunan Umat dan Layanan Kehidupan Beragama',
@@ -645,6 +122,7 @@ class DatabaseSeeder extends Seeder
             'program_code' => '02509WA',
             'program_name' => 'Program Dukungan Manajemen',
         ]);
+        echo "Done seeder data Program...\n";
 
             // Data Activity
         $activityData = [
@@ -657,9 +135,11 @@ class DatabaseSeeder extends Seeder
         ];
 
         // Iterasi untuk membuat data
+        echo "Memulai proses seeder data Activity...\n";
         foreach ($activityData as $activity) {
             Activity::create($activity);
         }
+        echo "Done seeder data Activity...\n";
 
       
         // Data KRO
@@ -677,9 +157,11 @@ class DatabaseSeeder extends Seeder
         ];
 
         // Iterasi untuk membuat data
+        echo "Memulai proses seeder data KRO...\n";
         foreach ($kroData as $kro) {
             Kro::create($kro);
         }
+        echo "Done seeder data KRO...\n";
 
 
        // Data RO
@@ -709,11 +191,15 @@ class DatabaseSeeder extends Seeder
         ];
 
         // Iterasi untuk membuat data
+        echo "Memulai proses seeder data RO...\n";
         foreach ($roData as $ro) {
             Ro::create($ro);
         }
+        echo "Done seeder data RO...\n";
+
 
         // Unit
+        echo "Memulai proses seeder data Funding Source...\n";
          FundingSource::create([
             'funding_source_code' => 'FS'. random_int(5,6),
             'funding_source_name' => 'RM',
@@ -722,12 +208,15 @@ class DatabaseSeeder extends Seeder
             'funding_source_code' =>'FS'. random_int(5,6),
             'funding_source_name' => 'PNBP',
         ]);
+        echo "Done seeder data Funding Source...\n";
 
         // Unit
-         Unit::create([
+        echo "Memulai proses seeder data Unit...\n";
+        Unit::create([
             'unit_code' => 'UT'. random_int(5,6),
             'unit_name' => 'Lembaga',
         ]);
+        echo "Done seeder data Unit...\n";
 
         // komponent
       $componentsData = [ 
@@ -839,16 +328,14 @@ class DatabaseSeeder extends Seeder
          ['component_code' => '2150EBD955053','component_name' => 'Layanan Administrasi PNBP',],
          ['component_code' => '2150EBD955054','component_name' => 'Pengelolaan PNBP',],
          ['component_code' =>'2150EBD955055','component_name' => 'Pengelolaan Laporan Keuangan',]
-        ];
+    ];
 
         // Iterasi untuk membuat data 
+        echo "Memulai proses seeder data Component...\n";
         foreach ($componentsData as $cp) { 
             Component::create($cp);
          }
+        echo "Done seeder data Component...\n";
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }
