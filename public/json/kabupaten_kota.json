@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Aceh Barat",
         "code": "05",
         "full_code": "1105",
@@ -9,7 +9,7 @@
     },
     {
         "id": 2,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Aceh Barat Daya",
         "code": "12",
         "full_code": "1112",
@@ -17,7 +17,7 @@
     },
     {
         "id": 3,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sabu Raijua",
         "code": "20",
         "full_code": "5320",
@@ -33,7 +33,7 @@
     },
     {
         "id": 5,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Aceh Besar",
         "code": "06",
         "full_code": "1106",
@@ -41,7 +41,7 @@
     },
     {
         "id": 6,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Aceh Jaya",
         "code": "14",
         "full_code": "1114",
@@ -49,7 +49,7 @@
     },
     {
         "id": 7,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Aceh Selatan",
         "code": "01",
         "full_code": "1101",
@@ -57,7 +57,7 @@
     },
     {
         "id": 8,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Aceh Singkil",
         "code": "10",
         "full_code": "1110",
@@ -65,7 +65,7 @@
     },
     {
         "id": 9,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Aceh Tamiang",
         "code": "16",
         "full_code": "1116",
@@ -73,7 +73,7 @@
     },
     {
         "id": 10,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Aceh Tengah",
         "code": "04",
         "full_code": "1104",
@@ -81,7 +81,7 @@
     },
     {
         "id": 11,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Aceh Tenggara",
         "code": "02",
         "full_code": "1102",
@@ -89,7 +89,7 @@
     },
     {
         "id": 12,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Aceh Timur",
         "code": "03",
         "full_code": "1103",
@@ -97,7 +97,7 @@
     },
     {
         "id": 13,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Gorontalo Utara",
         "code": "05",
         "full_code": "7505",
@@ -105,7 +105,7 @@
     },
     {
         "id": 14,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Aceh Utara",
         "code": "08",
         "full_code": "1108",
@@ -113,7 +113,7 @@
     },
     {
         "id": 15,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Agam",
         "code": "06",
         "full_code": "1306",
@@ -121,7 +121,7 @@
     },
     {
         "id": 16,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Alor",
         "code": "05",
         "full_code": "5305",
@@ -137,7 +137,7 @@
     },
     {
         "id": 18,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Gowa",
         "code": "06",
         "full_code": "7306",
@@ -153,7 +153,7 @@
     },
     {
         "id": 20,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Asahan",
         "code": "09",
         "full_code": "1209",
@@ -161,7 +161,7 @@
     },
     {
         "id": 21,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sambas",
         "code": "01",
         "full_code": "6101",
@@ -169,7 +169,7 @@
     },
     {
         "id": 22,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Asmat",
         "code": "04",
         "full_code": "9304",
@@ -177,7 +177,7 @@
     },
     {
         "id": 23,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Samosir",
         "code": "17",
         "full_code": "1217",
@@ -185,7 +185,7 @@
     },
     {
         "id": 24,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Badung",
         "code": "03",
         "full_code": "5103",
@@ -193,7 +193,7 @@
     },
     {
         "id": 25,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sampang",
         "code": "27",
         "full_code": "3527",
@@ -201,7 +201,7 @@
     },
     {
         "id": 26,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Balangan",
         "code": "11",
         "full_code": "6311",
@@ -209,7 +209,7 @@
     },
     {
         "id": 27,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sanggau",
         "code": "03",
         "full_code": "6103",
@@ -217,7 +217,7 @@
     },
     {
         "id": 28,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sarmi",
         "code": "10",
         "full_code": "9110",
@@ -225,7 +225,7 @@
     },
     {
         "id": 29,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Gresik",
         "code": "25",
         "full_code": "3525",
@@ -233,7 +233,7 @@
     },
     {
         "id": 30,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Grobogan",
         "code": "15",
         "full_code": "3315",
@@ -241,7 +241,7 @@
     },
     {
         "id": 31,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Gunung Mas",
         "code": "10",
         "full_code": "6210",
@@ -249,7 +249,7 @@
     },
     {
         "id": 32,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Gunungkidul",
         "code": "03",
         "full_code": "3403",
@@ -257,7 +257,7 @@
     },
     {
         "id": 33,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sarolangun",
         "code": "03",
         "full_code": "1503",
@@ -281,7 +281,7 @@
     },
     {
         "id": 36,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Halmahera Barat",
         "code": "01",
         "full_code": "8201",
@@ -289,7 +289,7 @@
     },
     {
         "id": 37,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sekadau",
         "code": "09",
         "full_code": "6109",
@@ -297,7 +297,7 @@
     },
     {
         "id": 38,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Halmahera Selatan",
         "code": "04",
         "full_code": "8204",
@@ -305,7 +305,7 @@
     },
     {
         "id": 39,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Seluma",
         "code": "05",
         "full_code": "1705",
@@ -313,7 +313,7 @@
     },
     {
         "id": 40,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Halmahera Tengah",
         "code": "02",
         "full_code": "8202",
@@ -321,7 +321,7 @@
     },
     {
         "id": 41,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Semarang",
         "code": "22",
         "full_code": "3322",
@@ -337,7 +337,7 @@
     },
     {
         "id": 43,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Halmahera Timur",
         "code": "06",
         "full_code": "8206",
@@ -345,7 +345,7 @@
     },
     {
         "id": 44,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Seram Bagian Barat",
         "code": "06",
         "full_code": "8106",
@@ -353,7 +353,7 @@
     },
     {
         "id": 45,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Halmahera Utara",
         "code": "03",
         "full_code": "8203",
@@ -361,7 +361,7 @@
     },
     {
         "id": 46,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Seram Bagian Timur",
         "code": "05",
         "full_code": "8105",
@@ -369,7 +369,7 @@
     },
     {
         "id": 47,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Hulu Sungai Selatan",
         "code": "06",
         "full_code": "6306",
@@ -377,7 +377,7 @@
     },
     {
         "id": 48,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Hulu Sungai Tengah",
         "code": "07",
         "full_code": "6307",
@@ -385,7 +385,7 @@
     },
     {
         "id": 49,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Hulu Sungai Utara",
         "code": "08",
         "full_code": "6308",
@@ -401,7 +401,7 @@
     },
     {
         "id": 51,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Serang",
         "code": "04",
         "full_code": "3604",
@@ -409,7 +409,7 @@
     },
     {
         "id": 52,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Humbang Hasundutan",
         "code": "16",
         "full_code": "1216",
@@ -425,7 +425,7 @@
     },
     {
         "id": 54,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Indragiri Hilir",
         "code": "04",
         "full_code": "1404",
@@ -433,7 +433,7 @@
     },
     {
         "id": 55,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Indragiri Hulu",
         "code": "02",
         "full_code": "1402",
@@ -465,7 +465,7 @@
     },
     {
         "id": 59,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bandung",
         "code": "04",
         "full_code": "3204",
@@ -473,7 +473,7 @@
     },
     {
         "id": 60,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bandung Barat",
         "code": "17",
         "full_code": "3217",
@@ -481,7 +481,7 @@
     },
     {
         "id": 61,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Banggai",
         "code": "01",
         "full_code": "7201",
@@ -489,7 +489,7 @@
     },
     {
         "id": 62,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Banggai Kepulauan",
         "code": "07",
         "full_code": "7207",
@@ -497,7 +497,7 @@
     },
     {
         "id": 63,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Banggai Laut",
         "code": "11",
         "full_code": "7211",
@@ -505,7 +505,7 @@
     },
     {
         "id": 64,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bangka",
         "code": "01",
         "full_code": "1901",
@@ -513,7 +513,7 @@
     },
     {
         "id": 65,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bangka Barat",
         "code": "05",
         "full_code": "1905",
@@ -521,7 +521,7 @@
     },
     {
         "id": 66,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bangka Selatan",
         "code": "03",
         "full_code": "1903",
@@ -529,7 +529,7 @@
     },
     {
         "id": 67,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bangka Tengah",
         "code": "04",
         "full_code": "1904",
@@ -537,7 +537,7 @@
     },
     {
         "id": 68,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bangkalan",
         "code": "26",
         "full_code": "3526",
@@ -545,7 +545,7 @@
     },
     {
         "id": 69,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bangli",
         "code": "06",
         "full_code": "5106",
@@ -561,7 +561,7 @@
     },
     {
         "id": 71,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Banjar",
         "code": "03",
         "full_code": "6303",
@@ -585,7 +585,7 @@
     },
     {
         "id": 74,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Banjarnegara",
         "code": "04",
         "full_code": "3304",
@@ -593,7 +593,7 @@
     },
     {
         "id": 75,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bantaeng",
         "code": "03",
         "full_code": "7303",
@@ -601,7 +601,7 @@
     },
     {
         "id": 76,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bantul",
         "code": "02",
         "full_code": "3402",
@@ -609,7 +609,7 @@
     },
     {
         "id": 77,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Banyuasin",
         "code": "07",
         "full_code": "1607",
@@ -617,7 +617,7 @@
     },
     {
         "id": 78,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Banyumas",
         "code": "02",
         "full_code": "3302",
@@ -625,7 +625,7 @@
     },
     {
         "id": 79,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Banyuwangi",
         "code": "10",
         "full_code": "3510",
@@ -633,7 +633,7 @@
     },
     {
         "id": 80,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Barito Kuala",
         "code": "04",
         "full_code": "6304",
@@ -641,7 +641,7 @@
     },
     {
         "id": 81,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Barito Selatan",
         "code": "04",
         "full_code": "6204",
@@ -649,7 +649,7 @@
     },
     {
         "id": 82,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Barito Timur",
         "code": "13",
         "full_code": "6213",
@@ -657,7 +657,7 @@
     },
     {
         "id": 83,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Barito Utara",
         "code": "05",
         "full_code": "6205",
@@ -665,7 +665,7 @@
     },
     {
         "id": 84,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Barru",
         "code": "11",
         "full_code": "7311",
@@ -681,7 +681,7 @@
     },
     {
         "id": 86,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Batang",
         "code": "25",
         "full_code": "3325",
@@ -689,7 +689,7 @@
     },
     {
         "id": 87,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Batanghari",
         "code": "04",
         "full_code": "1504",
@@ -705,7 +705,7 @@
     },
     {
         "id": 89,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Batu Bara",
         "code": "19",
         "full_code": "1219",
@@ -729,7 +729,7 @@
     },
     {
         "id": 92,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bekasi",
         "code": "16",
         "full_code": "3216",
@@ -737,7 +737,7 @@
     },
     {
         "id": 93,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Belitung",
         "code": "02",
         "full_code": "1902",
@@ -745,7 +745,7 @@
     },
     {
         "id": 94,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Belitung Timur",
         "code": "06",
         "full_code": "1906",
@@ -753,7 +753,7 @@
     },
     {
         "id": 95,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Belu",
         "code": "04",
         "full_code": "5304",
@@ -761,7 +761,7 @@
     },
     {
         "id": 96,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bener Meriah",
         "code": "17",
         "full_code": "1117",
@@ -769,7 +769,7 @@
     },
     {
         "id": 97,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bengkalis",
         "code": "03",
         "full_code": "1403",
@@ -777,7 +777,7 @@
     },
     {
         "id": 98,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bengkayang",
         "code": "07",
         "full_code": "6107",
@@ -785,7 +785,7 @@
     },
     {
         "id": 99,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Serdang Bedagai",
         "code": "18",
         "full_code": "1218",
@@ -801,7 +801,7 @@
     },
     {
         "id": 101,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bengkulu Selatan",
         "code": "01",
         "full_code": "1701",
@@ -809,7 +809,7 @@
     },
     {
         "id": 102,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Seruyan",
         "code": "07",
         "full_code": "6207",
@@ -817,7 +817,7 @@
     },
     {
         "id": 103,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Indramayu",
         "code": "12",
         "full_code": "3212",
@@ -825,7 +825,7 @@
     },
     {
         "id": 104,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Siak",
         "code": "08",
         "full_code": "1408",
@@ -833,7 +833,7 @@
     },
     {
         "id": 105,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Intan Jaya",
         "code": "07",
         "full_code": "9407",
@@ -857,7 +857,7 @@
     },
     {
         "id": 108,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bengkulu Tengah",
         "code": "09",
         "full_code": "1709",
@@ -873,7 +873,7 @@
     },
     {
         "id": 110,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sidenreng Rappang",
         "code": "14",
         "full_code": "7314",
@@ -881,7 +881,7 @@
     },
     {
         "id": 111,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bengkulu Utara",
         "code": "03",
         "full_code": "1703",
@@ -897,7 +897,7 @@
     },
     {
         "id": 113,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sidoarjo",
         "code": "15",
         "full_code": "3515",
@@ -913,7 +913,7 @@
     },
     {
         "id": 115,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sigi",
         "code": "10",
         "full_code": "7210",
@@ -921,7 +921,7 @@
     },
     {
         "id": 116,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Berau",
         "code": "03",
         "full_code": "6403",
@@ -929,7 +929,7 @@
     },
     {
         "id": 117,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Biak Numfor",
         "code": "06",
         "full_code": "9106",
@@ -937,7 +937,7 @@
     },
     {
         "id": 118,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bima",
         "code": "06",
         "full_code": "5206",
@@ -969,7 +969,7 @@
     },
     {
         "id": 122,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sijunjung",
         "code": "03",
         "full_code": "1303",
@@ -985,7 +985,7 @@
     },
     {
         "id": 124,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Jayapura",
         "code": "03",
         "full_code": "9103",
@@ -993,7 +993,7 @@
     },
     {
         "id": 125,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bintan",
         "code": "01",
         "full_code": "2101",
@@ -1001,7 +1001,7 @@
     },
     {
         "id": 126,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sikka",
         "code": "07",
         "full_code": "5307",
@@ -1009,7 +1009,7 @@
     },
     {
         "id": 127,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bireuen",
         "code": "11",
         "full_code": "1111",
@@ -1017,7 +1017,7 @@
     },
     {
         "id": 128,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Simalungun",
         "code": "08",
         "full_code": "1208",
@@ -1041,7 +1041,7 @@
     },
     {
         "id": 131,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Simeulue",
         "code": "09",
         "full_code": "1109",
@@ -1049,7 +1049,7 @@
     },
     {
         "id": 132,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Jayawijaya",
         "code": "01",
         "full_code": "9501",
@@ -1057,7 +1057,7 @@
     },
     {
         "id": 133,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Jember",
         "code": "09",
         "full_code": "3509",
@@ -1073,7 +1073,7 @@
     },
     {
         "id": 135,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Blitar",
         "code": "05",
         "full_code": "3505",
@@ -1081,7 +1081,7 @@
     },
     {
         "id": 136,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Jembrana",
         "code": "01",
         "full_code": "5101",
@@ -1089,7 +1089,7 @@
     },
     {
         "id": 137,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sinjai",
         "code": "07",
         "full_code": "7307",
@@ -1105,7 +1105,7 @@
     },
     {
         "id": 139,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Jeneponto",
         "code": "04",
         "full_code": "7304",
@@ -1113,7 +1113,7 @@
     },
     {
         "id": 140,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Blora",
         "code": "16",
         "full_code": "3316",
@@ -1121,7 +1121,7 @@
     },
     {
         "id": 141,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Jepara",
         "code": "20",
         "full_code": "3320",
@@ -1129,7 +1129,7 @@
     },
     {
         "id": 142,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sintang",
         "code": "05",
         "full_code": "6105",
@@ -1137,7 +1137,7 @@
     },
     {
         "id": 143,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Boalemo",
         "code": "02",
         "full_code": "7502",
@@ -1145,7 +1145,7 @@
     },
     {
         "id": 144,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Jombang",
         "code": "17",
         "full_code": "3517",
@@ -1153,7 +1153,7 @@
     },
     {
         "id": 145,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bogor",
         "code": "01",
         "full_code": "3201",
@@ -1161,7 +1161,7 @@
     },
     {
         "id": 146,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Situbondo",
         "code": "12",
         "full_code": "3512",
@@ -1169,7 +1169,7 @@
     },
     {
         "id": 147,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kaimana",
         "code": "08",
         "full_code": "9208",
@@ -1185,7 +1185,7 @@
     },
     {
         "id": 149,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sleman",
         "code": "04",
         "full_code": "3404",
@@ -1193,7 +1193,7 @@
     },
     {
         "id": 150,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kampar",
         "code": "01",
         "full_code": "1401",
@@ -1201,7 +1201,7 @@
     },
     {
         "id": 151,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bojonegoro",
         "code": "22",
         "full_code": "3522",
@@ -1209,7 +1209,7 @@
     },
     {
         "id": 152,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Solok",
         "code": "02",
         "full_code": "1302",
@@ -1217,7 +1217,7 @@
     },
     {
         "id": 153,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bolaang Mongondow",
         "code": "01",
         "full_code": "7101",
@@ -1225,7 +1225,7 @@
     },
     {
         "id": 154,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bolaang Mongondow Selatan",
         "code": "11",
         "full_code": "7111",
@@ -1241,7 +1241,7 @@
     },
     {
         "id": 156,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kapuas",
         "code": "03",
         "full_code": "6203",
@@ -1249,7 +1249,7 @@
     },
     {
         "id": 157,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Solok Selatan",
         "code": "11",
         "full_code": "1311",
@@ -1257,7 +1257,7 @@
     },
     {
         "id": 158,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bolaang Mongondow Timur",
         "code": "10",
         "full_code": "7110",
@@ -1265,7 +1265,7 @@
     },
     {
         "id": 159,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kapuas Hulu",
         "code": "06",
         "full_code": "6106",
@@ -1273,7 +1273,7 @@
     },
     {
         "id": 160,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Karanganyar",
         "code": "13",
         "full_code": "3313",
@@ -1281,7 +1281,7 @@
     },
     {
         "id": 161,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Karangasem",
         "code": "07",
         "full_code": "5107",
@@ -1289,7 +1289,7 @@
     },
     {
         "id": 162,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bolaang Mongondow Utara",
         "code": "08",
         "full_code": "7108",
@@ -1297,7 +1297,7 @@
     },
     {
         "id": 163,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Karawang",
         "code": "15",
         "full_code": "3215",
@@ -1305,7 +1305,7 @@
     },
     {
         "id": 164,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bombana",
         "code": "06",
         "full_code": "7406",
@@ -1313,7 +1313,7 @@
     },
     {
         "id": 165,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Karimun",
         "code": "02",
         "full_code": "2102",
@@ -1321,7 +1321,7 @@
     },
     {
         "id": 166,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bondowoso",
         "code": "11",
         "full_code": "3511",
@@ -1329,7 +1329,7 @@
     },
     {
         "id": 167,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Karo",
         "code": "06",
         "full_code": "1206",
@@ -1337,7 +1337,7 @@
     },
     {
         "id": 168,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Soppeng",
         "code": "12",
         "full_code": "7312",
@@ -1345,7 +1345,7 @@
     },
     {
         "id": 169,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Katingan",
         "code": "06",
         "full_code": "6206",
@@ -1353,7 +1353,7 @@
     },
     {
         "id": 170,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kaur",
         "code": "04",
         "full_code": "1704",
@@ -1361,7 +1361,7 @@
     },
     {
         "id": 171,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sorong",
         "code": "01",
         "full_code": "9201",
@@ -1369,7 +1369,7 @@
     },
     {
         "id": 172,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kayong Utara",
         "code": "11",
         "full_code": "6111",
@@ -1385,7 +1385,7 @@
     },
     {
         "id": 174,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sorong Selatan",
         "code": "04",
         "full_code": "9204",
@@ -1393,7 +1393,7 @@
     },
     {
         "id": 175,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kebumen",
         "code": "05",
         "full_code": "3305",
@@ -1401,7 +1401,7 @@
     },
     {
         "id": 176,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sragen",
         "code": "14",
         "full_code": "3314",
@@ -1409,7 +1409,7 @@
     },
     {
         "id": 177,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kediri",
         "code": "06",
         "full_code": "3506",
@@ -1417,7 +1417,7 @@
     },
     {
         "id": 178,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Subang",
         "code": "13",
         "full_code": "3213",
@@ -1449,7 +1449,7 @@
     },
     {
         "id": 182,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bone",
         "code": "08",
         "full_code": "7308",
@@ -1457,7 +1457,7 @@
     },
     {
         "id": 183,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Keerom",
         "code": "11",
         "full_code": "9111",
@@ -1465,7 +1465,7 @@
     },
     {
         "id": 184,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sukabumi",
         "code": "02",
         "full_code": "3202",
@@ -1473,7 +1473,7 @@
     },
     {
         "id": 185,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bone Bolango",
         "code": "03",
         "full_code": "7503",
@@ -1481,7 +1481,7 @@
     },
     {
         "id": 186,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kendal",
         "code": "24",
         "full_code": "3324",
@@ -1505,7 +1505,7 @@
     },
     {
         "id": 189,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Boven Digoel",
         "code": "02",
         "full_code": "9302",
@@ -1513,7 +1513,7 @@
     },
     {
         "id": 190,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kepahiang",
         "code": "08",
         "full_code": "1708",
@@ -1521,7 +1521,7 @@
     },
     {
         "id": 191,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Boyolali",
         "code": "09",
         "full_code": "3309",
@@ -1529,7 +1529,7 @@
     },
     {
         "id": 192,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sukamara",
         "code": "08",
         "full_code": "6208",
@@ -1537,7 +1537,7 @@
     },
     {
         "id": 193,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kepulauan Anambas",
         "code": "05",
         "full_code": "2105",
@@ -1545,7 +1545,7 @@
     },
     {
         "id": 194,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sukoharjo",
         "code": "11",
         "full_code": "3311",
@@ -1553,7 +1553,7 @@
     },
     {
         "id": 195,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sumba Barat",
         "code": "12",
         "full_code": "5312",
@@ -1561,7 +1561,7 @@
     },
     {
         "id": 196,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Brebes",
         "code": "29",
         "full_code": "3329",
@@ -1577,7 +1577,7 @@
     },
     {
         "id": 198,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Buleleng",
         "code": "08",
         "full_code": "5108",
@@ -1585,7 +1585,7 @@
     },
     {
         "id": 199,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bulukumba",
         "code": "02",
         "full_code": "7302",
@@ -1593,7 +1593,7 @@
     },
     {
         "id": 200,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sumba Barat Daya",
         "code": "18",
         "full_code": "5318",
@@ -1601,7 +1601,7 @@
     },
     {
         "id": 201,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sumba Tengah",
         "code": "17",
         "full_code": "5317",
@@ -1609,7 +1609,7 @@
     },
     {
         "id": 202,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sumba Timur",
         "code": "11",
         "full_code": "5311",
@@ -1617,7 +1617,7 @@
     },
     {
         "id": 203,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bulungan",
         "code": "01",
         "full_code": "6501",
@@ -1625,7 +1625,7 @@
     },
     {
         "id": 204,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sumbawa",
         "code": "04",
         "full_code": "5204",
@@ -1633,7 +1633,7 @@
     },
     {
         "id": 205,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Bungo",
         "code": "08",
         "full_code": "1508",
@@ -1641,7 +1641,7 @@
     },
     {
         "id": 206,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sumbawa Barat",
         "code": "07",
         "full_code": "5207",
@@ -1649,7 +1649,7 @@
     },
     {
         "id": 207,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Buol",
         "code": "05",
         "full_code": "7205",
@@ -1657,7 +1657,7 @@
     },
     {
         "id": 208,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sumedang",
         "code": "11",
         "full_code": "3211",
@@ -1665,7 +1665,7 @@
     },
     {
         "id": 209,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Buru",
         "code": "04",
         "full_code": "8104",
@@ -1673,7 +1673,7 @@
     },
     {
         "id": 210,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Buru Selatan",
         "code": "09",
         "full_code": "8109",
@@ -1681,7 +1681,7 @@
     },
     {
         "id": 211,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kepulauan Aru",
         "code": "07",
         "full_code": "8107",
@@ -1689,7 +1689,7 @@
     },
     {
         "id": 212,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Sumenep",
         "code": "29",
         "full_code": "3529",
@@ -1697,7 +1697,7 @@
     },
     {
         "id": 213,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Buton",
         "code": "04",
         "full_code": "7404",
@@ -1713,7 +1713,7 @@
     },
     {
         "id": 215,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Buton Selatan",
         "code": "15",
         "full_code": "7415",
@@ -1721,7 +1721,7 @@
     },
     {
         "id": 216,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Supiori",
         "code": "19",
         "full_code": "9119",
@@ -1729,7 +1729,7 @@
     },
     {
         "id": 217,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Buton Tengah",
         "code": "14",
         "full_code": "7414",
@@ -1737,7 +1737,7 @@
     },
     {
         "id": 218,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Buton Utara",
         "code": "10",
         "full_code": "7410",
@@ -1753,7 +1753,7 @@
     },
     {
         "id": 220,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kepulauan Mentawai",
         "code": "09",
         "full_code": "1309",
@@ -1761,7 +1761,7 @@
     },
     {
         "id": 221,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Ciamis",
         "code": "07",
         "full_code": "3207",
@@ -1777,7 +1777,7 @@
     },
     {
         "id": 223,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kepulauan Meranti",
         "code": "10",
         "full_code": "1410",
@@ -1785,7 +1785,7 @@
     },
     {
         "id": 224,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Cianjur",
         "code": "03",
         "full_code": "3203",
@@ -1793,7 +1793,7 @@
     },
     {
         "id": 225,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tabalong",
         "code": "09",
         "full_code": "6309",
@@ -1801,7 +1801,7 @@
     },
     {
         "id": 226,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kepulauan Sangihe",
         "code": "03",
         "full_code": "7103",
@@ -1809,7 +1809,7 @@
     },
     {
         "id": 227,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kepulauan Selayar",
         "code": "01",
         "full_code": "7301",
@@ -1817,7 +1817,7 @@
     },
     {
         "id": 228,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Cilacap",
         "code": "01",
         "full_code": "3301",
@@ -1833,7 +1833,7 @@
     },
     {
         "id": 230,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tabanan",
         "code": "02",
         "full_code": "5102",
@@ -1849,7 +1849,7 @@
     },
     {
         "id": 232,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kepulauan Seribu",
         "code": "01",
         "full_code": "3101",
@@ -1857,7 +1857,7 @@
     },
     {
         "id": 233,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Takalar",
         "code": "05",
         "full_code": "7305",
@@ -1873,7 +1873,7 @@
     },
     {
         "id": 235,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kepulauan Siau Tagulandang Biaro (Sitaro)",
         "code": "09",
         "full_code": "7109",
@@ -1881,7 +1881,7 @@
     },
     {
         "id": 236,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kepulauan Sula",
         "code": "05",
         "full_code": "8205",
@@ -1889,7 +1889,7 @@
     },
     {
         "id": 237,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tambrauw",
         "code": "09",
         "full_code": "9209",
@@ -1897,7 +1897,7 @@
     },
     {
         "id": 238,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kepulauan Talaud",
         "code": "04",
         "full_code": "7104",
@@ -1905,7 +1905,7 @@
     },
     {
         "id": 239,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kepulauan Tanimbar (Maluku Tenggara Barat)",
         "code": "03",
         "full_code": "8103",
@@ -1913,7 +1913,7 @@
     },
     {
         "id": 240,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Cirebon",
         "code": "09",
         "full_code": "3209",
@@ -1921,7 +1921,7 @@
     },
     {
         "id": 241,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Dairi",
         "code": "11",
         "full_code": "1211",
@@ -1929,7 +1929,7 @@
     },
     {
         "id": 242,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tana Tidung",
         "code": "04",
         "full_code": "6504",
@@ -1937,7 +1937,7 @@
     },
     {
         "id": 243,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Deiyai",
         "code": "08",
         "full_code": "9408",
@@ -1945,7 +1945,7 @@
     },
     {
         "id": 244,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kepulauan Yapen",
         "code": "05",
         "full_code": "9105",
@@ -1953,7 +1953,7 @@
     },
     {
         "id": 245,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Deli Serdang",
         "code": "07",
         "full_code": "1207",
@@ -1961,7 +1961,7 @@
     },
     {
         "id": 246,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tana Toraja",
         "code": "18",
         "full_code": "7318",
@@ -1969,7 +1969,7 @@
     },
     {
         "id": 247,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Demak",
         "code": "21",
         "full_code": "3321",
@@ -1977,7 +1977,7 @@
     },
     {
         "id": 248,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kerinci",
         "code": "01",
         "full_code": "1501",
@@ -1985,7 +1985,7 @@
     },
     {
         "id": 249,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tanah Bumbu",
         "code": "10",
         "full_code": "6310",
@@ -2001,7 +2001,7 @@
     },
     {
         "id": 251,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Ketapang",
         "code": "04",
         "full_code": "6104",
@@ -2017,7 +2017,7 @@
     },
     {
         "id": 253,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tanah Datar",
         "code": "04",
         "full_code": "1304",
@@ -2025,7 +2025,7 @@
     },
     {
         "id": 254,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Klaten",
         "code": "10",
         "full_code": "3310",
@@ -2033,7 +2033,7 @@
     },
     {
         "id": 255,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Dharmasraya",
         "code": "10",
         "full_code": "1310",
@@ -2041,7 +2041,7 @@
     },
     {
         "id": 256,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tanah Laut",
         "code": "01",
         "full_code": "6301",
@@ -2049,7 +2049,7 @@
     },
     {
         "id": 257,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Dogiyai",
         "code": "06",
         "full_code": "9406",
@@ -2057,7 +2057,7 @@
     },
     {
         "id": 258,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Klungkung",
         "code": "05",
         "full_code": "5105",
@@ -2065,7 +2065,7 @@
     },
     {
         "id": 259,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kolaka",
         "code": "01",
         "full_code": "7401",
@@ -2081,7 +2081,7 @@
     },
     {
         "id": 261,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kolaka Timur",
         "code": "11",
         "full_code": "7411",
@@ -2089,7 +2089,7 @@
     },
     {
         "id": 262,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tangerang",
         "code": "03",
         "full_code": "3603",
@@ -2105,7 +2105,7 @@
     },
     {
         "id": 264,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tanggamus",
         "code": "06",
         "full_code": "1806",
@@ -2113,7 +2113,7 @@
     },
     {
         "id": 265,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kolaka Utara",
         "code": "08",
         "full_code": "7408",
@@ -2121,7 +2121,7 @@
     },
     {
         "id": 266,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Konawe",
         "code": "02",
         "full_code": "7402",
@@ -2129,7 +2129,7 @@
     },
     {
         "id": 267,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Konawe Kepulauan",
         "code": "12",
         "full_code": "7412",
@@ -2145,7 +2145,7 @@
     },
     {
         "id": 269,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Konawe Selatan",
         "code": "05",
         "full_code": "7405",
@@ -2153,7 +2153,7 @@
     },
     {
         "id": 270,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Konawe Utara",
         "code": "09",
         "full_code": "7409",
@@ -2161,7 +2161,7 @@
     },
     {
         "id": 271,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kotabaru",
         "code": "02",
         "full_code": "6302",
@@ -2169,7 +2169,7 @@
     },
     {
         "id": 272,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tanjung Jabung Barat",
         "code": "06",
         "full_code": "1506",
@@ -2185,7 +2185,7 @@
     },
     {
         "id": 274,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tanjung Jabung Timur",
         "code": "07",
         "full_code": "1507",
@@ -2193,7 +2193,7 @@
     },
     {
         "id": 275,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kotawaringin Barat",
         "code": "01",
         "full_code": "6201",
@@ -2201,7 +2201,7 @@
     },
     {
         "id": 276,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kotawaringin Timur",
         "code": "02",
         "full_code": "6202",
@@ -2217,7 +2217,7 @@
     },
     {
         "id": 278,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kuantan Singingi",
         "code": "09",
         "full_code": "1409",
@@ -2225,7 +2225,7 @@
     },
     {
         "id": 279,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tapanuli Selatan",
         "code": "03",
         "full_code": "1203",
@@ -2233,7 +2233,7 @@
     },
     {
         "id": 280,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kubu Raya",
         "code": "12",
         "full_code": "6112",
@@ -2241,7 +2241,7 @@
     },
     {
         "id": 281,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kudus",
         "code": "19",
         "full_code": "3319",
@@ -2249,7 +2249,7 @@
     },
     {
         "id": 282,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tapanuli Tengah",
         "code": "01",
         "full_code": "1201",
@@ -2257,7 +2257,7 @@
     },
     {
         "id": 283,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tapanuli Utara",
         "code": "02",
         "full_code": "1202",
@@ -2265,7 +2265,7 @@
     },
     {
         "id": 284,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tapin",
         "code": "05",
         "full_code": "6305",
@@ -2289,7 +2289,7 @@
     },
     {
         "id": 287,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kulon Progo",
         "code": "01",
         "full_code": "3401",
@@ -2297,7 +2297,7 @@
     },
     {
         "id": 288,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kuningan",
         "code": "08",
         "full_code": "3208",
@@ -2305,7 +2305,7 @@
     },
     {
         "id": 289,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kupang",
         "code": "01",
         "full_code": "5301",
@@ -2321,7 +2321,7 @@
     },
     {
         "id": 291,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tasikmalaya",
         "code": "06",
         "full_code": "3206",
@@ -2329,7 +2329,7 @@
     },
     {
         "id": 292,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kutai Barat",
         "code": "07",
         "full_code": "6407",
@@ -2337,7 +2337,7 @@
     },
     {
         "id": 293,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kutai Kartanegara",
         "code": "02",
         "full_code": "6402",
@@ -2345,7 +2345,7 @@
     },
     {
         "id": 294,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Kutai Timur",
         "code": "08",
         "full_code": "6408",
@@ -2353,7 +2353,7 @@
     },
     {
         "id": 295,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Labuhanbatu",
         "code": "10",
         "full_code": "1210",
@@ -2369,7 +2369,7 @@
     },
     {
         "id": 297,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Labuhanbatu Selatan",
         "code": "22",
         "full_code": "1222",
@@ -2377,7 +2377,7 @@
     },
     {
         "id": 298,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tebo",
         "code": "09",
         "full_code": "1509",
@@ -2385,7 +2385,7 @@
     },
     {
         "id": 299,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tegal",
         "code": "28",
         "full_code": "3328",
@@ -2401,7 +2401,7 @@
     },
     {
         "id": 301,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Teluk Bintuni",
         "code": "06",
         "full_code": "9206",
@@ -2409,7 +2409,7 @@
     },
     {
         "id": 302,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Teluk Wondama",
         "code": "07",
         "full_code": "9207",
@@ -2417,7 +2417,7 @@
     },
     {
         "id": 303,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Labuhanbatu Utara",
         "code": "23",
         "full_code": "1223",
@@ -2425,7 +2425,7 @@
     },
     {
         "id": 304,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Temanggung",
         "code": "23",
         "full_code": "3323",
@@ -2433,7 +2433,7 @@
     },
     {
         "id": 305,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Lahat",
         "code": "04",
         "full_code": "1604",
@@ -2449,7 +2449,7 @@
     },
     {
         "id": 307,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Lamandau",
         "code": "09",
         "full_code": "6209",
@@ -2457,7 +2457,7 @@
     },
     {
         "id": 308,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Dompu",
         "code": "05",
         "full_code": "5205",
@@ -2465,7 +2465,7 @@
     },
     {
         "id": 309,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Donggala",
         "code": "03",
         "full_code": "7203",
@@ -2481,7 +2481,7 @@
     },
     {
         "id": 311,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Empat Lawang",
         "code": "11",
         "full_code": "1611",
@@ -2489,7 +2489,7 @@
     },
     {
         "id": 312,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Lamongan",
         "code": "24",
         "full_code": "3524",
@@ -2497,7 +2497,7 @@
     },
     {
         "id": 313,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Ende",
         "code": "08",
         "full_code": "5308",
@@ -2505,7 +2505,7 @@
     },
     {
         "id": 314,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Lampung Barat",
         "code": "04",
         "full_code": "1804",
@@ -2521,7 +2521,7 @@
     },
     {
         "id": 316,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Enrekang",
         "code": "16",
         "full_code": "7316",
@@ -2529,7 +2529,7 @@
     },
     {
         "id": 317,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Lampung Selatan",
         "code": "01",
         "full_code": "1801",
@@ -2537,7 +2537,7 @@
     },
     {
         "id": 318,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Fak Fak",
         "code": "03",
         "full_code": "9203",
@@ -2545,7 +2545,7 @@
     },
     {
         "id": 319,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Timor Tengah Selatan",
         "code": "02",
         "full_code": "5302",
@@ -2553,7 +2553,7 @@
     },
     {
         "id": 320,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Lampung Tengah",
         "code": "02",
         "full_code": "1802",
@@ -2561,7 +2561,7 @@
     },
     {
         "id": 321,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Flores Timur",
         "code": "06",
         "full_code": "5306",
@@ -2569,7 +2569,7 @@
     },
     {
         "id": 322,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Lampung Timur",
         "code": "07",
         "full_code": "1807",
@@ -2577,7 +2577,7 @@
     },
     {
         "id": 323,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Garut",
         "code": "05",
         "full_code": "3205",
@@ -2585,7 +2585,7 @@
     },
     {
         "id": 324,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Timor Tengah Utara",
         "code": "03",
         "full_code": "5303",
@@ -2593,7 +2593,7 @@
     },
     {
         "id": 325,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Lampung Utara",
         "code": "03",
         "full_code": "1803",
@@ -2601,7 +2601,7 @@
     },
     {
         "id": 326,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Toba",
         "code": "12",
         "full_code": "1212",
@@ -2609,7 +2609,7 @@
     },
     {
         "id": 327,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tojo Una Una",
         "code": "09",
         "full_code": "7209",
@@ -2617,7 +2617,7 @@
     },
     {
         "id": 328,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Gayo Lues",
         "code": "13",
         "full_code": "1113",
@@ -2625,7 +2625,7 @@
     },
     {
         "id": 329,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Landak",
         "code": "08",
         "full_code": "6108",
@@ -2633,7 +2633,7 @@
     },
     {
         "id": 330,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Gianyar",
         "code": "04",
         "full_code": "5104",
@@ -2641,7 +2641,7 @@
     },
     {
         "id": 331,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Langkat",
         "code": "05",
         "full_code": "1205",
@@ -2649,7 +2649,7 @@
     },
     {
         "id": 332,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Gorontalo",
         "code": "01",
         "full_code": "7501",
@@ -2665,7 +2665,7 @@
     },
     {
         "id": 334,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Toli Toli",
         "code": "04",
         "full_code": "7204",
@@ -2673,7 +2673,7 @@
     },
     {
         "id": 335,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Lanny Jaya",
         "code": "07",
         "full_code": "9507",
@@ -2681,7 +2681,7 @@
     },
     {
         "id": 336,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Lebak",
         "code": "02",
         "full_code": "3602",
@@ -2697,7 +2697,7 @@
     },
     {
         "id": 338,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tolikara",
         "code": "04",
         "full_code": "9504",
@@ -2713,7 +2713,7 @@
     },
     {
         "id": 340,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Lebong",
         "code": "07",
         "full_code": "1707",
@@ -2721,7 +2721,7 @@
     },
     {
         "id": 341,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Toraja Utara",
         "code": "26",
         "full_code": "7326",
@@ -2729,7 +2729,7 @@
     },
     {
         "id": 342,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Lembata",
         "code": "13",
         "full_code": "5313",
@@ -2745,7 +2745,7 @@
     },
     {
         "id": 344,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Lima Puluh Kota",
         "code": "07",
         "full_code": "1307",
@@ -2753,7 +2753,7 @@
     },
     {
         "id": 345,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Lingga",
         "code": "04",
         "full_code": "2104",
@@ -2761,7 +2761,7 @@
     },
     {
         "id": 346,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Trenggalek",
         "code": "03",
         "full_code": "3503",
@@ -2777,7 +2777,7 @@
     },
     {
         "id": 348,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tuban",
         "code": "23",
         "full_code": "3523",
@@ -2785,7 +2785,7 @@
     },
     {
         "id": 349,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Lombok Barat",
         "code": "01",
         "full_code": "5201",
@@ -2793,7 +2793,7 @@
     },
     {
         "id": 350,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tulang Bawang",
         "code": "05",
         "full_code": "1805",
@@ -2801,7 +2801,7 @@
     },
     {
         "id": 351,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Lombok Tengah",
         "code": "02",
         "full_code": "5202",
@@ -2809,7 +2809,7 @@
     },
     {
         "id": 352,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Lombok Timur",
         "code": "03",
         "full_code": "5203",
@@ -2817,7 +2817,7 @@
     },
     {
         "id": 353,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tulang Bawang Barat",
         "code": "12",
         "full_code": "1812",
@@ -2825,7 +2825,7 @@
     },
     {
         "id": 354,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Lombok Utara",
         "code": "08",
         "full_code": "5208",
@@ -2841,7 +2841,7 @@
     },
     {
         "id": 356,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Tulungagung",
         "code": "04",
         "full_code": "3504",
@@ -2849,7 +2849,7 @@
     },
     {
         "id": 357,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Lumajang",
         "code": "08",
         "full_code": "3508",
@@ -2857,7 +2857,7 @@
     },
     {
         "id": 358,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Wajo",
         "code": "13",
         "full_code": "7313",
@@ -2865,7 +2865,7 @@
     },
     {
         "id": 359,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Luwu",
         "code": "17",
         "full_code": "7317",
@@ -2873,7 +2873,7 @@
     },
     {
         "id": 360,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Luwu Timur",
         "code": "24",
         "full_code": "7324",
@@ -2881,7 +2881,7 @@
     },
     {
         "id": 361,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Wakatobi",
         "code": "07",
         "full_code": "7407",
@@ -2889,7 +2889,7 @@
     },
     {
         "id": 362,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Waropen",
         "code": "15",
         "full_code": "9115",
@@ -2897,7 +2897,7 @@
     },
     {
         "id": 363,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Way Kanan",
         "code": "08",
         "full_code": "1808",
@@ -2905,7 +2905,7 @@
     },
     {
         "id": 364,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Wonogiri",
         "code": "12",
         "full_code": "3312",
@@ -2913,7 +2913,7 @@
     },
     {
         "id": 365,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Wonosobo",
         "code": "07",
         "full_code": "3307",
@@ -2921,7 +2921,7 @@
     },
     {
         "id": 366,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Yahukimo",
         "code": "03",
         "full_code": "9503",
@@ -2929,7 +2929,7 @@
     },
     {
         "id": 367,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Yalimo",
         "code": "06",
         "full_code": "9506",
@@ -2945,7 +2945,7 @@
     },
     {
         "id": 369,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Luwu Utara",
         "code": "22",
         "full_code": "7322",
@@ -2953,7 +2953,7 @@
     },
     {
         "id": 370,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Madiun",
         "code": "19",
         "full_code": "3519",
@@ -2969,7 +2969,7 @@
     },
     {
         "id": 372,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Magelang",
         "code": "08",
         "full_code": "3308",
@@ -2985,7 +2985,7 @@
     },
     {
         "id": 374,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Magetan",
         "code": "20",
         "full_code": "3520",
@@ -2993,7 +2993,7 @@
     },
     {
         "id": 375,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Mahakam Ulu",
         "code": "11",
         "full_code": "6411",
@@ -3001,7 +3001,7 @@
     },
     {
         "id": 376,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Majalengka",
         "code": "10",
         "full_code": "3210",
@@ -3009,7 +3009,7 @@
     },
     {
         "id": 377,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Majene",
         "code": "05",
         "full_code": "7605",
@@ -3025,7 +3025,7 @@
     },
     {
         "id": 379,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Malaka",
         "code": "21",
         "full_code": "5321",
@@ -3033,7 +3033,7 @@
     },
     {
         "id": 380,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Malang",
         "code": "07",
         "full_code": "3507",
@@ -3049,7 +3049,7 @@
     },
     {
         "id": 382,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Malinau",
         "code": "02",
         "full_code": "6502",
@@ -3057,7 +3057,7 @@
     },
     {
         "id": 383,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Maluku Barat Daya",
         "code": "08",
         "full_code": "8108",
@@ -3065,7 +3065,7 @@
     },
     {
         "id": 384,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Maluku Tengah",
         "code": "01",
         "full_code": "8101",
@@ -3073,7 +3073,7 @@
     },
     {
         "id": 385,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Maluku Tenggara",
         "code": "02",
         "full_code": "8102",
@@ -3081,7 +3081,7 @@
     },
     {
         "id": 386,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Mamasa",
         "code": "03",
         "full_code": "7603",
@@ -3089,7 +3089,7 @@
     },
     {
         "id": 387,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Mamberamo Raya",
         "code": "20",
         "full_code": "9120",
@@ -3097,7 +3097,7 @@
     },
     {
         "id": 388,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Mamberamo Tengah",
         "code": "05",
         "full_code": "9505",
@@ -3105,7 +3105,7 @@
     },
     {
         "id": 389,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Mamuju",
         "code": "02",
         "full_code": "7602",
@@ -3113,7 +3113,7 @@
     },
     {
         "id": 390,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Mamuju Tengah",
         "code": "06",
         "full_code": "7606",
@@ -3129,7 +3129,7 @@
     },
     {
         "id": 392,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Mandailing Natal",
         "code": "13",
         "full_code": "1213",
@@ -3137,7 +3137,7 @@
     },
     {
         "id": 393,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Manggarai",
         "code": "10",
         "full_code": "5310",
@@ -3145,7 +3145,7 @@
     },
     {
         "id": 394,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Manggarai Barat",
         "code": "15",
         "full_code": "5315",
@@ -3153,7 +3153,7 @@
     },
     {
         "id": 395,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Manggarai Timur",
         "code": "19",
         "full_code": "5319",
@@ -3161,7 +3161,7 @@
     },
     {
         "id": 396,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Manokwari",
         "code": "02",
         "full_code": "9202",
@@ -3169,7 +3169,7 @@
     },
     {
         "id": 397,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Manokwari Selatan",
         "code": "11",
         "full_code": "9211",
@@ -3177,7 +3177,7 @@
     },
     {
         "id": 398,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Mappi",
         "code": "03",
         "full_code": "9303",
@@ -3185,7 +3185,7 @@
     },
     {
         "id": 399,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Maros",
         "code": "09",
         "full_code": "7309",
@@ -3201,7 +3201,7 @@
     },
     {
         "id": 401,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Maybrat",
         "code": "10",
         "full_code": "9210",
@@ -3217,7 +3217,7 @@
     },
     {
         "id": 403,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Melawi",
         "code": "10",
         "full_code": "6110",
@@ -3225,7 +3225,7 @@
     },
     {
         "id": 404,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Mempawah",
         "code": "02",
         "full_code": "6102",
@@ -3233,7 +3233,7 @@
     },
     {
         "id": 405,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Merangin",
         "code": "02",
         "full_code": "1502",
@@ -3241,7 +3241,7 @@
     },
     {
         "id": 406,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Merauke",
         "code": "01",
         "full_code": "9301",
@@ -3249,7 +3249,7 @@
     },
     {
         "id": 407,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Mesuji",
         "code": "11",
         "full_code": "1811",
@@ -3265,7 +3265,7 @@
     },
     {
         "id": 409,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Mimika",
         "code": "04",
         "full_code": "9404",
@@ -3273,7 +3273,7 @@
     },
     {
         "id": 410,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Minahasa",
         "code": "02",
         "full_code": "7102",
@@ -3281,7 +3281,7 @@
     },
     {
         "id": 411,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Minahasa Selatan",
         "code": "05",
         "full_code": "7105",
@@ -3289,7 +3289,7 @@
     },
     {
         "id": 412,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Minahasa Tenggara",
         "code": "07",
         "full_code": "7107",
@@ -3297,7 +3297,7 @@
     },
     {
         "id": 413,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Minahasa Utara",
         "code": "06",
         "full_code": "7106",
@@ -3305,7 +3305,7 @@
     },
     {
         "id": 414,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Mojokerto",
         "code": "16",
         "full_code": "3516",
@@ -3321,7 +3321,7 @@
     },
     {
         "id": 416,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Morowali",
         "code": "06",
         "full_code": "7206",
@@ -3329,7 +3329,7 @@
     },
     {
         "id": 417,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Morowali Utara",
         "code": "12",
         "full_code": "7212",
@@ -3337,7 +3337,7 @@
     },
     {
         "id": 418,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Muara Enim",
         "code": "03",
         "full_code": "1603",
@@ -3345,7 +3345,7 @@
     },
     {
         "id": 419,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Muaro Jambi",
         "code": "05",
         "full_code": "1505",
@@ -3353,7 +3353,7 @@
     },
     {
         "id": 420,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Muko Muko",
         "code": "06",
         "full_code": "1706",
@@ -3361,7 +3361,7 @@
     },
     {
         "id": 421,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Muna",
         "code": "03",
         "full_code": "7403",
@@ -3369,7 +3369,7 @@
     },
     {
         "id": 422,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Muna Barat",
         "code": "13",
         "full_code": "7413",
@@ -3377,7 +3377,7 @@
     },
     {
         "id": 423,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Murung Raya",
         "code": "12",
         "full_code": "6212",
@@ -3385,7 +3385,7 @@
     },
     {
         "id": 424,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Musi Banyuasin",
         "code": "06",
         "full_code": "1606",
@@ -3393,7 +3393,7 @@
     },
     {
         "id": 425,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Musi Rawas",
         "code": "05",
         "full_code": "1605",
@@ -3401,7 +3401,7 @@
     },
     {
         "id": 426,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Musi Rawas Utara",
         "code": "13",
         "full_code": "1613",
@@ -3409,7 +3409,7 @@
     },
     {
         "id": 427,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Nabire",
         "code": "01",
         "full_code": "9401",
@@ -3417,7 +3417,7 @@
     },
     {
         "id": 428,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Nagan Raya",
         "code": "15",
         "full_code": "1115",
@@ -3425,7 +3425,7 @@
     },
     {
         "id": 429,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Nagekeo",
         "code": "16",
         "full_code": "5316",
@@ -3433,7 +3433,7 @@
     },
     {
         "id": 430,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Natuna",
         "code": "03",
         "full_code": "2103",
@@ -3441,7 +3441,7 @@
     },
     {
         "id": 431,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Nduga",
         "code": "08",
         "full_code": "9508",
@@ -3449,7 +3449,7 @@
     },
     {
         "id": 432,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Ngada",
         "code": "09",
         "full_code": "5309",
@@ -3457,7 +3457,7 @@
     },
     {
         "id": 433,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Nganjuk",
         "code": "18",
         "full_code": "3518",
@@ -3465,7 +3465,7 @@
     },
     {
         "id": 434,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Ngawi",
         "code": "21",
         "full_code": "3521",
@@ -3473,7 +3473,7 @@
     },
     {
         "id": 435,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Nias",
         "code": "04",
         "full_code": "1204",
@@ -3481,7 +3481,7 @@
     },
     {
         "id": 436,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Nias Barat",
         "code": "25",
         "full_code": "1225",
@@ -3489,7 +3489,7 @@
     },
     {
         "id": 437,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Nias Selatan",
         "code": "14",
         "full_code": "1214",
@@ -3497,7 +3497,7 @@
     },
     {
         "id": 438,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Nias Utara",
         "code": "24",
         "full_code": "1224",
@@ -3505,7 +3505,7 @@
     },
     {
         "id": 439,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Nunukan",
         "code": "03",
         "full_code": "6503",
@@ -3513,7 +3513,7 @@
     },
     {
         "id": 440,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Ogan Ilir",
         "code": "10",
         "full_code": "1610",
@@ -3521,7 +3521,7 @@
     },
     {
         "id": 441,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Ogan Komering Ilir",
         "code": "02",
         "full_code": "1602",
@@ -3529,7 +3529,7 @@
     },
     {
         "id": 442,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Ogan Komering Ulu",
         "code": "01",
         "full_code": "1601",
@@ -3537,7 +3537,7 @@
     },
     {
         "id": 443,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Ogan Komering Ulu Selatan",
         "code": "09",
         "full_code": "1609",
@@ -3545,7 +3545,7 @@
     },
     {
         "id": 444,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Ogan Komering Ulu Timur",
         "code": "08",
         "full_code": "1608",
@@ -3553,7 +3553,7 @@
     },
     {
         "id": 445,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pacitan",
         "code": "01",
         "full_code": "3501",
@@ -3569,7 +3569,7 @@
     },
     {
         "id": 447,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Padang Lawas",
         "code": "21",
         "full_code": "1221",
@@ -3577,7 +3577,7 @@
     },
     {
         "id": 448,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Padang Lawas Utara",
         "code": "20",
         "full_code": "1220",
@@ -3593,7 +3593,7 @@
     },
     {
         "id": 450,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Padang Pariaman",
         "code": "05",
         "full_code": "1305",
@@ -3617,7 +3617,7 @@
     },
     {
         "id": 453,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pahuwato",
         "code": "04",
         "full_code": "7504",
@@ -3625,7 +3625,7 @@
     },
     {
         "id": 454,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pakpak Bharat",
         "code": "15",
         "full_code": "1215",
@@ -3665,7 +3665,7 @@
     },
     {
         "id": 459,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pamekasan",
         "code": "28",
         "full_code": "3528",
@@ -3673,7 +3673,7 @@
     },
     {
         "id": 460,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pandeglang",
         "code": "01",
         "full_code": "3601",
@@ -3681,7 +3681,7 @@
     },
     {
         "id": 461,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pangandaran",
         "code": "18",
         "full_code": "3218",
@@ -3689,7 +3689,7 @@
     },
     {
         "id": 462,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pangkajene Kepulauan",
         "code": "10",
         "full_code": "7310",
@@ -3705,7 +3705,7 @@
     },
     {
         "id": 464,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Paniai",
         "code": "03",
         "full_code": "9403",
@@ -3729,7 +3729,7 @@
     },
     {
         "id": 467,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Parigi Moutong",
         "code": "08",
         "full_code": "7208",
@@ -3737,7 +3737,7 @@
     },
     {
         "id": 468,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pasaman",
         "code": "08",
         "full_code": "1308",
@@ -3745,7 +3745,7 @@
     },
     {
         "id": 469,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pasaman Barat",
         "code": "12",
         "full_code": "1312",
@@ -3753,7 +3753,7 @@
     },
     {
         "id": 470,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pasangkayu (Mamuju Utara)",
         "code": "01",
         "full_code": "7601",
@@ -3761,7 +3761,7 @@
     },
     {
         "id": 471,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Paser",
         "code": "01",
         "full_code": "6401",
@@ -3769,7 +3769,7 @@
     },
     {
         "id": 472,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pasuruan",
         "code": "14",
         "full_code": "3514",
@@ -3785,7 +3785,7 @@
     },
     {
         "id": 474,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pati",
         "code": "18",
         "full_code": "3318",
@@ -3801,7 +3801,7 @@
     },
     {
         "id": 476,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pegunungan Arfak",
         "code": "12",
         "full_code": "9212",
@@ -3809,7 +3809,7 @@
     },
     {
         "id": 477,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pegunungan Bintang",
         "code": "02",
         "full_code": "9502",
@@ -3817,7 +3817,7 @@
     },
     {
         "id": 478,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pekalongan",
         "code": "26",
         "full_code": "3326",
@@ -3841,7 +3841,7 @@
     },
     {
         "id": 481,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pelalawan",
         "code": "05",
         "full_code": "1405",
@@ -3849,7 +3849,7 @@
     },
     {
         "id": 482,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pemalang",
         "code": "27",
         "full_code": "3327",
@@ -3865,7 +3865,7 @@
     },
     {
         "id": 484,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Penajam Paser Utara",
         "code": "09",
         "full_code": "6409",
@@ -3873,7 +3873,7 @@
     },
     {
         "id": 485,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Penukal Abab Lematang Ilir",
         "code": "12",
         "full_code": "1612",
@@ -3881,7 +3881,7 @@
     },
     {
         "id": 486,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pesawaran",
         "code": "09",
         "full_code": "1809",
@@ -3889,7 +3889,7 @@
     },
     {
         "id": 487,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pesisir Barat",
         "code": "13",
         "full_code": "1813",
@@ -3897,7 +3897,7 @@
     },
     {
         "id": 488,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pesisir Selatan",
         "code": "01",
         "full_code": "1301",
@@ -3905,7 +3905,7 @@
     },
     {
         "id": 489,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pidie",
         "code": "07",
         "full_code": "1107",
@@ -3913,7 +3913,7 @@
     },
     {
         "id": 490,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pidie Jaya",
         "code": "18",
         "full_code": "1118",
@@ -3921,7 +3921,7 @@
     },
     {
         "id": 491,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pinrang",
         "code": "15",
         "full_code": "7315",
@@ -3929,7 +3929,7 @@
     },
     {
         "id": 492,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Polewali Mandar",
         "code": "04",
         "full_code": "7604",
@@ -3937,7 +3937,7 @@
     },
     {
         "id": 493,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Ponorogo",
         "code": "02",
         "full_code": "3502",
@@ -3953,7 +3953,7 @@
     },
     {
         "id": 495,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Poso",
         "code": "02",
         "full_code": "7202",
@@ -3969,7 +3969,7 @@
     },
     {
         "id": 497,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pringsewu",
         "code": "10",
         "full_code": "1810",
@@ -3977,7 +3977,7 @@
     },
     {
         "id": 498,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Probolinggo",
         "code": "13",
         "full_code": "3513",
@@ -3993,7 +3993,7 @@
     },
     {
         "id": 500,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pulang Pisau",
         "code": "11",
         "full_code": "6211",
@@ -4001,7 +4001,7 @@
     },
     {
         "id": 501,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pulau Morotai",
         "code": "07",
         "full_code": "8207",
@@ -4009,7 +4009,7 @@
     },
     {
         "id": 502,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Pulau Taliabu",
         "code": "08",
         "full_code": "8208",
@@ -4017,7 +4017,7 @@
     },
     {
         "id": 503,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Puncak",
         "code": "05",
         "full_code": "9405",
@@ -4025,7 +4025,7 @@
     },
     {
         "id": 504,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Puncak Jaya",
         "code": "02",
         "full_code": "9402",
@@ -4033,7 +4033,7 @@
     },
     {
         "id": 505,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Purbalingga",
         "code": "03",
         "full_code": "3303",
@@ -4041,7 +4041,7 @@
     },
     {
         "id": 506,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Purwakarta",
         "code": "14",
         "full_code": "3214",
@@ -4049,7 +4049,7 @@
     },
     {
         "id": 507,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Purworejo",
         "code": "06",
         "full_code": "3306",
@@ -4057,7 +4057,7 @@
     },
     {
         "id": 508,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Raja Ampat",
         "code": "05",
         "full_code": "9205",
@@ -4065,7 +4065,7 @@
     },
     {
         "id": 509,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Rejang Lebong",
         "code": "02",
         "full_code": "1702",
@@ -4073,7 +4073,7 @@
     },
     {
         "id": 510,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Rembang",
         "code": "17",
         "full_code": "3317",
@@ -4081,7 +4081,7 @@
     },
     {
         "id": 511,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Rokan Hilir",
         "code": "07",
         "full_code": "1407",
@@ -4089,7 +4089,7 @@
     },
     {
         "id": 512,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Rokan Hulu",
         "code": "06",
         "full_code": "1406",
@@ -4097,7 +4097,7 @@
     },
     {
         "id": 513,
-        "type": "Kabupaten",
+        "type": "Kab",
         "name": "Rote Ndao",
         "code": "14",
         "full_code": "5314",
