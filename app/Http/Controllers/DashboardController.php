@@ -79,8 +79,9 @@ class DashboardController extends Controller
            ->sum('budget');
        }
        if (Auth::user()->role === "departement" || Auth::user()->role === "province") {
+            $prov_reg = RegencyCity::where('province_id', Auth::user()->province_id)->pluck('id');
            $expenditureRegency = RegencyBudgetRequest::where('status', 'approved')
-               ->where('regency_city_id', Auth::user()->regency_city_id)
+               ->whereIn('regency_city_id', $prov_reg)
                ->whereDate('created_at', Carbon::today())
                ->sum('budget');
             }else{
@@ -88,7 +89,7 @@ class DashboardController extends Controller
                ->whereDate('created_at', Carbon::today())
                ->sum('budget');
              }
-    
+             dd($expenditureRegency);
     $expenditureDep = DepartementBudgetRequest::where('status', 'approved')
         ->whereDate('created_at', Carbon::today())
         ->sum('budget');

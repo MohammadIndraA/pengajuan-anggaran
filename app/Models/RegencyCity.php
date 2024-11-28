@@ -13,6 +13,10 @@ class RegencyCity extends Model
         'province_id',
     ];
 
+    protected $with = [
+        'province'
+    ];
+
     public function province()
     {
         return $this->belongsTo(Province::class);
