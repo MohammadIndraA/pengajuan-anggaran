@@ -89,7 +89,6 @@ class DashboardController extends Controller
                ->whereDate('created_at', Carbon::today())
                ->sum('budget');
              }
-             dd($expenditureRegency);
     $expenditureDep = DepartementBudgetRequest::where('status', 'approved')
         ->whereDate('created_at', Carbon::today())
         ->sum('budget');
