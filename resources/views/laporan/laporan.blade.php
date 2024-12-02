@@ -122,7 +122,7 @@
                         name: 'name',
                         searchable: true,
                         render: function(data, type, row) {
-                            return row.province ? row.province.name : row.regency_city.name;
+                            return data.regency_name ?? data.province_name;
                         }
                     },
                     {

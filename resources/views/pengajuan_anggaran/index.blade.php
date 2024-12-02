@@ -18,7 +18,7 @@
             <div class="col-lg-12">
                 <section class="section">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body overflow-auto">
                             {{-- alert --}}
                             @if (session('success'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">

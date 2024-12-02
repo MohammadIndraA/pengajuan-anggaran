@@ -27,30 +27,35 @@ class LaporanController extends Controller
 
                 // Gabungkan hasil
                 $state = array_merge($provinces, $regencyCities);
-                
-
         if ($request->ajax()) {
             //    approved all table
                           // Ambil data Province dan RegencyCity
-            $provinces_budget = ProvinceBudgetRequest::select('submission_name', 'budget', 'province_id', 'status', 'created_at','updated_at')
-            ->with('province') // Jika ada relasi yang perlu dimuat
+            $provinces_budget =DB::table('provinces')
+            ->rightJoin('province_budget_requests', 'provinces.id', '=', 'province_budget_requests.province_id')
+            ->select('province_budget_requests.submission_name', 'province_budget_requests.budget', 'province_budget_requests.status', 'province_budget_requests.created_at', 'province_budget_requests.updated_at', 'provinces.name as province_name')
             ->where('status', 'approved')
-            ->get(); // Jangan konversi menjadi array dulu
+            ->get();
 
-            $regency_budget = RegencyBudgetRequest::select('submission_name', 'budget', 'regency_city_id', 'status', 'created_at','updated_at')
-            ->with('regency_city') // Jika ada relasi yang perlu dimuat
+            $regency_budget =DB::table('provinces')
+            ->rightJoin('regency_cities', 'provinces.id', '=', 'regency_cities.province_id')
+            ->rightJoin('regency_budget_requests', 'regency_cities.id', '=', 'regency_budget_requests.regency_city_id')
+            ->select('regency_cities.province_id', 'regency_budget_requests.submission_name', 'regency_budget_requests.budget', 'regency_budget_requests.status', 'regency_budget_requests.created_at', 'regency_budget_requests.updated_at', 'regency_cities.name as regency_name','provinces.name as province_name')
             ->where('status', 'approved')
-            ->get(); // Jangan konversi menjadi array dulu
+            ->get();
 
-            $departement_request = DepartementBudgetRequest::select('submission_name', 'budget', 'regency_city_id', 'status', 'created_at','updated_at')
-            ->with('regency_city') // Jika ada relasi yang perlu dimuat
+            $departement_request = DB::table('provinces')
+            ->rightJoin('regency_cities', 'provinces.id', '=', 'regency_cities.province_id')
+            ->rightJoin('departement_budget_requests', 'regency_cities.id', '=', 'departement_budget_requests.regency_city_id')
+            ->select('regency_cities.province_id', 'departement_budget_requests.submission_name', 'departement_budget_requests.budget', 'departement_budget_requests.status', 'departement_budget_requests.created_at', 'departement_budget_requests.updated_at', 'regency_cities.name as regency_name','provinces.name as province_name')
             ->where('status', 'approved')
-            ->get(); // Jangan konversi menjadi array dulu
+            ->get();
 
-            $division_request = DivisionBudgetRequest::select('submission_name', 'budget', 'regency_city_id', 'status', 'created_at','updated_at')
-            ->with('regency_city') // Jika ada relasi yang perlu dimuat
+            $division_request =DB::table('provinces')
+            ->rightJoin('regency_cities', 'provinces.id', '=', 'regency_cities.province_id')
+            ->rightJoin('division_budget_requests', 'regency_cities.id', '=', 'division_budget_requests.regency_city_id')
+            ->select('regency_cities.province_id', 'division_budget_requests.submission_name', 'division_budget_requests.budget', 'division_budget_requests.status', 'division_budget_requests.created_at', 'division_budget_requests.updated_at', 'regency_cities.name as regency_name','provinces.name as province_name')
             ->where('status', 'approved')
-            ->get(); // Jangan konversi menjadi array dulu
+            ->get();
 
             // Gabungkan hasil
             // Gabungkan hasil menggunakan concat
@@ -59,6 +64,8 @@ class LaporanController extends Controller
             {
                 $status = explode(',', $request->status);
                 if ($status[1] == "province") {
+                    $data = $data->where('province_id', $status[0]);
+                }else if ($status[1] == "regency") {
                     $data = $data->where('province_id', $status[0]);
                 }else{
                     $data = $data->where('regency_city_id', $status[0]);
