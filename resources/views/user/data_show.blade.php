@@ -131,6 +131,7 @@
                         {
                             data: 'regency_city',
                             name: 'regency_city',
+                            searchable: false,
                             render: function(data, type, row) {
                                 return row.regency_city ? row.regency_city.name : null;
                             }
