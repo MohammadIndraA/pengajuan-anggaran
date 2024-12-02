@@ -21,6 +21,13 @@
                         <div class="card-body">
                             <div class="card-header">
                                 <div class="row">
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        <i class="bi bi-exclamation-triangle me-1"></i>
+                                        Pilih wilayah terlebih dahulu untuk melihat laporan, dan jika laporan hari ini belum
+                                        masuk laporan maka lebihi tanggal nya menjadi tanggal beosk :).
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
                                     <h5 class="card-title col col-4">Laporan Pengajuan Anggaran</h5>
                                     <div class="form-group col col-2 mt-4">
                                         <select name="status" id="status" class="custom-select form-control"
