@@ -36,10 +36,94 @@
         .text-center {
             text-align: center;
         }
+
+        .letter_head {
+            width: 100%;
+            border-collapse: collapse;
+            border: 0;
+            margin: 0;
+            font-family: Tahoma, Geneva, sans-serif;
+            font-size: 1em;
+        }
+
+        .letter_head td {
+            vertical-align: top;
+            padding: 5px 1px;
+            text-align: center;
+        }
+
+        .letter_head td.two {
+            /* xxx : yyy; */
+        }
+
+        .letter_head td.line {
+            border-top: 4px solid;
+            border-bottom: 1px solid;
+            padding: 1px 0;
+        }
+
+        .letter_head .title {
+            margin-bottom: 1px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .letter_head .title-1 {
+            font-weight: bold;
+        }
+
+        .letter_head .title-2 {
+            font-family: "Times New Roman", Times, serif;
+            font-weight: bold;
+            font-size: 1.7em;
+            letter-spacing: 2px;
+        }
+
+        .letter_head .title-3 {
+            font-size: 80%;
+        }
+
+        .letter_head .title-4 {
+            font-weight: bold;
+        }
+
+        .logo {
+            margin: 0 auto;
+            display: block;
+            width: 100px;
+            height: 100px;
+        }
     </style>
 </head>
 
 <body class="A4">
+    <table class="letter_head">
+        <tr>
+            <td class="one">
+                <img class="logo" alt="Logo"
+                    src="https://3.bp.blogspot.com/-7WhUsOL-hGc/V7lLC6vayjI/AAAAAAAADcc/5qZLgen8HZEH_X2Wue4nOuAo2WZe5SMRwCLcB/s1600/Kalimantan_Tengah.png"
+                    width="100" height="100" />
+            </td>
+            <td class="two">
+                <div class="title title-1">
+                    BADAN PENGELOLA KEUANGAN HAJI
+                </div>
+                <div class="title title-3">
+                    Jalan Lapangan Banteng Barat No. 3-4, Jakarta 10710
+                    <span>&#9742;</span> 021 348 3304-20 – 021 3811789 <br>
+                </div>
+                <div class="title title-4">
+                    birohdi@kemenag.go.id
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="line"></td>
+        </tr>
+    </table>
+
+
     <section class="sheet padding-10mm">
         <h2 class="text-center" style="text-transform: uppercase">LAPORAN PENGAJUAN ANGGARAN <br>
             {{ $data[0]['province_name'] }}</h2>

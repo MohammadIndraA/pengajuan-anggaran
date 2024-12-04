@@ -93,12 +93,12 @@
                 <ul id="tables-nav-1" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                     <li>
                         <a href="/pengajuan-anggaran-departement/regency">
-                            <i class="bi bi-circle"></i><span>Anggraran Kota/Kab</span>
+                            <i class="bi bi-circle"></i><span>Anggaran Kota/Kab</span>
                         </a>
                     </li>
                     <li>
                         <a href="/pengajuan-anggaran-departement/province">
-                            <i class="bi bi-circle"></i><span>Anggraran Provinsi</span>
+                            <i class="bi bi-circle"></i><span>Anggaran Provinsi</span>
                         </a>
                     </li>
                 </ul>
@@ -169,22 +169,22 @@
                 <ul id="tables-nav-1" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                     <li>
                         <a href="/pengajuan-anggaran-departement/regency">
-                            <i class="bi bi-circle"></i><span>Anggraran Kota/Kab</span>
+                            <i class="bi bi-circle"></i><span>Anggaran Kota/Kab</span>
                         </a>
                     </li>
                     <li>
                         <a href="/pengajuan-anggaran-departement/province">
-                            <i class="bi bi-circle"></i><span>Anggraran Provinsi</span>
+                            <i class="bi bi-circle"></i><span>Anggaran Provinsi</span>
                         </a>
                     </li>
                     <li>
                         <a href="/pengajuan-anggaran-departement/departement">
-                            <i class="bi bi-circle"></i><span>Anggraran Departement</span>
+                            <i class="bi bi-circle"></i><span>Anggaran Departement</span>
                         </a>
                     </li>
                     <li>
                         <a href="/pengajuan-anggaran-departement/division">
-                            <i class="bi bi-circle"></i><span>Anggraran Divisi</span>
+                            <i class="bi bi-circle"></i><span>Anggaran Divisi</span>
                         </a>
                     </li>
                 </ul>

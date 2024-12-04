@@ -24,7 +24,7 @@
                                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                         <i class="bi bi-exclamation-triangle me-1"></i>
                                         Pilih wilayah terlebih dahulu untuk melihat laporan, dan jika laporan hari ini belum
-                                        masuk laporan maka lebihi tanggal nya menjadi tanggal beosk :).
+                                        masuk laporan maka lebihi tanggal nya menjadi tanggal besok :).
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"
                                             aria-label="Close"></button>
                                     </div>
