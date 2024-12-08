@@ -10,6 +10,7 @@ use App\Models\ProvinceImport;
 use App\Models\RegencyBudgetRequest;
 use App\Models\RegencyCity;
 use App\Models\RegencyImport;
+use App\Models\SubComponent;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -151,12 +152,23 @@ class LaporanController extends Controller
             $regency = null;
             // Cek dan ambil data untuk regency_budget_request_id
             if (isset($data[0]['regency_budget_request_id'])) {
-                $regency = RegencyImport::where('regency_budget_request_id', $data[0]['regency_budget_request_id'])->get();
+                $model = 'regency_budget_requests';
+                $id = $data[0]['regency_budget_request_id'];
+                $subComponent = new SubComponent();
+                $regency = $subComponent->scopeWithFullDetails(DB::table('sub_components'), $model, 'regency_budget_request_id', $id)
+                ->where('regency_budget_requests.status', 'approved')
+                ->get();
+                dd($regency[1]->point_sub_components);
             }
         
             // Cek dan ambil data untuk province_budget_request_id
             if (isset($data[0]['province_budget_request_id'])) {
-                $prov = ProvinceBudgetRequest::with('province')->where('id', $data[0]['province_budget_request_id'])->where('status', 'approved')->first();
+                $model = 'province_budget_requests';
+                $id = $data[0]['province_budget_request_id'];
+                $subComponent = new SubComponent();
+                $prov = $subComponent->scopeWithFullDetails(DB::table('sub_components'), $model, 'province_budget_request_id', $id)
+                ->where('province_budget_requests.status', 'approved')
+                ->get();
         
                 // Ambil semua regency_budget_request_id dari $data
                 $regency_ids = array_column($data, 'regency_budget_request_id');
@@ -165,7 +177,11 @@ class LaporanController extends Controller
                 // Query semua regency data berdasarkan ID
                 if (!empty($regency_ids)) {
                     foreach ($regency_ids as $id) {
-                        $regencys[$id] = RegencyImport::where('regency_budget_request_id', $id)->get();
+                        $regencys[$id] = $model = 'regency_budget_requests';
+                        $id = $data[0]['regency_budget_request_id'];
+                        $subComponent = new SubComponent();
+                        $regencys = $subComponent->scopeWithFullDetails(DB::table('sub_components'), $model, 'regency_budget_request_id', $id)
+                        ->get();
                     }
                 }
             }

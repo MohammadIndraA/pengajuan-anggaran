@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
       });
       // show proposal
       Route::get('/view-pdf/{filename}', [ProvinceBudgetRequestsController::class, 'show_proposal']);
+      Route::get('/view-excel/{filename}', [ProvinceBudgetRequestsController::class, 'show_excel']);
       //  role province, departement, regency
       Route::middleware('pengajuan_anggaran')->group(function () {
             // Pengajuan Anggaran
@@ -50,6 +51,8 @@ Route::middleware('auth')->group(function () {
             Route::get('/pengajuan-anggaran/create', [ProvinceBudgetRequestsController::class, 'create'])->name('pengajuan-anggaran.create');
             Route::post('/pengajuan-anggaran/store', [ProvinceBudgetRequestsController::class, 'store'])->name('pengajuan-anggaran.store');
             Route::get('/pengajuan-anggaran/edit/{id}', [ProvinceBudgetRequestsController::class, 'edit']);
+            Route::get('/pengajuan-anggaran/edit-data/{id}', [ProvinceImportController::class, 'editData'])->name('pengajuan-anggaran.edit-data');
+            Route::post('/pengajuan-anggaran/update-data/{id}', [ProvinceImportController::class, 'updateData'])->name('pengajuan-anggaran.update-data');
 
             //databse import
             Route::get('pengajuan-anggaran-import/{id}', [ProvinceImportController::class, 'index'])->name('pengajuan-anggaran-import.index');

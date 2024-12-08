@@ -19,18 +19,20 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Form Tambah Anggraran</h5>
+                        <h5 class="card-title">Form Edit Anggraran</h5>
 
                         <!-- Multi Columns Form -->
-                        <form action="{{ route('pengajuan-anggaran.store') }}" method="POST" enctype="multipart/form-data"
-                            id="fileUploadForm">
+                        <form action="{{ route('pengajuan-anggaran.update-data', $id) }}" method="POST"
+                            enctype="multipart/form-data" id="fileUploadForm">
                             @csrf
                             @method('POST')
                             <div class="col-md-12">
+                                <input type="hidden" name="type" value="{{ Auth::user()->role }}">
+
                                 <label for="submission_name" class="form-label">Nama Pengajuan</label>
                                 <input type="text" class="form-control  @error('submission_name') is-invalid @enderror"
-                                    value="{{ old('submission_name') }}" id="submission_name" name="submission_name"
-                                    placeholder="Anggraran Pembayaran . . . .">
+                                    value="{{ old('submission_name', $data->submission_name) }}" id="submission_name"
+                                    name="submission_name" placeholder="Anggraran Pembayaran . . . .">
                                 @error('submission_name')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -40,49 +42,36 @@
                             <div class="col-md-12 mt-2">
                                 <label for="submission_date" class="form-label">Tanggal Pengajuan</label>
                                 <input type="date" class="form-control @error('submission_date') is-invalid @enderror"
-                                    id="submission_date" name="submission_date" value="{{ old('submission_date') }}">
+                                    id="submission_date" name="submission_date"
+                                    value="{{ old('submission_date', $data->submission_date) }}">
                                 @error('submission_date')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
-                            {{-- <div class="col-12 mt-2">
-                                <label for="funding_source_id" class="form-label">Sumber Dana</label>
-                                <select id="funding_source_id"
-                                    class="form-select @error('funding_source_id') is-invalid @enderror"
-                                    name="funding_source_id">
-                                    <option value="" disabled selected>Pilih Item...</option>
-                                    @foreach ($funding_sources as $item)
-                                        <option value="{{ $item->id }}">
-                                            {{ $item->funding_source_name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @error('funding_source_id')
+                            <div class="col-md-12">
+                                <label for="sumber_dana" class="form-label">Sumber Dana</label>
+                                <input type="text" class="form-control  @error('sumber_dana') is-invalid @enderror"
+                                    disabled value="{{ old('sumber_dana', $data->sumber_dana) }}" id="sumber_dana"
+                                    name="sumber_dana" placeholder="Anggraran Pembayaran . . . .">
+                                @error('sumber_dana')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div> --}}
-                            {{-- <div class="col-12 mt-2">
-                                <label for="program_id" class="form-label">Program</label>
-                                <select id="program_id" class="form-select @error('program_id') is-invalid @enderror"
-                                    name="program_id">
-                                    <option value="" disabled selected>Pilih Item...</option>
-                                    @foreach ($programs as $item)
-                                        <option value="{{ $item->id }}"
-                                            {{ old('program_id') == $item->id ? 'selected' : '' }}>
-                                            {{ $item->program_name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @error('program_id')
+                            </div>
+                            <div class="col-md-12">
+                                <label for="program_name" class="form-label">Program</label>
+                                <input type="text" class="form-control  @error('program_name') is-invalid @enderror"
+                                    disabled value="{{ old('program_name', $data->program_name) }}" id="program_name"
+                                    name="program_name" placeholder="Anggraran Pembayaran . . . .">
+                                @error('program_name')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div> --}}
+                            </div>
                             <div class="col-12 mb-2 mt-2">
                                 <label for="evidence_file" class="form-label">Unggah Berkas Anggaran (Excel)</label>
                                 <p class="mb-0" style="float: right; font-size: 12px">
@@ -117,7 +106,7 @@
                                         style="width: 0%"></div>
                                 </div>
                             </div> --}}
-                            <button type="submit" class="btn btn-info w-100 mb-1 mt-2">Submit</button>
+                            <button type="submit" class="btn btn-info w-100 mb-1">Submit</button>
                             <button type="reset" class="btn btn-secondary w-100">Reset</button>
                         </form><!-- End Multi Columns Form -->
 

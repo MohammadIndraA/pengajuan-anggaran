@@ -78,7 +78,6 @@
                                         <th scope="col">No</th>
                                         <th scope="col">Wilayah</th>
                                         <th scope="col">Nama Pengajuan</th>
-                                        <th scope="col">Sumber Dana</th>
                                         <th scope="col">Jumlah Anggaran Keseluruhan</th>
                                         <th scope="col">Tanggal Pengajuan</th>
                                         <th scope="col">Status</th>
@@ -143,10 +142,6 @@
                         data: 'submission_name',
                         name: 'submission_name',
                         searchable: true
-                    },
-                    {
-                        data: 'funding_source.funding_source_name',
-                        name: 'funding_source.funding_source_name'
                     },
                     {
                         data: 'budget',

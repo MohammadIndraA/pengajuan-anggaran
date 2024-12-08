@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('units', function (Blueprint $table) {
+        Schema::create('budget', function (Blueprint $table) {
             $table->id();
-            $table->string('unit_code');
-            $table->string('unit_name');
+            $table->string('budget');
             $table->foreignId('kro_id')->nullable()->constrained('kros');
             $table->foreignId('ro_id')->nullable()->constrained('ros');
+            $table->foreignId('program_id')->nullable()->constrained('programs');
+            $table->foreignId('activity_id')->nullable()->constrained('activities');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('units');
+        Schema::dropIfExists('budget');
     }
 };

@@ -93,15 +93,18 @@ class ProvinceBudgetRequestsController extends Controller
                                  </a>';
                 }
             
-                // Tambahkan tombol Doc Proposal
-                $actions .= '<a href="' . route('pengajuan-anggaran.exort', ['id' => $row->id , 'type' => Auth::user()->role]) . '" 
-                                class="btn btn-warning btn-sm mt-3" >
-                                <i class="bi bi-file-earmark-pdf me-1"></i> Doc Excel
-                             </a>';
-            
+
+                if ($row->evidence_file) {
+                    $url = url('/view-excel/' . $row->evidence_file);
+                    // $url = Storage::url($row->proposal_file->file_path);
+                    $actions .= '<a href="' . $url . '" 
+                    class="btn btn-warning btn-sm mt-3" >
+                    <i class="bi bi-file-earmark-pdf me-1"></i> Doc Excel
+                      </a>';
+                }
                 // Tombol Edit dan Hapus
                 $actions .= '<div class="d-inline-block">
-                                <a href="' . route('pengajuan-anggaran-import.index', $row->id) . '" 
+                                <a href="' . route('pengajuan-anggaran.edit-data', $row->id) . '" 
                                    class="btn btn-info btn-sm mt-3">
                                    <i class="bi bi-pencil-square me-1"></i> Edit
                                 </a>
@@ -134,10 +137,8 @@ class ProvinceBudgetRequestsController extends Controller
         $request->validate([
             'submission_name' => 'required',
             'submission_date' => 'required',
-            'funding_source_id' => 'required',
-            'program_id' => 'required',
             'evidence_file' => 'required|mimes:xlsx,xls,csv|max:2048',
-            'proposal_file_id' => 'required|mimes:pdf|max:7048',
+            'proposal_file_id' => 'nullable|mimes:pdf|max:7048',
         ]);
     try{
         // Upload File Excel
@@ -169,7 +170,7 @@ class ProvinceBudgetRequestsController extends Controller
          $data->submission_name = $request->submission_name;
          $data->submission_date = $request->submission_date;
          $data->funding_source_id = $request->funding_source_id;
-         $data->proposal_file_id = $proposal->id ?? 0;
+         $data->proposal_file_id = $proposal->id ?? null;
          $data->program_id = $request->program_id;
          $data->evidence_file = $filenameExcel;
          $data->is_imported = 1;
@@ -178,7 +179,7 @@ class ProvinceBudgetRequestsController extends Controller
          $id = $data->id;  
 
         //  Import Excel
-         $import = new ProvinceImport($id);  
+        $import = new RegencyImport($id); 
          Excel::import($import, $request->file('evidence_file'));  
          $totalBudget = $import->getTotal(); // Ambil total dari ProvinceImport  
          $data->update(['budget' => $totalBudget]); // Update nilai budget 
@@ -194,7 +195,7 @@ class ProvinceBudgetRequestsController extends Controller
          $data->submission_date = $request->submission_date;
          $data->funding_source_id = $request->funding_source_id;
          $data->program_id = $request->program_id;
-         $data->proposal_file_id = $proposal->id ?? 0;
+         $data->proposal_file_id = $proposal->id ?? null;
          $data->evidence_file = $filenameExcel;
          $data->is_imported = 1;
          $data->status = 'pending';
@@ -229,7 +230,7 @@ class ProvinceBudgetRequestsController extends Controller
          $id = $data->id;  
 
           //  Import Excel
-          $import = new DepartementImport($id);  
+          $import = new RegencyImport($id); 
           Excel::import($import, $request->file('evidence_file'));  
           $totalBudget = $import->getTotal(); // Ambil total dari DepartementImport  
           $data->update(['budget' => $totalBudget]); // Update nilai budget 
@@ -256,7 +257,7 @@ class ProvinceBudgetRequestsController extends Controller
          $id = $data->id;  
 
           //  Import Excel
-          $import = new DivisionImport($id);  
+          $import = new RegencyImport($id); 
           Excel::import($import, $request->file('evidence_file'));  
           $totalBudget = $import->getTotal(); // Ambil total dari DepartementImport  
           $data->update(['budget' => $totalBudget]); // Update nilai budget 
@@ -327,32 +328,54 @@ class ProvinceBudgetRequestsController extends Controller
     {
         try {
             // Coba hapus data
-            if (Auth::user()->role === "province") {
-                if ($type === "regency") {
-                    $data = RegencyBudgetRequest::where('id', $id)->first();
-                }else{
-                    $data = ProvinceBudgetRequest::where('id', $id)->first();
+            $data = null;
+
+        // Tentukan data berdasarkan peran pengguna dan tipe
+        switch (Auth::user()->role) {
+            case 'province':
+                if ($type === 'regency') {
+                    $data = RegencyBudgetRequest::find($id);
+                } else {
+                    $data = ProvinceBudgetRequest::find($id);
                 }
-                $data->delete();
-            }
-            if (Auth::user()->role === "regency") {
-                $data = RegencyBudgetRequest::where('id', $id)->first();
-                $data->delete();
-            }
-            if (Auth::user()->role === "division") {
-                $data = DivisionBudgetRequest::where('id', $id)->first();
-                $data->delete();
-            }
-            if (Auth::user()->role === "departement" || Auth::user()->role === "pusat") {
-                if ($type === "regency") {
-                    $data = RegencyBudgetRequest::where('id', $id)->first();
-                }elseif ($type === "province") {
-                    $data = ProvinceBudgetRequest::where('id', $id)->first();
-                }else{
-                    $data = DepartementBudgetRequest::where('id', $id)->first();
+                break;
+
+            case 'regency':
+                $data = RegencyBudgetRequest::find($id);
+                break;
+
+            case 'division':
+                $data = DivisionBudgetRequest::find($id);
+                break;
+
+            case 'departement':
+            case 'pusat':
+                if ($type === 'regency') {
+                    $data = RegencyBudgetRequest::find($id);
+                } elseif ($type === 'province') {
+                    $data = ProvinceBudgetRequest::find($id);
+                } else {
+                    $data = DepartementBudgetRequest::find($id);
                 }
-                $data->delete();
+                break;
+
+            default:
+                return redirect()->back()->with('error', 'Peran pengguna tidak valid.');
+        }
+
+        if (!$data) {
+            return redirect()->back()->with('error', 'Data tidak ditemukan.');
+        }
+        // Hapus data
+        $data->delete();
+
+        // Hapus file terkait jika ada
+        if ($data->evidence_file) {
+            $oldFilePath = 'pengajuan/excel/' . $data->evidence_file;
+            if (Storage::disk('public')->exists($oldFilePath)) {
+                Storage::disk('public')->delete($oldFilePath);
             }
+        }
             return redirect(Auth::user()->role === $type 
             ? route('pengajuan-anggaran.index') 
             : url('pengajuan-anggaran-departement/' . $type))->with('success', 'Data berhasil dihapus.');
@@ -472,13 +495,16 @@ class ProvinceBudgetRequestsController extends Controller
                                     </a>
                                  </div>';
                 }
-                
-                $actions .= '<div class="p-1">
-                                <a href="' . route('pengajuan-anggaran.exort', ['id' => $row->id , 'type' => $type]) . '" 
-                                   class="btn btn-warning btn-sm w-100">
-                                   <i class="bi bi-file-earmark-pdf me-1"></i> Doc Excel
-                                </a>
-                             </div>';
+                if ($row->evidence_file) {
+                    $uri = url('/view-excel/' . $row->evidence_file);
+                    // $url = Storage::url($row->proposal_file->file_path);
+                    $actions .=  '<div class="p-1">
+                    <a href="' . $uri . '" 
+                       class="btn btn-warning btn-sm w-100">
+                       <i class="bi bi-file-earmark-pdf me-1"></i> Doc Excel
+                    </a>
+                 </div>';
+                }
                 
                 // Baris kedua: Edit dan Hapus
                 $actions .= '<div class="p-1">
@@ -537,6 +563,18 @@ class ProvinceBudgetRequestsController extends Controller
     
         return response()->file($path, [
             'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="' . $filename . '"',
+        ]);
+    }
+    public function show_excel($filename){
+        $path = storage_path('app/public/pengajuan/excel/' . $filename);
+  
+        if (!file_exists($path)) {
+            abort(404, 'File not found.');
+        }
+    
+        return response()->file($path, [
+            'Content-Type' => 'application/xlsx',
             'Content-Disposition' => 'inline; filename="' . $filename . '"',
         ]);
     }

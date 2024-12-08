@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('units', function (Blueprint $table) {
+        Schema::create('sub_poin_sub_kppns', function (Blueprint $table) {
             $table->id();
-            $table->string('unit_code');
-            $table->string('unit_name');
-            $table->foreignId('kro_id')->nullable()->constrained('kros');
-            $table->foreignId('ro_id')->nullable()->constrained('ros');
+            $table->string('sub_poin_sub_kppn_name');
+            $table->string('subtotal');
+            $table->string('satuan')->nullable();
+            $table->string('budget');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('units');
+        Schema::dropIfExists('sub_poin_sub_kppns');
     }
 };

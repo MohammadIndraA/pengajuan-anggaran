@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('units', function (Blueprint $table) {
+        Schema::create('kppns', function (Blueprint $table) {
             $table->id();
-            $table->string('unit_code');
-            $table->string('unit_name');
-            $table->foreignId('kro_id')->nullable()->constrained('kros');
-            $table->foreignId('ro_id')->nullable()->constrained('ros');
+            $table->string('kppn_name');
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('units');
+        Schema::dropIfExists('kppns');
     }
 };

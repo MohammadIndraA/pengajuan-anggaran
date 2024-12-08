@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('units', function (Blueprint $table) {
+        Schema::create('sub_poin_sub_components', function (Blueprint $table) {
             $table->id();
-            $table->string('unit_code');
-            $table->string('unit_name');
-            $table->foreignId('kro_id')->nullable()->constrained('kros');
-            $table->foreignId('ro_id')->nullable()->constrained('ros');
+            $table->string('sub_poin_sub_component_code');
+            $table->string('sub_poin_sub_component_name');
+            $table->string('budget');
+            $table->string('komponen_utama')->nullable();
+            $table->string('sumber_dana')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('units');
+        Schema::dropIfExists('sub_poin_sub_components');
     }
 };

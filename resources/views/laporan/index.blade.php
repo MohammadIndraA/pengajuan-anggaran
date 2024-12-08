@@ -53,11 +53,8 @@
                 <th>KEGIATAN</th>
                 <th>KRO</th>
                 <th>RO</th>
-                <th>SATUAN</th>
                 <th>KOMPONEN</th>
-                <th>QTY</th>
-                <th>SUB TOTAL</th>
-                <th>TOTAL</th>
+                <th>SUB KOMPONEN</th>
                 </tr>
 
             </thead>
@@ -72,22 +69,25 @@
                     <tr>
                         <td class="text-center" width="20">{{ $loop->iteration }}</td>
                         {{-- <td>{{ $item['regency_name'] ?? $item['region_name'] }}</td> --}}
-                        <td>{{ $item['program'] }}</td>
-                        <td>{{ $item['activity'] }}</td>
-                        <td>{{ $item['kro'] }}</td>
-                        <td>{{ $item['ro'] }}</td>
-                        <td>{{ $item['unit'] }}</td>
-                        <td>{{ $item['component'] }}</td>
-                        <td>{{ $item['qty'] }}</td>
-                        <td>RP. {{ number_format($item['subtotal'], 2, ',', '') }}</td>
-                        <td> Rp.{{ number_format($item['total'], 2, ',', '.') }}</td>
+                        <td>{{ $item->program_name }}</td>
+                        <td>{{ $item->activity_name }}</td>
+                        <td>{{ $item->kro_name }}</td>
+                        <td>{{ $item->ro_name }}</td>
+                        <td>{{ $item->sub_component_name }}</td>
                     </tr>
+                    @foreach ($item->point_sub_component_id as $i)
+                        <tr>
+                            <td class="text-center" width="20">{{ $loop->iteration }}</td>
+                            {{-- <td>{{ $item['regency_name'] ?? $item['region_name'] }}</td> --}}
+                            <td>{{ $i->point_sub_component_name }}</td>
+                        </tr>
+                    @endforeach
                 @endforeach
             </tbody>
             <tfoot>
                 <tr>
                     <th scope="col" colspan="9">Total Semua </th>
-                    <th scope="col"> Rp.{{ number_format($total, 2, ',', '.') }}</th>
+                    {{-- <th scope="col"> Rp.{{ number_format($total, 2, ',', '.') }}</th> --}}
                 </tr>
             </tfoot>
         </table>

@@ -82,33 +82,33 @@
                 serverSide: true,
                 ajax: `{{ route('pengajuan-anggaran-import.index', $id) }}`,
                 columns: [{
-                        data: 'no',
-                        name: 'no',
-                        searchable: true
+                        data: 'DT_RowIndex',
+                        searchable: false,
+                        sortable: false
                     },
                     {
-                        data: 'program',
-                        name: 'program'
+                        data: 'program_name',
+                        name: 'program_name'
                     },
                     {
-                        data: 'activity',
-                        name: 'activity',
+                        data: 'activity_name',
+                        name: 'activity_name',
                     },
                     {
-                        data: 'kro',
-                        name: 'kro'
+                        data: 'kro_name',
+                        name: 'kro_name'
                     },
                     {
-                        data: 'ro',
-                        name: 'ro'
+                        data: 'ro_name',
+                        name: 'ro_name'
                     },
                     {
-                        data: 'unit',
-                        name: 'unit'
+                        data: 'satuan',
+                        name: 'satuan'
                     },
                     {
-                        data: 'component',
-                        name: 'component'
+                        data: 'sub_component_name',
+                        name: 'sub_component_name'
                     }, {
                         data: 'qty',
                         name: 'qty'

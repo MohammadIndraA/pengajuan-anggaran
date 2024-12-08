@@ -13,18 +13,18 @@ return new class extends Migration
     {
         Schema::create('division_budget_requests', function (Blueprint $table) {
             $table->id();
-            $table->integer('budget');
+            $table->bigInteger('budget');
             $table->string('deskription');
             $table->string('submission_name');
             $table->date('submission_date');
-            $table->foreignId('funding_source_id')->constrained('funding_source');
-            $table->foreignId('program_id')->constrained('programs');
+            $table->foreignId('funding_source_id')->nullable()->constrained('funding_source');
+            $table->foreignId('program_id')->nullable()->constrained('programs');
             $table->text('evidence_file');
             $table->string('status')->default('pending');
             $table->integer('is_imported');
             $table->foreignId('province_id')->constrained('provinces');
             $table->foreignId('regency_city_id')->constrained('regency_cities');
-            $table->foreignId('proposal_file_id')->constrained('proposal_files');
+            $table->foreignId('proposal_file_id')->nullable()->constrained('proposal_files');
             $table->timestamps();
         });
     }
