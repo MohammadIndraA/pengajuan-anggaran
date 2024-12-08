@@ -12,9 +12,14 @@ use App\Models\RegencyCity;
 use App\Models\RegencyImport;
 use App\Models\SubComponent;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Http\Request;
+use Illuminate\Container\Attributes\Log;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use ZipArchive;
+use File;
+use function Illuminate\Log\log;
 
 class LaporanController extends Controller
 {
@@ -196,4 +201,59 @@ class LaporanController extends Controller
         $pdf = Pdf::loadView($view, compact('data', 'from_date', 'to_date', 'regency','prov', 'regencys', 'regencys_name'));        
         return $pdf->download('laporan.pdf'); 
     }
+
+    public function downloadExcelAsZip(Request $request) 
+    {
+        try {
+            // Ambil daftar kabupaten/kota berdasarkan provinsi user
+            $provinceId = Auth::user()->province_id;
+            $provinceRegency = RegencyCity::with('province')
+                ->where('province_id', $provinceId)
+                ->get();
+    
+            // Ambil data pengajuan anggaran berdasarkan kabupaten/kota yang ditemukan
+            $data = RegencyBudgetRequest::whereIn('regency_city_id', $provinceRegency->pluck('id'))->get();
+    
+            // Validasi jika tidak ada data
+            if ($data->isEmpty()) {
+                return response()->json(['error' => 'No data available to download'], 404);
+            }
+    
+            // Path untuk file ZIP
+            $zipPath = storage_path('app/public/pengajuan/excel/pengajuan_anggaran.zip');
+            $zip = new ZipArchive();
+    
+            // Membuat ZIP file
+            if ($zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) !== true) {
+                \Log::error('Failed to open ZIP file', ['zipPath' => $zipPath, 'error' => $zip->getStatusString()]);
+                return response()->json(['error' => 'Failed to create ZIP file'], 500);
+            }
+    
+            // Menggabungkan file ke dalam ZIP
+            foreach ($data as $item) {
+                $fileName = $item->evidence_file;
+                $filePath = storage_path('app/public/pengajuan/excel/' . $fileName);
+    
+                if (file_exists($filePath)) {
+                    $zip->addFile($filePath, $fileName);
+                } else {
+                    \Log::warning('File not found: ' . $filePath);
+                }
+            }
+    
+            $zip->close();
+    
+            // Mengunduh file ZIP jika berhasil
+            if (file_exists($zipPath)) {
+                return response()->download($zipPath)->deleteFileAfterSend(true);
+            }
+    
+            return response()->json(['error' => 'Failed to generate ZIP file'], 500);
+    
+        } catch (\Exception $e) {
+            \Log::error('Unexpected error during ZIP creation', ['message' => $e->getMessage()]);
+            return response()->json(['error' => 'An internal error occurred'], 500);
+        }
+    }
+    
 }

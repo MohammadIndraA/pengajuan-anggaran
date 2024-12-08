@@ -42,34 +42,46 @@
 
                             {{-- select --}}
                             <div class="d-flex align-items-center justify-content-between">
+                                <!-- Bagian 1: Dropdown Pilih Status -->
                                 <div class="form-group col col-2 mb-3">
                                     <select class="form-select @error('status') is-invalid @enderror" name="status"
                                         id="status">
                                         <option value="" disabled selected>Pilih Status</option>
                                         <option value="">Semua</option>
-                                        <option value="rejected">Rejected
-                                        </option>
-                                        <option value="pending">Pending
-                                        </option>
-                                        <option value="proses">Proses
-                                        </option>
-                                        <option value="approved">Approved
-                                        </option>
+                                        <option value="rejected">Rejected</option>
+                                        <option value="pending">Pending</option>
+                                        <option value="proses">Proses</option>
+                                        <option value="approved">Approved</option>
                                     </select>
                                 </div>
-                                <div class="form-group col col-2 mb-3">
-                                    <select name="state" id="state" class="custom-select form-control"
-                                        style="background: #fff; cursor: pointer; padding: 5px 5px; border: 1px solid #ccc; width: 100%; text-align:center; border-radius: 1px">
-                                        <option value="" disabled selected>Pilih salah satu</option>
-                                        <option value="" selected>Semua wilayah</option>
-                                        @foreach ($name_regency as $item)
-                                            <option value="{{ $item['id'] }}">
-                                                {{ $item['name'] }}
-                                            </option>
-                                        @endforeach
-                                    </select>
+
+                                <!-- Bagian 2: Dropdown Pilih Wilayah dan Tombol Unduh -->
+                                <div class="d-flex justify-content-end">
+                                    <!-- Dropdown Pilih Wilayah -->
+                                    <div class="form-group mb-3">
+                                        <select name="state" id="state" class="custom-select form-control"
+                                            style="background: #fff; cursor: pointer; padding: 5px; border: 1px solid #ccc; 
+                                                   width: 100%; text-align: center; border-radius: 4px;">
+                                            <option value="" disabled selected>Pilih salah satu</option>
+                                            <option value="" selected>Semua wilayah</option>
+                                            @foreach ($name_regency as $item)
+                                                <option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <!-- Tombol Unduh Excel (Khusus untuk Role Province) -->
+                                    @if (auth()->user()->role == 'province')
+                                        <div class="form-group col col-4 mb-3 mx-2">
+                                            <button type="button" class="btn btn-success btn-sm w-100"
+                                                id="export-excel-button" style="padding: 6px;">
+                                                <i class="ri ri-file-excel-2-fill me-1"></i>
+                                                Excel</button>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
+
 
                             <!-- Default Table -->
                             <table class="table table-borderless" id="data-table">
@@ -192,6 +204,24 @@
                 table.draw();
             });
 
+        });
+        $('#export-excel-button').on('click', function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            // ajax
+            $.ajax({
+                type: "GET",
+                url: "/downloadExcelAsZip",
+                success: function(res) {
+                    console.log(res.data);
+                },
+                error: function(err) {
+                    console.log(err.responseText);
+                }
+            });
         });
     </script>
 @endsection

@@ -85,6 +85,7 @@ Route::middleware('auth')->group(function () {
             //  Laporan
             Route::get('/pengajuan-anggaran-laporan',[LaporanController::class, 'index'])->name('pengajuan-anggaran-laporan');
             Route::post('/generate-pdf', [LaporanController::class, 'generatePDF']);
+            Route::get('/downloadExcelAsZip', [LaporanController::class, 'downloadExcelAsZip']);
             
             // Pengajuan Anggaran
             Route::get('/pengajuan-anggaran-departement/regency', [ProvinceBudgetRequestsController::class, 'data_show'])->name('pengajuan-anggaran-departement');

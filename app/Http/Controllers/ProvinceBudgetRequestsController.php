@@ -144,7 +144,13 @@ class ProvinceBudgetRequestsController extends Controller
         // Upload File Excel
         if ($request->file('evidence_file')) {
             $file= $request->file('evidence_file');
-            $filenameExcel= date('his').$file->getClientOriginalName();
+             // Tentukan wilayah berdasarkan role pengguna
+            if (Auth::user()->role === "province") {
+                $wilayah = Auth::user()->province->name;
+            } else {
+                $wilayah = Auth::user()->regency_city->name;
+            }
+            $filenameExcel= date('his'). '-' . $wilayah. '-' .$file->getClientOriginalName();
             $path = $file->storeAs('pengajuan/excel', $filenameExcel,'public');
         }
 
