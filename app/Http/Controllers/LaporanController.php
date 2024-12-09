@@ -220,7 +220,7 @@ class LaporanController extends Controller
             }
     
             // Path untuk file ZIP
-            $zipPath = storage_path('app/public/laporan.zip');
+            $zipPath = storage_path('laporan.zip');
             $zip = new ZipArchive();
     
             // Membuat ZIP file
@@ -242,7 +242,6 @@ class LaporanController extends Controller
             }
     
             $zip->close();
-    
             // Mengunduh file ZIP jika berhasil
             if (file_exists($zipPath)) {
                 return response()->download($zipPath)->deleteFileAfterSend(true);

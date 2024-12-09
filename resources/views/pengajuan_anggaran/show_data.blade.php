@@ -211,17 +211,8 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            // ajax
-            $.ajax({
-                type: "GET",
-                url: "/downloadExcelAsZip",
-                success: function(res) {
-                    console.log(res.data);
-                },
-                error: function(err) {
-                    console.log(err.responseText);
-                }
-            });
+            // Menggunakan window.location untuk mengunduh file
+            window.location.href = "/downloadExcelAsZip";
         });
     </script>
 @endsection
