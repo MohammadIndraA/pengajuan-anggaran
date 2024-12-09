@@ -220,7 +220,7 @@ class LaporanController extends Controller
             }
     
             // Path untuk file ZIP
-            $zipPath = storage_path('app/public/pengajuan/excel/pengajuan_anggaran.zip');
+            $zipPath = storage_path('app/public/laporan.zip');
             $zip = new ZipArchive();
     
             // Membuat ZIP file
