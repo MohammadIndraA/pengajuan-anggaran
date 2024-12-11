@@ -160,10 +160,16 @@ class LaporanController extends Controller
                 $model = 'regency_budget_requests';
                 $id = $data[0]['regency_budget_request_id'];
                 $subComponent = new SubComponent();
-                $regency = $subComponent->scopeWithFullDetails(DB::table('sub_components'), $model, 'regency_budget_request_id', $id)
-                ->where('regency_budget_requests.status', 'approved')
-                ->get();
-                dd($regency[1]->point_sub_components);
+                // $regency = $subComponent->scopeWithFullDetails(DB::table('sub_components'), $model, 'regency_budget_request_id', $id)
+                // ->where('regency_budget_requests.status', 'approved')
+                // ->get();
+                $regency = SubComponent::with(['points.details.kppns.kppnKategoris.kppnDetails'])
+                ->leftJoin('programs', 'sub_components.program_id', '=', 'programs.id')
+                ->leftJoin('regency_budget_requests', "sub_components.regency_budget_request_id", '=', "regency_budget_requests.id")  
+                ->leftJoin('kros', 'sub_components.kro_id', '=', 'kros.id')
+                ->leftJoin('activities', 'sub_components.activity_id', '=', 'activities.id')
+                ->leftJoin('ros', 'sub_components.ro_id', '=', 'ros.id')    
+                ->where('regency_budget_request_id', $id)->get();
             }
         
             // Cek dan ambil data untuk province_budget_request_id

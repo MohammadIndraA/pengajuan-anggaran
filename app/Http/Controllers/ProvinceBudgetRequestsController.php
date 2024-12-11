@@ -185,7 +185,7 @@ class ProvinceBudgetRequestsController extends Controller
          $id = $data->id;  
 
         //  Import Excel
-        $import = new RegencyImport($id); 
+         $import = new RegencyImport($id); // Buat objek Province($id); 
          Excel::import($import, $request->file('evidence_file'));  
          $totalBudget = $import->getTotal(); // Ambil total dari ProvinceImport  
          $data->update(['budget' => $totalBudget]); // Update nilai budget 
