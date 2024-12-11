@@ -13,8 +13,8 @@ class PointSubComponent extends Model
         return $this->belongsTo(SubComponent::class);
     }
     
-    public function details()
+    public function wilayah()
     {
-        return $this->hasMany(SubPoinSubComponent::class);
+        return $this->hasMany(Wilayah::class);
     }
 }

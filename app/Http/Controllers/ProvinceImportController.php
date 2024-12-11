@@ -270,70 +270,47 @@ class ProvinceImportController extends Controller
 
     public function editData($id) {
         if (Auth::user()->role == "province") {
-            $data = DB::table('sub_components')
-            ->leftJoin('programs', 'sub_components.program_id', '=', 'programs.id')
-            ->leftJoin('province_budget_requests', 'sub_components.province_budget_request_id', '=', 'province_budget_requests.id')
-            ->leftJoin('point_sub_components', 'sub_components.id', '=', 'point_sub_components.sub_component_id')
-            ->leftJoin('sub_poin_sub_components', 'point_sub_components.id', '=', 'sub_poin_sub_components.point_sub_component_id')
+            $data = DB::table('components')
+            ->leftJoin('province_budget_requests', 'components.province_budget_request_id', '=', 'province_budget_requests.id')
             ->select([
-                'sub_components.sub_component_name',
-                'sub_components.province_budget_request_id',
-                'programs.program_name as program_name',
-                'point_sub_components.point_sub_component_name as point_sub_component_name',
-                'sub_poin_sub_components.sub_poin_sub_component_name as sub_poin_sub_component_name',
-                'sub_poin_sub_components.sumber_dana',
+                'components.province_budget_request_id',
                 'province_budget_requests.submission_name',
                 'province_budget_requests.submission_date',
             ])
-            ->where('sub_components.province_budget_request_id', $id) // Pastikan field di where sesuai dengan kolom
+            ->where('components.province_budget_request_id', $id) // Pastikan field di where sesuai dengan kolom
             ->first();
         }
         if (Auth::user()->role == "regency") {
-            $data = DB::table('sub_components')  
-            ->leftJoin('programs', 'sub_components.program_id', '=', 'programs.id')  
-            ->leftJoin('regency_budget_requests', 'sub_components.regency_budget_request_id', '=', 'regency_budget_requests.id')  
-            ->leftJoin('point_sub_components', 'sub_components.id', '=', 'point_sub_components.sub_component_id')  
-            ->leftJoin('sub_poin_sub_components', 'point_sub_components.id', '=', 'sub_poin_sub_components.point_sub_component_id')  
-            ->select('sub_components.sub_component_name', 'sub_components.regency_budget_request_id','programs.program_name as program_name', 'point_sub_components.point_sub_component_name as point_sub_component_name', 'sub_poin_sub_components.sub_poin_sub_component_name as sub_poin_sub_component_name', 'sub_poin_sub_components.sumber_dana', 'regency_budget_requests.submission_name', 'regency_budget_requests.submission_date')
-           ->where('sub_components.regency_budget_request_id', $id)
+            $data = DB::table('components')
+            ->leftJoin('regency_budget_requests', 'components.regency_budget_request_id', '=', 'province_budget_requests.id')
+            ->select([
+                'components.regency_budget_request_id',
+                'province_budget_requests.submission_name',
+                'province_budget_requests.submission_date',
+            ])
+            ->where('components.regency_budget_request_id', $id) // Pastikan field di where sesuai dengan kolom
             ->first();
         }
         if (Auth::user()->role == "departement") {
-            $data = DB::table('sub_components')
-            ->leftJoin('programs', 'sub_components.program_id', '=', 'programs.id')
-            ->leftJoin('departement_budget_requests', 'sub_components.departement_budget_request_id', '=', 'departement_budget_requests.id')
-            ->leftJoin('point_sub_components', 'sub_components.id', '=', 'point_sub_components.sub_component_id')
-            ->leftJoin('sub_poin_sub_components', 'point_sub_components.id', '=', 'sub_poin_sub_components.point_sub_component_id')
+            $data = DB::table('components')
+            ->leftJoin('departement_budget_requests', 'components.departement_budget_request_id', '=', 'province_budget_requests.id')
             ->select([
-                'sub_components.sub_component_name',
-                'sub_components.departement_budget_request_id',
-                'programs.program_name as program_name',
-                'point_sub_components.point_sub_component_name as point_sub_component_name',
-                'sub_poin_sub_components.sub_poin_sub_component_name as sub_poin_sub_component_name',
-                'sub_poin_sub_components.sumber_dana',
-                'departement_budget_requests.submission_name',
-                'departement_budget_requests.submission_date',
+                'components.departement_budget_request_id',
+                'province_budget_requests.submission_name',
+                'province_budget_requests.submission_date',
             ])
-            ->where('sub_components.departement_budget_request_id', $id) // Pastikan field di where sesuai dengan kolom
+            ->where('components.departement_budget_request_id', $id) // Pastikan field di where sesuai dengan kolom
             ->first();
         }
         if (Auth::user()->role == "division") {
-            $data = DB::table('sub_components')
-            ->leftJoin('programs', 'sub_components.program_id', '=', 'programs.id')
-            ->leftJoin('division_budget_requests', 'sub_components.division_budget_request_id', '=', 'division_budget_requests.id')
-            ->leftJoin('point_sub_components', 'sub_components.id', '=', 'point_sub_components.sub_component_id')
-            ->leftJoin('sub_poin_sub_components', 'point_sub_components.id', '=', 'sub_poin_sub_components.point_sub_component_id')
+            $data = DB::table('components')
+            ->leftJoin('division_budget_requests', 'components.division_budget_request_id', '=', 'province_budget_requests.id')
             ->select([
-                'sub_components.sub_component_name',
-                'sub_components.division_budget_request_id',
-                'programs.program_name as program_name',
-                'point_sub_components.point_sub_component_name as point_sub_component_name',
-                'sub_poin_sub_components.sub_poin_sub_component_name as sub_poin_sub_component_name',
-                'sub_poin_sub_components.sumber_dana',
-                'division_budget_requests.submission_name',
-                'division_budget_requests.submission_date',
+                'components.division_budget_request_id',
+                'province_budget_requests.submission_name',
+                'province_budget_requests.submission_date',
             ])
-            ->where('sub_components.division_budget_request_id', $id) // Pastikan field di where sesuai dengan kolom
+            ->where('components.division_budget_request_id', $id) // Pastikan field di where sesuai dengan kolom
             ->first();
         }
         $funding_sources = FundingSource::all();

@@ -50,7 +50,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="col-md-12">
+                            {{-- <div class="col-md-12">
                                 <label for="sumber_dana" class="form-label">Sumber Dana</label>
                                 <input type="text" class="form-control  @error('sumber_dana') is-invalid @enderror"
                                     disabled value="{{ old('sumber_dana', $data->sumber_dana) }}" id="sumber_dana"
@@ -71,7 +71,7 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <div class="col-12 mb-2 mt-2">
                                 <label for="evidence_file" class="form-label">Unggah Berkas Anggaran (Excel)</label>
                                 <p class="mb-0" style="float: right; font-size: 12px">

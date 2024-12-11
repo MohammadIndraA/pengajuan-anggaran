@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('point_sub_component_code');
             $table->string('point_sub_component_name');
-            $table->string('budget');
+            $table->string('total');
+            $table->string('validasi_total');
+            $table->foreignId('sub_component_id')->constrained('sub_components');
             $table->timestamps();
         });
     }

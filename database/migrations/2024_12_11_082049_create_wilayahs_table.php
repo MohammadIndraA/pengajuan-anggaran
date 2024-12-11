@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sub_poin_sub_kppns', function (Blueprint $table) {
+        Schema::create('wilayahs', function (Blueprint $table) {
             $table->id();
-            $table->string('sub_poin_sub_kppn_name');
-            $table->string('subtotal');
-            $table->string('satuan')->nullable();
-            $table->string('budget');
+            $table->string('wilayah_name');
+            $table->string('total');
+            $table->string('validasi_total');
+            $table->foreignId('point_sub_component_id')->constrained('point_sub_components');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sub_poin_sub_kppns');
+        Schema::dropIfExists('wilayahs');
     }
 };

@@ -8,7 +8,12 @@ class SubComponent extends Model
 {
     protected $guarded = ['id'];
     
-    public function points()
+    public function komponen()
+    {
+        return $this->belongsTo(Component::class);
+    }
+
+    public function poinSubComponent()
     {
         return $this->hasMany(PointSubComponent::class);
     }

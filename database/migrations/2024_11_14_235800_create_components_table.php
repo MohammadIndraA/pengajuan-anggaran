@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('component_code');
             $table->string('component_name');
+            $table->integer('qty');
+            $table->string('satuan');
+            $table->string('validasi_isi');
+            $table->bigInteger('total');
             $table->timestamps();
         });
     }

@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('sub_poin_sub_kppns', function (Blueprint $table) {
-            $table->foreignId('point_kppn_id')->constrained('point_kppns');
+        Schema::create('satkers', function (Blueprint $table) {
+            $table->id();
+            $table->string('satker_name');
+            $table->string('wilayah_name');
+            $table->bigInteger('satker_total');
+            $table->bigInteger('wilayah_total');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('sub_poin_sub_kppns', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('satkers');
     }
 };

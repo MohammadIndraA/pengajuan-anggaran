@@ -15,17 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('sub_component_code');
             $table->string('sub_component_name');
-            $table->string('budget');
-            $table->string('komponen_utama', 5);
-            $table->string('satuan')->nullable();
-            $table->foreignId('kro_id')->constrained('kros');
-            $table->foreignId('ro_id')->constrained('ros');
-            $table->foreignId('program_id')->constrained('programs');
-            $table->foreignId('activity_id')->constrained('activities');
-            $table->foreignId('regency_budget_request_id')->nullable()->constrained('regency_budget_requests');
-            $table->foreignId('division_budget_request_id')->nullable()->constrained('division_budget_requests');
-            $table->foreignId('province_budget_request_id')->nullable()->constrained('province_budget_requests');
-            $table->foreignId('departement_budget_request_id')->nullable()->constrained('departement_budget_requests');
+            $table->string('total');
+            $table->string('validasi_total');
+            $table->foreignId('component_id')->constrained('components');
             $table->timestamps();
         });
     }
