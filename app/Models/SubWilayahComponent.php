@@ -4,14 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SubWilayah extends Model
+class SubWilayahComponent extends Model
 {
     protected $guarded = ['id'];
-
-    public function wilayah()
-    {
-        return $this->belongsTo(Wilayah::class);
-    }
+    protected $table = 'sub_wilayah_components';
 
     public function pointSubComponent()
     {

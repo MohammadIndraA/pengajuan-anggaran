@@ -30,7 +30,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
       return view('home.index');
 });
-
+Route::get('/view' , function () {
+      return view('laporan.laporan_province');
+});
 Route::get('/login-page', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'postLogin'])->name('login.post');
 Route::middleware('auth')->group(function () {
@@ -51,7 +53,8 @@ Route::middleware('auth')->group(function () {
             Route::get('/pengajuan-anggaran/create', [ProvinceBudgetRequestsController::class, 'create'])->name('pengajuan-anggaran.create');
             Route::post('/pengajuan-anggaran/store', [ProvinceBudgetRequestsController::class, 'store'])->name('pengajuan-anggaran.store');
             Route::get('/pengajuan-anggaran/edit/{id}', [ProvinceBudgetRequestsController::class, 'edit']);
-            Route::get('/pengajuan-anggaran/edit-data/{id}', [ProvinceImportController::class, 'editData'])->name('pengajuan-anggaran.edit-data');
+            Route::get('/pengajuan-anggaran/edit-data/{id}', [ProvinceImportController::class, 'editD
+            ata'])->name('pengajuan-anggaran.edit-data');
             Route::post('/pengajuan-anggaran/update-data/{id}', [ProvinceImportController::class, 'updateData'])->name('pengajuan-anggaran.update-data');
 
             //databse import

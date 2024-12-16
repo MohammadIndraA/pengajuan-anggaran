@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sub_wilayahs', function (Blueprint $table) {
+        Schema::create('sub_wilayah_components', function (Blueprint $table) {
             $table->id();
             $table->string('sub_wilayah_name');
             $table->integer('qty')->nullable();
@@ -21,7 +21,6 @@ return new class extends Migration
             $table->bigInteger('verifikasi');
             $table->string('validasi_total')->nullable();
             $table->bigInteger('total');
-            $table->foreignId('wilayah_id')->nullable()->constrained('wilayahs');
             $table->foreignId('point_sub_component_id')->nullable()->constrained('point_sub_components');
             $table->timestamps();
         });
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sub_wilayahs');
+        Schema::dropIfExists('sub_wilayah_components');
     }
 };

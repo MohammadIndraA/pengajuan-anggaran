@@ -17,4 +17,9 @@ class PointSubComponent extends Model
     {
         return $this->hasMany(Wilayah::class);
     }
+
+    public function subWilayahComponent()
+    {
+        return $this->hasMany(SubWilayah::class, 'point_sub_component_id');
+    }
 }

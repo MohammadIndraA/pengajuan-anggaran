@@ -91,100 +91,102 @@ class ProvinceImport implements ToCollection, WithCalculatedFormulas
     
         $komponen = null;
         $subKomponen = null;
-        $poinSubKomponen = null;
-        $wilayah = null;
-
-        foreach ($collection as $row) {
-            if ($index > 7) {
-                // Process komponen (length 1 dan 2 dan itu number)
-                if (isset($row[0]) && (strlen(trim($row[0])) == 1 || strlen(trim($row[0])) == 2) && is_numeric(trim($row[0]))) { 
-                    $currentkomponenIndex++;
-                    $currentPointIndex = -1;
-                    $subtotal = $row[6]; 
-                    $data = [
+        $currentkomponenIndex = -1;  
+        $currentPointIndex = -1;  
+        $currentSubKomponenIndex = -1;  
+        $currentWilayahIndex = -1;  
+        $lastWilayah = null;   
+        $poinSubKomponen = null; // Inisialisasi variabel ini  
+        
+        foreach ($collection as $index => $row) {  
+            if ($index > 7) {  
+                // **Process Komponen**  
+                if (isset($row[0]) && (strlen(trim($row[0])) == 1 || strlen(trim($row[0])) == 2) && is_numeric(trim($row[0]))) {   
+                    $currentkomponenIndex++;  
+                    $componen = [  
                         'component_code' => $row[0],  
-                        'component_name' => $row[1] ?? null,
-                        'qty' => $row[2] ?? null,
-                        'satuan' => $row[3] ?? null,
-                        'validasi_isi' => $row[2] || $row[3] == null ? 'Sesuai' : 'Tidak Sesuai',
-                        'total' => $subtotal,
-                        'kro_id' => $kro->id,
-                        'ro_id' => $ro->id,
-                        'program_id' => $program->id,
-                        'activity_id' => $activity->id,
-                        'satker_id' => $satker->id
+                        'component_name' => $row[1] ?? null,  
+                        'qty' => $row[2] ?? null,  
+                        'satuan' => $row[3] ?? null,  
+                        'validasi_isi' => ($row[2] || $row[3] == null) ? 'Sesuai' : 'Tidak Sesuai',  
+                        'total' => $row[6],  
+                        'kro_id' => $kro->id,  
+                        'ro_id' => $ro->id,  
+                        'program_id' => $program->id,  
+                        'activity_id' => $activity->id,  
+                        'satker_id' => $satker->id,  
+                        'budget_request_id' => $this->id,  
                     ];
                     if (Auth::user()->role == "regency") {
-                        $data['regency_budget_request_id'] = $this->id;
+                        $componen['regency_budget_request_id'] = $this->id;
                     } elseif (Auth::user()->role == "province") {
-                        $data['province_budget_request_id'] = $this->id;
+                        $componen['province_budget_request_id'] = $this->id;
                     } elseif (Auth::user()->role == "departement") {
-                        $data['departement_budget_request_id'] = $this->id;
+                        $componen['departement_budget_request_id'] = $this->id;
                     }else {
-                        $data['division_budget_request_id'] = $this->id;
+                        $componen['division_budget_request_id'] = $this->id;
                         
-                    }
-                    $komponen = Component::create($data);    
-                }                
-                // Process Point (length 1)
-                elseif (isset($row[0]) && strlen(trim($row[0])) == 1 && ctype_alpha(trim($row[0]))) {
-                    if ($currentkomponenIndex >= 0) {
-                        $currentPointIndex++;
-                        $currentDetailIndex = -1;
-                        $subKomponen = $komponen->subKomponen()->create([
-                            'sub_component_code' => $row[0],
-                            'sub_component_name' => $row[1] ?? null,
-                            'total' => $row[6] ?? 0,
-                            'validasi_total' => $row[6] == null || $row[6] == 0 ? 'Tidak Sesuai' : 'Sesuai',
-                        ]);
-                    }
-                }
-                
-                // Process Detail (length 6)
-                elseif (isset($row[0]) && strlen(trim($row[0])) == 6) {
-                    if ($currentPointIndex >= 0) {
-                        $currentDetailIndex++;
-                        $currentKppnIndex = -1;
-                        $poinSubKomponen = $subKomponen->poinSubComponent()->create([
-                            'point_sub_component_code' => $row[0],
-                            'point_sub_component_name' => $row[1] ?? null,
-                            'total' => $row[6] ?? 0,
-                            'validasi_total' => $row[6] == null || $row[6] == 0 ? 'Tidak Sesuai' : 'Sesuai',
-                        ]);
-                    }
-                }
-                
-                // Process KPPN
-                elseif (isset($row[1]) && substr($row[1], 0, 1) === '>') {
-                    if ($currentDetailIndex >= 0) {
-                        $currentKppnIndex++;
-                        $currentKppnKategoriIndex = -1;
-                        $wilayah = $poinSubKomponen->wilayah()->create([
-                            'wilayah_name' => $row[1] ?? null,
-                            'total' => $row[6] ?? 0,
-                            'validasi_total' => $row[6] == null || $row[6] == 0 ? 'Tidak Sesuai' : 'Sesuai',
-                        ]);
-                    }
-                }
-                
-                // Process KPPN Kategori
-                elseif (isset($row[1]) && substr($row[1], 0, 1) === '-') {
-                    if ($currentKppnIndex >= 0) {
-                        $currentKppnKategoriIndex++;
-                        $wilayah->subWilayah()->create([
-                            'sub_wilayah_name' => $row[1] ?? null,
-                            'qty' => $row[2] ?? null,
-                            'satuan' => $row[3] ?? null,
-                            'sub_total' => $row[5] ?? null,
-                            'validasi_isi' => $row[2] || $row[3] == null ? 'Sesuai' : 'Tidak Sesuai',
-                            'verifikasi' =>(float) $row[2] * (float)$row[5],
-                            'validasi_total' => (float)$row[6] == (float)$row[2] * (float)$row[5] ? 'Sesuai' : 'Tidak Sesuai',
-                            'total' => $row[6] ?? 0,
-                        ]);
-                    }
-                }
-            }
-            $index++;
+                    }  
+                    $komponen = Component::create($componen);
+                }  
+                // **Process Sub Komponen** (length 1)  
+                elseif (isset($row[0]) && strlen(trim($row[0])) == 1 && ctype_alpha(trim($row[0]))) {  
+                    if ($currentkomponenIndex >= 0) {  
+                        $currentSubKomponenIndex++;  
+                        $subKomponen = $komponen->subKomponen()->create([  
+                            'sub_component_code' => $row[0],  
+                            'sub_component_name' => $row[1] ?? null,  
+                            'total' => $row[6] ?: 0,  
+                            'validasi_total' => ($row[6] == null || $row[6] == 0) ? 'Tidak Sesuai' : 'Sesuai',  
+                        ]);  
+                        // Inisialisasi poinSubKomponen setelah subKomponen dibuat  
+                        $poinSubKomponen = null; // Reset poinSubKomponen  
+                    }  
+                }  
+                // **Proses Poin Sub Komponen (length 6)**  
+                elseif (isset($row[0]) && strlen(trim($row[0])) == 6) {  
+                    if ($currentSubKomponenIndex >= 0) {  
+                        $currentPointIndex++;  
+                        $poinSubKomponen = $subKomponen->poinSubComponent()->create([  
+                            'point_sub_component_code' => $row[0],  
+                            'point_sub_component_name' => $row[1] ?? null,  
+                            'total' => $row[6] ?: 0,  
+                            'validasi_total' => ($row[6] == null || $row[6] == 0) ? 'Tidak Sesuai' : 'Sesuai',  
+                        ]);  
+                    }  
+                }   
+                // Proses Wilayah (diawali ">")  
+                elseif (isset($row[1]) && substr(trim($row[1]), 0, 1) === '>') {  
+                    if (isset($poinSubKomponen) && $currentPointIndex >= 0) {  
+                        $lastWilayah = $poinSubKomponen->wilayah()->create([  
+                            'wilayah_name' => $row[1],  
+                            'total' => $row[6] ?: 0,  
+                            'validasi_total' => ($row[6] == null || $row[6] == 0) ? 'Tidak Sesuai' : 'Sesuai',  
+                        ]);  
+                    }  
+                }  
+                // Proses Sub Wilayah (diawali "-")  
+                elseif (isset($row[1]) && substr(trim($row[1]), 0, 1) === '-') {  
+                    $subWilayahData = [  
+                        'sub_wilayah_name' => $row[1],  
+                        'qty' => $row[2] ?? null,  
+                        'satuan' => $row[3] ?? null,  
+                        'sub_total' => $row[5] ?? null,  
+                        'validasi_isi' => ($row[2] || $row[3] == null) ? 'Sesuai' : 'Tidak Sesuai',  
+                        'verifikasi' => (float)($row[2] ?? 0) * (float)($row[5] ?? 0),  
+                        'validasi_total' => ((float)($row[6] ?? 0) == (float)($row[2] ?? 0) * (float)($row[5] ?? 0)) ? 'Sesuai' : 'Tidak Sesuai',  
+                        'total' => $row[6] ?: 0,  
+                    ];  
+        
+                    if ($lastWilayah) {  
+                        // Jika ada wilayah sebelumnya (">"), tambahkan ke wilayah  
+                        $lastWilayah->subWilayah()->create($subWilayahData);  
+                    } else if (isset($poinSubKomponen)) {  
+                        // Jika tidak ada wilayah, tambahkan langsung ke poinSubKomponen  
+                        $poinSubKomponen->subWilayahComponent()->create($subWilayahData);  
+                    } 
+                }  
+            }  
         }
         
         return $komponen;

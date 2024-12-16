@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Component;
 use App\Models\DepartementBudgetRequest;
 use App\Models\DivisionBudgetRequest;
 use App\Models\Province;
@@ -163,12 +164,12 @@ class LaporanController extends Controller
                 // $regency = $subComponent->scopeWithFullDetails(DB::table('sub_components'), $model, 'regency_budget_request_id', $id)
                 // ->where('regency_budget_requests.status', 'approved')
                 // ->get();
-                $regency = SubComponent::with(['points.details.kppns.kppnKategoris.kppnDetails'])
-                ->leftJoin('programs', 'sub_components.program_id', '=', 'programs.id')
-                ->leftJoin('regency_budget_requests', "sub_components.regency_budget_request_id", '=', "regency_budget_requests.id")  
-                ->leftJoin('kros', 'sub_components.kro_id', '=', 'kros.id')
-                ->leftJoin('activities', 'sub_components.activity_id', '=', 'activities.id')
-                ->leftJoin('ros', 'sub_components.ro_id', '=', 'ros.id')    
+                $regency =Component::with(['subKomponen.poinSubComponent.wilayah.subWilayah'])
+                ->leftJoin('programs', 'components.program_id', '=', 'programs.id')
+                ->leftJoin('regency_budget_requests', "components.regency_budget_request_id", '=', "regency_budget_requests.id")  
+                ->leftJoin('kros', 'components.kro_id', '=', 'kros.id')
+                ->leftJoin('activities', 'components.activity_id', '=', 'activities.id')
+                ->leftJoin('ros', 'components.ro_id', '=', 'ros.id')    
                 ->where('regency_budget_request_id', $id)->get();
             }
         
@@ -176,22 +177,23 @@ class LaporanController extends Controller
             if (isset($data[0]['province_budget_request_id'])) {
                 $model = 'province_budget_requests';
                 $id = $data[0]['province_budget_request_id'];
-                $subComponent = new SubComponent();
-                $prov = $subComponent->scopeWithFullDetails(DB::table('sub_components'), $model, 'province_budget_request_id', $id)
+                $prov = Component::with(['subKomponen.poinSubComponent.wilayah.subWilayah'])
+                ->withFullDetails($model, 'province_budget_request_id', $id)
                 ->where('province_budget_requests.status', 'approved')
                 ->get();
-        
+                
                 // Ambil semua regency_budget_request_id dari $data
                 $regency_ids = array_column($data, 'regency_budget_request_id');
                 $regencys_name = array_column($data, 'regency_name');
-        
                 // Query semua regency data berdasarkan ID
+                // dd($regencys_name);
                 if (!empty($regency_ids)) {
                     foreach ($regency_ids as $id) {
                         $regencys[$id] = $model = 'regency_budget_requests';
-                        $id = $data[0]['regency_budget_request_id'];
-                        $subComponent = new SubComponent();
-                        $regencys = $subComponent->scopeWithFullDetails(DB::table('sub_components'), $model, 'regency_budget_request_id', $id)
+                        $id = $id;
+                        $regencys = Component::with(['subKomponen.poinSubComponent.wilayah.subWilayah'])
+                        ->withFullDetails($model, 'regency_budget_request_id', $id)
+                        ->where('regency_budget_requests.status', 'approved')
                         ->get();
                     }
                 }

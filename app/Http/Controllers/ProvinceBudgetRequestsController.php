@@ -97,7 +97,7 @@ class ProvinceBudgetRequestsController extends Controller
                 if ($row->evidence_file) {
                     $url = url('/view-excel/' . $row->evidence_file);
                     // $url = Storage::url($row->proposal_file->file_path);
-                    $actions .= '<a href="' . $url . '" 
+                    $actions .= '<a href="' . route('pengajuan-anggaran.exort', ['id' => $row->id , 'type' => Auth::user()->role]) . '" 
                     class="btn btn-warning btn-sm mt-3" >
                     <i class="bi bi-file-earmark-pdf me-1"></i> Doc Excel
                       </a>';
@@ -503,9 +503,23 @@ class ProvinceBudgetRequestsController extends Controller
                 }
                 if ($row->evidence_file) {
                     $uri = url('/view-excel/' . $row->evidence_file);
+                    $type = null;
+                    if (Auth::user()->role == "pusat") {
+                        if (request()->is('pengajuan-anggaran-departement/province')) {
+                            $type = 'province';
+                        } elseif (request()->is('pengajuan-anggaran-departement/regency')) {
+                            $type = 'regency';
+                        } elseif (request()->is('pengajuan-anggaran-departement/departement')) {
+                            $type = 'departement';
+                        } elseif (request()->is('pengajuan-anggaran-departement/division')) {
+                            $type = 'division';
+                        }
+                    }else{
+                        $type = Auth::user()->role;
+                    }
                     // $url = Storage::url($row->proposal_file->file_path);
                     $actions .=  '<div class="p-1">
-                    <a href="' . $uri . '" 
+                    <a href="' . route('pengajuan-anggaran.exort', ['id' => $row->id , 'type' => $type]) . '" 
                        class="btn btn-warning btn-sm w-100">
                        <i class="bi bi-file-earmark-pdf me-1"></i> Doc Excel
                     </a>
@@ -583,6 +597,10 @@ class ProvinceBudgetRequestsController extends Controller
             'Content-Type' => 'application/xlsx',
             'Content-Disposition' => 'inline; filename="' . $filename . '"',
         ]);
+    }
+    public function revisi_excel($id, $type){
+        $import = new PengajuanAanggaranExport($id, $type);  
+        return Excel::download($import, 'pengajuan_anggaran.xlsx');
     }
 
    
