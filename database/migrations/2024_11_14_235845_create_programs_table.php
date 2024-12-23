@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('program_code');
             $table->string('program_name');
+            $table->bigInteger('total');
             $table->timestamps();
         });
     }

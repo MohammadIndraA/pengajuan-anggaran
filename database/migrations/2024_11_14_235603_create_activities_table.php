@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('activity_code');
             $table->string('activity_name');
+            $table->bigInteger('total');
             $table->timestamps();
         });
     }

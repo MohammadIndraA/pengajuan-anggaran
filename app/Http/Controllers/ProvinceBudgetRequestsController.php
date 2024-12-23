@@ -36,6 +36,51 @@ class ProvinceBudgetRequestsController extends Controller
 {
     public function index(Request $request)
     {   
+        $invalidRecords = DB::table('components')  
+        ->leftJoin('programs', 'components.program_id', '=', 'programs.id')  
+        ->leftJoin('kros', 'components.kro_id', '=', 'kros.id')  
+        ->leftJoin('activities', 'components.activity_id', '=', 'activities.id')  
+        ->leftJoin('satkers', 'components.satker_id', '=', 'satkers.id')  
+        ->leftJoin('ros', 'components.ro_id', '=', 'ros.id')  
+        ->leftJoin('sub_components', 'components.id', '=', 'sub_components.component_id')  
+        ->leftJoin('point_sub_components', 'sub_components.id', '=', 'point_sub_components.sub_component_id')  
+        ->leftJoin('wilayahs', 'point_sub_components.id', '=', 'wilayahs.point_sub_component_id')  
+        ->leftJoin('sub_wilayahs', 'wilayahs.id', '=', 'sub_wilayahs.wilayah_id')  
+        ->where(function($query) {  
+            $query->where(function($q) {  
+                $q->where('programs.total', 0)   
+                  ->orWhere('activities.total', 0)  
+                  ->orWhere('kros.total', 0)  
+                  ->orWhere('kros.validasi_isi', 'Tidak Sesuai')  
+                  ->orWhere('satkers.satker_total', 0)  
+                  ->orWhere('satkers.wilayah_total', 0)  
+                  ->orWhere('ros.total', 0)   
+                  ->orWhere('ros.validasi_isi', 'Tidak Sesuai')
+                  ->orWhere('sub_components.validasi_total', 'Tidak Sesuai')
+                  ->orWhere('point_sub_components.validasi_total', 'Tidak Sesuai')
+                  ->orWhere('wilayahs.validasi_total', 'Tidak Sesuai')
+                  ->orWhere('sub_wilayahs.validasi_isi', 'Tidak Sesuai')
+                  ->orWhere('sub_wilayahs.validasi_total', 'Tidak Sesuai');  
+            });  
+        })  
+        ->select([  
+            'components.*',  
+            'programs.total as program_total',  
+            'activities.total as activity_total',  
+            'kros.total as kro_total',  
+            'kros.validasi_isi as kro_validasi_isi',  
+            'satkers.satker_total',  
+            'satkers.wilayah_total',  
+            'ros.total as ro_total',  
+            'ros.validasi_isi as ro_validasi_isi',
+            'sub_components.validasi_total as sub_components_validasi_total',
+            'point_sub_components.validasi_total as point_sub_components_validasi_total',
+            'wilayahs.validasi_total as wilayahs_validasi_total',
+            'sub_wilayahs.validasi_total as sub_wilayahs_validasi_total',
+            'sub_wilayahs.validasi_isi as sub_wilayahs_validasi_isi',
+        ])  
+        ->distinct() // Hindari duplikasi  
+        ->get();  
         if ($request->ajax()) {
              if (Auth::user()->role === "province") {
                 
@@ -122,7 +167,7 @@ class ProvinceBudgetRequestsController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('pengajuan_anggaran.index');
+        return view('pengajuan_anggaran.index', compact('invalidRecords'));
     }
 
     public function create()

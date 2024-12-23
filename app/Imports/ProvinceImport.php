@@ -32,55 +32,45 @@ class ProvinceImport implements ToCollection, WithCalculatedFormulas
             'wilayah_name' => $collection[0][1],
             'wilayah_total' => $collection[0][6],
             'satker_name' => $collection[2][1],
-            'satker_total' => $collection[2][6],
+            'satker_total' => $collection[2][6] ?? 0,
         ]);
         $this->total += $collection[0][6];
           // Buat Program
         $program = Program::create([
             'program_code' => $collection[3][0],
             'program_name' => $collection[3][1],
+            'total' => $collection[3][6] ?? 0,
         ]);
 
         // Buat atau Perbarui Activity
           $activity =  Activity::create(
             ['activity_code' => $collection[4][0],
-            'activity_name' => $collection[4][1]
+            'activity_name' => $collection[4][1],
+            'total' => $collection[4][6] ?? 0
             ]
         );
 
         // Buat atau Perbarui Kro
         $kro = Kro::create(
             ['kro_code' => $collection[5][0],
-            'kro_name' => $collection[5][1]]
+            'kro_name' => $collection[5][1],
+            'qty' => $collection[5][2] ?? null,  
+            'satuan' => $collection[5][3] ?? null,  
+            'validasi_isi' => $collection[5][2] == null || trim($collection[5][3]) == '-'||trim($collection[5][2]) == '-' || $collection[5][3] == null ? 'Tidak Sesuai' : 'Sesuai',  
+            'total' => $collection[5][6] ?? 0,
+            ]
         );
 
         // Buat atau Perbarui Ro
         $ro = Ro::create(
             ['ro_code' => $collection[6][0],
-            'ro_name' => $collection[6][1]]
+            'ro_name' => $collection[6][1],
+            'qty' => $collection[6][2] ?? null,  
+            'satuan' => $collection[6][3] ?? null,  
+            'validasi_isi' => $collection[6][2] == null || trim($collection[6][2]) == '-' || trim($collection[6][3]) == '-' || $collection[6][3] == null? 'Tidak Sesuai' : 'Sesuai',  
+            'total' => $collection[6][6] ?? 0,
+            ]
         );
-
-        Budget::create([
-            'budget' => $collection[3][6],
-            'program_id' => $program->id,
-        ]);
-
-       Budget::create([
-            'budget' => $collection[4][6],
-            'activity_id' => $activity->id,
-        ]);
-
-       Budget::create([
-            'budget' => $collection[5][6],
-            'kro_id' => $kro->id,
-        ]);
-
-
-        Budget::create([
-            'budget' => $collection[6][6],
-            'ro_id' => $ro->id,
-        ]);
-
 
         $index = 7;
         $currentkomponenIndex = -1;
@@ -108,7 +98,7 @@ class ProvinceImport implements ToCollection, WithCalculatedFormulas
                         'component_name' => $row[1] ?? null,  
                         'qty' => $row[2] ?? null,  
                         'satuan' => $row[3] ?? null,  
-                        'validasi_isi' => ($row[2] || $row[3] == null) ? 'Sesuai' : 'Tidak Sesuai',  
+                        'validasi_isi' => $row[2] || $row[3] == null || trim($row[6]) == '-' ? 'Sesuai' : 'Tidak Sesuai',  
                         'total' => $row[6],  
                         'kro_id' => $kro->id,  
                         'ro_id' => $ro->id,  
@@ -137,7 +127,7 @@ class ProvinceImport implements ToCollection, WithCalculatedFormulas
                             'sub_component_code' => $row[0],  
                             'sub_component_name' => $row[1] ?? null,  
                             'total' => $row[6] ?: 0,  
-                            'validasi_total' => ($row[6] == null || $row[6] == 0) ? 'Tidak Sesuai' : 'Sesuai',  
+                            'validasi_total' => $row[6] == null || $row[6] == 0 || trim($row[6]) == '-' ? 'Tidak Sesuai' : 'Sesuai',  
                         ]);  
                         // Inisialisasi poinSubKomponen setelah subKomponen dibuat  
                         $poinSubKomponen = null; // Reset poinSubKomponen  
@@ -151,7 +141,7 @@ class ProvinceImport implements ToCollection, WithCalculatedFormulas
                             'point_sub_component_code' => $row[0],  
                             'point_sub_component_name' => $row[1] ?? null,  
                             'total' => $row[6] ?: 0,  
-                            'validasi_total' => ($row[6] == null || $row[6] == 0) ? 'Tidak Sesuai' : 'Sesuai',  
+                            'validasi_total' => ($row[6] == null || $row[6] == 0 ||trim($row[6]) == '-') ? 'Tidak Sesuai' : 'Sesuai',  
                         ]);  
                     }  
                 }   
@@ -161,7 +151,7 @@ class ProvinceImport implements ToCollection, WithCalculatedFormulas
                         $lastWilayah = $poinSubKomponen->wilayah()->create([  
                             'wilayah_name' => $row[1],  
                             'total' => $row[6] ?: 0,  
-                            'validasi_total' => ($row[6] == null || $row[6] == 0) ? 'Tidak Sesuai' : 'Sesuai',  
+                            'validasi_total' => ($row[6] == null || $row[6] == 0 ||trim($row[6]) == '-') ? 'Tidak Sesuai' : 'Sesuai',  
                         ]);  
                     }  
                 }  
@@ -172,9 +162,9 @@ class ProvinceImport implements ToCollection, WithCalculatedFormulas
                         'qty' => $row[2] ?? null,  
                         'satuan' => $row[3] ?? null,  
                         'sub_total' => $row[5] ?? null,  
-                        'validasi_isi' => ($row[2] || $row[3] == null) ? 'Sesuai' : 'Tidak Sesuai',  
+                        'validasi_isi' => $row[2] == null || $row[3] == null  ||trim($row[2]) == '-' ||trim($row[3]) == '-'? 'Tidak Sesuai' : 'Sesuai',  
                         'verifikasi' => (float)($row[2] ?? 0) * (float)($row[5] ?? 0),  
-                        'validasi_total' => ((float)($row[6] ?? 0) == (float)($row[2] ?? 0) * (float)($row[5] ?? 0)) ? 'Sesuai' : 'Tidak Sesuai',  
+                        'validasi_total' => ((float)($row[6] ?? 0) == (float)($row[2] ?? 0) * (float)($row[5] ?? 0)) ||$row[6] == '-'? 'Sesuai' : 'Tidak Sesuai',  
                         'total' => $row[6] ?: 0,  
                     ];  
         

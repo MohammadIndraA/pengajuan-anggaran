@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('kro_code');
             $table->string('kro_name');
+            $table->integer('qty');
+            $table->string('satuan');
+            $table->string('validasi_isi');
+            $table->bigInteger('total');
             $table->timestamps();
         });
     }

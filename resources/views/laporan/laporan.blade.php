@@ -173,6 +173,10 @@
                 var rows = table.rows({
                     selected: true
                 }).data();
+                $('#export-pdf-button').attr('disabled', true);
+                $('#export-pdf-button').html(
+                    '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...'
+                );
 
                 // Konversi data rows menjadi string JSON
                 var data = JSON.stringify(rows.toArray());
@@ -193,6 +197,15 @@
                     },
                     success: function(res) {
                         // console.log(res.data);
+                        $('#export-pdf-button').attr('disabled', false);
+                        $('#export-pdf-button').html(
+                            '<i class="bi bi-cloud-download me-1"></i> Download Laporan');
+                    },
+                    error: function(err) {
+                        $('#export-pdf-button').attr('disabled', false);
+                        $('#export-pdf-button').html(
+                            '<i class="bi bi-cloud-download me-1"></i> Download Laporan');
+                        console.log(err);
                     }
                 });
             });

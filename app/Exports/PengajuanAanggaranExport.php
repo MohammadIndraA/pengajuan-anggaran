@@ -113,40 +113,40 @@ class PengajuanAanggaranExport implements FromArray, WithHeadings, WithStyles, S
 
         // Menambahkan baris Program  
         $data[] = [  
-            'code' => '025.09.WA',  
+            'code' => $provinceData[0]->program_code,  
             'name' => $provinceData[0]->program_name,  
             'volume_qty' => '',  
             'volume_unit' => '',    
-            'price' => 'Rp. ' . $provinceData[0]->program_total,  
+            'price' => '',  
             'total' => 'Rp. ' . $provinceData[0]->program_total,  
         ];  
 
         // Menambahkan baris Kegiatan  
         $data[] = [  
-            'code' => '2150',  
+            'code' => $provinceData[0]->activity_code,  
             'name' => $provinceData[0]->activity_name,  
-            'volume_qty' => '7',  
-            'volume_unit' => 'Layanan',    
-            'price' => 'Rp. ' . $provinceData[0]->activity_price,  
+            'volume_qty' => '',  
+            'volume_unit' => '',    
+            'price' => '',  
             'total' => 'Rp. ' . $provinceData[0]->activity_total,  
         ];  
 
         // Menambahkan baris KRO  
         $data[] = [  
-            'code' => '2150.EBA.956',  
+            'code' => $provinceData[0]->kro_code,
             'name' => $provinceData[0]->kro_name,  
-            'volume_qty' => '1',  
-            'volume_unit' => 'Layanan',    
+            'volume_qty' => $provinceData[0]->kro_qty,  
+            'volume_unit' => $provinceData[0]->kro_satuan,    
             'price' => '',  
             'total' => 'Rp. ' . $provinceData[0]->kro_total,  
         ];  
 
         // Menambahkan baris RO  
         $data[] = [  
-            'code' => '051',  
+            'code' => $provinceData[0]->ro_code, 
             'name' => $provinceData[0]->ro_name,  
-            'volume_qty' => '',  
-            'volume_unit' => '',    
+            'volume_qty' => $provinceData[0]->ro_qty,   
+            'volume_unit' => $provinceData[0]->ro_satuan,    
             'price' => '',  
             'total' => 'Rp. ' . $provinceData[0]->ro_total,  
         ];  
@@ -156,10 +156,11 @@ class PengajuanAanggaranExport implements FromArray, WithHeadings, WithStyles, S
                 $data[] = [  
                     'code' => $item->component_code,  
                     'name' => $item->component_name,  
-                    'volume_qty' => '',  
-                    'volume_unit' => '',    
+                    'volume_qty' => $item->qty,  
+                    'volume_unit' => $item->satuan,    
                     'price' => '',  
                     'total' => 'Rp. ' . $item->total,  
+                   'validasi_isi' => ($item->validasi_isi == "Tidak Sesuai" || $item->validasi_isi == '-') ? 'Tidak Sesuai' : '',
                 ];  
     
                 // Menyertakan subKomponen  
@@ -171,6 +172,7 @@ class PengajuanAanggaranExport implements FromArray, WithHeadings, WithStyles, S
                         'volume_unit' => '',    
                         'price' => '',  
                         'total' => 'Rp. ' . $subComponent->total,  
+                        'validasi total' => $item->validasi_total == "Tidak Sesuai" || $item->total == '-' || $item->total == 0 ? 'Jumlah Tidak Sesuai' : '',
                     ];  
                     
                     // Menyertakan poinSubComponent  
@@ -182,6 +184,8 @@ class PengajuanAanggaranExport implements FromArray, WithHeadings, WithStyles, S
                             'volume_unit' => '',    
                             'price' => '',
                             'total' => 'Rp. ' . $point->total,  
+                            'validasi total' => $point->validasi_total == "Tidak Sesuai" || $point->total == '-' ||$point->total == 0 ? 'Jumlah Tidak Sesuai' : '',  
+
                         ];  
                         // if ($point->subWilayahComponent != null) {
                         //     foreach ($point->subWilayahComponent as $value) {
@@ -204,6 +208,7 @@ class PengajuanAanggaranExport implements FromArray, WithHeadings, WithStyles, S
                                 'volume_unit' => '',    
                                 'price' => '',  
                                 'total' => 'Rp. ' . $region->total,  
+                                'validasi total' => $region->validasi_total == "Tidak Sesuai" || $region->total == '-' ||$region->total == 0 ? 'Jumlah Tidak Sesuai' : '',   
                             ];  
     
                             // Menyertakan subWilayah jika ada  
@@ -215,6 +220,8 @@ class PengajuanAanggaranExport implements FromArray, WithHeadings, WithStyles, S
                                     'volume_unit' => $subRegion->satuan,    
                                     'price' => 'Rp. ' . $subRegion->sub_total,  
                                     'total' => 'Rp. ' . $subRegion->total,  
+                                    'validasi isi' => $subRegion->validasi_isi == "Tidak Sesuai"  ? 'Qty / Satuan Kosong' : '',
+                                   'validasi total' => ($subRegion->validasi_total == "Tidak Sesuai" || $subRegion->total == '-' ||$subRegion->total == 0) ? 'Jumlah Tidak Sesuai' : '',  
                                 ];  
                             }  
                         }  
@@ -268,6 +275,8 @@ class PengajuanAanggaranExport implements FromArray, WithHeadings, WithStyles, S
                 // Get values from the Price and Total columns  
                 $priceValue = $sheet->getCell('E' . $row)->getValue(); // Price  
                 $totalValue = $sheet->getCell('F' . $row)->getValue(); // Total  
+                $isilValue = $sheet->getCell('G' . $row)->getValue(); // Total  
+                $totalsValue = $sheet->getCell('H' . $row)->getValue(); // Total  
         
                 // Apply style for the Price column if conditions match  
                 if ($this->shouldStyle($priceValue)) {  
@@ -296,6 +305,32 @@ class PengajuanAanggaranExport implements FromArray, WithHeadings, WithStyles, S
                         ],  
                     ]);  
                 }  
+                // 
+                if ($this->shouldStyleValidasi($isilValue)) {  
+                    $sheet->getStyle('G' . $row)->applyFromArray([  
+                        'font' => [  
+                            'bold' => true,  
+                            'color' => ['argb' => 'FFFF0000'], // Red for text  
+                        ],  
+                        'fill' => [  
+                            'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,  
+                            'startColor' => ['argb' => 'FFFFCCCC'], // Light red for background  
+                        ],  
+                    ]);  
+                }  
+                // 
+                if ($this->shouldStyleValidasi($totalsValue)) {  
+                    $sheet->getStyle('H' . $row)->applyFromArray([  
+                        'font' => [  
+                            'bold' => true,  
+                            'color' => ['argb' => 'FFFF0000'], // Red for text  
+                        ],  
+                        'fill' => [  
+                            'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,  
+                            'startColor' => ['argb' => 'FFFFCCCC'], // Light red for background  
+                        ],  
+                    ]);  
+                }  
             }  
         }  
         
@@ -309,4 +344,13 @@ class PengajuanAanggaranExport implements FromArray, WithHeadings, WithStyles, S
             return $value == 0 || $value == $Rp || $value == $Rp . '-' || $value == $Rp . '0' || 
                    $value == $Rp . '0-' || $value == '-' || $value == '0' || $value == '0-';  
         }
+        private function shouldStyleValidasi($value)  
+        {  
+            // Jika nilai kosong atau null, return false
+            if ($value === null || $value === '') {
+                return false;
+            }
+            return trim($value) == "Jumlah Tidak Sesuai";  
+        }
+        
 }

@@ -69,6 +69,7 @@
                                         <th scope="col">Jumlah Anggaran Keseluruhan</th>
                                         <th scope="col">Tanggal Pengajuan</th>
                                         <th scope="col">Status</th>
+                                        <th scope="col">kelengkapan</th>
                                         <th scope="col">Keterangan</th>
                                         <th scope="col">Aksi</th>
                                     </tr>
@@ -85,6 +86,10 @@
     </section>
 @endsection
 @section('script')
+    <!-- Skrip untuk mengirim data invalidRecords ke JavaScript -->
+    <script>
+        var invalidRecords = @json($invalidRecords);
+    </script>
     <script>
         $("#state").select2({
             theme: "bootstrap-5",
@@ -142,6 +147,21 @@
                                 return `<span class="badge rounded-pill bg-danger">rejected</span>`
                             }
                             return data;
+                        }
+                    },
+                    {
+                        data: '',
+                        name: 'kelengkapan',
+                        render: function(data, type, row, meta) {
+                            var isInvalid = invalidRecords.some(function(record) {
+                                return record.id === row
+                                    .id; // Sesuaikan dengan kunci unik yang sesuai 
+                            });
+
+                            if (isInvalid) {
+                                return `<span class="badge rounded-warning bg-danger">Di Tinjau</span>`;
+                            }
+                            return `<span class="badge rounded-pill bg-danger">belum lengkap</span>`;
                         }
                     },
                     {
