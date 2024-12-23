@@ -93,6 +93,7 @@
                                         <th scope="col">Jumlah Anggaran Keseluruhan</th>
                                         <th scope="col">Tanggal Pengajuan</th>
                                         <th scope="col">Status</th>
+                                        <th scope="col">Kelengkapan</th>
                                         <th scope="col">Keterangan</th>
                                         <th scope="col">Aksi</th>
                                     </tr>
@@ -183,6 +184,17 @@
                                 return `<span class="badge rounded-pill bg-danger">rejected</span>`
                             }
                             return data;
+                        }
+                    },
+                    {
+                        data: '',
+                        name: 'kelengkapan',
+                        render: function(data, type, row, meta) {
+                            // Periksa jika `invalid_records` adalah array kosong atau null
+                            if (!row.invalid_records || row.invalid_records.length === 0) {
+                                return `<span class="badge rounded-pill bg-warning">Di Tinjau</span>`;
+                            }
+                            return `<span class="badge rounded-pill bg-danger">Belum Lengkap</span>`;
                         }
                     },
                     {

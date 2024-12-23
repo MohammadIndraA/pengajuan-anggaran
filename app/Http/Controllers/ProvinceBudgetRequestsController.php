@@ -34,63 +34,87 @@ use Yajra\DataTables\Facades\DataTables;
 
 class ProvinceBudgetRequestsController extends Controller
 {
+    private function getInvalidRecords($role, $itemId) {
+        $roleMappings = [
+            'province' => ['table' => 'province_budget_requests', 'id' => 'province_budget_request_id'],
+            'regency' => ['table' => 'regency_budget_requests', 'id' => 'regency_budget_request_id'],
+            'departement' => ['table' => 'departement_budget_requests', 'id' => 'departement_budget_request_id'],
+            'division' => ['table' => 'division_budget_requests', 'id' => 'division_budget_request_id'],
+        ];
+    
+        if (!isset($roleMappings[$role])) {
+            return collect(); // Kembalikan koleksi kosong jika role tidak valid
+        }
+    
+        $table = $roleMappings[$role]['table'];
+        $idColumn = $roleMappings[$role]['id'];
+    
+        return DB::table('components')
+            ->leftJoin($table, "components.{$idColumn}", '=', "{$table}.id")
+            ->leftJoin('programs', 'components.program_id', '=', 'programs.id')
+            ->leftJoin('kros', 'components.kro_id', '=', 'kros.id')
+            ->leftJoin('activities', 'components.activity_id', '=', 'activities.id')
+            ->leftJoin('satkers', 'components.satker_id', '=', 'satkers.id')
+            ->leftJoin('ros', 'components.ro_id', '=', 'ros.id')
+            ->leftJoin('sub_components', 'components.id', '=', 'sub_components.component_id')
+            ->leftJoin('point_sub_components', 'sub_components.id', '=', 'point_sub_components.sub_component_id')
+            ->leftJoin('wilayahs', 'point_sub_components.id', '=', 'wilayahs.point_sub_component_id')
+            ->leftJoin('sub_wilayahs', 'wilayahs.id', '=', 'sub_wilayahs.wilayah_id')
+            ->where("{$table}.id", $itemId)
+            ->where(function ($query) {
+                $query->where(function ($q) {
+                    $q->where('programs.total', 0)
+                        ->orWhere('activities.total', 0)
+                        ->orWhere('kros.total', 0)
+                        ->orWhere('kros.validasi_isi', 'Tidak Sesuai')
+                        ->orWhere('satkers.satker_total', 0)
+                        ->orWhere('satkers.wilayah_total', 0)
+                        ->orWhere('ros.total', 0)
+                        ->orWhere('ros.validasi_isi', 'Tidak Sesuai')
+                        ->orWhere('sub_components.validasi_total', 'Tidak Sesuai')
+                        ->orWhere('point_sub_components.validasi_total', 'Tidak Sesuai')
+                        ->orWhere('wilayahs.validasi_total', 'Tidak Sesuai')
+                        ->orWhere('sub_wilayahs.validasi_isi', 'Tidak Sesuai')
+                        ->orWhere('sub_wilayahs.validasi_total', 'Tidak Sesuai');
+                });
+            })
+            ->select([
+                'components.*',
+                'programs.total as program_total',
+                'activities.total as activity_total',
+                'kros.total as kro_total',
+                'kros.validasi_isi as kro_validasi_isi',
+                'satkers.satker_total',
+                'satkers.wilayah_total',
+                'ros.total as ro_total',
+                'ros.validasi_isi as ro_validasi_isi',
+                'sub_components.validasi_total as sub_components_validasi_total',
+                'point_sub_components.validasi_total as point_sub_components_validasi_total',
+                'wilayahs.validasi_total as wilayahs_validasi_total',
+                'sub_wilayahs.validasi_total as sub_wilayahs_validasi_total',
+                'sub_wilayahs.validasi_isi as sub_wilayahs_validasi_isi',
+            ])
+            ->distinct()
+            ->get();
+    }
+    
     public function index(Request $request)
-    {   
-        $invalidRecords = DB::table('components')  
-        ->leftJoin('programs', 'components.program_id', '=', 'programs.id')  
-        ->leftJoin('kros', 'components.kro_id', '=', 'kros.id')  
-        ->leftJoin('activities', 'components.activity_id', '=', 'activities.id')  
-        ->leftJoin('satkers', 'components.satker_id', '=', 'satkers.id')  
-        ->leftJoin('ros', 'components.ro_id', '=', 'ros.id')  
-        ->leftJoin('sub_components', 'components.id', '=', 'sub_components.component_id')  
-        ->leftJoin('point_sub_components', 'sub_components.id', '=', 'point_sub_components.sub_component_id')  
-        ->leftJoin('wilayahs', 'point_sub_components.id', '=', 'wilayahs.point_sub_component_id')  
-        ->leftJoin('sub_wilayahs', 'wilayahs.id', '=', 'sub_wilayahs.wilayah_id')  
-        ->where(function($query) {  
-            $query->where(function($q) {  
-                $q->where('programs.total', 0)   
-                  ->orWhere('activities.total', 0)  
-                  ->orWhere('kros.total', 0)  
-                  ->orWhere('kros.validasi_isi', 'Tidak Sesuai')  
-                  ->orWhere('satkers.satker_total', 0)  
-                  ->orWhere('satkers.wilayah_total', 0)  
-                  ->orWhere('ros.total', 0)   
-                  ->orWhere('ros.validasi_isi', 'Tidak Sesuai')
-                  ->orWhere('sub_components.validasi_total', 'Tidak Sesuai')
-                  ->orWhere('point_sub_components.validasi_total', 'Tidak Sesuai')
-                  ->orWhere('wilayahs.validasi_total', 'Tidak Sesuai')
-                  ->orWhere('sub_wilayahs.validasi_isi', 'Tidak Sesuai')
-                  ->orWhere('sub_wilayahs.validasi_total', 'Tidak Sesuai');  
-            });  
-        })  
-        ->select([  
-            'components.*',  
-            'programs.total as program_total',  
-            'activities.total as activity_total',  
-            'kros.total as kro_total',  
-            'kros.validasi_isi as kro_validasi_isi',  
-            'satkers.satker_total',  
-            'satkers.wilayah_total',  
-            'ros.total as ro_total',  
-            'ros.validasi_isi as ro_validasi_isi',
-            'sub_components.validasi_total as sub_components_validasi_total',
-            'point_sub_components.validasi_total as point_sub_components_validasi_total',
-            'wilayahs.validasi_total as wilayahs_validasi_total',
-            'sub_wilayahs.validasi_total as sub_wilayahs_validasi_total',
-            'sub_wilayahs.validasi_isi as sub_wilayahs_validasi_isi',
-        ])  
-        ->distinct() // Hindari duplikasi  
-        ->get();  
+    {  
         if ($request->ajax()) {
              if (Auth::user()->role === "province") {
                 
-                 $data = ProvinceBudgetRequest::with(['funding_source','proposal_file'])
+                 $data = ProvinceBudgetRequest::with(['proposal_file'])
                  ->where('province_id', Auth::user()->province_id)
                  ->when($request->has('status') && $request->status != "" , function($data) use ($request) {
                     $data->where('status', $request->status);
                 })
                 ->latest()
-                 ->get();
+                 ->get()
+                 ->map(function ($item) {
+                    $role = Auth::user()->role; // Ambil role pengguna
+                    $item->invalid_records = $this->getInvalidRecords($role, $item->id); // Panggil fungsi di controller
+                    return $item;
+                });
              }
 
              if (Auth::user()->role === "departement") {
@@ -100,7 +124,12 @@ class ProvinceBudgetRequestsController extends Controller
                     $data->where('status', $request->status);
                 })
                 ->latest()
-                ->get();
+                ->get()
+                ->map(function ($item) {
+                    $role = Auth::user()->role; // Ambil role pengguna
+                    $item->invalid_records = $this->getInvalidRecords($role, $item->id); // Panggil fungsi di controller
+                    return $item;
+                });
             }
             
             
@@ -111,7 +140,12 @@ class ProvinceBudgetRequestsController extends Controller
                     $data->where('status', $request->status);
                 })
                 ->latest()
-                 ->get();
+                 ->get()
+                 ->map(function ($item) {
+                    $role = Auth::user()->role; // Ambil role pengguna
+                    $item->invalid_records = $this->getInvalidRecords($role, $item->id); // Panggil fungsi di controller
+                    return $item;
+                });
              }
 
              if (Auth::user()->role === "division") {
@@ -121,7 +155,12 @@ class ProvinceBudgetRequestsController extends Controller
                     $data->where('status', $request->status);
                 })
                 ->latest()
-                 ->get();
+                 ->get()
+                 ->map(function ($item) {
+                    $role = Auth::user()->role; // Ambil role pengguna
+                    $item->invalid_records = $this->getInvalidRecords($role, $item->id); // Panggil fungsi di controller
+                    return $item;
+                });
              }
             
             return DataTables::of($data)
@@ -167,7 +206,7 @@ class ProvinceBudgetRequestsController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('pengajuan_anggaran.index', compact('invalidRecords'));
+        return view('pengajuan_anggaran.index');
     }
 
     public function create()
@@ -474,15 +513,22 @@ class ProvinceBudgetRequestsController extends Controller
                 if (Auth::user()->role !== "pusat") {
                     $query = ProvinceBudgetRequest::with(['funding_source', 'province'])->where('province_id', Auth::user()->province_id);                 
                 }
+
+                $data = $query->get()->map(function ($item) {
+                    $role = 'province'; // Ambil role pengguna
+                    $item->invalid_records = $this->getInvalidRecords($role, $item->id); // Panggil fungsi di controller
+                    return $item;
+                });
                   
-               $data =  $query->when($request->has('status') && $request->status != "" , function($data) use ($request) {
-                    $data->where('status', $request->status);
+                 // Filter berdasarkan parameter request
+                $data = $data->when($request->has('status') && $request->status != "", function ($collection) use ($request) {
+                    return $collection->where('status', $request->status);
                 })
-                 ->when($request->has('state') && $request->state != "" , function($data) use ($request) {
-                    $data->where('province_id', $request->state);
-                }) 
-                ->latest()
-                ->get();
+                ->when($request->has('state') && $request->state != "", function ($collection) use ($request) {
+                    return $collection->where('province_id', $request->state);
+                })
+                ->sortByDesc('created_at'); // Gunakan sortByDesc untuk mengurutkan hasil secara manual
+
                 $url = 'pengajuan-anggaran-province/edit';
                 $type = 'province';
             }
@@ -493,15 +539,23 @@ class ProvinceBudgetRequestsController extends Controller
                         $query->where('province_id', Auth::user()->province_id);  
                     });  
                 });
-                // Tambahkan filter berdasarkan parameter request
-                $data = $query->when($request->has('status') && $request->status != "", function ($query) use ($request) {
-                        $query->where('status', $request->status);
-                    })
-                    ->when($request->has('state') && $request->state != "", function ($query) use ($request) {
-                        $query->where('regency_city_id', $request->state);
-                    })
-                    ->latest()
-                    ->get();
+
+                 // Map data untuk menambahkan invalid_records
+                $data = $query->get()->map(function ($item) {
+                    $role = 'regency'; // Ambil role pengguna
+                    $item->invalid_records = $this->getInvalidRecords($role, $item->id); // Panggil fungsi di controller
+                    return $item;
+                });
+
+                // Filter berdasarkan parameter request
+                $data = $data->when($request->has('status') && $request->status != "", function ($collection) use ($request) {
+                    return $collection->where('status', $request->status);
+                })
+                ->when($request->has('state') && $request->state != "", function ($collection) use ($request) {
+                    return $collection->where('regency_city_id', $request->state);
+                })
+                ->sortByDesc('created_at'); // Gunakan sortByDesc untuk mengurutkan hasil secara manual
+
             
                 $url = 'pengajuan-anggaran-regency/edit';
                 $type = 'regency';
@@ -515,7 +569,12 @@ class ProvinceBudgetRequestsController extends Controller
                    $data->where('regency_city_id', $request->state);
                }) 
                 ->latest()
-                ->get();
+                ->get()
+                ->map(function ($item) {
+                    $role = Auth::user()->role; // Ambil role pengguna
+                    $item->invalid_records = $this->getInvalidRecords($role, $item->id); // Panggil fungsi di controller
+                    return $item;
+                });
                 $url = 'pengajuan-anggaran-departement/edit';
                 $type = 'departement';
             }
@@ -528,7 +587,12 @@ class ProvinceBudgetRequestsController extends Controller
                    $data->where('regency_city_id', $request->state);
                }) 
                 ->latest()
-                ->get();
+                ->get()
+                ->map(function ($item) {
+                    $role = Auth::user()->role; // Ambil role pengguna
+                    $item->invalid_records = $this->getInvalidRecords($role, $item->id); // Panggil fungsi di controller
+                    return $item;
+                });
                 $url = 'pengajuan-anggaran-division/edit';
                 $type = 'division';
             }

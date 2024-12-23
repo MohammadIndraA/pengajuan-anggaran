@@ -86,10 +86,6 @@
     </section>
 @endsection
 @section('script')
-    <!-- Skrip untuk mengirim data invalidRecords ke JavaScript -->
-    <script>
-        var invalidRecords = @json($invalidRecords);
-    </script>
     <script>
         $("#state").select2({
             theme: "bootstrap-5",
@@ -153,15 +149,11 @@
                         data: '',
                         name: 'kelengkapan',
                         render: function(data, type, row, meta) {
-                            var isInvalid = invalidRecords.some(function(record) {
-                                return record.id === row
-                                    .id; // Sesuaikan dengan kunci unik yang sesuai 
-                            });
-
-                            if (isInvalid) {
-                                return `<span class="badge rounded-warning bg-danger">Di Tinjau</span>`;
+                            // Periksa jika `invalid_records` adalah array kosong atau null
+                            if (!row.invalid_records || row.invalid_records.length === 0) {
+                                return `<span class="badge rounded-pill bg-warning">Di Tinjau</span>`;
                             }
-                            return `<span class="badge rounded-pill bg-danger">belum lengkap</span>`;
+                            return `<span class="badge rounded-pill bg-danger">Belum Lengkap</span>`;
                         }
                     },
                     {
