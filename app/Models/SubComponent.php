@@ -15,7 +15,7 @@ class SubComponent extends Model
 
     public function poinSubComponent()
     {
-        return $this->hasMany(PointSubComponent::class);
+        return $this->hasMany(PointSubComponent::class, 'sub_component_id');
     }
 
     public function scopeWithFullDetails($query, $model , $model_id, $id)
