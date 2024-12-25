@@ -92,24 +92,24 @@ class DatabaseSeeder extends Seeder
             ]);  
         }  
 
-    //     $regens = RegencyCity::where('province_id', 9)->get();
+         $regens = RegencyCity::where('province_id', 9)->get();
 
-    //     foreach ($regens as $regen) {
-    //         User::create([
-    //             'name' => $regen->name,
-    //             'username' => $regen->name,
-    //             'region' => fake()->address(),
-    //             'email' => str_replace(' ', '', $regen->name) . '@mail.com',
-    //             'password' => Hash::make('password'),
-    //             'email_verified_at' => now(),
-    //             'role' => 'regency',
-    //             'province_id' => 9,
-    //             'regency_city_id' => $regen->id,
-    //             'remember_token' => Str::random(10),
-    //         ]);
-    //     }
+        foreach ($regens as $regen) {
+            User::create([
+                'name' => $regen->name,
+                'username' => $regen->name,
+                'region' => fake()->address(),
+                'email' => str_replace(' ', '', $regen->name) . '@mail.com',
+                'password' => Hash::make('password'),
+                'email_verified_at' => now(),
+                'role' => 'regency',
+                'province_id' => 9,
+                'regency_city_id' => $regen->id,
+                'remember_token' => Str::random(10),
+            ]);
+         }
 
-    //     echo "Done seeder data User...\n";
+        echo "Done seeder data User...\n";
 
 
     //     // Tabel Program
