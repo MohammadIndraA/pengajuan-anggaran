@@ -282,33 +282,33 @@ class ProvinceImportController extends Controller
         }
         if (Auth::user()->role == "regency") {
             $data = DB::table('components')
-            ->leftJoin('regency_budget_requests', 'components.regency_budget_request_id', '=', 'province_budget_requests.id')
+            ->leftJoin('regency_budget_requests', 'components.regency_budget_request_id', '=', 'regency_budget_requests.id')
             ->select([
                 'components.regency_budget_request_id',
-                'province_budget_requests.submission_name',
-                'province_budget_requests.submission_date',
+                'regency_budget_requests.submission_name',
+                'regency_budget_requests.submission_date',
             ])
             ->where('components.regency_budget_request_id', $id) // Pastikan field di where sesuai dengan kolom
             ->first();
         }
         if (Auth::user()->role == "departement") {
             $data = DB::table('components')
-            ->leftJoin('departement_budget_requests', 'components.departement_budget_request_id', '=', 'province_budget_requests.id')
+            ->leftJoin('departement_budget_requests', 'components.departement_budget_request_id', '=', 'departement_budget_requests.id')
             ->select([
                 'components.departement_budget_request_id',
-                'province_budget_requests.submission_name',
-                'province_budget_requests.submission_date',
+                'departement_budget_requests.submission_name',
+                'departement_budget_requests.submission_date',
             ])
             ->where('components.departement_budget_request_id', $id) // Pastikan field di where sesuai dengan kolom
             ->first();
         }
         if (Auth::user()->role == "division") {
             $data = DB::table('components')
-            ->leftJoin('division_budget_requests', 'components.division_budget_request_id', '=', 'province_budget_requests.id')
+            ->leftJoin('division_budget_requests', 'components.division_budget_request_id', '=', 'division_budget_requests.id')
             ->select([
                 'components.division_budget_request_id',
-                'province_budget_requests.submission_name',
-                'province_budget_requests.submission_date',
+                'division_budget_requests.submission_name',
+                'division_budget_requests.submission_date',
             ])
             ->where('components.division_budget_request_id', $id) // Pastikan field di where sesuai dengan kolom
             ->first();
