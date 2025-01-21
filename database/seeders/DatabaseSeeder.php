@@ -92,7 +92,8 @@ class DatabaseSeeder extends Seeder
             ]);  
         }  
 
-         $regens = RegencyCity::where('province_id', 9)->get();
+         $regens = RegencyCity::all();
+         $provs = Province::all();
 
         foreach ($regens as $regen) {
             User::create([
@@ -103,8 +104,22 @@ class DatabaseSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'email_verified_at' => now(),
                 'role' => 'regency',
-                'province_id' => 9,
+                'province_id' => $regen->province_id,
                 'regency_city_id' => $regen->id,
+                'remember_token' => Str::random(10),
+            ]);
+         }
+        foreach ($provs as $prov) {
+            User::create([
+                'name' => $prov->name,
+                'username' => $prov->name,
+                'region' => fake()->address(),
+                'email' => str_replace(' ', '', $prov->name) . '@mail.com',
+                'password' => Hash::make('password'),
+                'email_verified_at' => now(),
+                'role' => 'province',
+                'province_id' => $prov->id,
+                'regency_city_id' => null,
                 'remember_token' => Str::random(10),
             ]);
          }
